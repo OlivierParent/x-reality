@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/x-reality/static/css/main.582d2685.css",
+    "main.js": "/x-reality/static/js/main.ef1dceac.js",
+    "static/media/UV_Grid_Sm.jpg": "/x-reality/static/media/UV_Grid_Sm.8ab40f718b980383b313.jpg",
+    "static/media/gltf-logo.glb": "/x-reality/static/media/gltf-logo.d3501fc256ec9ddbd19c.glb",
+    "static/media/suzanne.glb": "/x-reality/static/media/suzanne.7e99ef209ea070214695.glb",
+    "static/media/animation.glb": "/x-reality/static/media/animation.07175b802826a7629a99.glb",
+    "static/media/SVG_logo.svg": "/x-reality/static/media/SVG_logo.31892e959789b5a423bae1652f2e6dd9.svg",
+    "static/media/arteveldehogeschool_logo.svg": "/x-reality/static/media/arteveldehogeschool_logo.6220cd577fb250a0bcf4d9b4211e8449.svg",
+    "index.html": "/x-reality/index.html",
+    "main.582d2685.css.map": "/x-reality/static/css/main.582d2685.css.map",
+    "main.ef1dceac.js.map": "/x-reality/static/js/main.ef1dceac.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.582d2685.css",
+    "static/js/main.ef1dceac.js"
+  ]
+}

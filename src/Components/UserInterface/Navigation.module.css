@@ -1,0 +1,39 @@
+.nav {
+  font-family: monospace;
+  font-size: smaller;
+  left: 0;
+  padding: 0.25rem;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+
+.nav ul {
+  display: flexbox;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li + li {
+  padding-top: 0.25em;
+}
+
+.nav__item {
+  background-color: hsla(0, 0%, 100%, 0.1);
+  border-radius: 0.25em;
+  color: white;
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+
+.nav__item:hover {
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.nav__item.-active {
+  background-color: hsla(0, 0%, 100%, 0.2);
+  cursor: default;
+}

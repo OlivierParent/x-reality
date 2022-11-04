@@ -1,26 +1,48 @@
 {
   "name": "x-reality",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "private": true,
+  "homepage": "/x-reality",
+  "proxy": "https://olivierparent.be",
   "dependencies": {
+    "@react-spring/three": "^9.5.5",
+    "@react-three/cannon": "^6.5.0",
+    "@react-three/drei": "^9.40.0",
+    "@react-three/fiber": "^8.9.1",
+    "@react-three/flex": "^1.0.0",
+    "@react-three/postprocessing": "^2.7.0",
+    "@react-three/rapier": "^0.10.0",
+    "@react-three/test-renderer": "^8.0.17",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "lamina": "^1.1.23",
+    "leva": "^0.9.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "three": "0.146.0",
+    "three-stdlib": "^2.17.3",
+    "web-vitals": "^3.0.4"
+  },
+  "devDependencies": {
+    "@react-spring/types": "^9.5.5",
+    "@types/jest": "^29.2.1",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@types/three": "^0.144.0",
+    "typescript": "^4.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "yarn:install": "yarn",
+    "yarn:outdated": "yarn outdated || cd . ",
+    "yarn:update": "yarn upgrade-interactive --latest"
   },
   "eslintConfig": {
     "extends": [
