@@ -1,9 +1,4 @@
-import {
-  GizmoHelper,
-  GizmoViewport,
-  OrbitControls,
-  Stats,
-} from "@react-three/drei";
+import { GizmoHelper, GizmoViewport, Stats } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
@@ -48,8 +43,6 @@ const Helpers = (props: GroupProps): JSX.Element => {
       {gridHelper && <gridHelper />}
       {stats && <Stats />}
       {polarGridHelper && <polarGridHelper />}
-
-      <OrbitControls enableDamping={true} enablePan={true} enableZoom={true} />
     </group>
   );
 };

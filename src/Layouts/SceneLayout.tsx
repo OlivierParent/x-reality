@@ -1,3 +1,4 @@
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Leva, useControls } from "leva";
 import { Suspense } from "react";
@@ -30,6 +31,7 @@ const SceneLayout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
       <Canvas
+        camera={undefined}
         flat={flat}
         frameloop={frameloop}
         linear={linear}
@@ -40,6 +42,11 @@ const SceneLayout = ({ children }: LayoutProps): JSX.Element => {
           <Effects />
           <Helpers />
           <Lighting />
+          <OrbitControls
+            enableDamping={true}
+            enablePan={true}
+            enableZoom={true}
+          />
           {children}
         </Suspense>
       </Canvas>

@@ -15,6 +15,13 @@ export namespace NAVIGATION {
     LOGO = "logo",
     NORMALS = "normals",
     PARTICLES = "particles",
+    PHYSICS_CANNON_TEST = "cannon/test",
+    PHYSICS_CANNON_WORLD = "cannon/world",
+    PHYSICS_RAPIER_COLLIDERS_AUTO = "rapier/colliders/auto",
+    PHYSICS_RAPIER_COLLIDERS_MANUAL = "rapier/colliders/manual",
+    PHYSICS_RAPIER_PINBALL_MACHINE = "rapier/pinball-machine",
+    PHYSICS_RAPIER_TEST = "rapier/test",
+    PHYSICS_RAPIER_WORLD = "rapier/world",
     SUZANNE = "suzanne",
     TEXTURE = "texture",
     TRIPOD = "tripod",
@@ -72,6 +79,34 @@ export namespace NAVIGATION {
     {
       label: "Particles",
       to: PATH.PARTICLES,
+    },
+    {
+      label: "Physics-Cannon Test",
+      to: PATH.PHYSICS_CANNON_TEST,
+    },
+    {
+      label: "Physics-Cannon World",
+      to: PATH.PHYSICS_CANNON_WORLD,
+    },
+    {
+      label: "Physics-Rapier Colliders (Auto)",
+      to: PATH.PHYSICS_RAPIER_COLLIDERS_AUTO,
+    },
+    {
+      label: "Physics-Rapier Colliders (Manual)",
+      to: PATH.PHYSICS_RAPIER_COLLIDERS_MANUAL,
+    },
+    {
+      label: "Physics-Rapier Pinball Machine",
+      to: PATH.PHYSICS_RAPIER_PINBALL_MACHINE,
+    },
+    {
+      label: "Physics-Rapier Test",
+      to: PATH.PHYSICS_RAPIER_TEST,
+    },
+    {
+      label: "Physics-Rapier World",
+      to: PATH.PHYSICS_RAPIER_WORLD,
     },
     {
       label: "Suzanne",
