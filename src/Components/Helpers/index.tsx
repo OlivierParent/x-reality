@@ -1,8 +1,9 @@
 import { GizmoHelper, GizmoViewport, Stats } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
-import { useControls } from "leva";
+import { folder, useControls } from "leva";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
 
 /**
@@ -14,15 +15,20 @@ import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
 const Helpers = (props: GroupProps): JSX.Element => {
   const { axesHelper, gizmoHelper, gridHelper, polarGridHelper, stats } =
     useControls(
-      LEVA.SCHEMA.HELPERS,
+      LEVA.SCHEMA.GENERAL,
       {
-        axesHelper: SettingsLevaHelpers.axesHelper(),
-        gizmoHelper: SettingsLevaHelpers.gizmoHelper(true),
-        gridHelper: SettingsLevaHelpers.gridHelper(),
-        polarGridHelper: SettingsLevaHelpers.polarGridHelper(),
-        stats: SettingsLevaHelpers.stats(),
+        Helpers: folder(
+          {
+            axesHelper: SettingsLevaHelpers.axesHelper(),
+            gizmoHelper: SettingsLevaHelpers.gizmoHelper(true),
+            gridHelper: SettingsLevaHelpers.gridHelper(),
+            polarGridHelper: SettingsLevaHelpers.polarGridHelper(),
+            stats: SettingsLevaHelpers.stats(),
+          },
+          Settings.folder(LEVA.ORDER.HELPERS)
+        ),
       },
-      { collapsed: true, color: undefined, order: LEVA.ORDER.HELPERS }
+      Settings.folder(LEVA.ORDER.GENERAL)
     );
 
   return (

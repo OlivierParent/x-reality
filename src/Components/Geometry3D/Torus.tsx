@@ -4,6 +4,7 @@ import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryTorus as TorusGeometry } from "Settings/Leva/Geometry/Torus";
 import { Children } from "Types/Children";
 
@@ -11,17 +12,20 @@ const Geometry3DTorus = ({ children }: Children): JSX.Element => {
   const { arc, radialSegments, radius, tube, tubularSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        Torus: folder({
-          arc: TorusGeometry.arc(),
-          radialSegments: TorusGeometry.radialSegments(),
-          radius: TorusGeometry.radius(),
-          tube: TorusGeometry.tube(),
-          tubularSegments: TorusGeometry.tubularSegments(),
-        }),
-      }),
+      Geometry: folder(
+        {
+          Torus: folder({
+            arc: TorusGeometry.arc(),
+            radialSegments: TorusGeometry.radialSegments(),
+            radius: TorusGeometry.radius(),
+            tube: TorusGeometry.tube(),
+            tubularSegments: TorusGeometry.tubularSegments(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

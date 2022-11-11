@@ -4,6 +4,7 @@ import { Demo } from "Components/Lighting/Demo";
 import { Studio } from "Components/Lighting/Studio";
 import { ThreePoint } from "Components/Lighting/ThreePoint";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 
 const LIGHTING = Object.freeze({
   Demo: "Demo",
@@ -45,7 +46,7 @@ const Lighting = () => {
         value: LIGHTING.Studio,
       },
     },
-    { collapsed: true, color: undefined, order: LEVA.ORDER.LIGHTING }
+    Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
   return enableLighting(lightingName);

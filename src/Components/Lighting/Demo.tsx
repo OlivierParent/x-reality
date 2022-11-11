@@ -16,59 +16,99 @@ import {
 } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLevaColor } from "Settings/Leva/Color";
-import { SettingsLevaLighting } from "Settings/Leva/Lighting";
-import { SettingsLevaPosition } from "Settings/Leva/Position";
+import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLevaColor as LevaColor } from "Settings/Leva/Color";
+import { SettingsLevaLighting as LevaLighting } from "Settings/Leva/Lighting";
+import { SettingsLevaPosition as LevaPosition } from "Settings/Leva/Position";
 
 const intensityMax = 20;
 
 const LightingDemo = (): JSX.Element => {
-  const { helpers, helperSize } = useControls(LEVA.SCHEMA.LIGHTING, {
-    helpers: SettingsLevaLighting.helpers(),
-    helperSize: SettingsLevaLighting.helperSize(),
-  });
-  const ambientLight = useControls(LEVA.SCHEMA.LIGHTING, {
-    "Ambient Light": folder({
-      color: SettingsLevaColor.color(),
-      intensity: SettingsLevaLighting.intensity(0.1, 1),
-    }),
-  });
-  const directionalLight = useControls(LEVA.SCHEMA.LIGHTING, {
-    "Directional Light": folder({
-      castShadow: SettingsLevaLighting.castShadow(true),
-      color: SettingsLevaColor.color("hsl(120, 100%, 70%)"),
-      intensity: SettingsLevaLighting.intensity(1, 1),
-      position: SettingsLevaPosition.position(4, 4, 1),
-    }),
-  });
-  const hemisphereLight = useControls(LEVA.SCHEMA.LIGHTING, {
-    "Hemisphere Light": folder({
-      castShadow: SettingsLevaLighting.castShadow(true),
-      color: SettingsLevaColor.color("hsl(210, 100%, 70%)", "Sky"),
-      groundColor: SettingsLevaColor.color("hsl(30, 100%, 70%)", "Ground"),
-      intensity: SettingsLevaLighting.intensity(1, 1),
-      position: SettingsLevaPosition.position(0, 1, 0),
-    }),
-  });
-  const pointLight = useControls(LEVA.SCHEMA.LIGHTING, {
-    "Point Light": folder({
-      castShadow: SettingsLevaLighting.castShadow(true),
-      color: SettingsLevaColor.color("hsl(240, 100%, 70%)"),
-      intensity: SettingsLevaLighting.intensity(0.5, 20),
-      position: SettingsLevaPosition.position(-4, 1, 4),
-    }),
-  });
-  const spotLight = useControls(LEVA.SCHEMA.LIGHTING, {
-    Spotlight: folder({
-      castShadow: SettingsLevaLighting.castShadow(true),
-      color: SettingsLevaColor.color("hsl(60, 100%, 70%)"),
-      distance: SettingsLevaLighting.distance(),
-      intensity: SettingsLevaLighting.intensity(undefined, 20),
-      penumbra: SettingsLevaLighting.penumbra(0.25),
-      position: SettingsLevaPosition.position(2, 2, 2),
-      target: SettingsLevaLighting.target(),
-    }),
-  });
+  const { helpers, helperSize } = useControls(
+    LEVA.SCHEMA.LIGHTING,
+    {
+      helpers: LevaLighting.helpers(),
+      helperSize: LevaLighting.helperSize(),
+    },
+    Settings.folder(LEVA.ORDER.LIGHTING)
+  );
+  const ambientLight = useControls(
+    LEVA.SCHEMA.LIGHTING,
+    {
+      "Ambient Light": folder(
+        {
+          color: LevaColor.color(),
+          intensity: LevaLighting.intensity(0.1, 1),
+        },
+        Settings.folder()
+      ),
+    },
+    Settings.folder(LEVA.ORDER.LIGHTING)
+  );
+  const directionalLight = useControls(
+    LEVA.SCHEMA.LIGHTING,
+    {
+      "Directional Light": folder(
+        {
+          castShadow: LevaLighting.castShadow(true),
+          color: LevaColor.color("hsl(120, 100%, 70%)"),
+          intensity: LevaLighting.intensity(1, 1),
+          position: LevaPosition.position(4, 4, 1),
+        },
+        Settings.folder()
+      ),
+    },
+    Settings.folder(LEVA.ORDER.LIGHTING)
+  );
+  const hemisphereLight = useControls(
+    LEVA.SCHEMA.LIGHTING,
+    {
+      "Hemisphere Light": folder(
+        {
+          castShadow: LevaLighting.castShadow(true),
+          color: LevaColor.color("hsl(210, 100%, 70%)", "Sky"),
+          groundColor: LevaColor.color("hsl(30, 100%, 70%)", "Ground"),
+          intensity: LevaLighting.intensity(1, 1),
+          position: LevaPosition.position(0, 1, 0),
+        },
+        Settings.folder()
+      ),
+    },
+    Settings.folder(LEVA.ORDER.LIGHTING)
+  );
+  const pointLight = useControls(
+    LEVA.SCHEMA.LIGHTING,
+    {
+      "Point Light": folder(
+        {
+          castShadow: LevaLighting.castShadow(true),
+          color: LevaColor.color("hsl(240, 100%, 70%)"),
+          intensity: LevaLighting.intensity(0.5, 20),
+          position: LevaPosition.position(-4, 1, 4),
+        },
+        Settings.folder()
+      ),
+    },
+    Settings.folder(LEVA.ORDER.LIGHTING)
+  );
+  const spotLight = useControls(
+    LEVA.SCHEMA.LIGHTING,
+    {
+      Spotlight: folder(
+        {
+          castShadow: LevaLighting.castShadow(true),
+          color: LevaColor.color("hsl(60, 100%, 70%)"),
+          distance: LevaLighting.distance(),
+          intensity: LevaLighting.intensity(undefined, 20),
+          penumbra: LevaLighting.penumbra(0.25),
+          position: LevaPosition.position(2, 2, 2),
+          target: LevaLighting.target(),
+        },
+        Settings.folder()
+      ),
+    },
+    Settings.folder(LEVA.ORDER.LIGHTING)
+  );
 
   const { scene } = useThree();
   const target = new Object3D();
@@ -116,7 +156,7 @@ const LightingDemo = (): JSX.Element => {
         color={directionalLight.color}
         intensity={directionalLight.intensity}
         name="Directional Light"
-        position={SettingsLevaPosition.toArray(directionalLight.position)}
+        position={LevaPosition.toArray(directionalLight.position)}
         ref={directionalLightRef}
       />
       <hemisphereLight
@@ -125,7 +165,7 @@ const LightingDemo = (): JSX.Element => {
         groundColor={hemisphereLight.groundColor}
         intensity={hemisphereLight.intensity}
         name="Hemisphere Light"
-        position={SettingsLevaPosition.toArray(hemisphereLight.position)}
+        position={LevaPosition.toArray(hemisphereLight.position)}
         ref={hemisphereLightRef}
       />
       <pointLight
@@ -133,7 +173,7 @@ const LightingDemo = (): JSX.Element => {
         color={pointLight.color}
         intensity={pointLight.intensity}
         name="Point Light"
-        position={SettingsLevaPosition.toArray(pointLight.position)}
+        position={LevaPosition.toArray(pointLight.position)}
         ref={pointLightRef}
       />
       <spotLight
@@ -143,7 +183,7 @@ const LightingDemo = (): JSX.Element => {
         intensity={spotLight.intensity}
         name="Spotlight"
         penumbra={spotLight.penumbra}
-        position={SettingsLevaPosition.toArray(spotLight.position)}
+        position={LevaPosition.toArray(spotLight.position)}
         ref={spotLightRef}
         target={target}
       />

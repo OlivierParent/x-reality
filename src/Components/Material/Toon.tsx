@@ -2,6 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialToon as ToonMaterial } from "Settings/Leva/Material/Toon";
 
@@ -22,22 +23,31 @@ const MaterialToon = (): JSX.Element => {
   } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Materials: folder({
-        Material: folder({
-          dithering: Material.dithering(),
-          opacity: Material.opacity(),
-          side: Material.side(),
-          transparent: Material.transparent(),
-        }),
-        "Toon Material": folder({
-          color: ToonMaterial.color(),
-          emissive: ToonMaterial.emissive(),
-          emissiveIntensity: ToonMaterial.emissiveIntensity(),
-          wireframe: ToonMaterial.wireframe(),
-        }),
-      }),
+      Materials: folder(
+        {
+          Material: folder(
+            {
+              dithering: Material.dithering(),
+              opacity: Material.opacity(),
+              side: Material.side(),
+              transparent: Material.transparent(),
+            },
+            Settings.folder(LEVA.ORDER.MATERIAL)
+          ),
+          "Toon Material": folder(
+            {
+              color: ToonMaterial.color(),
+              emissive: ToonMaterial.emissive(),
+              emissiveIntensity: ToonMaterial.emissiveIntensity(),
+              wireframe: ToonMaterial.wireframe(),
+            },
+            Settings.folder(LEVA.ORDER.TOON_MATERIAL)
+          ),
+        },
+        Settings.folder(LEVA.ORDER.MATERIALS)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

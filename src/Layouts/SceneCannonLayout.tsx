@@ -1,12 +1,13 @@
 import { Debug, Physics } from "@react-three/cannon";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Leva, useControls } from "leva";
+import { folder, Leva, useControls } from "leva";
 import { Suspense } from "react";
 
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
 import { SettingsLevaPhysics } from "Settings/Leva/Physics";
 import { LayoutProps } from "Types/LayoutProps";
@@ -19,14 +20,19 @@ import { LayoutProps } from "Types/LayoutProps";
  */
 const SceneCannonLayout = ({ children }: LayoutProps): JSX.Element => {
   const { flat, frameloop, linear, shadows } = useControls(
-    LEVA.SCHEMA.CANVAS,
+    LEVA.SCHEMA.GENERAL,
     {
-      flat: SettingsLevaCanvas.flat(),
-      frameloop: SettingsLevaCanvas.frameloop(),
-      linear: SettingsLevaCanvas.linear(),
-      shadows: SettingsLevaCanvas.shadows(true),
+      Canvas: folder(
+        {
+          flat: SettingsLevaCanvas.flat(),
+          frameloop: SettingsLevaCanvas.frameloop(),
+          linear: SettingsLevaCanvas.linear(),
+          shadows: SettingsLevaCanvas.shadows(true),
+        },
+        Settings.folder(LEVA.ORDER.CANVAS)
+      ),
     },
-    { collapsed: true, color: undefined, order: LEVA.ORDER.CANVAS }
+    Settings.folder(LEVA.ORDER.GENERAL)
   );
   const { gravity, paused, showDebug } = useControls(
     LEVA.SCHEMA.PHYSICS,
@@ -35,7 +41,7 @@ const SceneCannonLayout = ({ children }: LayoutProps): JSX.Element => {
       paused: SettingsLevaPhysics.paused(),
       showDebug: SettingsLevaPhysics.showDebug(true),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.PHYSICS }
+    Settings.folder(LEVA.ORDER.PHYSICS)
   );
 
   return (

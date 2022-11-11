@@ -4,6 +4,7 @@ import { useControls } from "leva";
 import { ClockAnalogue as Analogue } from "Components/Clock/Analogue";
 import { ClockDigital as Digital } from "Components/Clock/Digital";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva } from "Settings/Leva";
 
 /**
  * Clock.
@@ -23,7 +24,7 @@ const Clock = (props: GroupProps): JSX.Element => {
         },
       },
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

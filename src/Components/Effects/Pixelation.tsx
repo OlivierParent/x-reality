@@ -1,6 +1,8 @@
 import { EffectComposer, Pixelation } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaEffectsPixelation as PixelationEffect } from "Settings/Leva/Effects/Pixelation";
 
 /**
@@ -10,13 +12,20 @@ import { SettingsLevaEffectsPixelation as PixelationEffect } from "Settings/Leva
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/PixelationEffect.js~PixelationEffect.html
  */
 const EffectsPixelation = () => {
-  const { granularity } = useControls("General", {
-    "Effects Composer": folder({
-      "Pixelation Effect": folder({
-        granularity: PixelationEffect.granularity(),
-      }),
-    }),
-  });
+  const { granularity } = useControls(
+    LEVA.SCHEMA.GENERAL,
+    {
+      "Effects Composer": folder(
+        {
+          "Pixelation Effect": folder({
+            granularity: PixelationEffect.granularity(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
+  );
 
   return (
     <EffectComposer>

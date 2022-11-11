@@ -2,6 +2,8 @@ import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction, Resolution } from "postprocessing";
 
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaEffectsDepthOfField as DepthOfFieldEffect } from "Settings/Leva/Effects/DepthOfField";
 
 /**
@@ -12,17 +14,21 @@ import { SettingsLevaEffectsDepthOfField as DepthOfFieldEffect } from "Settings/
  */
 const EffectsDepthOfField = () => {
   const { blendFunction, bokehScale, focalLength, focusDistance } = useControls(
-    "General",
+    LEVA.SCHEMA.GENERAL,
     {
-      "Effects Composer": folder({
-        "Bloom Effect": folder({
-          blendFunction: DepthOfFieldEffect.blendFunction(),
-          bokehScale: DepthOfFieldEffect.bokehScale(),
-          focalLength: DepthOfFieldEffect.focalLength(),
-          focusDistance: DepthOfFieldEffect.focusDistance(),
-        }),
-      }),
-    }
+      "Effects Composer": folder(
+        {
+          "Bloom Effect": folder({
+            blendFunction: DepthOfFieldEffect.blendFunction(),
+            bokehScale: DepthOfFieldEffect.bokehScale(),
+            focalLength: DepthOfFieldEffect.focalLength(),
+            focusDistance: DepthOfFieldEffect.focusDistance(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

@@ -2,6 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Material/Basic";
 
@@ -23,22 +24,31 @@ const MaterialBasic = (): JSX.Element => {
   } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Materials: folder({
-        Material: folder({
-          dithering: Material.dithering(),
-          opacity: Material.opacity(),
-          side: Material.side(),
-          transparent: Material.transparent(),
-        }),
-        "Basic Material": folder({
-          color: BasicMaterial.color(),
-          reflectivity: BasicMaterial.reflectivity(),
-          refractionRatio: BasicMaterial.refractionRatio(),
-          wireframe: BasicMaterial.wireframe(),
-        }),
-      }),
+      Materials: folder(
+        {
+          Material: folder(
+            {
+              dithering: Material.dithering(),
+              opacity: Material.opacity(),
+              side: Material.side(),
+              transparent: Material.transparent(),
+            },
+            Settings.folder(LEVA.ORDER.MATERIAL)
+          ),
+          "Basic Material": folder(
+            {
+              color: BasicMaterial.color(),
+              reflectivity: BasicMaterial.reflectivity(),
+              refractionRatio: BasicMaterial.refractionRatio(),
+              wireframe: BasicMaterial.wireframe(),
+            },
+            Settings.folder(LEVA.ORDER.BASIC_MATERIAL)
+          ),
+        },
+        Settings.folder(LEVA.ORDER.MATERIALS)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

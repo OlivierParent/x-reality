@@ -5,6 +5,7 @@ import { Circle } from "Components/Geometry2D/Circle";
 import { Plane } from "Components/Geometry2D/Plane";
 import { Ring } from "Components/Geometry2D/Ring";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { Children } from "Types/Children";
 
 enum GEOMETRY_2D {
@@ -36,15 +37,18 @@ const Geometry2D = ({ children }: Children): JSX.Element => {
   const { geometry2DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        geometry2DName: {
-          label: "Geometry",
-          options: GEOMETRY_2D,
-          value: GEOMETRY_2D.PLANE,
+      Geometry: folder(
+        {
+          geometry2DName: {
+            label: "Geometry 2D",
+            options: GEOMETRY_2D,
+            value: GEOMETRY_2D.PLANE,
+          },
         },
-      }),
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return enableGeometry(geometry2DName, children);

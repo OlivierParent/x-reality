@@ -2,6 +2,8 @@ import { EffectComposer, ToneMapping } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaEffectsToneMapping as ToneMappingEffect } from "Settings/Leva/Effects/ToneMapping";
 
 /**
@@ -17,17 +19,24 @@ const EffectsToneMapping = () => {
     blendFunction,
     middleGrey,
     resolution,
-  } = useControls("General", {
-    "Effects Composer": folder({
-      "ToneMapping Effect": folder({
-        adaptationRate: ToneMappingEffect.adaptationRate(),
-        averageLuminance: ToneMappingEffect.averageLuminance(),
-        blendFunction: ToneMappingEffect.blendFunction(),
-        middleGrey: ToneMappingEffect.middleGrey(),
-        resolution: ToneMappingEffect.resolution(),
-      }),
-    }),
-  });
+  } = useControls(
+    LEVA.SCHEMA.GENERAL,
+    {
+      "Effects Composer": folder(
+        {
+          "ToneMapping Effect": folder({
+            adaptationRate: ToneMappingEffect.adaptationRate(),
+            averageLuminance: ToneMappingEffect.averageLuminance(),
+            blendFunction: ToneMappingEffect.blendFunction(),
+            middleGrey: ToneMappingEffect.middleGrey(),
+            resolution: ToneMappingEffect.resolution(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
+  );
 
   return (
     <EffectComposer>

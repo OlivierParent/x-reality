@@ -3,6 +3,7 @@ import { useNormalTexture } from "@react-three/drei";
 import { folder, useControls } from "leva";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 
 const MaterialStandardNormalMap = (): JSX.Element => {
   const {
@@ -42,7 +43,7 @@ const MaterialStandardNormalMap = (): JSX.Element => {
         }),
       }),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
   const [normalMap] = useNormalTexture(
     normalTextureId, // Index or file name, see: https://github.com/emmelleppi/normal-maps/

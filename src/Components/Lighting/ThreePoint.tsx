@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { SpotLight, SpotLightHelper } from "three";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaColor } from "Settings/Leva/Color";
 import { SettingsLevaLighting } from "Settings/Leva/Lighting";
 import { SettingsLevaPosition } from "Settings/Leva/Position";
@@ -15,48 +16,60 @@ const LightingThreePoint = (): JSX.Element => {
   const ambientLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
-      "Ambient Light": folder({
-        color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-        intensity: SettingsLevaLighting.intensity(0.1, 1),
-      }),
+      "Ambient Light": folder(
+        {
+          color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
+          intensity: SettingsLevaLighting.intensity(0.1, 1),
+        },
+        Settings.folder()
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.LIGHTING }
+    Settings.folder(LEVA.ORDER.LIGHTING)
   );
   const backLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
-      "Back Light": folder({
-        castShadow: SettingsLevaLighting.castShadow(true),
-        color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-        intensity: SettingsLevaLighting.intensity(0.75),
-        position: SettingsLevaPosition.position(4, 2, -4),
-      }),
+      "Back Light": folder(
+        {
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
+          intensity: SettingsLevaLighting.intensity(0.75),
+          position: SettingsLevaPosition.position(4, 2, -4),
+        },
+        Settings.folder()
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.LIGHTING }
+    Settings.folder(LEVA.ORDER.LIGHTING)
   );
   const fillLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
-      "Fill Light": folder({
-        castShadow: SettingsLevaLighting.castShadow(true),
-        color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
-        intensity: SettingsLevaLighting.intensity(0.75),
-        position: SettingsLevaPosition.position(-4, 2, 4),
-      }),
+      "Fill Light": folder(
+        {
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
+          intensity: SettingsLevaLighting.intensity(0.75),
+          position: SettingsLevaPosition.position(-4, 2, 4),
+        },
+        Settings.folder()
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.LIGHTING }
+    Settings.folder(LEVA.ORDER.LIGHTING)
   );
   const keyLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
-      "Key Light": folder({
-        castShadow: SettingsLevaLighting.castShadow(true),
-        color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
-        intensity: SettingsLevaLighting.intensity(0.75),
-        position: SettingsLevaPosition.position(4, 2, 4),
-      }),
+      "Key Light": folder(
+        {
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
+          intensity: SettingsLevaLighting.intensity(0.75),
+          position: SettingsLevaPosition.position(4, 2, 4),
+        },
+        Settings.folder()
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.LIGHTING }
+    Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
   const backLightRef = useRef<SpotLight>(null);

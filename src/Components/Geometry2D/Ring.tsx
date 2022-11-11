@@ -4,6 +4,7 @@ import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryRing as RingGeometry } from "Settings/Leva/Geometry/Ring";
 import { Children } from "Types/Children";
 
@@ -17,24 +18,27 @@ const Geometry2DRing = ({ children }: Children) => {
     useControls(
       LEVA.SCHEMA.COMPONENTS,
       {
-        Geometry: folder({
-          Ring: folder({
-            "XY Plane": folder({
-              innerRadius: RingGeometry.innerRadius(),
-              outerRadius: RingGeometry.outerRadius(),
-              Θ: folder({
-                θSegments: RingGeometry.ΘSegments(),
-                θStart: RingGeometry.ΘStart(),
-                θLength: RingGeometry.ΘLength(),
-              }),
-              Φ: folder({
-                φSegments: RingGeometry.ΦSegments(),
+        Geometry: folder(
+          {
+            Ring: folder({
+              "XY Plane": folder({
+                innerRadius: RingGeometry.innerRadius(),
+                outerRadius: RingGeometry.outerRadius(),
+                Θ: folder({
+                  θSegments: RingGeometry.ΘSegments(),
+                  θStart: RingGeometry.ΘStart(),
+                  θLength: RingGeometry.ΘLength(),
+                }),
+                Φ: folder({
+                  φSegments: RingGeometry.ΦSegments(),
+                }),
               }),
             }),
-          }),
-        }),
+          },
+          Settings.folder(LEVA.ORDER.GEOMETRY)
+        ),
       },
-      { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+      Settings.folder(LEVA.ORDER.COMPONENTS)
     );
 
   return (

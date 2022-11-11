@@ -11,6 +11,7 @@ import { Standard } from "Components/Material/Standard";
 import { StandardNormalMap } from "Components/Material/StandardNormalMap";
 import { Toon } from "Components/Material/Toon";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 
 const MATERIAL = Object.freeze({
   Basic: "Basic",
@@ -65,26 +66,30 @@ const Material = () => {
   const { materialName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Materials: folder({
-        materialName: {
-          label: "Material",
-          options: {
-            "Basic (Flat, no light)               ": MATERIAL.Basic,
-            "Matcap (Material Capture, no light)  ": MATERIAL.Matcap,
-            "Lambert (NPBR, Gouraud)              ": MATERIAL.Lambert,
-            "Phong (NPBR, Blinn-Phong)            ": MATERIAL.Phong,
-            "Standard (PBR, Metallic-Roughness)   ": MATERIAL.Standard,
-            "Standard - Normal Map                ": MATERIAL.StandardNormalMap,
-            "Physical (PBR, extension of Standard)": MATERIAL.Physical,
-            "Physical - Frosted Glass             ":
-              MATERIAL.PhysicalFrostedGlass,
-            "Toon                                 ": MATERIAL.Toon,
+      Materials: folder(
+        {
+          materialName: {
+            label: "Material",
+            options: {
+              "Basic (Flat, no light)               ": MATERIAL.Basic,
+              "Matcap (Material Capture, no light)  ": MATERIAL.Matcap,
+              "Lambert (NPBR, Gouraud)              ": MATERIAL.Lambert,
+              "Phong (NPBR, Blinn-Phong)            ": MATERIAL.Phong,
+              "Standard (PBR, Metallic-Roughness)   ": MATERIAL.Standard,
+              "Standard - Normal Map                ":
+                MATERIAL.StandardNormalMap,
+              "Physical (PBR, extension of Standard)": MATERIAL.Physical,
+              "Physical - Frosted Glass             ":
+                MATERIAL.PhysicalFrostedGlass,
+              "Toon                                 ": MATERIAL.Toon,
+            },
+            value: MATERIAL.Standard,
           },
-          value: MATERIAL.Standard,
         },
-      }),
+        Settings.folder(LEVA.ORDER.MATERIALS)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return enableMaterial(materialName);

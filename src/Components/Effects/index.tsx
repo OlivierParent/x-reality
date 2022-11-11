@@ -17,6 +17,8 @@ import { Sepia } from "Components/Effects/Sepia";
 import { SMAA } from "Components/Effects/SMAA";
 import { ToneMapping } from "Components/Effects/ToneMapping";
 import { Vignette } from "Components/Effects/Vignette";
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 
 const EFFECT = Object.freeze({
   None: "None",
@@ -40,15 +42,22 @@ const EFFECT = Object.freeze({
 });
 
 const Effects = () => {
-  const { useEffect } = useControls("General", {
-    "Effects Composer": folder({
-      useEffect: {
-        label: "Effect",
-        options: EFFECT,
-        value: EFFECT.None,
-      },
-    }),
-  });
+  const { useEffect } = useControls(
+    LEVA.SCHEMA.GENERAL,
+    {
+      "Effects Composer": folder(
+        {
+          useEffect: {
+            label: "Effect",
+            options: EFFECT,
+            value: EFFECT.None,
+          },
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
+  );
 
   function enableEffect(name: string, element: JSX.Element) {
     return useEffect === name ? element : null;

@@ -2,6 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialLambert as LambertMaterial } from "Settings/Leva/Material/Lambert";
 
@@ -23,22 +24,31 @@ const MaterialLambert = (): JSX.Element => {
   } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Materials: folder({
-        Material: folder({
-          dithering: Material.dithering(),
-          opacity: Material.opacity(),
-          side: Material.side(),
-          transparent: Material.transparent(),
-        }),
-        "Lambert Material": folder({
-          color: LambertMaterial.color(),
-          emissive: LambertMaterial.emissive(),
-          emissiveIntensity: LambertMaterial.emissiveIntensity(),
-          wireframe: LambertMaterial.wireframe(),
-        }),
-      }),
+      Materials: folder(
+        {
+          Material: folder(
+            {
+              dithering: Material.dithering(),
+              opacity: Material.opacity(),
+              side: Material.side(),
+              transparent: Material.transparent(),
+            },
+            Settings.folder(LEVA.ORDER.MATERIAL)
+          ),
+          "Lambert Material": folder(
+            {
+              color: LambertMaterial.color(),
+              emissive: LambertMaterial.emissive(),
+              emissiveIntensity: LambertMaterial.emissiveIntensity(),
+              wireframe: LambertMaterial.wireframe(),
+            },
+            Settings.folder(LEVA.ORDER.LAMBERT_MATERIAL)
+          ),
+        },
+        Settings.folder(LEVA.ORDER.MATERIALS)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

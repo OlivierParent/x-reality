@@ -4,6 +4,7 @@ import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryCylinder as CylinderGeometry } from "Settings/Leva/Geometry/Cylinder";
 import { Children } from "Types/Children";
 
@@ -25,26 +26,29 @@ const Geometry3DCylinder = ({ children }: Children): JSX.Element => {
   } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        Cylinder: folder({
-          "XZ Plane": folder({
-            radiusBottom: CylinderGeometry.radiusBottom(),
-            radiusTop: CylinderGeometry.radiusTop(),
-            radialSegments: CylinderGeometry.radialSegments(),
-            openEnded: CylinderGeometry.openEnded(),
-            Θ: folder({
-              θStart: CylinderGeometry.ΘStart(),
-              θLength: CylinderGeometry.ΘLength(),
+      Geometry: folder(
+        {
+          Cylinder: folder({
+            "XZ Plane": folder({
+              radiusBottom: CylinderGeometry.radiusBottom(),
+              radiusTop: CylinderGeometry.radiusTop(),
+              radialSegments: CylinderGeometry.radialSegments(),
+              openEnded: CylinderGeometry.openEnded(),
+              Θ: folder({
+                θStart: CylinderGeometry.ΘStart(),
+                θLength: CylinderGeometry.ΘLength(),
+              }),
+            }),
+            "Y Axis": folder({
+              height: CylinderGeometry.height(),
+              heightSegments: CylinderGeometry.heightSegments(),
             }),
           }),
-          "Y Axis": folder({
-            height: CylinderGeometry.height(),
-            heightSegments: CylinderGeometry.heightSegments(),
-          }),
-        }),
-      }),
+        },
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

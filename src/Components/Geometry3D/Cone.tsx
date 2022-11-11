@@ -4,6 +4,7 @@ import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryCone as ConeGeometry } from "Settings/Leva/Geometry/Cone";
 import { Children } from "Types/Children";
 
@@ -24,25 +25,28 @@ const Geometry3DCone = ({ children }: Children): JSX.Element => {
   } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        Cone: folder({
-          "XZ Plane": folder({
-            radius: ConeGeometry.radius(),
-            radialSegments: ConeGeometry.radialSegments(),
-            openEnded: ConeGeometry.openEnded(),
-            Θ: folder({
-              θStart: ConeGeometry.ΘStart(),
-              θLength: ConeGeometry.ΘLength(),
+      Geometry: folder(
+        {
+          Cone: folder({
+            "XZ Plane": folder({
+              radius: ConeGeometry.radius(),
+              radialSegments: ConeGeometry.radialSegments(),
+              openEnded: ConeGeometry.openEnded(),
+              Θ: folder({
+                θStart: ConeGeometry.ΘStart(),
+                θLength: ConeGeometry.ΘLength(),
+              }),
+            }),
+            "Y Axis": folder({
+              height: ConeGeometry.height(),
+              heightSegments: ConeGeometry.heightSegments(),
             }),
           }),
-          "Y Axis": folder({
-            height: ConeGeometry.height(),
-            heightSegments: ConeGeometry.heightSegments(),
-          }),
-        }),
-      }),
+        },
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

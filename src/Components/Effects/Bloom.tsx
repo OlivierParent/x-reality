@@ -2,6 +2,8 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction, KernelSize, Resolution } from "postprocessing";
 
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaEffectsBloom as BloomEffect } from "Settings/Leva/Effects/Bloom";
 
 /**
@@ -12,16 +14,23 @@ import { SettingsLevaEffectsBloom as BloomEffect } from "Settings/Leva/Effects/B
  */
 const EffectsBloom = () => {
   const { blendFunction, intensity, luminanceSmoothing, luminanceThreshold } =
-    useControls("General", {
-      "Effects Composer": folder({
-        "Bloom Effect": folder({
-          blendFunction: BloomEffect.blendFunction(),
-          intensity: BloomEffect.intensity(),
-          luminanceSmoothing: BloomEffect.luminanceSmoothing(),
-          luminanceThreshold: BloomEffect.luminanceThreshold(),
-        }),
-      }),
-    });
+    useControls(
+      LEVA.SCHEMA.GENERAL,
+      {
+        "Effects Composer": folder(
+          {
+            "Bloom Effect": folder({
+              blendFunction: BloomEffect.blendFunction(),
+              intensity: BloomEffect.intensity(),
+              luminanceSmoothing: BloomEffect.luminanceSmoothing(),
+              luminanceThreshold: BloomEffect.luminanceThreshold(),
+            }),
+          },
+          Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        ),
+      },
+      Settings.folder(LEVA.ORDER.GENERAL)
+    );
 
   return (
     <EffectComposer>

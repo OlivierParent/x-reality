@@ -3,6 +3,7 @@ import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryPlane as PlaneGeometry } from "Settings/Leva/Geometry/Plane";
 import { Children } from "Types/Children";
 
@@ -15,20 +16,23 @@ const Geometry2DPlane = ({ children }: Children): JSX.Element => {
   const { height, heightSegments, width, widthSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        Plane: folder({
-          "X Axis": folder({
-            width: PlaneGeometry.width(),
-            widthSegments: PlaneGeometry.widthSegments(),
+      Geometry: folder(
+        {
+          Plane: folder({
+            "X Axis": folder({
+              width: PlaneGeometry.width(),
+              widthSegments: PlaneGeometry.widthSegments(),
+            }),
+            "Y Axis": folder({
+              height: PlaneGeometry.height(),
+              heightSegments: PlaneGeometry.heightSegments(),
+            }),
           }),
-          "Y Axis": folder({
-            height: PlaneGeometry.height(),
-            heightSegments: PlaneGeometry.heightSegments(),
-          }),
-        }),
-      }),
+        },
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

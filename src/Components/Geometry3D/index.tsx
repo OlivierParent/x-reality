@@ -12,6 +12,7 @@ import { Sphere } from "Components/Geometry3D/Sphere";
 import { Tetrahedron } from "Components/Geometry3D/Tetrahedron";
 import { Torus } from "Components/Geometry3D/Torus";
 import { TorusKnot } from "Components/Geometry3D/TorusKnot";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { Children } from "Types/Children";
 
 const GEOMETRY_3D = Object.freeze({
@@ -71,26 +72,29 @@ const Geometry3D = ({ children }: Children): JSX.Element => {
   const { geometry3DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        geometry3DName: {
-          label: "Geometry",
-          options: {
-            "Box                    ": GEOMETRY_3D.Box,
-            "Cone                   ": GEOMETRY_3D.Cone,
-            "Cylinder               ": GEOMETRY_3D.Cylinder,
-            "Tetrahedron (4 faces)  ": GEOMETRY_3D.Tetrahedron,
-            "Octahedron (8 faces)   ": GEOMETRY_3D.Octahedron,
-            "Dodecahedron (12 faces)": GEOMETRY_3D.Dodecahedron,
-            "Icosahedron (20 faces) ": GEOMETRY_3D.Icosahedron,
-            "Sphere                 ": GEOMETRY_3D.Sphere,
-            "Torus                  ": GEOMETRY_3D.Torus,
-            "Torus Knot             ": GEOMETRY_3D.TorusKnot,
+      Geometry: folder(
+        {
+          geometry3DName: {
+            label: "Geometry",
+            options: {
+              "Box                    ": GEOMETRY_3D.Box,
+              "Cone                   ": GEOMETRY_3D.Cone,
+              "Cylinder               ": GEOMETRY_3D.Cylinder,
+              "Tetrahedron (4 faces)  ": GEOMETRY_3D.Tetrahedron,
+              "Octahedron (8 faces)   ": GEOMETRY_3D.Octahedron,
+              "Dodecahedron (12 faces)": GEOMETRY_3D.Dodecahedron,
+              "Icosahedron (20 faces) ": GEOMETRY_3D.Icosahedron,
+              "Sphere                 ": GEOMETRY_3D.Sphere,
+              "Torus                  ": GEOMETRY_3D.Torus,
+              "Torus Knot             ": GEOMETRY_3D.TorusKnot,
+            },
+            value: GEOMETRY_3D.Box,
           },
-          value: GEOMETRY_3D.Box,
         },
-      }),
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return enableGeometry(geometry3DName, children);

@@ -1,12 +1,13 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Leva, useControls } from "leva";
+import { folder, Leva, useControls } from "leva";
 import { Suspense } from "react";
 
 import { Effects } from "Components/Effects";
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
 import { LayoutProps } from "Types/LayoutProps";
 
@@ -18,14 +19,19 @@ import { LayoutProps } from "Types/LayoutProps";
  */
 const SceneLayout = ({ children }: LayoutProps): JSX.Element => {
   const { flat, frameloop, linear, shadows } = useControls(
-    LEVA.SCHEMA.CANVAS,
+    LEVA.SCHEMA.GENERAL,
     {
-      flat: SettingsLevaCanvas.flat(),
-      frameloop: SettingsLevaCanvas.frameloop(),
-      linear: SettingsLevaCanvas.linear(),
-      shadows: SettingsLevaCanvas.shadows(true),
+      Canvas: folder(
+        {
+          flat: SettingsLevaCanvas.flat(),
+          frameloop: SettingsLevaCanvas.frameloop(),
+          linear: SettingsLevaCanvas.linear(),
+          shadows: SettingsLevaCanvas.shadows(true),
+        },
+        Settings.folder(LEVA.ORDER.CANVAS)
+      ),
     },
-    { collapsed: true, color: undefined, order: LEVA.ORDER.CANVAS }
+    Settings.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

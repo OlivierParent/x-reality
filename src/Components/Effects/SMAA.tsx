@@ -2,6 +2,8 @@ import { EffectComposer, SMAA } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { EdgeDetectionMode } from "postprocessing";
 
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaEffectsSMAA as SMAAEffect } from "Settings/Leva/Effects/SMAA";
 
 /**
@@ -11,14 +13,21 @@ import { SettingsLevaEffectsSMAA as SMAAEffect } from "Settings/Leva/Effects/SMA
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SMAAEffect.js~SMAAEffect.html
  */
 const EffectsSMAA = () => {
-  const { edgeDetectionMode, preset } = useControls("General", {
-    "Effects Composer": folder({
-      "SMAA Effect": folder({
-        edgeDetectionMode: SMAAEffect.edgeDetectionMode(),
-        preset: SMAAEffect.preset(),
-      }),
-    }),
-  });
+  const { edgeDetectionMode, preset } = useControls(
+    LEVA.SCHEMA.GENERAL,
+    {
+      "Effects Composer": folder(
+        {
+          "SMAA Effect": folder({
+            edgeDetectionMode: SMAAEffect.edgeDetectionMode(),
+            preset: SMAAEffect.preset(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
+  );
 
   return (
     <EffectComposer>

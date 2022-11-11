@@ -3,6 +3,8 @@ import { folder, useControls } from "leva";
 import { GlitchMode } from "postprocessing";
 import { Vector2 } from "three";
 
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects/Glitch";
 
 /**
@@ -13,20 +15,27 @@ import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects
  */
 const EffectsGlitch = () => {
   const { active, columns, delay, dtSize, duration, mode, ratio, strength } =
-    useControls("General", {
-      "Effects Composer": folder({
-        "Glitch Effect": folder({
-          active: GlitchEffect.active(),
-          columns: GlitchEffect.columns(),
-          delay: GlitchEffect.delay(),
-          dtSize: GlitchEffect.dtSize(),
-          duration: GlitchEffect.duration(),
-          mode: GlitchEffect.mode(),
-          ratio: GlitchEffect.ratio(),
-          strength: GlitchEffect.strength(),
-        }),
-      }),
-    });
+    useControls(
+      LEVA.SCHEMA.GENERAL,
+      {
+        "Effects Composer": folder(
+          {
+            "Glitch Effect": folder({
+              active: GlitchEffect.active(),
+              columns: GlitchEffect.columns(),
+              delay: GlitchEffect.delay(),
+              dtSize: GlitchEffect.dtSize(),
+              duration: GlitchEffect.duration(),
+              mode: GlitchEffect.mode(),
+              ratio: GlitchEffect.ratio(),
+              strength: GlitchEffect.strength(),
+            }),
+          },
+          Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        ),
+      },
+      Settings.folder(LEVA.ORDER.GENERAL)
+    );
 
   return (
     <EffectComposer>

@@ -4,9 +4,11 @@ import {
 } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
-
-import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } from "Settings/Leva/Effects/ChromaticAberration";
 import { Vector2 } from "three";
+
+import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } from "Settings/Leva/Effects/ChromaticAberration";
 
 /**
  * Chromatic aberration effect.
@@ -15,14 +17,21 @@ import { Vector2 } from "three";
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ChromaticAberrationEffect.js~ChromaticAberrationEffect.html
  */
 const EffectsChromaticAberration = () => {
-  const { blendFunction, offset } = useControls("General", {
-    "Effects Composer": folder({
-      "Chromatic Aberration Effect": folder({
-        blendFunction: ChromaticAberrationEffect.blendFunction(),
-        offset: ChromaticAberrationEffect.offset(),
-      }),
-    }),
-  });
+  const { blendFunction, offset } = useControls(
+    LEVA.SCHEMA.GENERAL,
+    {
+      "Effects Composer": folder(
+        {
+          "Chromatic Aberration Effect": folder({
+            blendFunction: ChromaticAberrationEffect.blendFunction(),
+            offset: ChromaticAberrationEffect.offset(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
+  );
 
   return (
     <EffectComposer>

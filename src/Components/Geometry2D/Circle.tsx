@@ -4,6 +4,7 @@ import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryCircle as CircleGeometry } from "Settings/Leva/Geometry/Circle";
 import { Children } from "Types/Children";
 
@@ -16,20 +17,23 @@ const Geometry2DCircle = ({ children }: Children) => {
   const { radius, segments, θLength, θStart } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        Circle: folder({
-          "XY Plane": folder({
-            radius: CircleGeometry.radius(),
-            segments: CircleGeometry.segments(),
-            Θ: folder({
-              θStart: CircleGeometry.ΘStart(),
-              θLength: CircleGeometry.ΘLength(),
+      Geometry: folder(
+        {
+          Circle: folder({
+            "XY Plane": folder({
+              radius: CircleGeometry.radius(),
+              segments: CircleGeometry.segments(),
+              Θ: folder({
+                θStart: CircleGeometry.ΘStart(),
+                θLength: CircleGeometry.ΘLength(),
+              }),
             }),
           }),
-        }),
-      }),
+        },
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

@@ -4,6 +4,7 @@ import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometrySphere as SphereGeometry } from "Settings/Leva/Geometry/Sphere";
 import { Children } from "Types/Children";
 
@@ -24,27 +25,30 @@ const Geometry3DSphere = ({ children }: Children): JSX.Element => {
   } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
-      Geometry: folder({
-        Sphere: folder({
-          "Transverse Plane": folder({
-            radius: SphereGeometry.radius(),
-            widthSegments: SphereGeometry.widthSegments(),
-            Φ: folder({
-              φStart: SphereGeometry.ΦStart(),
-              φLength: SphereGeometry.ΦLength(),
+      Geometry: folder(
+        {
+          Sphere: folder({
+            "Transverse Plane": folder({
+              radius: SphereGeometry.radius(),
+              widthSegments: SphereGeometry.widthSegments(),
+              Φ: folder({
+                φStart: SphereGeometry.ΦStart(),
+                φLength: SphereGeometry.ΦLength(),
+              }),
+            }),
+            "Frontal Plane": folder({
+              heightSegments: SphereGeometry.heightSegments(),
+              Θ: folder({
+                θStart: SphereGeometry.ΘStart(),
+                θLength: SphereGeometry.ΘLength(),
+              }),
             }),
           }),
-          "Frontal Plane": folder({
-            heightSegments: SphereGeometry.heightSegments(),
-            Θ: folder({
-              θStart: SphereGeometry.ΘStart(),
-              θLength: SphereGeometry.ΘLength(),
-            }),
-          }),
-        }),
-      }),
+        },
+        Settings.folder(LEVA.ORDER.GEOMETRY)
+      ),
     },
-    { collapsed: false, color: undefined, order: LEVA.ORDER.COMPONENTS }
+    Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

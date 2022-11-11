@@ -30,11 +30,11 @@ const RapierWorldPlayer = (props: any) => {
     const camera = pointerRef.current.getObject();
 
     // Move Player
-    const velocityVector = new Vector3(
-      (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * VELOCITY.RIGHT_DIRECTION,
-      0,
-      (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) * VELOCITY.FORWARD_DIRECTION
-    );
+    // const velocityVector = new Vector3(
+    //   (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * VELOCITY.RIGHT_DIRECTION,
+    //   0,
+    //   (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) * VELOCITY.FORWARD_DIRECTION
+    // );
 
     // Match Camera position to Player position.
     // camera.position.copy(playerPosition.current);

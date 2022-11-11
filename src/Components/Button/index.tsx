@@ -4,6 +4,7 @@ import { useControls } from "leva";
 import { Default } from "Components/Button/Default";
 import { Spring } from "Components/Button/Spring";
 import { LEVA } from "Configs/leva";
+import { SettingsLeva } from "Settings/Leva";
 
 const BUTTON = Object.freeze({
   Default: <Default />,
@@ -20,11 +21,7 @@ const Button = (props: GroupProps): JSX.Element => {
         value: BUTTON.Default,
       },
     },
-    {
-      collapsed: false,
-      color: undefined,
-      order: LEVA.ORDER.COMPONENTS,
-    }
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (
