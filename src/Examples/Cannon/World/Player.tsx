@@ -46,10 +46,6 @@ const CannonWorldPlayer = (props: any) => {
 
   useFrame(() => {
     const camera = pointerRef.current.getObject();
-    const player = playerRef.current;
-
-    // Match Player direction to Camera direction.
-    player.quaternion.copy(camera.quaternion);
 
     // Move Player
     const velocityVector = new Vector3(
@@ -57,8 +53,11 @@ const CannonWorldPlayer = (props: any) => {
       0,
       (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) * VELOCITY.FORWARD_DIRECTION
     );
-    velocityVector.applyQuaternion(player.quaternion);
+    // Match velocityVector direction to Camera direction.
+    velocityVector.applyQuaternion(camera.quaternion);
     velocityVector.y = playerVelocity.current[1]; // Use stored velocity in Y direction (gravity).
+
+    // Apply velocity to Player.
     playerApi.velocity.copy(velocityVector);
 
     // Match Camera position to Player position.

@@ -35,10 +35,10 @@ export namespace KEYBINDINGS {
   ];
 
   export const PINBALL: Array<KeyboardControlsEntry> = [
-    { name: CONTROLS.pinballFlipperLeft, keys: ["KeyF"] }, //
-    { name: CONTROLS.pinballFlipperRight, keys: ["KeyJ"] }, //
-    { name: CONTROLS.pinballFlippers, keys: ["Space"] }, //
-    { name: CONTROLS.pinballShoot, keys: ["Return"] }, //
+    { name: CONTROLS.pinballFlipperLeft, keys: ["KeyF"] },
+    { name: CONTROLS.pinballFlipperRight, keys: ["KeyJ"] },
+    { name: CONTROLS.pinballFlippers, keys: ["Space"] },
+    { name: CONTROLS.pinballShoot, keys: ["Return"] },
   ];
 
   export const OTHER: Array<KeyboardControlsEntry> = [

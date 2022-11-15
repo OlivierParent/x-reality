@@ -31,14 +31,14 @@ const LipsumDefault = (props: GroupProps) => {
 
   return (
     <group name="Default Lipsum" {...props}>
-      <Text fontSize={size} position={[0, 1, -0.2]}>
+      <Text fontSize={size} position={[0, 1.5, -0.2]}>
         {string}
         <meshLambertMaterial />
       </Text>
       <Text
         font={FONT_FAMILY.ROBOTO_SLAB.url}
         fontSize={size}
-        position={[0, 0, 0]}
+        position={[0, 0.5, 0]}
       >
         {string}
         <meshMatcapMaterial matcap={matcapWornGold} />
@@ -46,7 +46,7 @@ const LipsumDefault = (props: GroupProps) => {
       <Text
         font={FONT_FAMILY.ARCHITECTS_DAUGHTER.url}
         fontSize={size}
-        position={[0, -1, 0.1]}
+        position={[0, -0.5, 0.1]}
       >
         {string}
         <meshMatcapMaterial matcap={matcapGreenCrystal} opacity={0.5} />
@@ -57,7 +57,7 @@ const LipsumDefault = (props: GroupProps) => {
         fontSize={size}
         outlineColor={0x00ff00}
         outlineWidth={0.04}
-        position={[0, -2, 0.2]}
+        position={[0, -1.5, 0.2]}
       >
         {string}
         <meshMatcapMaterial matcap={matcapSilvery} opacity={0.9} />
