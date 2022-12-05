@@ -8,13 +8,7 @@ import { RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 import { Vector3 } from "three";
 
-const PLAYER_MASS = 75; // kg
-const PLAYER_POSITION = new Vector3(0, 2, 2);
-const PLAYER_SIZE = 0.5; // radius in m
-const VELOCITY = {
-  FORWARD_DIRECTION: 3,
-  RIGHT_DIRECTION: 1,
-};
+import { PLAYER } from "Examples/Player.config";
 
 const RapierWorldPlayer = (props: any) => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
@@ -29,18 +23,24 @@ const RapierWorldPlayer = (props: any) => {
     const camera = pointerRef.current.getObject();
     const player = playerRef.current;
 
-    // Move Player
-    const playerVelocity = player.linvel();
+    // Move Player.
+    const playerVelocity = player.linvel(); // Get linear velocity.
     const velocityVector = new Vector3(
-      (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * VELOCITY.RIGHT_DIRECTION,
-      0,
-      (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) * VELOCITY.FORWARD_DIRECTION
+      (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * PLAYER.VELOCITY.RIGHT_DIRECTION,
+      0, // Camera quaternion should not affect velocity on gravity axis.
+      (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) *
+        PLAYER.VELOCITY.FORWARD_DIRECTION
     );
     // Match velocityVector direction to Camera direction.
     velocityVector.applyQuaternion(camera.quaternion);
-    velocityVector.y = playerVelocity.y;
+    velocityVector.y = playerVelocity.y; // Add velocity on gravity axis back after applying camera quaternion.
 
-    // Apply velocity to Player.
+    // Reset player angular velocity if no movement detected.
+    if (!moveBackwardOn && !moveForwardOn && !moveLeftOn && !moveRightOn) {
+      player.setAngvel(new Vector3());
+    }
+
+    // Apply linear velocity to Player.
     player.setLinvel(velocityVector);
 
     // Match Camera position to Player position.
@@ -54,12 +54,12 @@ const RapierWorldPlayer = (props: any) => {
 
       <RigidBody
         colliders="ball"
-        mass={PLAYER_MASS}
-        position={PLAYER_POSITION}
+        mass={PLAYER.MASS}
+        position={PLAYER.POSITION}
         ref={playerRef}
         type="dynamic"
       >
-        <Sphere args={[PLAYER_SIZE, 4, 4]}>
+        <Sphere args={[PLAYER.SIZE, 8, 8]}>
           <meshBasicMaterial color={0x00ff00} wireframe={true} />
         </Sphere>
       </RigidBody>

@@ -20,6 +20,11 @@ export namespace FONT_FAMILY {
     url: "https://fonts.gstatic.com/s/asap/v24/KFO9CniXp96a4Tc2EZzSuDAoKsE61qhN.woff",
   };
 
+  export const PLAY: FontFamily = {
+    name: "Play",
+    url: "https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtE.woff",
+  };
+
   export const PRESS_START_2P: FontFamily = {
     name: "Press Start 2P",
     url: "https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK0nR.woff",

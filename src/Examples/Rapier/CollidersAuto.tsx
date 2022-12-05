@@ -4,7 +4,7 @@ import { RigidBody, RigidBodyAutoCollider } from "@react-three/rapier";
 
 import { Suzanne } from "Components/Suzanne";
 
-import styles from "Styles/Colliders.module.css";
+import styles from "Styles/labels.module.css";
 
 const SIZE = 0.5;
 const colliders: Array<RigidBodyAutoCollider | undefined> = [

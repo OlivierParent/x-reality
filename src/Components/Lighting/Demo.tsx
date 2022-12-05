@@ -114,10 +114,10 @@ const LightingDemo = (): JSX.Element => {
   const target = new Object3D();
   scene.add(target);
 
-  const directionalLightRef = useRef<DirectionalLight>(null);
-  const hemisphereLightRef = useRef<HemisphereLight>(null);
-  const pointLightRef = useRef<PointLight>(null);
-  const spotLightRef = useRef<SpotLight>(null);
+  const directionalLightRef = useRef<DirectionalLight>(null!);
+  const hemisphereLightRef = useRef<HemisphereLight>(null!);
+  const pointLightRef = useRef<PointLight>(null!);
+  const spotLightRef = useRef<SpotLight>(null!);
 
   useHelper(
     helpers ? directionalLightRef : null,

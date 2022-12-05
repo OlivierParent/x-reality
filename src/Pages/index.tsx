@@ -4,6 +4,7 @@ import { NAVIGATION } from "Configs/navigation";
 import { AnimatedCubePage } from "Pages/AnimatedCube";
 import { AnimationPage } from "Pages/AnimationPage";
 import { ButtonPage } from "Pages/ButtonPage";
+import { CalendarPage } from "Pages/CalendarPage";
 import { ClockPage } from "Pages/ClockPage";
 import { CompositionPage } from "Pages/CompositionPage";
 import { GaugePage } from "Pages/GaugePage";
@@ -21,6 +22,7 @@ import { PhysicsRapierCollidersManualPage } from "Pages/PhysicsRapierCollidersMa
 import { PhysicsRapierPinballMachinePage } from "Pages/PhysicsRapierPinballMachinePage";
 import { PhysicsRapierTestPage } from "Pages/PhysicsRapierTestPage";
 import { PhysicsRapierWorldPage } from "Pages/PhysicsRapierWorldPage";
+import { SuzanneExportsPage } from "Pages/SuzanneExportsPage";
 import { SuzannePage } from "Pages/SuzannePage";
 import { TexturePage } from "Pages/TexturePage";
 import { TripodPage } from "Pages/TripodPage";
@@ -47,6 +49,7 @@ const Pages = (props: RoutesProps): JSX.Element => {
       />
       <Route element={<AnimationPage />} path={NAVIGATION.PATH.ANIMATION} />
       <Route element={<ButtonPage />} path={NAVIGATION.PATH.BUTTON} />
+      <Route element={<CalendarPage />} path={NAVIGATION.PATH.CALENDAR} />
       <Route element={<ClockPage />} path={NAVIGATION.PATH.CLOCK} />
       <Route element={<CompositionPage />} path={NAVIGATION.PATH.COMPOSITION} />
       <Route element={<GaugePage />} path={NAVIGATION.PATH.GAUGE} />
@@ -84,6 +87,10 @@ const Pages = (props: RoutesProps): JSX.Element => {
       <Route
         element={<PhysicsRapierWorldPage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_WORLD}
+      />
+      <Route
+        element={<SuzanneExportsPage />}
+        path={NAVIGATION.PATH.SUZANNE_EXPORTS}
       />
       <Route element={<SuzannePage />} path={NAVIGATION.PATH.SUZANNE} />
       <Route element={<TripodPage />} path={NAVIGATION.PATH.TRIPOD} />

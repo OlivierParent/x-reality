@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 import { PhysicalFrostedGlass } from "Components/Material/PhysicalFrostedGlass";
 
-import suzanneGlb from "./assets/suzanne.glb";
+import suzanneDefaultFlatShadingGlb from "./assets/suzanne_default_flat_shading.glb";
 
 /**
  * Suzanne model with frosted glass material.
@@ -14,7 +14,7 @@ import suzanneGlb from "./assets/suzanne.glb";
  */
 const SuzanneFrostedGlass = forwardRef(
   (props: GroupProps, ref: any): JSX.Element => {
-    const { nodes }: any = useGLTF(suzanneGlb, true);
+    const { nodes }: any = useGLTF(suzanneDefaultFlatShadingGlb, true);
 
     return (
       <group {...props}>

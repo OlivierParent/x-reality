@@ -5,6 +5,7 @@ export namespace NAVIGATION {
     ANIMATED_CUBE = "animated-cube",
     ANIMATION = "animation",
     BUTTON = "button",
+    CALENDAR = "calendar",
     CLOCK = "clock",
     COMPOSITION = "composition",
     GAUGE = "gauge",
@@ -22,7 +23,8 @@ export namespace NAVIGATION {
     PHYSICS_RAPIER_PINBALL_MACHINE = "rapier/pinball-machine",
     PHYSICS_RAPIER_TEST = "rapier/test",
     PHYSICS_RAPIER_WORLD = "rapier/world",
-    SUZANNE = "suzanne",
+    SUZANNE = "suzanne/material",
+    SUZANNE_EXPORTS = "suzanne/exports",
     TEXTURE = "texture",
     TRIPOD = "tripod",
   }
@@ -39,6 +41,10 @@ export namespace NAVIGATION {
     {
       label: "Button",
       to: PATH.BUTTON,
+    },
+    {
+      label: "Calendar",
+      to: PATH.CALENDAR,
     },
     {
       label: "Clock",
@@ -111,6 +117,10 @@ export namespace NAVIGATION {
     {
       label: "Suzanne",
       to: PATH.SUZANNE,
+    },
+    {
+      label: "Suzanne Exports",
+      to: PATH.SUZANNE_EXPORTS,
     },
     {
       label: "Texture",

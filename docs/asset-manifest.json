@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/x-reality/static/css/main.87d8c290.css",
-    "main.js": "/x-reality/static/js/main.6c72a7b5.js",
+    "main.css": "/x-reality/static/css/main.6eafedb2.css",
+    "main.js": "/x-reality/static/js/main.37bc434f.js",
     "static/media/BakedNormals.glb": "/x-reality/static/media/BakedNormals.03580610c404bbe4bf6b.glb",
     "static/media/TexturedCube.glb": "/x-reality/static/media/TexturedCube.2b78eebcca182be3ab54.glb",
     "static/media/UV_Grid_Sm.jpg": "/x-reality/static/media/UV_Grid_Sm.8ab40f718b980383b313.jpg",
     "static/media/gltf-logo.glb": "/x-reality/static/media/gltf-logo.d3501fc256ec9ddbd19c.glb",
-    "static/media/suzanne.glb": "/x-reality/static/media/suzanne.7e99ef209ea070214695.glb",
+    "static/media/suzanne_subdivision_flat_shading.glb": "/x-reality/static/media/suzanne_subdivision_flat_shading.e6447f9684a2d04cbc2f.glb",
+    "static/media/suzanne_subdivision_smooth_shading.glb": "/x-reality/static/media/suzanne_subdivision_smooth_shading.8be56dcaf903022f6c96.glb",
+    "static/media/suzanne_default_flat_shading.glb": "/x-reality/static/media/suzanne_default_flat_shading.7e99ef209ea070214695.glb",
+    "static/media/suzanne_default_smooth_shading.glb": "/x-reality/static/media/suzanne_default_smooth_shading.5ce15588196038fc8b85.glb",
     "static/media/Arteveldehogeschool_favicon.png": "/x-reality/static/media/Arteveldehogeschool_favicon.209a12d12e07efdfbbdd.png",
     "static/media/animation.glb": "/x-reality/static/media/animation.07175b802826a7629a99.glb",
     "static/media/SVG_logo.svg": "/x-reality/static/media/SVG_logo.31892e959789b5a423bae1652f2e6dd9.svg",
     "static/media/arteveldehogeschool_logo.svg": "/x-reality/static/media/arteveldehogeschool_logo.6220cd577fb250a0bcf4d9b4211e8449.svg",
     "static/media/normals.glb": "/x-reality/static/media/normals.c5aed970e245557969de.glb",
     "index.html": "/x-reality/index.html",
-    "main.87d8c290.css.map": "/x-reality/static/css/main.87d8c290.css.map",
-    "main.6c72a7b5.js.map": "/x-reality/static/js/main.6c72a7b5.js.map"
+    "main.6eafedb2.css.map": "/x-reality/static/css/main.6eafedb2.css.map",
+    "main.37bc434f.js.map": "/x-reality/static/js/main.37bc434f.js.map"
   },
   "entrypoints": [
-    "static/css/main.87d8c290.css",
-    "static/js/main.6c72a7b5.js"
+    "static/css/main.6eafedb2.css",
+    "static/js/main.37bc434f.js"
   ]
 }

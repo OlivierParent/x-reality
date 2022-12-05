@@ -72,9 +72,9 @@ const LightingThreePoint = (): JSX.Element => {
     Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
-  const backLightRef = useRef<SpotLight>(null);
-  const fillLightRef = useRef<SpotLight>(null);
-  const keyLightRef = useRef<SpotLight>(null);
+  const backLightRef = useRef<SpotLight>(null!);
+  const fillLightRef = useRef<SpotLight>(null!);
+  const keyLightRef = useRef<SpotLight>(null!);
 
   useHelper(helpers ? backLightRef : null, SpotLightHelper, backLight.color);
   useHelper(helpers ? fillLightRef : null, SpotLightHelper, fillLight.color);

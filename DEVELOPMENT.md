@@ -19,6 +19,7 @@
     $ yarn add @react-three/drei
     $ yarn add @react-three/fiber
     $ yarn add @react-three/flex
+    $ yarn add @react-three/p2
     $ yarn add @react-three/postprocessing
     $ yarn add @react-three/rapier
     $ yarn add @react-three/test-renderer
@@ -47,13 +48,18 @@
   - [Documentation](https://docs.pmnd.rs/drei)
   - [GitHub](https://github.com/pmndrs/drei)
   - [Storybook](https://drei.pmnd.rs/)
+- Physics
+  - [Cannon](https://cannon.pmnd.rs/)
+    - [GitHub](https://github.com/pmndrs/use-cannon)
+  - [P2](https://p2.pmnd.rs/)
+    - [GitHub](https://github.com/pmndrs/use-p2)
+  - [Rapier](https://react-three-rapier.pmnd.rs/)
+    - [GitHub](https://github.com/pmndrs/react-three-rapier)
 - Lamina
   - [GitHub](https://github.com/pmndrs/lamina)
 - Leva
   - [GitHub](https://github.com/pmndrs/leva)
   - [Storybook](https://leva.pmnd.rs/)
-- [Rapier](https://react-three-rapier.pmnd.rs/)
-  - [GitHub](https://github.com/pmndrs/react-three-rapier)
 - React Postprocessing
   - [Documentation](https://docs.pmnd.rs/react-postprocessing)
   - [GitHub](https://github.com/pmndrs/react-postprocessing)

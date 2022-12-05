@@ -1,0 +1,14 @@
+.label {
+  --size: 12rem;
+  background: hsla(0, 100%, 0%, 0.75);
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  color: hsl(120, 100%, 70%);
+  font-family: monospace;
+  font-size: 1rem;
+  left: calc(var(--size) / -2);
+  padding: 0.5rem 0.25rem;
+  position: absolute;
+  text-align: center;
+  width: var(--size);
+}

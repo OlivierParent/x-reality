@@ -16,7 +16,7 @@ import {
   RoundCuboidCollider,
 } from "@react-three/rapier";
 
-import styles from "Styles/Colliders.module.css";
+import styles from "Styles/labels.module.css";
 
 const SIZE = 0.25;
 const colliders: Array<any> = [

@@ -77,9 +77,9 @@ const LightingStudio = (): JSX.Element => {
     Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
-  const frontLightRef = useRef<DirectionalLight>(null);
-  const leftLightRef = useRef<DirectionalLight>(null);
-  const rightLightRef = useRef<DirectionalLight>(null);
+  const frontLightRef = useRef<DirectionalLight>(null!);
+  const leftLightRef = useRef<DirectionalLight>(null!);
+  const rightLightRef = useRef<DirectionalLight>(null!);
 
   useHelper(
     helpers ? frontLightRef : null,
