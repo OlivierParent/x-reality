@@ -19,7 +19,9 @@ const EffectsDepthOfField = () => {
       "Effects Composer": folder(
         {
           "Bloom Effect": folder({
-            blendFunction: DepthOfFieldEffect.blendFunction(),
+            blendFunction: DepthOfFieldEffect.blendFunction(
+              BlendFunction.NORMAL
+            ),
             bokehScale: DepthOfFieldEffect.bokehScale(),
             focalLength: DepthOfFieldEffect.focalLength(),
             focusDistance: DepthOfFieldEffect.focusDistance(),

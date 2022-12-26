@@ -19,7 +19,7 @@ const EffectsGrid = () => {
       "Effects Composer": folder(
         {
           "Grid Effect": folder({
-            blendFunction: GridEffect.blendFunction(),
+            blendFunction: GridEffect.blendFunction(BlendFunction.NORMAL),
             lineWidth: GridEffect.lineWidth(),
             scale: GridEffect.scale(),
           }),

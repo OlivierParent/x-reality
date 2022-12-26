@@ -19,7 +19,7 @@ const EffectsSepia = () => {
       "Effects Composer": folder(
         {
           "Sepia Effect": folder({
-            blendFunction: SepiaEffect.blendFunction(),
+            blendFunction: SepiaEffect.blendFunction(BlendFunction.NORMAL),
             intensity: SepiaEffect.intensity(),
           }),
         },

@@ -21,7 +21,7 @@ const EffectsDotScreen = () => {
         {
           "Dot Screen Effect": folder({
             angle: DotScreenEffect.angle(),
-            blendFunction: DotScreenEffect.blendFunction(),
+            blendFunction: DotScreenEffect.blendFunction(BlendFunction.NORMAL),
             scale: DotScreenEffect.scale(),
           }),
         },

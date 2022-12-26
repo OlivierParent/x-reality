@@ -19,7 +19,7 @@ const EffectsNoise = () => {
       "Effects Composer": folder(
         {
           "Noise Effect": folder({
-            blendFunction: NoiseEffect.blendFunction(),
+            blendFunction: NoiseEffect.blendFunction(BlendFunction.SCREEN),
             premultiply: NoiseEffect.premultiply(),
           }),
         },

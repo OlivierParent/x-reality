@@ -10,7 +10,7 @@ import { Vector3 } from "three";
 
 import { PLAYER } from "Examples/Player.config";
 
-const RapierWorldPlayer = (props: any) => {
+const RapierWorldPlayer = () => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
   const moveLeftOn = useKeyboardControls((state) => state.moveLeft);

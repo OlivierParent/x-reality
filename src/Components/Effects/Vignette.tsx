@@ -19,7 +19,7 @@ const EffectsVignette = () => {
       "Effects Composer": folder(
         {
           "Vignette Effect": folder({
-            blendFunction: VignetteEffect.blendFunction(),
+            blendFunction: VignetteEffect.blendFunction(BlendFunction.NORMAL),
             darkness: VignetteEffect.darkness(),
             eskil: VignetteEffect.eskil(),
             offset: VignetteEffect.offset(),

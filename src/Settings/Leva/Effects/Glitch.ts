@@ -1,4 +1,5 @@
 import { GlitchMode } from "postprocessing";
+import { SettingsLevaEffects as Effects } from "Settings/Leva/Effects";
 
 /**
  * Glitch effect.
@@ -12,6 +13,8 @@ export namespace SettingsLevaEffectsGlitch {
     hint: "Indicates whether the glitch effect is currently active.",
     value,
   });
+
+  export const blendFunction = Effects.blendFunction;
 
   export const columns = (value: number = 0.05) => ({
     label: "Columns",

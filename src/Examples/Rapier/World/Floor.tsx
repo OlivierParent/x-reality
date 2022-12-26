@@ -4,8 +4,8 @@ import { DoubleSide, Euler, MathUtils } from "three";
 
 const PLANE_SIZE = 10;
 
-const RapierWorldFloor = (props: any) => {
-  const args = [PLANE_SIZE, PLANE_SIZE] as [number, number];
+const RapierWorldFloor = () => {
+  const args: [number, number] = [PLANE_SIZE, PLANE_SIZE];
   const rotation = new Euler(MathUtils.degToRad(-90), 0, 0);
 
   return (

@@ -19,7 +19,9 @@ const EffectsColorAverage = () => {
       "Effects Composer": folder(
         {
           "Color Average Effect": folder({
-            blendFunction: ColorAverageEffect.blendFunction(),
+            blendFunction: ColorAverageEffect.blendFunction(
+              BlendFunction.NORMAL
+            ),
           }),
         },
         Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)

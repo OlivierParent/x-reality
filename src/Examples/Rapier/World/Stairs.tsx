@@ -2,10 +2,10 @@ import { RigidBody } from "@react-three/rapier";
 import { Box } from "@react-three/drei";
 import { Euler, MathUtils } from "three";
 
-const RapierWorldStairs = (props: any) => {
+const RapierWorldStairs = () => {
   const angleSlope = 35;
   const angle = MathUtils.degToRad(-90 + angleSlope);
-  const args = [1, 10, 0.2] as [number, number, number];
+  const args: [number, number, number] = [1, 10, 0.2];
   const rotation = new Euler(angle, 0, 0);
 
   return (

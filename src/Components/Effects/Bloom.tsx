@@ -20,7 +20,7 @@ const EffectsBloom = () => {
         "Effects Composer": folder(
           {
             "Bloom Effect": folder({
-              blendFunction: BloomEffect.blendFunction(),
+              blendFunction: BloomEffect.blendFunction(BlendFunction.SCREEN),
               intensity: BloomEffect.intensity(),
               luminanceSmoothing: BloomEffect.luminanceSmoothing(),
               luminanceThreshold: BloomEffect.luminanceThreshold(),

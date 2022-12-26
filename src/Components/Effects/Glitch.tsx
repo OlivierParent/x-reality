@@ -1,6 +1,6 @@
 import { EffectComposer, Glitch } from "@react-three/postprocessing";
 import { folder, useControls } from "leva";
-import { GlitchMode } from "postprocessing";
+import { BlendFunction, GlitchMode } from "postprocessing";
 import { Vector2 } from "three";
 
 import { LEVA } from "Configs/leva";
@@ -14,33 +14,44 @@ import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GlitchEffect.js~GlitchEffect.html
  */
 const EffectsGlitch = () => {
-  const { active, columns, delay, dtSize, duration, mode, ratio, strength } =
-    useControls(
-      LEVA.SCHEMA.GENERAL,
-      {
-        "Effects Composer": folder(
-          {
-            "Glitch Effect": folder({
-              active: GlitchEffect.active(),
-              columns: GlitchEffect.columns(),
-              delay: GlitchEffect.delay(),
-              dtSize: GlitchEffect.dtSize(),
-              duration: GlitchEffect.duration(),
-              mode: GlitchEffect.mode(),
-              ratio: GlitchEffect.ratio(),
-              strength: GlitchEffect.strength(),
-            }),
-          },
-          Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-        ),
-      },
-      Settings.folder(LEVA.ORDER.GENERAL)
-    );
+  const {
+    active,
+    blendFunction,
+    columns,
+    delay,
+    dtSize,
+    duration,
+    mode,
+    ratio,
+    strength,
+  } = useControls(
+    LEVA.SCHEMA.GENERAL,
+    {
+      "Effects Composer": folder(
+        {
+          "Glitch Effect": folder({
+            active: GlitchEffect.active(),
+            blendFunction: GlitchEffect.blendFunction(BlendFunction.NORMAL),
+            columns: GlitchEffect.columns(),
+            delay: GlitchEffect.delay(),
+            dtSize: GlitchEffect.dtSize(),
+            duration: GlitchEffect.duration(),
+            mode: GlitchEffect.mode(),
+            ratio: GlitchEffect.ratio(),
+            strength: GlitchEffect.strength(),
+          }),
+        },
+        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+      ),
+    },
+    Settings.folder(LEVA.ORDER.GENERAL)
+  );
 
   return (
     <EffectComposer>
       <Glitch
         active={active}
+        blendFunction={blendFunction as BlendFunction}
         columns={columns}
         delay={new Vector2(delay.minimum, delay.maximum)}
         dtSize={dtSize}

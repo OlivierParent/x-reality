@@ -19,7 +19,7 @@ const EffectsScanline = () => {
       "Effects Composer": folder(
         {
           "Scanline Effect": folder({
-            blendFunction: ScanlineEffect.blendFunction(),
+            blendFunction: ScanlineEffect.blendFunction(BlendFunction.OVERLAY),
             density: ScanlineEffect.density(),
           }),
         },

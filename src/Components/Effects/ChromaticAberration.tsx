@@ -23,7 +23,9 @@ const EffectsChromaticAberration = () => {
       "Effects Composer": folder(
         {
           "Chromatic Aberration Effect": folder({
-            blendFunction: ChromaticAberrationEffect.blendFunction(),
+            blendFunction: ChromaticAberrationEffect.blendFunction(
+              BlendFunction.NORMAL
+            ),
             offset: ChromaticAberrationEffect.offset(),
           }),
         },

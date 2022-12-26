@@ -40,7 +40,6 @@ const Calendar = (props: GroupProps): JSX.Element => {
     <group name="Calendar" {...props}>
       <Text3D name="Month Name" {...shadowProps} {...textProps} size={1}>
         {monthName}
-
         <meshNormalMaterial />
       </Text3D>
       <Text3D

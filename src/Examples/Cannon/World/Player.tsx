@@ -8,27 +8,21 @@ import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { Vector3 } from "three";
 
-const PLAYER_MASS = 75; // kg
-const PLAYER_POSITION = [0, 2, 2];
-const PLAYER_SIZE = 0.5; // radius in m
-const VELOCITY = {
-  FORWARD_DIRECTION: 3,
-  RIGHT_DIRECTION: 1,
-};
+import { PLAYER } from "Examples/Player.config";
 
-const CannonWorldPlayer = (props: any) => {
+const CannonWorldPlayer = () => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
   const moveLeftOn = useKeyboardControls((state) => state.moveLeft);
   const moveRightOn = useKeyboardControls((state) => state.moveRight);
+
   const pointerRef = useRef<any>(null!);
 
   const [playerRef, playerApi] = useSphere(
     () => ({
-      ...props,
-      args: [PLAYER_SIZE],
-      mass: PLAYER_MASS,
-      position: PLAYER_POSITION,
+      args: [PLAYER.SIZE],
+      mass: PLAYER.MASS,
+      position: PLAYER.POSITION.toArray(),
     }),
     useRef<any>(null!)
   );
@@ -49,9 +43,10 @@ const CannonWorldPlayer = (props: any) => {
 
     // Move Player
     const velocityVector = new Vector3(
-      (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * VELOCITY.RIGHT_DIRECTION,
+      (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * PLAYER.VELOCITY.RIGHT_DIRECTION,
       0,
-      (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) * VELOCITY.FORWARD_DIRECTION
+      (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) *
+        PLAYER.VELOCITY.FORWARD_DIRECTION
     );
     // Match velocityVector direction to Camera direction.
     velocityVector.applyQuaternion(camera.quaternion);
@@ -69,7 +64,7 @@ const CannonWorldPlayer = (props: any) => {
     <group name="Player">
       <PointerLockControls ref={pointerRef} />
 
-      <Sphere args={[PLAYER_SIZE, 8, 8]} ref={playerRef}>
+      <Sphere args={[PLAYER.SIZE, 8, 8]} ref={playerRef}>
         <meshBasicMaterial color={0x00ff00} wireframe={true} />
       </Sphere>
     </group>
