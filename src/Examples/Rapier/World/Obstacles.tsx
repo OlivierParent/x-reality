@@ -39,7 +39,7 @@ const Obstacle = ({ position }: ObstacleProps) => {
 };
 
 const RapierWorldObstacles = () => {
-  let obstacles = new Array(OBSTACLE.BOX.COUNT).fill(null).map((box, index) => {
+  let obstacles = new Array(OBSTACLE.BOX.COUNT).fill(null).map((_, index) => {
     const position = RANDOM_COORDINATES[index];
 
     return { position };
@@ -47,8 +47,8 @@ const RapierWorldObstacles = () => {
 
   return (
     <group name="Obstacles">
-      {obstacles.map((box, index) => {
-        return <Obstacle key={index} position={box.position} />;
+      {obstacles.map(({ position }, index) => {
+        return <Obstacle key={index} position={position} />;
       })}
     </group>
   );

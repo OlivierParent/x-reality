@@ -17,7 +17,12 @@ export namespace FONT_FAMILY {
 
   export const ASAP: FontFamily = {
     name: "Asap",
-    url: "https://fonts.gstatic.com/s/asap/v24/KFO9CniXp96a4Tc2EZzSuDAoKsE61qhN.woff",
+    url: "https://fonts.gstatic.com/s/asap/v26/KFOOCniXp96a4Tc2DaTeuDAoKsE617JFc49knOIYdjTYkqUsLQ.woff",
+  };
+
+  export const CODA: FontFamily = {
+    name: "Coda",
+    url: "https://fonts.gstatic.com/s/coda/v21/SLXHc1jY5nQ8JUE.woff",
   };
 
   export const PLAY: FontFamily = {
@@ -43,6 +48,11 @@ export namespace FONT_FAMILY {
   export const ROBOTO_SLAB: FontFamily = {
     name: "Roboto Slab",
     url: "https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjojISWaw.woff",
+  };
+
+  export const SILKSCREEN: FontFamily = {
+    name: "Silkscreen",
+    url: "https://fonts.gstatic.com/s/silkscreen/v1/m8JXjfVPf62XiF7kO-i9ULc.woff",
   };
 
   export const TANGERINE: FontFamily = {

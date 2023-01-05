@@ -42,14 +42,17 @@ const MaterialMatcap = (): JSX.Element => {
       },
       Settings.folder(LEVA.ORDER.COMPONENTS)
     );
-  const [matcap] = useMatcapTexture(MATCAP.ID.WORN_GOLD, MATCAP.SIZE.XL);
+  const [matcapWornGold] = useMatcapTexture(
+    MATCAP.ID.WORN_GOLD,
+    MATCAP.SIZE.XL
+  );
 
   return (
     <meshMatcapMaterial
       color={color}
       dithering={dithering}
       flatShading={flatShading}
-      matcap={matcap}
+      matcap={matcapWornGold}
       opacity={opacity}
       side={side as Side}
       transparent={transparent}

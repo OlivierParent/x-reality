@@ -21,7 +21,10 @@ const RapierPinballMachineBall = forwardRef(
   (props: BallProps, ref?: Ref<RigidBodyApi>): JSX.Element => {
     const { color = 0xffffff, position, radius = 0.125 } = props;
 
-    const [matcap] = useMatcapTexture(MATCAP.ID.WORN_GOLD, MATCAP.SIZE.XL);
+    const [matcapWornGold] = useMatcapTexture(
+      MATCAP.ID.WORN_GOLD,
+      MATCAP.SIZE.XL
+    );
 
     return (
       <RigidBody
@@ -46,7 +49,7 @@ const RapierPinballMachineBall = forwardRef(
         ])}
       >
         <Sphere args={[radius]}>
-          <meshMatcapMaterial color={color} matcap={matcap} />
+          <meshMatcapMaterial color={color} matcap={matcapWornGold} />
         </Sphere>
       </RigidBody>
     );

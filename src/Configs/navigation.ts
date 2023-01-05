@@ -8,7 +8,7 @@ export namespace NAVIGATION {
     CALENDAR = "calendar",
     CLOCK = "clock",
     COMPOSITION = "composition",
-    GAUGE = "gauge",
+    GAUGE_CLUSTER = "gauge-cluster",
     GEOMETRY_2D = "geometry-2d",
     GEOMETRY_3D = "geometry-3d",
     IMAGE = "image",
@@ -55,8 +55,8 @@ export namespace NAVIGATION {
       to: PATH.COMPOSITION,
     },
     {
-      label: "Gauge",
-      to: PATH.GAUGE,
+      label: "Gauge Cluster",
+      to: PATH.GAUGE_CLUSTER,
     },
     {
       label: "Geometry 2D",

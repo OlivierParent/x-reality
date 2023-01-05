@@ -7,7 +7,7 @@ import { ButtonPage } from "Pages/ButtonPage";
 import { CalendarPage } from "Pages/CalendarPage";
 import { ClockPage } from "Pages/ClockPage";
 import { CompositionPage } from "Pages/CompositionPage";
-import { GaugePage } from "Pages/GaugePage";
+import { GaugeClusterPage } from "Pages/GaugeClusterPage";
 import { Geometry2dPage } from "Pages/Geometry2dPage";
 import { Geometry3dPage } from "Pages/Geometry3dPage";
 import { ImagePage } from "Pages/ImagePage";
@@ -52,7 +52,10 @@ const Pages = (props: RoutesProps): JSX.Element => {
       <Route element={<CalendarPage />} path={NAVIGATION.PATH.CALENDAR} />
       <Route element={<ClockPage />} path={NAVIGATION.PATH.CLOCK} />
       <Route element={<CompositionPage />} path={NAVIGATION.PATH.COMPOSITION} />
-      <Route element={<GaugePage />} path={NAVIGATION.PATH.GAUGE} />
+      <Route
+        element={<GaugeClusterPage />}
+        path={NAVIGATION.PATH.GAUGE_CLUSTER}
+      />
       <Route element={<Geometry2dPage />} path={NAVIGATION.PATH.GEOMETRY_2D} />
       <Route element={<Geometry3dPage />} path={NAVIGATION.PATH.GEOMETRY_3D} />
       <Route element={<ImagePage />} path={NAVIGATION.PATH.IMAGE} />
