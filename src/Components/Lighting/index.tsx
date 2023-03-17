@@ -3,6 +3,7 @@ import { useControls } from "leva";
 import { Demo } from "Components/Lighting/Demo";
 import { Studio } from "Components/Lighting/Studio";
 import { ThreePoint } from "Components/Lighting/ThreePoint";
+import { ThreePointVolumetric } from "Components/Lighting/ThreePointVolumetric";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
@@ -11,6 +12,7 @@ const LIGHTING = Object.freeze({
   None: "None",
   Studio: "Studio",
   ThreePoint: "ThreePoint",
+  ThreePointVolumetric: "ThreePoint Volumetric",
 });
 
 function enableLighting(name: string) {
@@ -25,6 +27,9 @@ function enableLighting(name: string) {
     case LIGHTING.ThreePoint:
       element = <ThreePoint />;
       break;
+    case LIGHTING.ThreePointVolumetric:
+      element = <ThreePointVolumetric />;
+      break;
     default:
       element = null;
   }
@@ -38,10 +43,11 @@ const Lighting = () => {
       lightingName: {
         label: "Lighting",
         options: {
-          "None       ": LIGHTING.None,
-          "Demo       ": LIGHTING.Demo,
-          "Studio     ": LIGHTING.Studio,
-          "Three Point": LIGHTING.ThreePoint,
+          "None                  ": LIGHTING.None,
+          "Demo                  ": LIGHTING.Demo,
+          "Studio                ": LIGHTING.Studio,
+          "Three Point           ": LIGHTING.ThreePoint,
+          "Three Point Volumetric": LIGHTING.ThreePointVolumetric,
         },
         value: LIGHTING.Studio,
       },

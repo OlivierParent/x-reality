@@ -38,7 +38,7 @@ const LightingDemo = (): JSX.Element => {
       "Ambient Light": folder(
         {
           color: LevaColor.color(),
-          intensity: LevaLighting.intensity(0.1, 1),
+          intensity: LevaLighting.intensity(0.1),
         },
         Settings.folder()
       ),
@@ -52,7 +52,7 @@ const LightingDemo = (): JSX.Element => {
         {
           castShadow: LevaLighting.castShadow(true),
           color: LevaColor.color("hsl(120, 100%, 70%)"),
-          intensity: LevaLighting.intensity(1, 1),
+          intensity: LevaLighting.intensity(1),
           position: LevaPosition.position(4, 4, 1),
         },
         Settings.folder()
@@ -68,7 +68,7 @@ const LightingDemo = (): JSX.Element => {
           castShadow: LevaLighting.castShadow(true),
           color: LevaColor.color("hsl(210, 100%, 70%)", "Sky"),
           groundColor: LevaColor.color("hsl(30, 100%, 70%)", "Ground"),
-          intensity: LevaLighting.intensity(1, 1),
+          intensity: LevaLighting.intensity(1),
           position: LevaPosition.position(0, 1, 0),
         },
         Settings.folder()
@@ -83,7 +83,7 @@ const LightingDemo = (): JSX.Element => {
         {
           castShadow: LevaLighting.castShadow(true),
           color: LevaColor.color("hsl(240, 100%, 70%)"),
-          intensity: LevaLighting.intensity(0.5, 20),
+          intensity: LevaLighting.intensity(0.5),
           position: LevaPosition.position(-4, 1, 4),
         },
         Settings.folder()
@@ -99,7 +99,7 @@ const LightingDemo = (): JSX.Element => {
           castShadow: LevaLighting.castShadow(true),
           color: LevaColor.color("hsl(60, 100%, 70%)"),
           distance: LevaLighting.distance(),
-          intensity: LevaLighting.intensity(undefined, 20),
+          intensity: LevaLighting.intensity(),
           penumbra: LevaLighting.penumbra(0.25),
           position: LevaPosition.position(2, 2, 2),
           target: LevaLighting.target(),

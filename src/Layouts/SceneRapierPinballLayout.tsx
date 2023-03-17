@@ -1,4 +1,4 @@
-import { KeyboardControls } from "@react-three/drei";
+import { KeyboardControls, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Debug, Physics } from "@react-three/rapier";
 import { folder, Leva, useControls } from "leva";
@@ -80,6 +80,7 @@ const SceneRapierPinballLayout = ({ children }: LayoutProps): JSX.Element => {
         oneLineLabels={true}
         titleBar={true}
       />
+      <Loader />
     </>
   );
 };

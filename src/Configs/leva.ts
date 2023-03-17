@@ -18,6 +18,7 @@ export namespace LEVA {
     "MATCAP_MATERIAL",
     "NORMAL_MATERIAL",
     "TOON_MATERIAL",
+    "REFLECTOR_MATERIAL",
     "LIGHTING",
   }
 
@@ -38,6 +39,7 @@ export namespace LEVA {
     "PHONG_MATERIAL" = "Phong Material",
     "PHYSICAL_MATERIAL" = "Physical Material",
     "PHYSICS" = "Physics",
+    "REFLECTOR_MATERIAL" = "Reflector Material (Drei)",
     "SIMULATION" = "Simulation",
     "STANDARD_MATERIAL" = "Standard Material",
     "TOON_MATERIAL" = "Toon Material",

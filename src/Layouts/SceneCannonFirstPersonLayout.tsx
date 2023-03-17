@@ -1,11 +1,12 @@
 import { Debug, Physics } from "@react-three/cannon";
-import { KeyboardControls } from "@react-three/drei";
+import { KeyboardControls, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { folder, Leva, useControls } from "leva";
 import { Suspense } from "react";
 
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
+import { UserInterfaceCursorOverlay as Cursor } from "Components/UserInterface/CursorOverlay";
 import { KEYBINDINGS } from "Configs/keybindings";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
@@ -75,6 +76,7 @@ const SceneCannonFirstPersonLayout = ({
           </KeyboardControls>
         </Suspense>
       </Canvas>
+      <Cursor />
       <Leva
         collapsed={false}
         fill={false}
@@ -83,6 +85,7 @@ const SceneCannonFirstPersonLayout = ({
         oneLineLabels={true}
         titleBar={true}
       />
+      <Loader />
     </>
   );
 };

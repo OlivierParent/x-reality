@@ -13,8 +13,8 @@ const Painting = (props: GroupProps) => {
       <Plane args={[size * aspectRatio, size]}>
         <meshBasicMaterial map={texture} />
       </Plane>
-      <Text position={[0, -(size / 2 + 0.1), 0]}>
-        Vassily Kandinsky (1925) &mdash; In Blue
+      <Text fontSize={size * 0.05} position={[0, -(size / 2 + size * 0.05), 0]}>
+        In Blue &mdash; Vassily Kandinsky (1925)
       </Text>
     </group>
   );

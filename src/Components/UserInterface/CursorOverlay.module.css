@@ -1,0 +1,11 @@
+.cursor {
+  --size: 0.5rem;
+  border-radius: 100%;
+  border: 1px solid hsla(0, 100%, 100%, 0.5);
+  height: var(--size);
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size);
+}

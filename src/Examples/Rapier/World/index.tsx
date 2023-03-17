@@ -1,5 +1,6 @@
 import { GroupProps } from "@react-three/fiber";
 
+import { SoundPositional } from "Components/Sound/Positional";
 import { RapierWorldFloor as Floor } from "Examples/Rapier/World/Floor";
 import { RapierWorldObstacles as Obstacles } from "Examples/Rapier/World/Obstacles";
 import { RapierWorldPlayer as Player } from "Examples/Rapier/World/Player";
@@ -12,6 +13,7 @@ const RapierWorld = (props: GroupProps) => {
       <Obstacles />
       <Player />
       <Stairs />
+      <SoundPositional />
     </group>
   );
 };

@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/x-reality/static/css/main.6eafedb2.css",
-    "main.js": "/x-reality/static/js/main.3e7c783d.js",
+    "main.css": "/x-reality/static/css/main.3666a090.css",
+    "main.js": "/x-reality/static/js/main.5f6245dc.js",
+    "static/media/bensound-badass.mp3": "/x-reality/static/media/bensound-badass.8ef4f40c2805fd404725.mp3",
     "static/media/BakedNormals.glb": "/x-reality/static/media/BakedNormals.03580610c404bbe4bf6b.glb",
     "static/media/TexturedCube.glb": "/x-reality/static/media/TexturedCube.2b78eebcca182be3ab54.glb",
     "static/media/UV_Grid_Sm.jpg": "/x-reality/static/media/UV_Grid_Sm.8ab40f718b980383b313.jpg",
@@ -16,11 +17,11 @@
     "static/media/arteveldehogeschool_logo.svg": "/x-reality/static/media/arteveldehogeschool_logo.6220cd577fb250a0bcf4d9b4211e8449.svg",
     "static/media/normals.glb": "/x-reality/static/media/normals.c5aed970e245557969de.glb",
     "index.html": "/x-reality/index.html",
-    "main.6eafedb2.css.map": "/x-reality/static/css/main.6eafedb2.css.map",
-    "main.3e7c783d.js.map": "/x-reality/static/js/main.3e7c783d.js.map"
+    "main.3666a090.css.map": "/x-reality/static/css/main.3666a090.css.map",
+    "main.5f6245dc.js.map": "/x-reality/static/js/main.5f6245dc.js.map"
   },
   "entrypoints": [
-    "static/css/main.6eafedb2.css",
-    "static/js/main.3e7c783d.js"
+    "static/css/main.3666a090.css",
+    "static/js/main.5f6245dc.js"
   ]
 }

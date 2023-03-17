@@ -3,9 +3,9 @@ import { useFrame } from "@react-three/fiber";
 import {
   BallCollider,
   interactionGroups,
+  RapierRigidBody,
   RevoluteJointParams,
   RigidBody,
-  RigidBodyApi,
   useRevoluteJoint,
   Vector3Array,
 } from "@react-three/rapier";
@@ -44,23 +44,19 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
   const positionX = 0.8 * (isLeft ? 1 : -1);
 
   const meshRef = useRef<Mesh>(null!);
-  const rigidBodyApiDynamicRef = useRef<RigidBodyApi>(null!);
-  const rigidBodyApiFixedRef = useRef<RigidBodyApi>(null!);
+  const bodyDynamicRef = useRef<RapierRigidBody>(null!);
+  const bodyFixedRef = useRef<RapierRigidBody>(null!);
 
-  const rigidBodyApiDynamicAnchor: Vector3Array = [0, 0, 0];
-  const rigidBodyApiFixedAnchor: Vector3Array = [0, 0, 0];
+  const bodyDynamicAnchor: Vector3Array = [0, 0, 0];
+  const bodyFixedAnchor: Vector3Array = [0, 0, 0];
   const axis: Vector3Array = [0, 1, 0];
 
   const params: RevoluteJointParams = [
-    rigidBodyApiDynamicAnchor,
-    rigidBodyApiFixedAnchor,
+    bodyDynamicAnchor,
+    bodyFixedAnchor,
     axis,
   ];
-  const joint = useRevoluteJoint(
-    rigidBodyApiDynamicRef,
-    rigidBodyApiFixedRef,
-    params
-  );
+  const joint = useRevoluteJoint(bodyDynamicRef, bodyFixedRef, params);
   console.log(joint);
 
   const impulseVector = { x: 0, y: 0, z: 10 };
@@ -72,7 +68,7 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
 
   useFrame((state, delta) => {
     if (isPressed) {
-      rigidBodyApiDynamicRef.current.applyImpulseAtPoint(
+      bodyDynamicRef.current.applyImpulseAtPoint(
         impulseVector,
         impulsePoint,
         true
@@ -91,7 +87,7 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
         ])}
         mass={100}
         name="Flipper"
-        ref={rigidBodyApiDynamicRef}
+        ref={bodyDynamicRef}
         restitution={2.5}
         rotation={new Euler(0, MathUtils.degToRad(rotationY), 0)}
         type="dynamic"
@@ -109,7 +105,7 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
           <meshBasicMaterial color={color} />
         </mesh>
       </RigidBody>
-      <RigidBody name="Fixation" ref={rigidBodyApiFixedRef} type="fixed">
+      <RigidBody name="Fixation" ref={bodyFixedRef} type="fixed">
         <Box args={[SAFE_OFFSET / 4, SAFE_OFFSET / 4, SAFE_OFFSET / 4]} />
       </RigidBody>
       <RigidBody ref={null} type="fixed">

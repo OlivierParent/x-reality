@@ -2,8 +2,13 @@ import { useBox } from "@react-three/cannon";
 import { Box } from "@react-three/drei";
 
 import { OBSTACLE } from "Examples/Obstacle.config";
+import {
+  cursorActiveEventHandler,
+  cursorInactiveEventHandler,
+} from "Components/UserInterface/CursorOverlay";
 
 const RANDOM_COORDINATES = new Array(OBSTACLE.BOX.COUNT).fill(null).map(() => {
+  console.info("random");
   const x = Math.floor(
     Math.random() * OBSTACLE.PLANE.SIZE - OBSTACLE.PLANE.SIZE / 2
   );
@@ -13,6 +18,12 @@ const RANDOM_COORDINATES = new Array(OBSTACLE.BOX.COUNT).fill(null).map(() => {
   );
 
   return [x, y, z] as [number, number, number];
+});
+
+const obstacles = new Array(OBSTACLE.BOX.COUNT).fill(null).map((_, index) => {
+  const position = RANDOM_COORDINATES[index];
+
+  return { position };
 });
 
 type ObstacleProps = { position: [number, number, number] };
@@ -31,7 +42,14 @@ const Obstacle = ({ position }: ObstacleProps) => {
   }));
 
   return (
-    <Box args={args} ref={ref}>
+    <Box
+      args={args}
+      onPointerEnter={cursorActiveEventHandler}
+      onPointerLeave={cursorInactiveEventHandler}
+      onPointerOut={cursorInactiveEventHandler}
+      onPointerOver={cursorActiveEventHandler}
+      ref={ref}
+    >
       <meshBasicMaterial
         color={0xffffff * Math.random()}
         opacity={0.75}
@@ -42,12 +60,6 @@ const Obstacle = ({ position }: ObstacleProps) => {
 };
 
 const CannonWorldObstacles = () => {
-  let obstacles = new Array(OBSTACLE.BOX.COUNT).fill(null).map((_, index) => {
-    const position = RANDOM_COORDINATES[index];
-
-    return { position };
-  });
-
   return (
     <group name="Obstacles">
       {obstacles.map(({ position }, index) => {

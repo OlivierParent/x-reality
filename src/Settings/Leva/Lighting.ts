@@ -1,4 +1,15 @@
 export namespace SettingsLevaLighting {
+  export function angle(value: number = 60) {
+    return {
+      hint: "Maximum extent of the spotlight, in radians, from its direction. Default is 60.",
+      label: "Angle",
+      max: 180,
+      min: 0,
+      step: 1,
+      value,
+    };
+  }
+
   export function castShadow(value: boolean = false) {
     return { label: "Cast Shadow", value };
   }
@@ -10,22 +21,20 @@ export namespace SettingsLevaLighting {
     return { label: "Helper Size", max, min: 0, value };
   }
 
-  export function distance(value: number = 0, max: number = 10) {
+  export function distance(value: number = 0) {
     return {
       hint: "Maximum range of the light. Default is 0 (no limit).",
       label: "Distance",
-      max,
       min: 0,
       step: 0.1,
       value,
     };
   }
 
-  export function intensity(value: number = 1, max: number = 2) {
+  export function intensity(value: number = 1) {
     return {
       hint: "Numeric value of the light's strength. Default is 1.",
       label: "Intensity",
-      max,
       min: 0,
       value,
     };

@@ -1,6 +1,7 @@
 import { useSphere } from "@react-three/cannon";
 import {
   PointerLockControls,
+  Shadow,
   Sphere,
   useKeyboardControls,
 } from "@react-three/drei";
@@ -10,6 +11,8 @@ import { Vector3 } from "three";
 
 import { PLAYER } from "Examples/Player.config";
 
+const SAFE_OFFSET = 0.001;
+
 const CannonWorldPlayer = () => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
@@ -17,6 +20,7 @@ const CannonWorldPlayer = () => {
   const moveRightOn = useKeyboardControls((state) => state.moveRight);
 
   const pointerRef = useRef<any>(null!);
+  const shadowRef = useRef<any>(null!);
 
   const [playerRef, playerApi] = useSphere(
     () => ({
@@ -40,6 +44,7 @@ const CannonWorldPlayer = () => {
 
   useFrame(() => {
     const camera = pointerRef.current.getObject();
+    const shadow = shadowRef.current;
 
     // Move Player
     const velocityVector = new Vector3(
@@ -58,15 +63,25 @@ const CannonWorldPlayer = () => {
     // Match Camera position to Player position.
     camera.position.copy(playerPosition.current);
     camera.position.y += 1.25; // 1.75m
+
+    // Match Shadow position to Player position.
+    shadow.position.copy(playerPosition.current);
+    shadow.position.y = SAFE_OFFSET;
   });
 
   return (
     <group name="Player">
       <PointerLockControls ref={pointerRef} />
-
       <Sphere args={[PLAYER.SIZE, 8, 8]} ref={playerRef}>
-        <meshBasicMaterial color={0x00ff00} wireframe={true} />
+        <meshBasicMaterial color={0x00ff00} wireframe={true} visible={false} />
       </Sphere>
+      <Shadow
+        color="black"
+        colorStop={0}
+        fog={false}
+        opacity={0.5}
+        ref={shadowRef}
+      />
     </group>
   );
 };

@@ -57,7 +57,7 @@ const ClockAnalogue = (props: GroupProps) => {
         >
           {Array(CLOCK.MM)
             .fill(null)
-            .map((value, index) => {
+            .map((_, index) => {
               const angle = -(360 / CLOCK.MM) * index;
               const isFirstHH = isFirstHour(index);
               const isHH = isHour(index);
@@ -96,7 +96,7 @@ const ClockAnalogue = (props: GroupProps) => {
         <group name="Hours">
           {Array(CLOCK.HH)
             .fill(null)
-            .map((value, index) => {
+            .map((_, index) => {
               const radius = CLOCK.MARK.HH.LENGTH * 7.75;
               const c = new MathCircle(radius);
               const angle = 90 - (360 / CLOCK.HH) * index;

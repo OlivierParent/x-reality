@@ -31,8 +31,9 @@
 
 > On build errors, try removing `yarn.lock` and `node_modules`, and install packages again.
 
-<!-- - Failed to compile. Attempted import error: 'ParametricGeometry' is not exported from 'three' (imported as 'ParametricGeometry').
-  - Fix: `yarn add three@0.143.0` -->
+<!-- - Failed to compile.  
+  Attempted import error: 'WebGLMultisampleRenderTarget' is not exported from 'three' (imported as 'WebGLMultisampleRenderTarget').
+  - Fix: `yarn add three@0.148.0` -->
 
 ## Technologies
 

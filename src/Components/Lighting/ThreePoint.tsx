@@ -19,7 +19,7 @@ const LightingThreePoint = (): JSX.Element => {
       "Ambient Light": folder(
         {
           color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          intensity: SettingsLevaLighting.intensity(0.1, 1),
+          intensity: SettingsLevaLighting.intensity(0.1),
         },
         Settings.folder()
       ),

@@ -1,8 +1,8 @@
 import { GroupProps, useFrame } from "@react-three/fiber";
 import {
   CuboidCollider,
+  RapierRigidBody,
   RigidBody,
-  RigidBodyApi,
   useRapier,
 } from "@react-three/rapier";
 import { button, useControls } from "leva";
@@ -38,9 +38,9 @@ const rightOrientation: OrientationValue = "right";
 const RapierPinballMachine = (props: GroupProps): JSX.Element => {
   const scoreState = useContext(ScoreContext);
   const [counter, setCounter] = useState<number>(0);
-  const ballLeft = useRef<RigidBodyApi>(null);
-  const ballMiddle = useRef<RigidBodyApi>(null);
-  const ballRight = useRef<RigidBodyApi>(null);
+  const ballLeft = useRef<RapierRigidBody>(null);
+  const ballMiddle = useRef<RapierRigidBody>(null);
+  const ballRight = useRef<RapierRigidBody>(null);
   useControls(
     LEVA.SCHEMA.SIMULATION,
     {

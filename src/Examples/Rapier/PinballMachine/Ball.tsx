@@ -1,8 +1,8 @@
 import { Sphere, useMatcapTexture } from "@react-three/drei";
 import {
   interactionGroups,
+  RapierRigidBody,
   RigidBody,
-  RigidBodyApi,
 } from "@react-three/rapier";
 import { forwardRef, Ref } from "react";
 
@@ -14,11 +14,11 @@ import { BallProps } from "Types/BallProps";
  * Pinball machine ball.
  *
  * @param {BallProps} props
- * @param {Ref<RigidBodyApi>} ref
+ * @param {Ref<RapierRigidBody>} ref
  * @returns {JSX.Element}
  */
 const RapierPinballMachineBall = forwardRef(
-  (props: BallProps, ref?: Ref<RigidBodyApi>): JSX.Element => {
+  (props: BallProps, ref?: Ref<RapierRigidBody>): JSX.Element => {
     const { color = 0xffffff, position, radius = 0.125 } = props;
 
     const [matcapWornGold] = useMatcapTexture(

@@ -7,7 +7,7 @@ const ClockDigital = (props: GroupProps) => {
   const clockRef = useRef<any>(null!);
 
   useEffect(() => {
-    clockRef.current.rotation.x = MathUtils.degToRad(-30);
+    clockRef.current.rotation.x = -MathUtils.degToRad(30);
   }, []);
 
   useFrame(() => {

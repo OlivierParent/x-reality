@@ -30,6 +30,11 @@ export namespace FONT_FAMILY {
     url: "https://fonts.gstatic.com/s/play/v17/6aez4K2oVqwIjtE.woff",
   };
 
+  export const POPPINS: FontFamily = {
+    name: "Poppins",
+    url: "https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrFJM.woff",
+  };
+
   export const PRESS_START_2P: FontFamily = {
     name: "Press Start 2P",
     url: "https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK0nR.woff",
