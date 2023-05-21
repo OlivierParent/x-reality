@@ -39,7 +39,9 @@ const EffectsChromaticAberration = () => {
     <EffectComposer>
       <ChromaticAberration
         blendFunction={blendFunction as BlendFunction}
+        modulationOffset={0}
         offset={new Vector2(offset.x, offset.y)}
+        radialModulation={true}
       />
     </EffectComposer>
   );

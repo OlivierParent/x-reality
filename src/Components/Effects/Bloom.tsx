@@ -36,12 +36,12 @@ const EffectsBloom = () => {
     <EffectComposer>
       <Bloom
         blendFunction={blendFunction as BlendFunction}
-        height={Resolution.AUTO_SIZE}
         intensity={intensity}
         kernelSize={KernelSize.LARGE}
         luminanceSmoothing={luminanceSmoothing}
         luminanceThreshold={luminanceThreshold}
-        width={Resolution.AUTO_SIZE}
+        resolutionX={Resolution.AUTO_SIZE}
+        resolutionY={Resolution.AUTO_SIZE}
       />
     </EffectComposer>
   );

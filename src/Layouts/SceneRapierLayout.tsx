@@ -1,7 +1,7 @@
 import { Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Debug, Physics } from "@react-three/rapier";
-import { folder, Leva, useControls } from "leva";
+import { Physics } from "@react-three/rapier";
+import { Leva, folder, useControls } from "leva";
 import { Suspense } from "react";
 
 import { Helpers } from "Components/Helpers";
@@ -64,13 +64,13 @@ const SceneRapierLayout = ({ children }: LayoutProps): JSX.Element => {
           />
           <Physics
             colliders={undefined}
+            debug={showDebug}
             gravity={[gravity.x, gravity.y, gravity.z]}
             paused={paused}
             timeStep="vary"
             updatePriority={undefined}
           >
             {children}
-            {showDebug && <Debug />}
           </Physics>
         </Suspense>
       </Canvas>

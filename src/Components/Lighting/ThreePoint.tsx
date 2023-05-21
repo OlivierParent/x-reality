@@ -1,7 +1,7 @@
 import { useHelper } from "@react-three/drei";
 import { folder, useControls } from "leva";
 import { useRef } from "react";
-import { SpotLight, SpotLightHelper } from "three";
+import { ColorRepresentation, SpotLight, SpotLightHelper } from "three";
 
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
@@ -76,9 +76,21 @@ const LightingThreePoint = (): JSX.Element => {
   const fillLightRef = useRef<SpotLight>(null!);
   const keyLightRef = useRef<SpotLight>(null!);
 
-  useHelper(helpers ? backLightRef : null, SpotLightHelper, backLight.color);
-  useHelper(helpers ? fillLightRef : null, SpotLightHelper, fillLight.color);
-  useHelper(helpers ? keyLightRef : null, SpotLightHelper, keyLight.color);
+  useHelper(
+    helpers ? backLightRef : null,
+    SpotLightHelper,
+    backLight.color as ColorRepresentation
+  );
+  useHelper(
+    helpers ? fillLightRef : null,
+    SpotLightHelper,
+    fillLight.color as ColorRepresentation
+  );
+  useHelper(
+    helpers ? keyLightRef : null,
+    SpotLightHelper,
+    keyLight.color as ColorRepresentation
+  );
 
   return (
     <group name="Three Point Lighting">

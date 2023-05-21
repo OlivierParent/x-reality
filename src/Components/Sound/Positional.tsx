@@ -29,6 +29,7 @@ const SoundPositional = (props: GroupProps): JSX.Element => {
         <PositionalAudio
           //   autoplay={true}
           //   distance={1}
+          load={true}
           loop={true}
           ref={positionalAudioRef}
           url={badassAudioFile}

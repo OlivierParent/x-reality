@@ -3,6 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { folder, useControls } from "leva";
 import { useRef } from "react";
 import {
+  ColorRepresentation,
   DirectionalLight,
   DirectionalLightHelper,
   HemisphereLight,
@@ -123,16 +124,20 @@ const LightingDemo = (): JSX.Element => {
     helpers ? directionalLightRef : null,
     DirectionalLightHelper,
     helperSize * directionalLight.intensity,
-    directionalLight.color
+    directionalLight.color as ColorRepresentation
   );
 
   useHelper(
     helpers ? pointLightRef : null,
     PointLightHelper,
     helperSize * (pointLight.intensity / intensityMax),
-    pointLight.color
+    pointLight.color as ColorRepresentation
   );
-  useHelper(helpers ? spotLightRef : null, SpotLightHelper, spotLight.color);
+  useHelper(
+    helpers ? spotLightRef : null,
+    SpotLightHelper,
+    spotLight.color as ColorRepresentation
+  );
   useHelper(
     helpers ? hemisphereLightRef : null,
     HemisphereLightHelper,

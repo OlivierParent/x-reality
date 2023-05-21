@@ -1,11 +1,13 @@
 import { useBox } from "@react-three/cannon";
 import { Box } from "@react-three/drei";
+import { useRef } from "react";
+import { Mesh } from "three";
 
-import { OBSTACLE } from "Examples/Obstacle.config";
 import {
   cursorActiveEventHandler,
   cursorInactiveEventHandler,
 } from "Components/UserInterface/CursorOverlay";
+import { OBSTACLE } from "Examples/Obstacle.config";
 
 const RANDOM_COORDINATES = new Array(OBSTACLE.BOX.COUNT).fill(null).map(() => {
   console.info("random");
@@ -35,11 +37,14 @@ const Obstacle = ({ position }: ObstacleProps) => {
     OBSTACLE.BOX.SIZE,
   ];
 
-  const [ref] = useBox(() => ({
-    args,
-    mass: OBSTACLE.BOX.MASS,
-    position,
-  }));
+  const [ref] = useBox(
+    () => ({
+      args,
+      mass: OBSTACLE.BOX.MASS,
+      position,
+    }),
+    useRef<Mesh>(null)
+  );
 
   return (
     <Box

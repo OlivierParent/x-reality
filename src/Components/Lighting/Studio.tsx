@@ -1,7 +1,11 @@
 import { useHelper } from "@react-three/drei";
 import { folder, useControls } from "leva";
 import { useRef } from "react";
-import { DirectionalLight, DirectionalLightHelper } from "three";
+import {
+  ColorRepresentation,
+  DirectionalLight,
+  DirectionalLightHelper,
+} from "three";
 
 import { LEVA } from "Configs/leva";
 import { SettingsLevaColor } from "Settings/Leva/Color";
@@ -85,19 +89,19 @@ const LightingStudio = (): JSX.Element => {
     helpers ? frontLightRef : null,
     DirectionalLightHelper,
     helperSize * frontLight.intensity,
-    frontLight.color
+    frontLight.color as ColorRepresentation
   );
   useHelper(
     helpers ? leftLightRef : null,
     DirectionalLightHelper,
     helperSize * leftLight.intensity,
-    leftLight.color
+    leftLight.color as ColorRepresentation
   );
   useHelper(
     helpers ? rightLightRef : null,
     DirectionalLightHelper,
     helperSize * rightLight.intensity,
-    rightLight.color
+    rightLight.color as ColorRepresentation
   );
 
   return (

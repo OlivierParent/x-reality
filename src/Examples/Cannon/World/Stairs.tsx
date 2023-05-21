@@ -1,6 +1,7 @@
 import { useBox } from "@react-three/cannon";
 import { Box } from "@react-three/drei";
-import { MathUtils } from "three";
+import { useRef } from "react";
+import { MathUtils, Mesh } from "three";
 
 const CannonWorldStairs = () => {
   const angleSlope = 35;
@@ -8,11 +9,14 @@ const CannonWorldStairs = () => {
   const args: [number, number, number] = [1, 10, 0.2];
   const mass = 0; // kg
   const rotation: [number, number, number] = [angle, 0, 0];
-  const [ref] = useBox(() => ({
-    args,
-    mass,
-    rotation,
-  }));
+  const [ref] = useBox(
+    () => ({
+      args,
+      mass,
+      rotation,
+    }),
+    useRef<Mesh>(null)
+  );
 
   return (
     <Box args={args} ref={ref}>
