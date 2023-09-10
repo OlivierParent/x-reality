@@ -28,7 +28,7 @@ const LightingStudio = (): JSX.Element => {
       "Ambient Light": folder(
         {
           color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          intensity: SettingsLevaLighting.intensity(0.1),
+          intensity: SettingsLevaLighting.intensity(0.2),
         },
         Settings.folder()
       ),
@@ -42,7 +42,7 @@ const LightingStudio = (): JSX.Element => {
         {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(),
-          intensity: SettingsLevaLighting.intensity(0.4),
+          intensity: SettingsLevaLighting.intensity(1.4),
           position: SettingsLevaPosition.position(0, 2, 4),
         },
         Settings.folder()
@@ -57,7 +57,7 @@ const LightingStudio = (): JSX.Element => {
         {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
-          intensity: SettingsLevaLighting.intensity(),
+          intensity: SettingsLevaLighting.intensity(2.0),
           position: SettingsLevaPosition.position(-4, 0, 0),
         },
         Settings.folder()
@@ -72,7 +72,7 @@ const LightingStudio = (): JSX.Element => {
         {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
-          intensity: SettingsLevaLighting.intensity(),
+          intensity: SettingsLevaLighting.intensity(2.0),
           position: SettingsLevaPosition.position(4, 0, 0),
         },
         Settings.folder()

@@ -19,7 +19,7 @@ const LightingThreePoint = (): JSX.Element => {
       "Ambient Light": folder(
         {
           color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          intensity: SettingsLevaLighting.intensity(0.1),
+          intensity: SettingsLevaLighting.intensity(0.2),
         },
         Settings.folder()
       ),
@@ -33,7 +33,7 @@ const LightingThreePoint = (): JSX.Element => {
         {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          intensity: SettingsLevaLighting.intensity(0.75),
+          intensity: SettingsLevaLighting.intensity(75.0),
           position: SettingsLevaPosition.position(4, 2, -4),
         },
         Settings.folder()
@@ -48,7 +48,7 @@ const LightingThreePoint = (): JSX.Element => {
         {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
-          intensity: SettingsLevaLighting.intensity(0.75),
+          intensity: SettingsLevaLighting.intensity(75.0),
           position: SettingsLevaPosition.position(-4, 2, 4),
         },
         Settings.folder()
@@ -63,7 +63,7 @@ const LightingThreePoint = (): JSX.Element => {
         {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
-          intensity: SettingsLevaLighting.intensity(0.75),
+          intensity: SettingsLevaLighting.intensity(75.0),
           position: SettingsLevaPosition.position(4, 2, 4),
         },
         Settings.folder()

@@ -1,5 +1,4 @@
 import { GroupProps } from "@react-three/fiber";
-import { forwardRef } from "react";
 
 /**
  * Sound.

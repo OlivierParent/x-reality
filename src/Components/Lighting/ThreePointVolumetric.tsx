@@ -40,7 +40,7 @@ const LightingThreePointVolumetric = (): JSX.Element => {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
           distance: SettingsLevaLighting.distance(7),
-          intensity: SettingsLevaLighting.intensity(2),
+          intensity: SettingsLevaLighting.intensity(75.0),
           penumbra: SettingsLevaLighting.penumbra(),
           position: SettingsLevaPosition.position(4, 2, -4),
         },
@@ -58,7 +58,7 @@ const LightingThreePointVolumetric = (): JSX.Element => {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
           distance: SettingsLevaLighting.distance(7),
-          intensity: SettingsLevaLighting.intensity(2),
+          intensity: SettingsLevaLighting.intensity(75.0),
           penumbra: SettingsLevaLighting.penumbra(),
           position: SettingsLevaPosition.position(-4, 2, 4),
         },
@@ -76,7 +76,7 @@ const LightingThreePointVolumetric = (): JSX.Element => {
           castShadow: SettingsLevaLighting.castShadow(true),
           color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
           distance: SettingsLevaLighting.distance(7),
-          intensity: SettingsLevaLighting.intensity(2),
+          intensity: SettingsLevaLighting.intensity(75.0),
           penumbra: SettingsLevaLighting.penumbra(),
           position: SettingsLevaPosition.position(4, 2, 4),
         },
@@ -123,16 +123,6 @@ const LightingThreePointVolumetric = (): JSX.Element => {
         penumbra={backLight.penumbra}
         position={SettingsLevaPosition.toArray(backLight.position)}
         ref={backLightRef}
-        shadowBias
-        shadowCameraBottom
-        shadowCameraFar
-        shadowCameraFov
-        shadowCameraLeft
-        shadowCameraNear
-        shadowCameraRight
-        shadowCameraTop
-        shadowMapHeight
-        shadowMapWidth
       />
       <SpotLight
         angle={MathUtils.degToRad(fillLight.angle)}
@@ -144,16 +134,6 @@ const LightingThreePointVolumetric = (): JSX.Element => {
         penumbra={fillLight.penumbra}
         position={SettingsLevaPosition.toArray(fillLight.position)}
         ref={fillLightRef}
-        shadowBias
-        shadowCameraBottom
-        shadowCameraFar
-        shadowCameraFov
-        shadowCameraLeft
-        shadowCameraNear
-        shadowCameraRight
-        shadowCameraTop
-        shadowMapHeight
-        shadowMapWidth
       />
       <SpotLight
         angle={MathUtils.degToRad(keyLight.angle)}
@@ -165,16 +145,6 @@ const LightingThreePointVolumetric = (): JSX.Element => {
         penumbra={keyLight.penumbra}
         position={SettingsLevaPosition.toArray(keyLight.position)}
         ref={keyLightRef}
-        shadowBias
-        shadowCameraBottom
-        shadowCameraFar
-        shadowCameraFov
-        shadowCameraLeft
-        shadowCameraNear
-        shadowCameraRight
-        shadowCameraTop
-        shadowMapHeight
-        shadowMapWidth
       />
     </group>
   );

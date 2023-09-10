@@ -1,11 +1,13 @@
 import { PositionalAudio, Text } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { useRef, useState } from "react";
+import { PositionalAudio as PositionalAudioType } from "three";
 
 import badassAudioFile from "./audio/bensound-badass.mp3";
 
 const SoundPositional = (props: GroupProps): JSX.Element => {
-  const positionalAudioRef = useRef<typeof PositionalAudio>(null!);
+  const positionalAudioRef = useRef<PositionalAudioType>(null!);
+
   const [isPlaying, setIsPlaying] = useState(true);
 
   return (
@@ -28,7 +30,6 @@ const SoundPositional = (props: GroupProps): JSX.Element => {
       <PositionalAudio
         distance={1}
         loop={true}
-        load={true}
         ref={positionalAudioRef}
         url={badassAudioFile}
       />

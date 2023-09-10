@@ -4,6 +4,7 @@
 
     $ yarn create react-app x-reality --template typescript
     $ cd x-reality
+    $ yarn add -D @babel/plugin-proposal-private-property-in-object
 
 ## Installation
 
@@ -33,9 +34,15 @@
 
 > On build errors, try removing `yarn.lock` and `node_modules`, and install packages again.
 
-<!-- - Failed to compile.  
-  Attempted import error: 'WebGLMultisampleRenderTarget' is not exported from 'three' (imported as 'WebGLMultisampleRenderTarget').
-  - Fix: `yarn add three@0.148.0` -->
+### Build Errors
+
+<!-- - Error.  
+  Fix: `yarn add @react-three/drei@9.80.7`  -->
+
+### Runtime Errors
+
+- Leva.  
+  Fix: `yarn add leva@0.9.34`
 
 ## Technologies
 
