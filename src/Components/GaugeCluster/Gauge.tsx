@@ -54,7 +54,7 @@ const Gauge = (props: GroupProps & GaugeDefaultProps) => {
   const CIRCLE = SIZE * 0.8;
   const LENGTH_LG = SIZE * 0.1;
   const LENGTH_SM = SIZE * 0.06;
-  const SAFE_OFFSET = SIZE * 0.001;
+  const SAFE_OFFSET = SIZE * 0.001; // Prevent Z Fighting.
   const THICKNESS_LG = SIZE * 0.01;
   const THICKNESS_SM = SIZE * 0.005;
   const AngleOffset = MathUtils.degToRad(

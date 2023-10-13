@@ -11,7 +11,7 @@ import { Vector3 } from "three";
 
 import { PLAYER } from "Examples/Player.config";
 
-const SAFE_OFFSET = 0.001;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
 const RapierWorldPlayer = () => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);

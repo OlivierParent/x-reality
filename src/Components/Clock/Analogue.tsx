@@ -7,7 +7,7 @@ import { MathCircle } from "Utils/MathCircle";
 
 import { CLOCK } from "./Analogue.config";
 
-const SAFE_OFFSET = 0.001;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
 function isFirstHour(mark: number) {
   return !(mark % CLOCK.HH);
@@ -99,7 +99,7 @@ const ClockAnalogue = (props: GroupProps) => {
             .map((_, index) => {
               const radius = CLOCK.MARK.HH.LENGTH * 7.75;
               const c = new MathCircle(radius);
-              const angle = 90 - (360 / CLOCK.HH) * index;
+              const angle = angleStart - (360 / CLOCK.HH) * index;
               const { x, y } = c.getCoordinates(angle);
 
               return (
@@ -136,7 +136,7 @@ const ClockAnalogue = (props: GroupProps) => {
                 CLOCK.HAND.THICKNESS,
                 CLOCK.HAND.THICKNESS * 3,
                 CLOCK.HAND.THICKNESS * 5,
-                CLOCK.HH * 2,
+                CLOCK.HH * 4,
               ]}
             />
             <meshStandardMaterial />
