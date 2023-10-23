@@ -33,15 +33,16 @@
 ## Issues
 
 > On build errors, try removing `yarn.lock` and `node_modules`, and install packages again.
-``
+> ``
+
 ### Build Errors
 
-<!-- - Error.  
+<!-- - Error.
   Fix: `yarn add @react-three/drei@9.80.7`  -->
 
 ### Runtime Errors
 
-- Leva.  
+- Leva. `Tooltip` must be used within `TooltipProvider`
   Fix: `yarn add leva@0.9.34`
 
 ## Technologies
@@ -79,12 +80,13 @@
     - [Post Processing](https://vanruesc.github.io/postprocessing/public/docs/)
   - [React Spring](https://react-spring.io/)
     - [Documentation](https://docs.pmnd.rs/react-spring)
-    - [GitHub](https://github.com/pmndrs/react-spring) 
+    - [GitHub](https://github.com/pmndrs/react-spring)
       → [Releases](https://github.com/pmndrs/react-spring/releases)
 - Lamina
   - [GitHub](https://github.com/pmndrs/lamina)
 - Leva
-  - [GitHub](https://github.com/pmndrs/leva) 
+
+  - [GitHub](https://github.com/pmndrs/leva)
     → [Releases](https://github.com/pmndrs/leva/releases)
   - [Storybook](https://leva.pmnd.rs/)
 

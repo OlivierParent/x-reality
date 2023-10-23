@@ -27,10 +27,9 @@ const ClockAnalogue = (props: GroupProps) => {
   useFrame(() => {
     const d = new Date();
     const angleHandHour =
-      angleStart -
-      (360 / CLOCK.HH) * (d.getHours() + d.getMinutes() / CLOCK.MM);
-    const angleHandMinute = angleStart - (360 / CLOCK.MM) * d.getMinutes();
-    const angleHandSecond = angleStart - (360 / CLOCK.SS) * d.getSeconds();
+      -(360 / CLOCK.HH) * (d.getHours() + d.getMinutes() / CLOCK.MM);
+    const angleHandMinute = -(360 / CLOCK.MM) * d.getMinutes();
+    const angleHandSecond = -(360 / CLOCK.SS) * d.getSeconds();
     handHourRef.current.rotation.z = MathUtils.degToRad(angleHandHour);
     handMinuteRef.current.rotation.z = MathUtils.degToRad(angleHandMinute);
     handSecondRef.current.rotation.z = MathUtils.degToRad(angleHandSecond);
@@ -121,7 +120,7 @@ const ClockAnalogue = (props: GroupProps) => {
         </group>
       </group>
 
-      <group name="Hands">
+      <group name="Hands" rotation={[0, 0, MathUtils.degToRad(angleStart)]}>
         <group
           name="Shaft"
           position={[0, 0, CLOCK.HAND.THICKNESS * 2.5 + SAFE_OFFSET]}
@@ -129,7 +128,7 @@ const ClockAnalogue = (props: GroupProps) => {
           <mesh
             castShadow={true}
             receiveShadow={true}
-            rotation={[MathUtils.degToRad(angleStart), 0, 0]}
+            rotation={[Math.PI / 2, 0, 0]}
           >
             <cylinderGeometry
               args={[

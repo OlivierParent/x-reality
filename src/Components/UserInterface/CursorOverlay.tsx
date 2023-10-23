@@ -21,6 +21,7 @@ const cursorInactiveEventHandler = () => {
 const UserInterfaceCursorOverlay = (): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
 
+  // Execute only once this session.
   useMemo(() => {
     window.addEventListener(cursorActive, () => {
       setIsActive(true);
