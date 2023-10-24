@@ -13,6 +13,10 @@ import { PLAYER } from "Examples/Player.config";
 
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
+const emptyVector = new Vector3();
+const positionVector = new Vector3();
+const velocityVector = new Vector3();
+
 const CannonWorldPlayer = () => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
@@ -33,12 +37,12 @@ const CannonWorldPlayer = () => {
 
   // Store Player velocity
   const playerVelocity = useRef([0, 0, 0]);
-  const playerPosition = useRef(new Vector3());
+  const playerPosition = useRef(emptyVector);
 
   useEffect(() => {
     playerApi.velocity.subscribe((v) => (playerVelocity.current = v));
     playerApi.position.subscribe(
-      (v) => (playerPosition.current = new Vector3(...v))
+      (v) => (playerPosition.current = positionVector.set(...v))
     );
   }, [playerApi.velocity, playerApi.position]);
 
@@ -47,7 +51,7 @@ const CannonWorldPlayer = () => {
     const shadow = shadowRef.current;
 
     // Move Player
-    const velocityVector = new Vector3(
+    velocityVector.set(
       (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * PLAYER.VELOCITY.RIGHT_DIRECTION,
       0,
       (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) *
@@ -62,7 +66,7 @@ const CannonWorldPlayer = () => {
 
     // Match Camera position to Player position.
     camera.position.copy(playerPosition.current);
-    camera.position.y += 1.25; // 1.75m
+    camera.position.y += PLAYER.HEIGHT - PLAYER.SIZE;
 
     // Match Shadow position to Player position.
     shadow.position.copy(playerPosition.current);

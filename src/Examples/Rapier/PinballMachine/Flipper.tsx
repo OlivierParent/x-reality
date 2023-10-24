@@ -7,7 +7,7 @@ import {
   RevoluteJointParams,
   RigidBody,
   useRevoluteJoint,
-  Vector3Array,
+  Vector3Tuple,
 } from "@react-three/rapier";
 import { useRef } from "react";
 import { Euler, MathUtils, Mesh, Vector3 } from "three";
@@ -47,9 +47,9 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
   const bodyDynamicRef = useRef<RapierRigidBody>(null!);
   const bodyFixedRef = useRef<RapierRigidBody>(null!);
 
-  const bodyDynamicAnchor: Vector3Array = [0, 0, 0];
-  const bodyFixedAnchor: Vector3Array = [0, 0, 0];
-  const axis: Vector3Array = [0, 1, 0];
+  const bodyDynamicAnchor: Vector3Tuple = [0, 0, 0];
+  const bodyFixedAnchor: Vector3Tuple = [0, 0, 0];
+  const axis: Vector3Tuple = [0, 1, 0];
 
   const params: RevoluteJointParams = [
     bodyDynamicAnchor,

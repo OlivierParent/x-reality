@@ -1,6 +1,7 @@
 import { Vector3 } from "three";
 
 export const PLAYER = Object.freeze({
+  HEIGHT: 1.75, // m
   MASS: 75, // kg
   POSITION: new Vector3(0, 2, 2),
   SIZE: 0.5, // radius in m

@@ -18,8 +18,8 @@ const RapierTest = (props: GroupProps): JSX.Element => {
         <RigidBody type="fixed">
           <Plane
             args={[20, 20]}
-            rotation={[MathUtils.degToRad(-90), 0, 0]}
             receiveShadow={true}
+            rotation={[MathUtils.degToRad(-90), 0, 0]}
           >
             <Material />
           </Plane>

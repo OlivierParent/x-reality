@@ -13,6 +13,9 @@ import { PLAYER } from "Examples/Player.config";
 
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
+const velocityVector = new Vector3();
+const emptyVector = new Vector3();
+
 const RapierWorldPlayer = () => {
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
@@ -30,7 +33,7 @@ const RapierWorldPlayer = () => {
 
     // Move Player.
     const playerVelocity = player.linvel(); // Get linear velocity.
-    const velocityVector = new Vector3(
+    velocityVector.set(
       (moveRightOn ? 1 : moveLeftOn ? -1 : 0) * PLAYER.VELOCITY.RIGHT_DIRECTION,
       0, // Camera quaternion should not affect velocity on gravity axis.
       (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) *
@@ -42,7 +45,7 @@ const RapierWorldPlayer = () => {
 
     // Reset player angular velocity if no movement detected.
     if (!moveBackwardOn && !moveForwardOn && !moveLeftOn && !moveRightOn) {
-      player.setAngvel(new Vector3());
+      player.setAngvel(emptyVector);
     }
 
     // Apply linear velocity to Player.
@@ -52,7 +55,7 @@ const RapierWorldPlayer = () => {
 
     // Match Camera position to Player position.
     camera.position.copy(playerPosition);
-    camera.position.y += 1.25; // 1.75m
+    camera.position.y += PLAYER.HEIGHT - PLAYER.SIZE;
 
     // Match Shadow position to Player position.
     shadow.position.copy(playerPosition);

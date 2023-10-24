@@ -7,7 +7,7 @@ const ParticlesDefault = () => {
   const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
     useControls("Components", {
       "Icosahedron (20 faces)": folder({
-        detail: IcosahedronGeometry.detail(),
+        detail: IcosahedronGeometry.detail(3),
         radius: IcosahedronGeometry.radius(2),
       }),
       "Points Material": folder({

@@ -19,7 +19,7 @@ const CannonTest = (props: GroupProps): JSX.Element => {
       mass: 1,
       position: [0, 12, 0],
     }),
-    useRef<Mesh>(null)
+    useRef<Mesh>(null!)
   );
 
   const [planeRef] = usePlane(
@@ -27,7 +27,7 @@ const CannonTest = (props: GroupProps): JSX.Element => {
       args: [10, 10],
       rotation: [-MathUtils.degToRad(90), 0, 0],
     }),
-    useRef<Mesh>(null)
+    useRef<Mesh>(null!)
   );
 
   const [roundedBoxRef] = useBox<Mesh>(
@@ -36,7 +36,7 @@ const CannonTest = (props: GroupProps): JSX.Element => {
       mass: 1,
       position: [-0.1, 8, 0],
     }),
-    useRef<Mesh>(null)
+    useRef<Mesh>(null!)
   );
 
   const [sphereRef] = useSphere<Mesh>(
@@ -45,24 +45,34 @@ const CannonTest = (props: GroupProps): JSX.Element => {
       mass: 20,
       position: [0.1, 4, 0],
     }),
-    useRef<Mesh>(null)
+    useRef<Mesh>(null!)
   );
 
   return (
     <group name="Cannon-es Test" {...props}>
       <group name="Floor">
-        <Plane args={[10, 10]} ref={planeRef}>
+        <Plane args={[10, 10]} ref={planeRef} receiveShadow={true}>
           <Material />
         </Plane>
       </group>
       <group name="Bodies">
-        <Cone args={[0.5, 1]} name="Cone" ref={coneRef}>
+        <Cone args={[0.5, 1]} castShadow={true} name="Cone" ref={coneRef}>
           <Material />
         </Cone>
-        <RoundedBox args={[1, 1, 1]} name="Rounded Box" ref={roundedBoxRef}>
+        <RoundedBox
+          args={[1, 1, 1]}
+          castShadow={true}
+          name="Rounded Box"
+          ref={roundedBoxRef}
+        >
           <Material />
         </RoundedBox>
-        <Sphere args={[0.5, 32, 32]} name="Sphere" ref={sphereRef}>
+        <Sphere
+          args={[0.5, 32, 32]}
+          castShadow={true}
+          name="Sphere"
+          ref={sphereRef}
+        >
           <Material />
         </Sphere>
       </group>
