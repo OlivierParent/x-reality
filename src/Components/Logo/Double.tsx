@@ -7,7 +7,7 @@ import gltfLogoGlb from "./assets/gltf-logo.glb";
 
 const LogoDouble = (props: GroupProps) => {
   const { scene }: any = useGLTF(gltfLogoGlb, true);
-  const sceneClone = useMemo(() => scene.clone(true), [scene]);
+  const sceneClone = useMemo(() => scene.clone(true) as never, [scene]);
   const firstLogoRef = useRef<Mesh>(null!);
   const secondLogoRef = useRef<Mesh>(null!);
   const [clockwise, setClockwise] = useState(false);

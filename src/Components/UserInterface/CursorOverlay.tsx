@@ -29,6 +29,8 @@ const UserInterfaceCursorOverlay = (): JSX.Element => {
     window.addEventListener(cursorInactive, () => {
       setIsActive(false);
     });
+
+    return null;
   }, []);
 
   return (

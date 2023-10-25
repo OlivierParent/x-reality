@@ -18,11 +18,13 @@ const positionVector = new Vector3();
 const velocityVector = new Vector3();
 
 const CannonWorldPlayer = () => {
+  // Keyboard Controls.
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
   const moveLeftOn = useKeyboardControls((state) => state.moveLeft);
   const moveRightOn = useKeyboardControls((state) => state.moveRight);
 
+  // References.
   const pointerRef = useRef<any>(null!);
   const shadowRef = useRef<any>(null!);
 
@@ -57,6 +59,7 @@ const CannonWorldPlayer = () => {
       (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) *
         PLAYER.VELOCITY.FORWARD_DIRECTION
     );
+
     // Match velocityVector direction to Camera direction.
     velocityVector.applyQuaternion(camera.quaternion);
     velocityVector.y = playerVelocity.current[1]; // Use stored velocity in Y direction (gravity).

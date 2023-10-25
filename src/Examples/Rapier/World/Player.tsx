@@ -17,11 +17,13 @@ const velocityVector = new Vector3();
 const emptyVector = new Vector3();
 
 const RapierWorldPlayer = () => {
+  // Keyboard Controls.
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
   const moveLeftOn = useKeyboardControls((state) => state.moveLeft);
   const moveRightOn = useKeyboardControls((state) => state.moveRight);
 
+  // References.
   const playerRef = useRef<any>(null!);
   const pointerRef = useRef<any>(null!);
   const shadowRef = useRef<any>(null!);
@@ -39,6 +41,7 @@ const RapierWorldPlayer = () => {
       (moveForwardOn ? -1 : moveBackwardOn ? 1 : 0) *
         PLAYER.VELOCITY.FORWARD_DIRECTION
     );
+
     // Match velocityVector direction to Camera direction.
     velocityVector.applyQuaternion(camera.quaternion);
     velocityVector.y = playerVelocity.y; // Add velocity on gravity axis back after applying camera quaternion.

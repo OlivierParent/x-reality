@@ -7,12 +7,16 @@ import animationGlb from "./assets/animation.glb";
 
 const Animation = (props: GroupProps) => {
   const { animations, scene }: any = useGLTF(animationGlb, true);
+  const animationClip = animations[0];
   const animationRef = useRef<Mesh>(null!);
-  const mixer = useMemo(() => new AnimationMixer(animations[0]), [animations]);
+  const mixer = useMemo(
+    () => new AnimationMixer(animationClip),
+    [animationClip]
+  );
 
   useEffect(() => {
-    mixer.clipAction(animations[0], animationRef.current).play();
-  }, [animations, mixer]);
+    mixer.clipAction(animationClip, animationRef.current).play();
+  }, [animationClip, mixer]);
 
   useFrame((state, delta) => {
     mixer.update(delta);
