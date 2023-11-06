@@ -1,0 +1,79 @@
+import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
+import { useRef, useState } from "react";
+import { Mesh, Vector3 } from "three";
+
+import { colorsGenerator } from "Utils/color";
+
+function getPosition(): [number, number, number] {
+  return [4, 4, 0].map((value) => (Math.random() * 2 - 1) * value) as [
+    number,
+    number,
+    number
+  ];
+}
+
+enum OPACITY {
+  HIGH = 1,
+  LOW = 0.75,
+}
+enum SCALE {
+  LARGE = 1.5,
+  SMALL = 1,
+}
+
+const colors = colorsGenerator();
+const initialColor = colors.next().value as string;
+
+/**
+ * Animated Cube.
+ *
+ * @param {GroupProps} props
+ * @returns { JSX.Element }
+ */
+const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
+  const cubeRef = useRef<Mesh>(null!);
+  const [color, setColor] = useState(initialColor);
+  const [hover, setHover] = useState(false);
+  const [position, setPosition] = useState(new Vector3());
+
+  // Event Handlers.
+  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
+    ev.stopPropagation();
+    setColor(colors.next().value as string);
+    setPosition(new Vector3(...getPosition()));
+  };
+  const pointerOutHandler = () => {
+    setHover(false);
+  };
+  const pointerOverHandler = () => {
+    setHover(true);
+  };
+
+  useFrame(({ clock }) => {
+    const delta = clock.getElapsedTime();
+    cubeRef.current.rotation.set(delta, delta, delta);
+  });
+
+  return (
+    <group {...props} name="Animated Cube">
+      <mesh
+        onClick={clickHandler}
+        onPointerOut={pointerOutHandler}
+        onPointerOver={pointerOverHandler}
+        position={position}
+        ref={cubeRef}
+        scale={hover ? SCALE.LARGE : SCALE.SMALL}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial
+          color={color}
+          opacity={hover ? OPACITY.HIGH : OPACITY.LOW}
+          transparent={true}
+          wireframe={false}
+        />
+      </mesh>
+    </group>
+  );
+};
+
+export { AnimatedCubeDefault as Default };

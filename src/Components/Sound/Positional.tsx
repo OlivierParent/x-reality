@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { PositionalAudio as PositionalAudioType } from "three";
 
 import badassAudioFile from "./audio/bensound-badass.mp3";
+
 const SoundPositional = (props: GroupProps): JSX.Element => {
   const positionalAudioRef = useRef<PositionalAudioType>(null!);
 

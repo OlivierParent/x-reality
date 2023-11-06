@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/x-reality/static/css/main.3666a090.css",
-    "main.js": "/x-reality/static/js/main.8e135d18.js",
+    "main.css": "/x-reality/static/css/main.eb98897e.css",
+    "main.js": "/x-reality/static/js/main.07b3114c.js",
     "static/media/bensound-badass.mp3": "/x-reality/static/media/bensound-badass.8ef4f40c2805fd404725.mp3",
     "static/media/BakedNormals.glb": "/x-reality/static/media/BakedNormals.03580610c404bbe4bf6b.glb",
     "static/media/TexturedCube.glb": "/x-reality/static/media/TexturedCube.2b78eebcca182be3ab54.glb",
@@ -16,12 +16,10 @@
     "static/media/SVG_logo.svg": "/x-reality/static/media/SVG_logo.31892e959789b5a423bae1652f2e6dd9.svg",
     "static/media/arteveldehogeschool_logo.svg": "/x-reality/static/media/arteveldehogeschool_logo.6220cd577fb250a0bcf4d9b4211e8449.svg",
     "static/media/normals.glb": "/x-reality/static/media/normals.c5aed970e245557969de.glb",
-    "index.html": "/x-reality/index.html",
-    "main.3666a090.css.map": "/x-reality/static/css/main.3666a090.css.map",
-    "main.8e135d18.js.map": "/x-reality/static/js/main.8e135d18.js.map"
+    "index.html": "/x-reality/index.html"
   },
   "entrypoints": [
-    "static/css/main.3666a090.css",
-    "static/js/main.8e135d18.js"
+    "static/css/main.eb98897e.css",
+    "static/js/main.07b3114c.js"
   ]
 }

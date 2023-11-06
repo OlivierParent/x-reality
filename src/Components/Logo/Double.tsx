@@ -1,5 +1,5 @@
 import { useGLTF } from "@react-three/drei";
-import { GroupProps, useFrame } from "@react-three/fiber";
+import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import { Mesh } from "three";
 
@@ -21,18 +21,24 @@ const LogoDouble = (props: GroupProps) => {
     secondLogoRef.current.rotation.y += angleDelta;
   });
 
+  // Event handlers.
+  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
+    ev.stopPropagation();
+    setClockwise((state) => !state);
+  };
+
   return (
     <group name="Double Logo" {...props}>
       <primitive
         object={scene}
         position={[-1, -1, 0]}
-        onClick={() => setClockwise((state) => !state)}
+        onClick={clickHandler}
         ref={firstLogoRef}
       />
       <primitive
         object={sceneClone}
         position={[1, 1, 0]}
-        onClick={() => setClockwise((state) => !state)}
+        onClick={clickHandler}
         ref={secondLogoRef}
       />
     </group>

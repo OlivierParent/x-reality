@@ -1,5 +1,5 @@
 import { useGLTF } from "@react-three/drei";
-import { GroupProps, useFrame } from "@react-three/fiber";
+import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Mesh } from "three";
 
@@ -18,13 +18,15 @@ const LogoDefault = (props: GroupProps) => {
     logoRef.current.rotation.y += angleDelta;
   });
 
+  // Event handlers.
+  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
+    ev.stopPropagation();
+    setClockwise((state) => !state);
+  };
+
   return (
     <group name="Default Logo" {...props}>
-      <primitive
-        object={scene}
-        onClick={() => setClockwise((state) => !state)}
-        ref={logoRef}
-      />
+      <primitive object={scene} onClick={clickHandler} ref={logoRef} />
     </group>
   );
 };

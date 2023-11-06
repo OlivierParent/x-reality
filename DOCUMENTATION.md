@@ -2,7 +2,7 @@
 
 ## Creation
 
-    $ yarn create react-app x-reality --template typescript
+    $ yarn create react-app --template typescript x-reality
     $ cd x-reality
     $ yarn add -D @babel/plugin-proposal-private-property-in-object
 
@@ -17,7 +17,6 @@
 
 ### Libraries
 
-    $ yarn add @react-spring/three
     $ yarn add @react-three/cannon
     $ yarn add @react-three/drei
     $ yarn add @react-three/fiber
@@ -26,14 +25,24 @@
     $ yarn add @react-three/postprocessing
     $ yarn add @react-three/rapier @react-three/rapier-addons
     $ yarn add @react-three/test-renderer
+    $ yarn add gsap
     $ yarn add lamina
     $ yarn add leva
     $ yarn add three three-stdlib
 
+`react-spring/three` was replaced with `gsap`, because of too many issues.
+
 ## Issues
 
 > On build errors, try removing `yarn.lock` and `node_modules`, and install packages again.
-> ``
+
+### Build Warnings
+
+- WARNING in ./node_modules/@mediapipe/tasks-vision/vision_bundle.mjs
+  FIX: add the following line to `.env`.
+  ```
+  GENERATE_SOURCEMAP=false
+  ```
 
 ### Build Errors
 
@@ -43,7 +52,7 @@
 ### Runtime Errors
 
 - Leva. `Tooltip` must be used within `TooltipProvider`
-  Fix: `yarn add leva@0.9.34`
+  FIX: `yarn add leva@0.9.34`
 
 ## Technologies
 
