@@ -2,17 +2,17 @@ import { Text } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { Color, Group, MeshBasicMaterial, Vector3 } from "three";
+import { Group, MeshBasicMaterial, Vector3 } from "three";
 
 const ROTATION = Object.freeze({
   ACTIVE: { x: Math.PI / 4, y: Math.PI / 6 },
   INACTIVE: { x: 0, y: 0 },
 });
 const SAFE_OFFSET = 0.001;
-const SCALE = {
+const SCALE = Object.freeze({
   LARGE: new Vector3().setScalar(1.25),
   SMALL: new Vector3().setScalar(1),
-};
+});
 
 enum COLOR {
   BLUE = "#00f",
@@ -25,8 +25,7 @@ enum OPACITY {
 }
 
 const initialColor = COLOR.RED;
-const colorObject = new Color(initialColor);
-const gsapObject = { colorValue: initialColor };
+const gsapObject = { color: initialColor };
 
 /**
  * Button with GSAP.
@@ -46,21 +45,23 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   useEffect(() => {
     // Parallel animation with `gsap`
     gsap.to(gsapObject, {
-      colorValue: color,
+      color,
       onUpdate: () => {
-        console.log(gsapObject.colorValue);
-        materialRef.current.color = colorObject.set(gsapObject.colorValue);
+        materialRef.current.color.set(gsapObject.color);
       },
     });
   }, [color]);
 
   useEffect(() => {
+    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
     gsap.to(materialRef.current, {
       opacity: hover ? OPACITY.LOW : OPACITY.HIGH,
       duration: 0.125, // Default: 0.5
     });
-    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
-    gsap.to(buttonRef.current.scale, { ...scale });
+    gsap.to(buttonRef.current.scale, {
+      ...scale,
+      duration: 0.125, // Default: 0.5
+    });
   }, [hover]);
 
   useEffect(() => {
@@ -92,7 +93,7 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
 
   return (
     <group
-      name="Button GreenSock"
+      name="Button with GreenSock"
       onClick={clickHandler}
       onDoubleClick={doubleClickHandler}
       onPointerOut={pointerOutHandler}

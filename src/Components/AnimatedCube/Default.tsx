@@ -5,9 +5,9 @@ import { Mesh, Vector3 } from "three";
 import { colorsGenerator } from "Utils/color";
 
 function getPosition() {
-  return new Vector3(
-    ...[4, 4, 0].map((value) => (Math.random() * 2 - 1) * value)
-  );
+  const newPosition = [5, 4, 0].map((value) => (Math.random() * 2 - 1) * value);
+
+  return new Vector3(...newPosition);
 }
 
 enum OPACITY {

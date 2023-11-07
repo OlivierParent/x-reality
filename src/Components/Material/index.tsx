@@ -56,7 +56,7 @@ const Material = () => {
     Settings.folder(LEVA.ORDER.COMPONENTS)
   );
 
-  return <group name="Material">{material}</group>;
+  return material;
 };
 
 export { Material };

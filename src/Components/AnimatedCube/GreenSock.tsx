@@ -1,20 +1,20 @@
 import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { Color, Mesh, MeshStandardMaterial, Vector3 } from "three";
+import { Mesh, MeshStandardMaterial, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
 
 function getPosition() {
-  return new Vector3(
-    ...[4, 4, 0].map((value) => (Math.random() * 2 - 1) * value)
-  );
+  const newPosition = [5, 4, 0].map((value) => (Math.random() * 2 - 1) * value);
+
+  return new Vector3(...newPosition);
 }
 
-const SCALE = {
+const SCALE = Object.freeze({
   LARGE: new Vector3().setScalar(1.5),
   SMALL: new Vector3().setScalar(1),
-};
+});
 
 enum OPACITY {
   HIGH = 1,
@@ -23,8 +23,7 @@ enum OPACITY {
 
 const colors = colorsGenerator();
 const initialColor = colors.next().value as string;
-const colorObject = new Color(initialColor);
-const gsapObject = { colorValue: initialColor };
+const gsapObject = { color: initialColor };
 const gsapTimeline: any = gsap.timeline();
 
 /**
@@ -45,8 +44,10 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   // Event Handlers.
   const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
     ev.stopPropagation();
-    setColor(colors.next().value as string);
-    setPosition(getPosition());
+    const nextColor = colors.next().value as string;
+    const nextPosition = getPosition();
+    setColor(nextColor);
+    setPosition(nextPosition);
   };
   const pointerOutHandler = () => {
     setHover(false);
@@ -56,29 +57,34 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   };
 
   useEffect(() => {
-    // Parallel animation with `gsap`
+    // Parallel animation with `gsap`.
     gsap.to(gsapObject, {
-      colorValue: color,
+      color,
       onUpdate: () => {
-        materialRef.current.color = colorObject.set(gsapObject.colorValue);
+        materialRef.current.color.set(gsapObject.color);
       },
     });
   }, [color]);
 
   useEffect(() => {
-    // Sequential animation with `gsapTimeline`
+    // Sequential animation with `gsapTimeline`.
+    const opacity = hover ? OPACITY.HIGH : OPACITY.LOW;
+    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
     gsapTimeline.to(materialRef.current, {
-      opacity: hover ? OPACITY.HIGH : OPACITY.LOW,
+      opacity,
       duration: 0.125, // Default: 0.5
     });
-    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
-    gsapTimeline.to(cubeRef.current.scale, { ...scale });
+    gsapTimeline.to(cubeRef.current.scale, {
+      ...scale,
+      duration: 0.125, // Default: 0.5
+    });
   }, [hover]);
 
   useEffect(() => {
-    // Parallel animation with `gsap`
+    // Parallel animation with `gsap`.
     gsap.to(cubeRef.current.position, {
       ...position,
+      duration: 0.25, // Default: 0.5
     });
   }, [position]);
 

@@ -1,7 +1,12 @@
 import { Text } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useState } from "react";
+import { Euler } from "three";
 
+const ROTATION = Object.freeze({
+  ACTIVE: new Euler(Math.PI / 4, Math.PI / 6),
+  INACTIVE: new Euler(0, 0),
+});
 const SAFE_OFFSET = 0.001;
 
 enum COLOR {
@@ -55,6 +60,7 @@ const ButtonDefault = (props: GroupProps): JSX.Element => {
       onDoubleClick={doubleClickHandler}
       onPointerOut={pointerOutHandler}
       onPointerOver={pointerOverHandler}
+      rotation={toggle ? ROTATION.ACTIVE : ROTATION.INACTIVE}
       scale={hover ? SCALE.LARGE : SCALE.SMALL}
       {...props}
     >
