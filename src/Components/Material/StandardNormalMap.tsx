@@ -62,4 +62,4 @@ const MaterialStandardNormalMap = (): JSX.Element => {
   );
 };
 
-export { MaterialStandardNormalMap as StandardNormalMap };
+export { MaterialStandardNormalMap as Material };

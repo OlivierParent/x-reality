@@ -2,7 +2,7 @@ import { useTexture } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { DoubleSide, Vector2 } from "three";
 
-import uvGrid from "./assets/UV_Grid_Sm.jpg";
+import uvGrid from "Components/Image/assets/UV_Grid_Sm.jpg";
 
 const ImageDefault = (props: GroupProps) => {
   const texture = useTexture(uvGrid);
@@ -19,4 +19,4 @@ const ImageDefault = (props: GroupProps) => {
   );
 };
 
-export { ImageDefault };
+export { ImageDefault as Image };

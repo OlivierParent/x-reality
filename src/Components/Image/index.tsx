@@ -1,31 +1,32 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { ImageDefault as Default } from "Components/Image/Default";
-import { ImageSvgDrei as SvgDrei } from "Components/Image/SvgDrei";
+import { Image as ImageDefault } from "Components/Image/Default";
+import { Image as ImageSvgDrei } from "Components/Image/SvgDrei";
+import { LEVA } from "Configs/leva";
+import { SettingsLeva } from "Settings/Leva";
 
 const IMAGE = Object.freeze({
-  Default: "Default",
-  Svg: "Svg (Drei)",
+  Default: <ImageDefault />,
+  Svg: <ImageSvgDrei />,
 });
 
 const Image = (props: GroupProps) => {
-  const { useImage } = useControls("Components", {
-    useImage: {
-      label: "Image",
-      options: IMAGE,
-      value: IMAGE.Default,
+  const { image } = useControls(
+    LEVA.SCHEMA.COMPONENTS,
+    {
+      image: {
+        label: "Image",
+        options: IMAGE,
+        value: IMAGE.Default,
+      },
     },
-  });
-
-  function enableImage(name: string, element: JSX.Element) {
-    return useImage === name ? element : null;
-  }
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
+  );
 
   return (
     <group name="Image" {...props}>
-      {enableImage(IMAGE.Default, <Default />)}
-      {enableImage(IMAGE.Svg, <SvgDrei />)}
+      {image}
     </group>
   );
 };

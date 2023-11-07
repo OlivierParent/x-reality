@@ -33,4 +33,4 @@ const ParticlesDefault = () => {
   );
 };
 
-export { ParticlesDefault };
+export { ParticlesDefault as Particles };

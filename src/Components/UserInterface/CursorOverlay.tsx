@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 
-import styles from "./CursorOverlay.module.css";
+import styles from "Components/UserInterface/CursorOverlay.module.css";
 
 const cursorActive = "cursor-active";
 const cursorInactive = "cursor-inactive";

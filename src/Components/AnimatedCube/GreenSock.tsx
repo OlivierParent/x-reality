@@ -5,12 +5,10 @@ import { Color, Mesh, MeshStandardMaterial, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
 
-function getPosition(): [number, number, number] {
-  return [4, 4, 0].map((value) => (Math.random() * 2 - 1) * value) as [
-    number,
-    number,
-    number
-  ];
+function getPosition() {
+  return new Vector3(
+    ...[4, 4, 0].map((value) => (Math.random() * 2 - 1) * value)
+  );
 }
 
 const SCALE = {
@@ -42,7 +40,7 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   const materialRef = useRef<MeshStandardMaterial>(null!);
   const [color, setColor] = useState(initialColor);
   const [hover, setHover] = useState(false);
-  const [position, setPosition] = useState<[number, number, number]>([0, 0, 0]);
+  const [position, setPosition] = useState<Vector3>(new Vector3(0, 0, 0));
 
   // Event Handlers.
   const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
@@ -80,9 +78,7 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   useEffect(() => {
     // Parallel animation with `gsap`
     gsap.to(cubeRef.current.position, {
-      x: position[0],
-      y: position[1],
-      z: position[2],
+      ...position,
     });
   }, [position]);
 
@@ -92,7 +88,7 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   });
 
   return (
-    <group {...props} name="Animated Cube">
+    <group name="Animated Cube with GreenSock" {...props}>
       <mesh
         onClick={clickHandler}
         onPointerOut={pointerOutHandler}
@@ -110,4 +106,4 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   );
 };
 
-export { AnimatedCubeGreenSock as GreenSock };
+export { AnimatedCubeGreenSock as AnimatedCube };

@@ -60,4 +60,4 @@ const MaterialMatcap = (): JSX.Element => {
   );
 };
 
-export { MaterialMatcap as Matcap };
+export { MaterialMatcap as Material };

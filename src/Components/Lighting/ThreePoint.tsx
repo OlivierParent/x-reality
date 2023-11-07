@@ -127,4 +127,4 @@ const LightingThreePoint = (): JSX.Element => {
   );
 };
 
-export { LightingThreePoint as ThreePoint };
+export { LightingThreePoint as Lighting };

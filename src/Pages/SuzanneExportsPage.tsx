@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { SuzanneExports } from "Components/Suzanne/Exports";
-import { SceneLayout as Layout } from "Layouts/SceneLayout";
+import { Layout } from "Layouts/SceneLayout";
 
 /**
  * Page for SuzanneExports.

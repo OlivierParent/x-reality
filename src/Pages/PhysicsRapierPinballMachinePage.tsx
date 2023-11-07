@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { RapierPinballMachine as PinballMachine } from "Examples/Rapier/PinballMachine";
-import { SceneRapierPinballLayout as Layout } from "Layouts/SceneRapierPinballLayout";
+import { Layout } from "Layouts/SceneRapierPinballLayout";
 
 /**
  * Page for Rapier Pinball Machine.

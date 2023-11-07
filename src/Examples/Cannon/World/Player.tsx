@@ -5,7 +5,7 @@ import {
   Sphere,
   useKeyboardControls,
 } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { GroupProps, useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { Vector3 } from "three";
 
@@ -17,7 +17,13 @@ const emptyVector = new Vector3();
 const positionVector = new Vector3();
 const velocityVector = new Vector3();
 
-const CannonWorldPlayer = () => {
+/**
+ * Player.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const CannonWorldPlayer = (props: GroupProps): JSX.Element => {
   // Keyboard Controls.
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
@@ -77,7 +83,7 @@ const CannonWorldPlayer = () => {
   });
 
   return (
-    <group name="Player">
+    <group name="Player" {...props}>
       <PointerLockControls ref={pointerRef} />
       <Sphere args={[PLAYER.SIZE, 8, 8]} ref={playerRef}>
         <meshBasicMaterial color={0x00ff00} wireframe={true} visible={false} />
@@ -93,4 +99,4 @@ const CannonWorldPlayer = () => {
   );
 };
 
-export { CannonWorldPlayer };
+export { CannonWorldPlayer as Player };

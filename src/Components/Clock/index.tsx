@@ -1,8 +1,8 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { ClockAnalogue as Analogue } from "Components/Clock/Analogue";
-import { ClockDigital as Digital } from "Components/Clock/Digital";
+import { Clock as ClockAnalogue } from "Components/Clock/Analogue";
+import { Clock as ClockDigital } from "Components/Clock/Digital";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
@@ -19,8 +19,8 @@ const Clock = (props: GroupProps): JSX.Element => {
       showClock: {
         label: "Clock",
         options: {
-          Analogue: <Analogue />,
-          Digital: <Digital />,
+          Analogue: <ClockAnalogue />,
+          Digital: <ClockDigital />,
         },
       },
     },

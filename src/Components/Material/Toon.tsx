@@ -63,4 +63,4 @@ const MaterialToon = (): JSX.Element => {
   );
 };
 
-export { MaterialToon as Toon };
+export { MaterialToon as Material };

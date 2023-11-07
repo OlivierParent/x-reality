@@ -2,9 +2,15 @@ import { useGLTF } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { MathUtils } from "three";
 
-import cubeGlb from "./assets/BakedNormals.glb";
+import cubeGlb from "Components/Texture/assets/BakedNormals.glb";
 
-const TextureBakedNormals = (props: GroupProps) => {
+/**
+ * Texture with Baked Normals.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const TextureBakedNormals = (props: GroupProps): JSX.Element => {
   const { nodes, materials }: any = useGLTF(cubeGlb, true);
   return (
     <group name="Texture with Baked Normals" {...props}>
@@ -23,4 +29,4 @@ const TextureBakedNormals = (props: GroupProps) => {
   );
 };
 
-export { TextureBakedNormals };
+export { TextureBakedNormals as Texture };

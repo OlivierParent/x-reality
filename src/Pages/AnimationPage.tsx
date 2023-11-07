@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { Animation } from "Components/Animation";
-import { SceneLayout as Layout } from "Layouts/SceneLayout";
+import { Layout } from "Layouts/SceneLayout";
 
 /**
  * Page for Animation.

@@ -65,4 +65,4 @@ const MaterialLambert = (): JSX.Element => {
   );
 };
 
-export { MaterialLambert as Lambert };
+export { MaterialLambert as Material };

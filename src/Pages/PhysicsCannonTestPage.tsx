@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { CannonTest } from "Examples/Cannon/Test";
-import { SceneCannonPoseLayout as Layout } from "Layouts/SceneCannonPoseLayout";
+import { Layout } from "Layouts/SceneCannonPoseLayout";
 
 /**
  * Page for Cannon-es Test.

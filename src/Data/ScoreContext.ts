@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { ScoreState } from "./ScoreState";
+import { ScoreState } from "Data/ScoreState";
 
 const scoreState = new ScoreState();
 

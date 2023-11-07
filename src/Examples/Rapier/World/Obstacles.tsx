@@ -1,12 +1,13 @@
 import { Box } from "@react-three/drei";
+import { GroupProps } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 
-import { OBSTACLE } from "Examples/Obstacle.config";
 import {
   cursorActiveEventHandler,
   cursorInactiveEventHandler,
 } from "Components/UserInterface/CursorOverlay";
+import { OBSTACLE } from "Examples/Obstacle.config";
 
 const RANDOM_COORDINATES = new Array(OBSTACLE.BOX.COUNT).fill(null).map(() => {
   const x = Math.floor(
@@ -49,9 +50,15 @@ const Obstacle = ({ position }: ObstacleProps) => {
   );
 };
 
-const RapierWorldObstacles = () => {
+/**
+ * Obstacles.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const RapierWorldObstacles = (props: GroupProps): JSX.Element => {
   return (
-    <group name="Obstacles">
+    <group name="Obstacles" {...props}>
       {obstacles.map(({ position }, index) => {
         return <Obstacle key={index} position={position} />;
       })}
@@ -59,4 +66,4 @@ const RapierWorldObstacles = () => {
   );
 };
 
-export { RapierWorldObstacles };
+export { RapierWorldObstacles as Obstacles };

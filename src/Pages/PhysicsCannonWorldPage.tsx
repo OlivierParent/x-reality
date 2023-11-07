@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { CannonWorld } from "Examples/Cannon/World";
-import { SceneCannonFirstPersonLayout as Layout } from "Layouts/SceneCannonFirstPersonLayout";
+import { Layout } from "Layouts/SceneCannonFirstPersonLayout";
 
 /**
  * Page for Cannon-es World.

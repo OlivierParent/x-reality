@@ -3,9 +3,8 @@ import { GroupProps, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { DoubleSide, Group, MathUtils } from "three";
 
+import { CLOCK } from "Components/Clock/Analogue.config";
 import { MathCircle } from "Utils/MathCircle";
-
-import { CLOCK } from "./Analogue.config";
 
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
@@ -202,4 +201,4 @@ const ClockAnalogue = (props: GroupProps) => {
   );
 };
 
-export { ClockAnalogue };
+export { ClockAnalogue as Clock };

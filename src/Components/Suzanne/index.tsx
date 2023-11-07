@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 import { Material } from "Components/Material";
 
-import suzanneSubdivisionSmoothShadingGlb from "./assets/suzanne_subdivision_smooth_shading.glb";
+import suzanneSubdivisionSmoothShadingGlb from "Components/Suzanne/assets/suzanne_subdivision_smooth_shading.glb";
 
 /**
  * Suzanne model.

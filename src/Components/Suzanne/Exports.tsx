@@ -1,10 +1,10 @@
-import { useGLTF, Html } from "@react-three/drei";
+import { Html, useGLTF } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 
-import suzanneDefaultFlatShadingGlb from "./assets/suzanne_default_flat_shading.glb";
-import suzanneDefaultSmoothShadingGlb from "./assets/suzanne_default_smooth_shading.glb";
-import suzanneSubdivisionFlatShadingGlb from "./assets/suzanne_subdivision_flat_shading.glb";
-import suzanneSubdivisionSmoothShadingGlb from "./assets/suzanne_subdivision_smooth_shading.glb";
+import suzanneDefaultFlatShadingGlb from "Components/Suzanne/assets/suzanne_default_flat_shading.glb";
+import suzanneDefaultSmoothShadingGlb from "Components/Suzanne/assets/suzanne_default_smooth_shading.glb";
+import suzanneSubdivisionFlatShadingGlb from "Components/Suzanne/assets/suzanne_subdivision_flat_shading.glb";
+import suzanneSubdivisionSmoothShadingGlb from "Components/Suzanne/assets/suzanne_subdivision_smooth_shading.glb";
 
 import styles from "Styles/labels.module.css";
 

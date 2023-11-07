@@ -2,7 +2,7 @@ import { Circle } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { MathUtils } from "three";
 
-import { Reflector } from "Components/Material/Reflector";
+import { Material } from "Components/Material/Reflector";
 import { Painting } from "Components/Painting";
 import { SuzanneFrostedGlass } from "Components/Suzanne/FrostedGlass";
 
@@ -16,7 +16,7 @@ const Composition = (props: GroupProps) => {
         position={[0, -2.5, 0]}
         rotation={[MathUtils.degToRad(-90), 0, 0]}
       >
-        <Reflector />
+        <Material />
       </Circle>
     </group>
   );

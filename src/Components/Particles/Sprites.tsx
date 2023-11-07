@@ -4,7 +4,7 @@ import { folder, useControls } from "leva";
 import { SettingsLevaGeometryIcosahedron as IcosahedronGeometry } from "Settings/Leva/Geometry/Icosahedron";
 import { SettingsLevaMaterialPoints as PointsMaterial } from "Settings/Leva/Material/Points";
 
-import particleImage from "./assets/Arteveldehogeschool_favicon.png";
+import particleImage from "Components/Particles/assets/Arteveldehogeschool_favicon.png";
 
 const ParticlesSprites = () => {
   const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
@@ -39,4 +39,4 @@ const ParticlesSprites = () => {
   );
 };
 
-export { ParticlesSprites };
+export { ParticlesSprites as Particles };

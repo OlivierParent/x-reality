@@ -1,46 +1,26 @@
+import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { Demo } from "Components/Lighting/Demo";
-import { Studio } from "Components/Lighting/Studio";
-import { ThreePoint } from "Components/Lighting/ThreePoint";
-import { ThreePointVolumetric } from "Components/Lighting/ThreePointVolumetric";
+import { Lighting as LightingDemo } from "Components/Lighting/Demo";
+import { Lighting as LightingStudio } from "Components/Lighting/Studio";
+import { Lighting as LightingThreePoint } from "Components/Lighting/ThreePoint";
+import { Lighting as LightingThreePointVolumetric } from "Components/Lighting/ThreePointVolumetric";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
 const LIGHTING = Object.freeze({
-  Demo: "Demo",
-  None: "None",
-  Studio: "Studio",
-  ThreePoint: "ThreePoint",
-  ThreePointVolumetric: "ThreePoint Volumetric",
+  Demo: <LightingDemo />,
+  None: null,
+  Studio: <LightingStudio />,
+  ThreePoint: <LightingThreePoint />,
+  ThreePointVolumetric: <LightingThreePointVolumetric />,
 });
 
-function enableLighting(name: string) {
-  let element;
-  switch (name) {
-    case LIGHTING.Demo:
-      element = <Demo />;
-      break;
-    case LIGHTING.Studio:
-      element = <Studio />;
-      break;
-    case LIGHTING.ThreePoint:
-      element = <ThreePoint />;
-      break;
-    case LIGHTING.ThreePointVolumetric:
-      element = <ThreePointVolumetric />;
-      break;
-    default:
-      element = null;
-  }
-  return element;
-}
-
-const Lighting = () => {
-  const { lightingName } = useControls(
+const Lighting = (props: GroupProps): JSX.Element => {
+  const { lighting } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
-      lightingName: {
+      lighting: {
         label: "Lighting",
         options: {
           "None                  ": LIGHTING.None,
@@ -55,7 +35,11 @@ const Lighting = () => {
     Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
-  return enableLighting(lightingName);
+  return (
+    <group name="Lighting" {...props}>
+      {lighting}
+    </group>
+  );
 };
 
 export { Lighting };

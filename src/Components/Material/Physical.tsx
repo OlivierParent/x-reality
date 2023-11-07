@@ -107,4 +107,4 @@ const MaterialPhysical = (): JSX.Element => {
   );
 };
 
-export { MaterialPhysical as Physical };
+export { MaterialPhysical as Material };

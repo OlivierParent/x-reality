@@ -87,4 +87,4 @@ const SceneRapierPoseLayout = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-export { SceneRapierPoseLayout };
+export { SceneRapierPoseLayout as Layout };

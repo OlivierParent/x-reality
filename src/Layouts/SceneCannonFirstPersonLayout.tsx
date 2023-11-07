@@ -90,4 +90,4 @@ const SceneCannonFirstPersonLayout = ({
   );
 };
 
-export { SceneCannonFirstPersonLayout };
+export { SceneCannonFirstPersonLayout as Layout };

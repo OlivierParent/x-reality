@@ -53,4 +53,4 @@ const MaterialNormal = (): JSX.Element => {
   );
 };
 
-export { MaterialNormal as Normal };
+export { MaterialNormal as Material };

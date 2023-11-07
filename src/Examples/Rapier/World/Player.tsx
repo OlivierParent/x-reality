@@ -4,7 +4,7 @@ import {
   Sphere,
   useKeyboardControls,
 } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { GroupProps, useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 import { Vector3 } from "three";
@@ -16,7 +16,13 @@ const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 const velocityVector = new Vector3();
 const emptyVector = new Vector3();
 
-const RapierWorldPlayer = () => {
+/**
+ * Player.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const RapierWorldPlayer = (props: GroupProps): JSX.Element => {
   // Keyboard Controls.
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
   const moveForwardOn = useKeyboardControls((state) => state.moveForward);
@@ -66,7 +72,7 @@ const RapierWorldPlayer = () => {
   });
 
   return (
-    <group name="Player">
+    <group name="Player" {...props}>
       <PointerLockControls ref={pointerRef} />
       <RigidBody
         colliders="ball"
@@ -94,4 +100,4 @@ const RapierWorldPlayer = () => {
   );
 };
 
-export { RapierWorldPlayer };
+export { RapierWorldPlayer as Player };

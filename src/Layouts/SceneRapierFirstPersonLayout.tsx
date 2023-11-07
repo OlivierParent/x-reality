@@ -89,4 +89,4 @@ const SceneRapierFirstPersonLayout = ({
   );
 };
 
-export { SceneRapierFirstPersonLayout };
+export { SceneRapierFirstPersonLayout as Layout };

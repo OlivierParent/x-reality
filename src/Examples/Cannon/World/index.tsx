@@ -1,11 +1,17 @@
 import { GroupProps } from "@react-three/fiber";
 
-import { CannonWorldFloor as Floor } from "Examples/Cannon/World/Floor";
-import { CannonWorldObstacles as Obstacles } from "Examples/Cannon/World/Obstacles";
-import { CannonWorldPlayer as Player } from "Examples/Cannon/World/Player";
-import { CannonWorldStairs as Stairs } from "Examples/Cannon/World/Stairs";
+import { Floor } from "Examples/Cannon/World/Floor";
+import { Obstacles } from "Examples/Cannon/World/Obstacles";
+import { Player } from "Examples/Cannon/World/Player";
+import { Stairs } from "Examples/Cannon/World/Stairs";
 
-const CannonWorld = (props: GroupProps) => {
+/**
+ * World.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const CannonWorld = (props: GroupProps): JSX.Element => {
   return (
     <group name="World" {...props}>
       <Floor />

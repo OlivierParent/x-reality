@@ -139,4 +139,4 @@ const LightingStudio = (): JSX.Element => {
   );
 };
 
-export { LightingStudio as Studio };
+export { LightingStudio as Lighting };

@@ -84,4 +84,4 @@ const SceneCannonPoseLayout = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-export { SceneCannonPoseLayout };
+export { SceneCannonPoseLayout as Layout };

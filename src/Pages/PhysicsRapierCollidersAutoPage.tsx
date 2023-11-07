@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
-import { RapierCollidersAuto } from "Examples/Rapier/CollidersAuto";
-import { SceneRapierLayout as Layout } from "Layouts/SceneRapierLayout";
+import { Colliders } from "Examples/Rapier/Colliders/Auto";
+import { Layout } from "Layouts/SceneRapierLayout";
 
 /**
  * Page for Rapier Colliders Auto.
@@ -12,7 +12,7 @@ import { SceneRapierLayout as Layout } from "Layouts/SceneRapierLayout";
 const PhysicsRapierCollidersAutoPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
-      <RapierCollidersAuto {...props} />
+      <Colliders {...props} />
     </Layout>
   );
 };

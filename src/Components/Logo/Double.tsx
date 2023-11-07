@@ -3,7 +3,7 @@ import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import { Mesh } from "three";
 
-import gltfLogoGlb from "./assets/gltf-logo.glb";
+import gltfLogoGlb from "Components/Logo/assets/gltf-logo.glb";
 
 const LogoDouble = (props: GroupProps) => {
   const { scene }: any = useGLTF(gltfLogoGlb, true);
@@ -45,4 +45,4 @@ const LogoDouble = (props: GroupProps) => {
   );
 };
 
-export { LogoDouble };
+export { LogoDouble as Logo };

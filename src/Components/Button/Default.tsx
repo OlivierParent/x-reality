@@ -50,11 +50,13 @@ const ButtonDefault = (props: GroupProps): JSX.Element => {
 
   return (
     <group
+      name="Button Default"
       onClick={clickHandler}
       onDoubleClick={doubleClickHandler}
       onPointerOut={pointerOutHandler}
       onPointerOver={pointerOverHandler}
       scale={hover ? SCALE.LARGE : SCALE.SMALL}
+      {...props}
     >
       <mesh onPointerOut={pointerOutHandler} onPointerOver={pointerOverHandler}>
         <meshBasicMaterial
@@ -71,4 +73,4 @@ const ButtonDefault = (props: GroupProps): JSX.Element => {
   );
 };
 
-export { ButtonDefault as Default };
+export { ButtonDefault as Button };

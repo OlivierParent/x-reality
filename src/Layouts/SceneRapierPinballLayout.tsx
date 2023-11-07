@@ -85,4 +85,4 @@ const SceneRapierPinballLayout = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-export { SceneRapierPinballLayout };
+export { SceneRapierPinballLayout as Layout };

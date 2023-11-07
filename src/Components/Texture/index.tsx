@@ -1,17 +1,23 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { TextureBakedNormals as BakedNormals } from "Components/Texture/BakedNormals";
-import { TextureDefault as Default } from "Components/Texture/Default";
+import { Texture as TextureBakedNormals } from "Components/Texture/BakedNormals";
+import { Texture as TextureDefault } from "Components/Texture/Default";
 
 const TEXTURE = Object.freeze({
-  Default: "Default",
-  BakedNormals: "BakedNormals",
+  Default: <TextureDefault />,
+  BakedNormals: <TextureBakedNormals />,
 });
 
-const Texture = (props: GroupProps) => {
-  const { useTexture } = useControls("Components", {
-    useTexture: {
+/**
+ * Texture.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const Texture = (props: GroupProps): JSX.Element => {
+  const { texture } = useControls("Components", {
+    texture: {
       label: "Type",
       options: {
         "Default      ": TEXTURE.Default,
@@ -21,14 +27,9 @@ const Texture = (props: GroupProps) => {
     },
   });
 
-  function enableTexture(name: string, element: JSX.Element) {
-    return useTexture === name ? element : null;
-  }
-
   return (
-    <group name="Textures" {...props}>
-      {enableTexture(TEXTURE.Default, <Default />)}
-      {enableTexture(TEXTURE.BakedNormals, <BakedNormals />)}
+    <group name="Texture" {...props}>
+      {texture}
     </group>
   );
 };

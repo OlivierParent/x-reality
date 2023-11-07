@@ -1,31 +1,26 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { LipsumDefault as Default } from "Components/Lipsum/Default";
-import { LipsumFonts as Fonts } from "Components/Lipsum/Fonts";
+import { Lipsum as LipsumDefault } from "Components/Lipsum/Default";
+import { Lipsum as LipsumFonts } from "Components/Lipsum/Fonts";
 
 const LIPSUM = Object.freeze({
-  Default: "Default",
-  Fonts: "Fonts",
+  Default: <LipsumDefault />,
+  Fonts: <LipsumFonts />,
 });
 
 const Lipsum = (props: GroupProps) => {
-  const { useLipsum } = useControls("Components", {
-    useLipsum: {
+  const { lipsum } = useControls("Components", {
+    lipsum: {
       label: "Lipsum",
       options: LIPSUM,
       value: LIPSUM.Default,
     },
   });
 
-  function enableLipsum(name: string, element: JSX.Element) {
-    return useLipsum === name ? element : null;
-  }
-
   return (
     <group name="Lipsum" {...props}>
-      {enableLipsum(LIPSUM.Default, <Default />)}
-      {enableLipsum(LIPSUM.Fonts, <Fonts />)}
+      {lipsum}
     </group>
   );
 };

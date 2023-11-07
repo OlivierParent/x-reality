@@ -2,8 +2,8 @@ import { Svg } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { Vector3 } from "three";
 
-import arteveldehogeschoolLogo from "./assets/arteveldehogeschool_logo.svg";
-import svgLogo from "./assets/SVG_logo.svg";
+import arteveldehogeschoolLogo from "Components/Image/assets/arteveldehogeschool_logo.svg";
+import svgLogo from "Components/Image/assets/SVG_logo.svg";
 
 const svgLogoUrl =
   "https://upload.wikimedia.org/wikipedia/commons/0/02/SVG_logo.svg";
@@ -25,4 +25,4 @@ const ImageSvgDrei = (props: GroupProps) => {
   );
 };
 
-export { ImageSvgDrei };
+export { ImageSvgDrei as Image };

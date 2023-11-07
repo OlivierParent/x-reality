@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { RapierTest } from "Examples/Rapier/Test";
-import { SceneRapierPoseLayout as Layout } from "Layouts/SceneRapierPoseLayout";
+import { Layout } from "Layouts/SceneRapierPoseLayout";
 
 /**
  * Page for Rapier Test.

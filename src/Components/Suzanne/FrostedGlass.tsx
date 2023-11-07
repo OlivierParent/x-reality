@@ -2,9 +2,9 @@ import { useGLTF } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { forwardRef } from "react";
 
-import { PhysicalFrostedGlass } from "Components/Material/PhysicalFrostedGlass";
+import { Material } from "Components/Material/PhysicalFrostedGlass";
 
-import suzanneDefaultFlatShadingGlb from "./assets/suzanne_default_flat_shading.glb";
+import suzanneDefaultFlatShadingGlb from "Components/Suzanne/assets/suzanne_default_flat_shading.glb";
 
 /**
  * Suzanne model with frosted glass material.
@@ -19,7 +19,7 @@ const SuzanneFrostedGlass = forwardRef(
     return (
       <group {...props}>
         <mesh geometry={nodes.Suzanne.geometry} ref={ref}>
-          <PhysicalFrostedGlass />
+          <Material />
         </mesh>
       </group>
     );

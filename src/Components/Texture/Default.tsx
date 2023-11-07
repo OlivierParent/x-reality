@@ -1,12 +1,18 @@
 import { useGLTF } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 
-import cubeGlb from "./assets/TexturedCube.glb";
+import cubeGlb from "Components/Texture/assets/TexturedCube.glb";
 
-const TextureDefault = (props: GroupProps) => {
+/**
+ * Texture.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const TextureDefault = (props: GroupProps): JSX.Element => {
   const { nodes, materials }: any = useGLTF(cubeGlb, true);
   return (
-    <group name="Texture" {...props}>
+    <group name="Texture Default" {...props}>
       <group position={[-1.5, 0, 0]}>
         <mesh
           geometry={nodes.Cube_1.geometry}
@@ -28,4 +34,4 @@ const TextureDefault = (props: GroupProps) => {
   );
 };
 
-export { TextureDefault };
+export { TextureDefault as Texture };

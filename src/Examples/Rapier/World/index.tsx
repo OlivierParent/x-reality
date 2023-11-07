@@ -1,19 +1,25 @@
 import { GroupProps } from "@react-three/fiber";
 
-import { SoundPositional } from "Components/Sound/Positional";
-import { RapierWorldFloor as Floor } from "Examples/Rapier/World/Floor";
-import { RapierWorldObstacles as Obstacles } from "Examples/Rapier/World/Obstacles";
-import { RapierWorldPlayer as Player } from "Examples/Rapier/World/Player";
-import { RapierWorldStairs as Stairs } from "Examples/Rapier/World/Stairs";
+import { Sound } from "Components/Sound/Positional";
+import { Floor } from "Examples/Rapier/World/Floor";
+import { Obstacles } from "Examples/Rapier/World/Obstacles";
+import { Player } from "Examples/Rapier/World/Player";
+import { Stairs } from "Examples/Rapier/World/Stairs";
 
-const RapierWorld = (props: GroupProps) => {
+/**
+ * World.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const RapierWorld = (props: GroupProps): JSX.Element => {
   return (
     <group name="World" {...props}>
       <Floor />
       <Obstacles />
       <Player />
+      <Sound />
       <Stairs />
-      <SoundPositional />
     </group>
   );
 };

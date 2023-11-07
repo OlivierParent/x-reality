@@ -2,7 +2,7 @@ import { GroupProps } from "@react-three/fiber";
 
 import { Geometry2D } from "Components/Geometry2D";
 import { Material } from "Components/Material";
-import { SceneLayout as Layout } from "Layouts/SceneLayout";
+import { Layout } from "Layouts/SceneLayout";
 
 /**
  * Page for 2D Geometry.

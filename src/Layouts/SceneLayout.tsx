@@ -69,4 +69,4 @@ const SceneLayout = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-export { SceneLayout };
+export { SceneLayout as Layout };

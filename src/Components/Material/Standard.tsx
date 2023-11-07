@@ -74,4 +74,4 @@ const MaterialStandard = (): JSX.Element => {
   );
 };
 
-export { MaterialStandard as Standard };
+export { MaterialStandard as Material };

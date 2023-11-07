@@ -69,4 +69,4 @@ const SceneLayoutFrameloopDemand = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-export { SceneLayoutFrameloopDemand };
+export { SceneLayoutFrameloopDemand as Layout };

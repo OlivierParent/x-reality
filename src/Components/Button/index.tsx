@@ -1,14 +1,14 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { Default } from "Components/Button/Default";
-import { GreenSock } from "Components/Button/GreenSock";
+import { Button as ButtonDefault } from "Components/Button/Default";
+import { Button as ButtonGreenSock } from "Components/Button/GreenSock";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
 const BUTTON = Object.freeze({
-  Default: <Default />,
-  GreenSock: <GreenSock />,
+  Default: <ButtonDefault />,
+  GreenSock: <ButtonGreenSock />,
 });
 
 const Button = (props: GroupProps): JSX.Element => {

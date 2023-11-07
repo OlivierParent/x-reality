@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import { NAVIGATION } from "Configs/navigation";
 
-import styles from "./Navigation.module.css";
+import styles from "Components/UserInterface/Navigation.module.css";
 
 /**
  * Navigation menu.

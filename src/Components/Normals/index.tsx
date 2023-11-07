@@ -3,7 +3,7 @@ import { GroupProps, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh } from "three";
 
-import normalsGlb from "./assets/normals.glb";
+import normalsGlb from "Components/Normals/assets/normals.glb";
 
 const Normals = (props: GroupProps) => {
   const { scene }: any = useGLTF(normalsGlb, true);

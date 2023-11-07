@@ -4,12 +4,10 @@ import { Mesh, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
 
-function getPosition(): [number, number, number] {
-  return [4, 4, 0].map((value) => (Math.random() * 2 - 1) * value) as [
-    number,
-    number,
-    number
-  ];
+function getPosition() {
+  return new Vector3(
+    ...[4, 4, 0].map((value) => (Math.random() * 2 - 1) * value)
+  );
 }
 
 enum OPACITY {
@@ -55,7 +53,7 @@ const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
   });
 
   return (
-    <group {...props} name="Animated Cube">
+    <group name="Animated Cube Default" {...props}>
       <mesh
         onClick={clickHandler}
         onPointerOut={pointerOutHandler}
@@ -76,4 +74,4 @@ const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
   );
 };
 
-export { AnimatedCubeDefault as Default };
+export { AnimatedCubeDefault as AnimatedCube };

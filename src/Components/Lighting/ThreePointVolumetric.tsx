@@ -150,4 +150,4 @@ const LightingThreePointVolumetric = (): JSX.Element => {
   );
 };
 
-export { LightingThreePointVolumetric as ThreePointVolumetric };
+export { LightingThreePointVolumetric as Lighting };

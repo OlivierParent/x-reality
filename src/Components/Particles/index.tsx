@@ -1,31 +1,26 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { ParticlesDefault as Default } from "Components/Particles/Default";
-import { ParticlesSprites as Sprites } from "Components/Particles/Sprites";
+import { Particles as ParticlesDefault } from "Components/Particles/Default";
+import { Particles as ParticlesSprites } from "Components/Particles/Sprites";
 
 const PARTICLES = Object.freeze({
-  Default: "Default",
-  Sprites: "Sprites",
+  Default: <ParticlesDefault />,
+  Sprites: <ParticlesSprites />,
 });
 
 const Particles = (props: GroupProps) => {
-  const { useParticles } = useControls("Components", {
-    useParticles: {
+  const { particles } = useControls("Components", {
+    particles: {
       label: "Particles",
       options: PARTICLES,
       value: PARTICLES.Default,
     },
   });
 
-  function enableParticles(name: string, element: JSX.Element) {
-    return useParticles === name ? element : null;
-  }
-
   return (
     <group name="Particles" {...props}>
-      {enableParticles(PARTICLES.Default, <Default />)}
-      {enableParticles(PARTICLES.Sprites, <Sprites />)}
+      {particles}
     </group>
   );
 };

@@ -74,4 +74,4 @@ const MaterialPhong = (): JSX.Element => {
   );
 };
 
-export { MaterialPhong as Phong };
+export { MaterialPhong as Material };

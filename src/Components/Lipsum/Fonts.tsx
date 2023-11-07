@@ -63,4 +63,4 @@ const LipsumFonts = (props: GroupProps) => {
   );
 };
 
-export { LipsumFonts };
+export { LipsumFonts as Lipsum };

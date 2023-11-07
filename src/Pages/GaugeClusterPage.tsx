@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { GaugeCluster } from "Components/GaugeCluster";
-import { SceneLayout as Layout } from "Layouts/SceneLayout";
+import { Layout } from "Layouts/SceneLayout";
 
 /**
  * Page for Gauge Cluster.

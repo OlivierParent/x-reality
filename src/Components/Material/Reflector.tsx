@@ -116,4 +116,4 @@ const MaterialReflector = (): JSX.Element => {
   );
 };
 
-export { MaterialReflector as Reflector };
+export { MaterialReflector as Material };

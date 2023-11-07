@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { Calendar } from "Components/Calendar";
-import { SceneLayoutFrameloopDemand as Layout } from "Layouts/SceneLayoutFrameloopDemand";
+import { Layout } from "Layouts/SceneLayoutFrameloopDemand";
 
 /**
  * Page for Calendar.

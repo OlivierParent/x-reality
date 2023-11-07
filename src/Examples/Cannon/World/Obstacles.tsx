@@ -1,5 +1,6 @@
 import { useBox } from "@react-three/cannon";
 import { Box } from "@react-three/drei";
+import { GroupProps } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh } from "three";
 
@@ -64,9 +65,15 @@ const Obstacle = ({ position }: ObstacleProps) => {
   );
 };
 
-const CannonWorldObstacles = () => {
+/**
+ * Obstacles.
+ *
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
+ */
+const CannonWorldObstacles = (props: GroupProps): JSX.Element => {
   return (
-    <group name="Obstacles">
+    <group name="Obstacles" {...props}>
       {obstacles.map(({ position }, index) => {
         return <Obstacle key={index} position={position} />;
       })}
@@ -74,4 +81,4 @@ const CannonWorldObstacles = () => {
   );
 };
 
-export { CannonWorldObstacles };
+export { CannonWorldObstacles as Obstacles };

@@ -65,4 +65,4 @@ const MaterialBasic = (): JSX.Element => {
   );
 };
 
-export { MaterialBasic as Basic };
+export { MaterialBasic as Material };

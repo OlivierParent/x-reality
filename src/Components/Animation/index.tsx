@@ -3,7 +3,7 @@ import { GroupProps, useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import { AnimationMixer, Mesh } from "three";
 
-import animationGlb from "./assets/animation.glb";
+import animationGlb from "Components/Animation/assets/animation.glb";
 
 const Animation = (props: GroupProps) => {
   const { animations, scene }: any = useGLTF(animationGlb, true);

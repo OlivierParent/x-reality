@@ -196,4 +196,4 @@ const LightingDemo = (): JSX.Element => {
   );
 };
 
-export { LightingDemo as Demo };
+export { LightingDemo as Lighting };

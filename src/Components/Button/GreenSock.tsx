@@ -64,9 +64,9 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   }, [hover]);
 
   useEffect(() => {
-    const values = toggle ? ROTATION.ACTIVE : ROTATION.INACTIVE;
+    const rotation = toggle ? ROTATION.ACTIVE : ROTATION.INACTIVE;
     gsap.to(buttonRef.current.rotation, {
-      ...values,
+      ...rotation,
       ease: "power2.inOut", // https://gsap.com/docs/v3/Eases/
     });
   }, [toggle]);
@@ -92,11 +92,13 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
 
   return (
     <group
+      name="Button GreenSock"
       onClick={clickHandler}
       onDoubleClick={doubleClickHandler}
       onPointerOut={pointerOutHandler}
       onPointerOver={pointerOverHandler}
       ref={buttonRef}
+      {...props}
     >
       <mesh onPointerOut={pointerOutHandler} onPointerOver={pointerOverHandler}>
         <meshBasicMaterial ref={materialRef} transparent={true} />
@@ -109,4 +111,4 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   );
 };
 
-export { ButtonGreenSock as GreenSock };
+export { ButtonGreenSock as Button };

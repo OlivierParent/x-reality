@@ -66,4 +66,4 @@ const LipsumDefault = (props: GroupProps) => {
   );
 };
 
-export { LipsumDefault };
+export { LipsumDefault as Lipsum };

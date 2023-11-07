@@ -3,9 +3,9 @@ import { GroupProps } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { PositionalAudio as PositionalAudioType } from "three";
 
-import badassAudioFile from "./audio/bensound-badass.mp3";
+import badassAudioFile from "Components/Sound/audio/bensound-badass.mp3";
 
-const SoundPositional = (props: GroupProps): JSX.Element => {
+const SoundGlobal = (props: GroupProps): JSX.Element => {
   const positionalAudioRef = useRef<PositionalAudioType>(null!);
 
   const [isPlaying, setIsPlaying] = useState(true);
@@ -37,4 +37,4 @@ const SoundPositional = (props: GroupProps): JSX.Element => {
   );
 };
 
-export { SoundPositional };
+export { SoundGlobal as Sound };

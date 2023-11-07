@@ -23,4 +23,4 @@ const ClockDigital = (props: GroupProps) => {
   );
 };
 
-export { ClockDigital };
+export { ClockDigital as Clock };

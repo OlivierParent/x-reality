@@ -27,4 +27,4 @@ const MaterialPhysicalFrostedGlass = (): JSX.Element => {
   );
 };
 
-export { MaterialPhysicalFrostedGlass as PhysicalFrostedGlass };
+export { MaterialPhysicalFrostedGlass as Material };

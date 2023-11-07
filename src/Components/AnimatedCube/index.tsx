@@ -1,14 +1,14 @@
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { Default } from "Components/AnimatedCube/Default";
-import { GreenSock } from "Components/AnimatedCube/GreenSock";
+import { AnimatedCube as AnimatedCubeDefault } from "Components/AnimatedCube/Default";
+import { AnimatedCube as AnimatedCubeGreenSock } from "Components/AnimatedCube/GreenSock";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
 const ANIMATED_CUBE = Object.freeze({
-  Default: <Default />,
-  GreenSock: <GreenSock />,
+  Default: <AnimatedCubeDefault />,
+  GreenSock: <AnimatedCubeGreenSock />,
 });
 
 const AnimatedCube = (props: GroupProps): JSX.Element => {
