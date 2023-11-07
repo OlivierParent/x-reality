@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/x-reality/static/css/main.eb98897e.css",
-    "main.js": "/x-reality/static/js/main.4d6e7596.js",
+    "main.css": "/x-reality/static/css/main.ee13a9a7.css",
+    "main.js": "/x-reality/static/js/main.7f62d1cb.js",
     "static/media/bensound-badass.mp3": "/x-reality/static/media/bensound-badass.8ef4f40c2805fd404725.mp3",
     "static/media/BakedNormals.glb": "/x-reality/static/media/BakedNormals.03580610c404bbe4bf6b.glb",
     "static/media/TexturedCube.glb": "/x-reality/static/media/TexturedCube.2b78eebcca182be3ab54.glb",
@@ -19,7 +19,7 @@
     "index.html": "/x-reality/index.html"
   },
   "entrypoints": [
-    "static/css/main.eb98897e.css",
-    "static/js/main.4d6e7596.js"
+    "static/css/main.ee13a9a7.css",
+    "static/js/main.7f62d1cb.js"
   ]
 }

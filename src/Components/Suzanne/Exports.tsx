@@ -33,15 +33,18 @@ const SuzanneExports = (props: GroupProps, ref: any): JSX.Element => {
   );
 
   const htmlProps = {
+    distanceFactor: 10,
     className: styles["label"],
-    //  position: [0, -1.25, 0.5]
   };
 
   return (
     <group {...props}>
       <group position={[-4.5, 0, 0]}>
         <primitive object={sceneDefaultFlatShading} />
-        <Html {...htmlProps} position={[0, -1.25, 0.5]}>
+        <Html //
+          position={[0, -1.25, 0.5]}
+          {...htmlProps}
+        >
           <h2>Suzanne</h2>
           <p>Default</p>
           <p>Flat Shading</p>
@@ -50,7 +53,10 @@ const SuzanneExports = (props: GroupProps, ref: any): JSX.Element => {
       </group>
       <group position={[-1.5, 0, 0]}>
         <primitive object={sceneDefaultSmoothShading} />
-        <Html {...htmlProps} position={[0, -1.25, 0.5]}>
+        <Html //
+          position={[0, -1.25, 0.5]}
+          {...htmlProps}
+        >
           <h2>Suzanne</h2>
           <p>Default</p>
           <p>Smooth Shading</p>
@@ -59,7 +65,10 @@ const SuzanneExports = (props: GroupProps, ref: any): JSX.Element => {
       </group>
       <group position={[1.5, 0, 0]}>
         <primitive object={sceneSubdivisionFlatShading} />
-        <Html {...htmlProps} position={[0, -1.25, 0.5]}>
+        <Html //
+          position={[0, -1.25, 0.5]}
+          {...htmlProps}
+        >
           <h2>Suzanne</h2>
           <p>Subdivision Surface</p>
           <p>Flat Shading</p>
@@ -68,7 +77,10 @@ const SuzanneExports = (props: GroupProps, ref: any): JSX.Element => {
       </group>
       <group position={[4.5, 0, 0]}>
         <primitive object={sceneSubdivisionSmoothShading} />
-        <Html {...htmlProps} position={[0, -1.25, 0.5]}>
+        <Html //
+          position={[0, -1.25, 0.5]}
+          {...htmlProps}
+        >
           <h2>Suzanne</h2>
           <p>Subdivision Surface</p>
           <p>Smooth Shading</p>
