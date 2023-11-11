@@ -37,7 +37,7 @@ const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
   const [hover, setHover] = useState(false);
   const [position, setPosition] = useState(new Vector3());
 
-  // Event Handlers.
+  // Event handlers.
   const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
     ev.stopPropagation();
     setColor(colors.next().value as string);

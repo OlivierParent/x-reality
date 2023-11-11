@@ -44,7 +44,7 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   const [hover, setHover] = useState(false);
   const [position, setPosition] = useState<Vector3>(new Vector3(0, 0, 0));
 
-  // Event Handlers.
+  // Event handlers.
   const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
     ev.stopPropagation();
     const nextColor = colors.next().value as string;

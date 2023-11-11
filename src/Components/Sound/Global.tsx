@@ -1,38 +1,38 @@
-import { PositionalAudio, Text } from "@react-three/drei";
+import { Text, Text3D } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
-import { useRef, useState } from "react";
-import { PositionalAudio as PositionalAudioType } from "three";
+import { useEffect, useState } from "react";
 
-import badassAudioFile from "Components/Sound/audio/bensound-badass.mp3";
+import evolutionAudioFile from "Components/Sound/audio/bensound-evolution.mp3";
+
+const audio = new Audio(evolutionAudioFile);
+audio.volume = 0.02;
 
 const SoundGlobal = (props: GroupProps): JSX.Element => {
-  const positionalAudioRef = useRef<PositionalAudioType>(null!);
+  // States.
+  const [toggle, setToggle] = useState(false);
 
-  const [isPlaying, setIsPlaying] = useState(true);
+  // Event handlers.
+  const clickHandler = () => {
+    setToggle((state) => !state);
+  };
+
+  useEffect(() => {
+    if (toggle) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }, [toggle]);
 
   return (
     <group {...props}>
-      <Text
-        onClick={() => {
-          console.log(
-            isPlaying,
-            positionalAudioRef.current,
-            typeof positionalAudioRef.current
-          );
-          //   isPlaying
-          //     ? positionalAudioRef.current.stop()
-          //     : positionalAudioRef.current.play();
-          setIsPlaying((state) => !state);
-        }}
+      <Text //
+        fontSize={0.2}
+        onClick={clickHandler}
+        position={[0, 0.5, 0]}
       >
-        Music: https://www.bensound.com
+        Global Audio, {toggle ? "playing" : "music"}: https://www.bensound.com
       </Text>
-      <PositionalAudio
-        distance={1}
-        loop={true}
-        ref={positionalAudioRef}
-        url={badassAudioFile}
-      />
     </group>
   );
 };
