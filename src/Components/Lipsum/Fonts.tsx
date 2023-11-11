@@ -48,10 +48,10 @@ const LipsumFonts = (props: GroupProps) => {
               <Text position={[0, size, 0]}>{fontFamily.name}</Text>
               <Text
                 color={color}
-                textAlign="center"
                 font={fontFamily.url}
                 fontSize={size}
                 key={fontFamily.name}
+                textAlign="center"
               >
                 {string}
               </Text>

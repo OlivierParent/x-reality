@@ -11,6 +11,7 @@ export namespace KEYBINDINGS {
     pinballFlipperRight = "pinballFlipperRight",
     pinballFlippers = "pinballFlippers",
     pinballShoot = "pinballShoot",
+    run = "run",
   }
 
   export const ESDF: Array<KeyboardControlsEntry> = [
@@ -43,6 +44,7 @@ export namespace KEYBINDINGS {
 
   export const OTHER: Array<KeyboardControlsEntry> = [
     { name: CONTROLS.jump, keys: ["Space"] }, //
+    { name: CONTROLS.run, keys: ["Shift"] }, //
   ];
 
   export const AZERTY: Array<KeyboardControlsEntry> = [...ZQSD, ...OTHER];

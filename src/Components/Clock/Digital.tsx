@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { MathUtils } from "three";
 
 const ClockDigital = (props: GroupProps) => {
+  // References.
   const clockRef = useRef<any>(null!);
 
   useEffect(() => {

@@ -35,8 +35,11 @@ const gsapTimeline: any = gsap.timeline();
  * @returns { JSX.Element }
  */
 const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
+  // References.
   const cubeRef = useRef<Mesh>(null!);
   const materialRef = useRef<MeshStandardMaterial>(null!);
+
+  // States.
   const [color, setColor] = useState(initialColor);
   const [hover, setHover] = useState(false);
   const [position, setPosition] = useState<Vector3>(new Vector3(0, 0, 0));

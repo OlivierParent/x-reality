@@ -17,7 +17,6 @@ const SoundPositional = (props: GroupProps): JSX.Element => {
           //     : positionalAudioRef.current.play();
         }}
         onPointerEnter={() => {
-          console.log(positionalAudioRef.current);
           if (!positionalAudioRef.current.isPlaying) {
             positionalAudioRef.current.play();
           }

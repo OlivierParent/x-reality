@@ -7,7 +7,7 @@ const ROTATION = Object.freeze({
   ACTIVE: new Euler(Math.PI / 4, Math.PI / 6),
   INACTIVE: new Euler(0, 0),
 });
-const SAFE_OFFSET = 0.001;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
 enum COLOR {
   BLUE = 0x0000ff,

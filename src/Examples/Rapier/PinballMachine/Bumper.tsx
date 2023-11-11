@@ -25,6 +25,7 @@ const height = 0.25;
 const RapierPinballMachineBumper = (props: BumperProps): JSX.Element => {
   const { position = new Vector3(0, 0, 0) } = props;
 
+  // References.
   const bumperRef = useRef<MeshBasicMaterial>(null);
 
   return (

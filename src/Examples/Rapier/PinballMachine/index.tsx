@@ -36,11 +36,17 @@ const rightOrientation: OrientationValue = "right";
  * @returns {JSX.Element}
  */
 const RapierPinballMachine = (props: GroupProps): JSX.Element => {
+  // Contexts.
   const scoreState = useContext(ScoreContext);
-  const [counter, setCounter] = useState<number>(0);
+
+  // References.
   const ballLeft = useRef<RapierRigidBody>(null);
   const ballMiddle = useRef<RapierRigidBody>(null);
   const ballRight = useRef<RapierRigidBody>(null);
+
+  // States.
+  const [counter, setCounter] = useState<number>(0);
+
   useControls(
     LEVA.SCHEMA.SIMULATION,
     {

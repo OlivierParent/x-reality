@@ -31,14 +31,14 @@ const LogoDouble = (props: GroupProps) => {
     <group name="Double Logo" {...props}>
       <primitive
         object={scene}
-        position={[-1, -1, 0]}
         onClick={clickHandler}
+        position={[-1, -1, 0]}
         ref={firstLogoRef}
       />
       <primitive
         object={sceneClone}
-        position={[1, 1, 0]}
         onClick={clickHandler}
+        position={[1, 1, 0]}
         ref={secondLogoRef}
       />
     </group>

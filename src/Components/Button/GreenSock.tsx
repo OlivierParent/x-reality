@@ -8,7 +8,7 @@ const ROTATION = Object.freeze({
   ACTIVE: { x: Math.PI / 4, y: Math.PI / 6 },
   INACTIVE: { x: 0, y: 0 },
 });
-const SAFE_OFFSET = 0.001;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 const SCALE = Object.freeze({
   LARGE: new Vector3().setScalar(1.25),
   SMALL: new Vector3().setScalar(1),
@@ -36,8 +36,11 @@ const gsapObject = { color: initialColor };
  * @returns { JSX.Element }
  */
 const ButtonGreenSock = (props: GroupProps): JSX.Element => {
+  // References.
   const buttonRef = useRef<Group>(null!);
   const materialRef = useRef<MeshBasicMaterial>(null!);
+
+  // States.
   const [color, setColor] = useState(COLOR.RED);
   const [hover, setHover] = useState(false);
   const [toggle, setToggle] = useState(false);

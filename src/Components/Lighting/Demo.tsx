@@ -115,6 +115,7 @@ const LightingDemo = (): JSX.Element => {
   const target = new Object3D();
   scene.add(target);
 
+  // References.
   const directionalLightRef = useRef<DirectionalLight>(null!);
   const hemisphereLightRef = useRef<HemisphereLight>(null!);
   const pointLightRef = useRef<PointLight>(null!);

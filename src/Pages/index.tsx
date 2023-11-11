@@ -40,64 +40,115 @@ const Pages = (props: RoutesProps): JSX.Element => {
 
   return (
     <Routes {...props}>
-      <Route element={<Navigate to={rootPath} />} path={allPath} />
-      <Route element={<Navigate to={homePath} />} path={rootPath} />
+      <Route //
+        element={<Navigate to={rootPath} />}
+        path={allPath}
+      />
+      <Route //
+        element={<Navigate to={homePath} />}
+        path={rootPath}
+      />
 
-      <Route
+      <Route //
         element={<AnimatedCubePage />}
         path={NAVIGATION.PATH.ANIMATED_CUBE}
       />
-      <Route element={<AnimationPage />} path={NAVIGATION.PATH.ANIMATION} />
-      <Route element={<ButtonPage />} path={NAVIGATION.PATH.BUTTON} />
-      <Route element={<CalendarPage />} path={NAVIGATION.PATH.CALENDAR} />
-      <Route element={<ClockPage />} path={NAVIGATION.PATH.CLOCK} />
-      <Route element={<CompositionPage />} path={NAVIGATION.PATH.COMPOSITION} />
-      <Route
+      <Route //
+        element={<AnimationPage />}
+        path={NAVIGATION.PATH.ANIMATION}
+      />
+      <Route //
+        element={<ButtonPage />}
+        path={NAVIGATION.PATH.BUTTON}
+      />
+      <Route //
+        element={<CalendarPage />}
+        path={NAVIGATION.PATH.CALENDAR}
+      />
+      <Route //
+        element={<ClockPage />}
+        path={NAVIGATION.PATH.CLOCK}
+      />
+      <Route //
+        element={<CompositionPage />}
+        path={NAVIGATION.PATH.COMPOSITION}
+      />
+      <Route //
         element={<GaugeClusterPage />}
         path={NAVIGATION.PATH.GAUGE_CLUSTER}
       />
-      <Route element={<Geometry2dPage />} path={NAVIGATION.PATH.GEOMETRY_2D} />
-      <Route element={<Geometry3dPage />} path={NAVIGATION.PATH.GEOMETRY_3D} />
-      <Route element={<ImagePage />} path={NAVIGATION.PATH.IMAGE} />
-      <Route element={<LipsumPage />} path={NAVIGATION.PATH.LIPSUM} />
-      <Route element={<LogoPage />} path={NAVIGATION.PATH.LOGO} />
-      <Route element={<NormalsPage />} path={NAVIGATION.PATH.NORMALS} />
-      <Route element={<ParticlesPage />} path={NAVIGATION.PATH.PARTICLES} />
-      <Route
+      <Route //
+        element={<Geometry2dPage />}
+        path={NAVIGATION.PATH.GEOMETRY_2D}
+      />
+      <Route //
+        element={<Geometry3dPage />}
+        path={NAVIGATION.PATH.GEOMETRY_3D}
+      />
+      <Route //
+        element={<ImagePage />}
+        path={NAVIGATION.PATH.IMAGE}
+      />
+      <Route //
+        element={<LipsumPage />}
+        path={NAVIGATION.PATH.LIPSUM}
+      />
+      <Route //
+        element={<LogoPage />}
+        path={NAVIGATION.PATH.LOGO}
+      />
+      <Route //
+        element={<NormalsPage />}
+        path={NAVIGATION.PATH.NORMALS}
+      />
+      <Route //
+        element={<ParticlesPage />}
+        path={NAVIGATION.PATH.PARTICLES}
+      />
+      <Route //
         element={<PhysicsCannonTestPage />}
         path={NAVIGATION.PATH.PHYSICS_CANNON_TEST}
       />
-      <Route
+      <Route //
         element={<PhysicsCannonWorldPage />}
         path={NAVIGATION.PATH.PHYSICS_CANNON_WORLD}
       />
-      <Route
+      <Route //
         element={<PhysicsRapierCollidersAutoPage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_COLLIDERS_AUTO}
       />
-      <Route
+      <Route //
         element={<PhysicsRapierCollidersManualPage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_COLLIDERS_MANUAL}
       />
-      <Route
+      <Route //
         element={<PhysicsRapierPinballMachinePage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_PINBALL_MACHINE}
       />
-      <Route
+      <Route //
         element={<PhysicsRapierTestPage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_TEST}
       />
-      <Route
+      <Route //
         element={<PhysicsRapierWorldPage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_WORLD}
       />
-      <Route
+      <Route //
         element={<SuzanneExportsPage />}
         path={NAVIGATION.PATH.SUZANNE_EXPORTS}
       />
-      <Route element={<SuzannePage />} path={NAVIGATION.PATH.SUZANNE} />
-      <Route element={<TripodPage />} path={NAVIGATION.PATH.TRIPOD} />
-      <Route element={<TexturePage />} path={NAVIGATION.PATH.TEXTURE} />
+      <Route //
+        element={<SuzannePage />}
+        path={NAVIGATION.PATH.SUZANNE}
+      />
+      <Route //
+        element={<TripodPage />}
+        path={NAVIGATION.PATH.TRIPOD}
+      />
+      <Route //
+        element={<TexturePage />}
+        path={NAVIGATION.PATH.TEXTURE}
+      />
     </Routes>
   );
 };

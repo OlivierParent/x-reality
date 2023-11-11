@@ -16,7 +16,7 @@ import { INTERACTION } from "Configs/interaction";
 import { FlipperProps } from "Types/FlipperProps";
 import { OrientationValue } from "Types/OrientationValue";
 
-const SAFE_OFFSET = 0.1;
+const SAFE_OFFSET = 0.1; // Prevent Z Fighting.
 
 /**
  * Pinball machine flipper.
@@ -43,6 +43,7 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
   const rotationY = 40 * (isLeft ? -1 : 1);
   const positionX = 0.8 * (isLeft ? 1 : -1);
 
+  // References.
   const meshRef = useRef<Mesh>(null!);
   const bodyDynamicRef = useRef<RapierRigidBody>(null!);
   const bodyFixedRef = useRef<RapierRigidBody>(null!);

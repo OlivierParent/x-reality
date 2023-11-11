@@ -26,7 +26,11 @@ const LogoDefault = (props: GroupProps) => {
 
   return (
     <group name="Default Logo" {...props}>
-      <primitive object={scene} onClick={clickHandler} ref={logoRef} />
+      <primitive //
+        object={scene}
+        onClick={clickHandler}
+        ref={logoRef}
+      />
     </group>
   );
 };

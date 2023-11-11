@@ -29,7 +29,10 @@ const initialColor = colors.next().value as string;
  * @returns { JSX.Element }
  */
 const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
+  // References.
   const cubeRef = useRef<Mesh>(null!);
+
+  // States.
   const [color, setColor] = useState(initialColor);
   const [hover, setHover] = useState(false);
   const [position, setPosition] = useState(new Vector3());

@@ -17,6 +17,7 @@ function isHour(mark: number) {
 }
 
 const ClockAnalogue = (props: GroupProps) => {
+  // References.
   const handHourRef = useRef<Group>(null!);
   const handMinuteRef = useRef<Group>(null!);
   const handSecondRef = useRef<Group>(null!);
