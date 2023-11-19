@@ -7,9 +7,9 @@ import cubeGlb from "Components/Texture/assets/TexturedCube.glb";
  * Texture.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const TextureDefault = (props: GroupProps): JSX.Element => {
+const TextureDefault = (props: GroupProps): React.JSX.Element => {
   const { nodes, materials }: any = useGLTF(cubeGlb, true);
   return (
     <group name="Texture Default" {...props}>

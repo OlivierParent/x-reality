@@ -4,15 +4,15 @@ import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { Group, MeshBasicMaterial, Vector3 } from "three";
 
-const ROTATION = Object.freeze({
+const ROTATION = {
   ACTIVE: { x: Math.PI / 4, y: Math.PI / 6 },
   INACTIVE: { x: 0, y: 0 },
-});
+} as const;
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
-const SCALE = Object.freeze({
+const SCALE = {
   LARGE: new Vector3().setScalar(1.25),
   SMALL: new Vector3().setScalar(1),
-});
+} as const;
 
 enum COLOR {
   BLUE = "#00f",
@@ -33,9 +33,9 @@ const gsapObject = { color: initialColor };
  * @see https://gsap.com/
  *
  * @param {GroupProps} props
- * @returns { JSX.Element }
+ * @returns {React.JSX.Element}
  */
-const ButtonGreenSock = (props: GroupProps): JSX.Element => {
+const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
   // References.
   const buttonRef = useRef<Group>(null!);
   const materialRef = useRef<MeshBasicMaterial>(null!);
@@ -44,6 +44,24 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   const [color, setColor] = useState(COLOR.RED);
   const [hover, setHover] = useState(false);
   const [toggle, setToggle] = useState(false);
+
+  // Event handlers.
+  const clickHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    setToggle((state) => !state);
+  };
+  const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    setColor(COLOR.BLUE);
+  };
+  const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    setHover(false);
+  };
+  const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    setHover(true);
+  };
 
   useEffect(() => {
     // Parallel animation with `gsap`
@@ -56,11 +74,19 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   }, [color]);
 
   useEffect(() => {
-    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
+    // Cursor.
+    const cursor = hover ? "pointer" : "default";
+    window.document.body.style.setProperty("cursor", cursor);
+
+    // Opacity.
+    const opacity = hover ? OPACITY.HIGH : OPACITY.LOW;
     gsap.to(materialRef.current, {
-      opacity: hover ? OPACITY.LOW : OPACITY.HIGH,
+      opacity,
       duration: 0.125, // Default: 0.5
     });
+
+    // Scale.
+    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
     gsap.to(buttonRef.current.scale, {
       ...scale,
       duration: 0.125, // Default: 0.5
@@ -68,31 +94,17 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   }, [hover]);
 
   useEffect(() => {
+    // Color.
+    const color = toggle ? COLOR.RED : COLOR.GREEN;
+    setColor(color);
+
+    // Rotation.
     const rotation = toggle ? ROTATION.ACTIVE : ROTATION.INACTIVE;
     gsap.to(buttonRef.current.rotation, {
       ...rotation,
       ease: "power2.inOut", // https://gsap.com/docs/v3/Eases/
     });
   }, [toggle]);
-
-  // Event handlers.
-  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
-    setToggle((state) => !state);
-    setColor(toggle ? COLOR.RED : COLOR.GREEN);
-  };
-  const doubleClickHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
-    setColor(COLOR.BLUE);
-  };
-  const pointerOutHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
-    setHover(false);
-  };
-  const pointerOverHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
-    setHover(true);
-  };
 
   return (
     <group
@@ -104,11 +116,20 @@ const ButtonGreenSock = (props: GroupProps): JSX.Element => {
       ref={buttonRef}
       {...props}
     >
-      <mesh onPointerOut={pointerOutHandler} onPointerOver={pointerOverHandler}>
-        <meshBasicMaterial ref={materialRef} transparent={true} />
+      <mesh //
+        onPointerOut={pointerOutHandler}
+        onPointerOver={pointerOverHandler}
+      >
+        <meshBasicMaterial //
+          ref={materialRef}
+          transparent={true}
+        />
         <planeGeometry args={[2.5, 0.5]} />
       </mesh>
-      <Text fontSize={0.2} position={[0, 0, SAFE_OFFSET]}>
+      <Text //
+        fontSize={0.2}
+        position={[0, 0, SAFE_OFFSET]}
+      >
         Click or Double Click Me!
       </Text>
     </group>

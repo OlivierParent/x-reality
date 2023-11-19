@@ -1,6 +1,6 @@
 import { Vector3 } from "three";
 
-export const PLAYER = Object.freeze({
+export const PLAYER = {
   DIRECTION: {
     BACKWARD: 1,
     DOWN: -1,
@@ -22,4 +22,4 @@ export const PLAYER = Object.freeze({
     NORMAL: 0,
     RUN: 3,
   },
-});
+} as const;

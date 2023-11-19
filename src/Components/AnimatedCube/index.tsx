@@ -6,12 +6,18 @@ import { AnimatedCube as AnimatedCubeGreenSock } from "Components/AnimatedCube/G
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
-const ANIMATED_CUBE = Object.freeze({
+const ANIMATED_CUBE = {
   Default: <AnimatedCubeDefault />,
   GreenSock: <AnimatedCubeGreenSock />,
-});
+} as const;
 
-const AnimatedCube = (props: GroupProps): JSX.Element => {
+/**
+ * Animated Cube.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const AnimatedCube = (props: GroupProps): React.JSX.Element => {
   const { cube } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

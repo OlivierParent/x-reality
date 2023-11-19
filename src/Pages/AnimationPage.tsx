@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Animation.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const AnimationPage = (props: GroupProps): JSX.Element => {
+const AnimationPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Animation {...props} />

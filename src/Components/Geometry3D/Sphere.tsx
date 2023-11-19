@@ -12,8 +12,10 @@ import { Children } from "Types/Children";
  * Sphere geometry.
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/SphereGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DSphere = ({ children }: Children): JSX.Element => {
+const Geometry3DSphere = ({ children }: Children): React.JSX.Element => {
   const {
     heightSegments,
     radius,

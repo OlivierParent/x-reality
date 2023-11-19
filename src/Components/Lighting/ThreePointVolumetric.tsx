@@ -14,7 +14,12 @@ import { SettingsLevaColor } from "Settings/Leva/Color";
 import { SettingsLevaLighting } from "Settings/Leva/Lighting";
 import { SettingsLevaPosition } from "Settings/Leva/Position";
 
-const LightingThreePointVolumetric = (): JSX.Element => {
+/**
+ * Three Point Lighting with volumetric spotlights.
+ *
+ * @returns {React.JSX.Element}
+ */
+const LightingThreePointVolumetric = (): React.JSX.Element => {
   const { helpers } = useControls(LEVA.SCHEMA.LIGHTING, {
     helpers: { label: "Helpers", value: false },
   });
@@ -86,10 +91,12 @@ const LightingThreePointVolumetric = (): JSX.Element => {
     Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
+  // References.
   const backLightRef = useRef<ThreeSpotLight>(null!);
   const fillLightRef = useRef<ThreeSpotLight>(null!);
   const keyLightRef = useRef<ThreeSpotLight>(null!);
 
+  // Helpers.
   useHelper(
     helpers ? backLightRef : null,
     SpotLightHelper,

@@ -11,9 +11,9 @@ import { Stairs } from "Examples/Rapier/World/Stairs";
  * World.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierWorld = (props: GroupProps): JSX.Element => {
+const RapierWorld = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="World" {...props}>
       <Floor />

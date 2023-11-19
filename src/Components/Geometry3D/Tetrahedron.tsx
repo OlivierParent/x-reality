@@ -11,8 +11,10 @@ import { Children } from "Types/Children";
  * Tetrahedron geometry (4 faces).
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/TetrahedronGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DTetrahedron = ({ children }: Children): JSX.Element => {
+const Geometry3DTetrahedron = ({ children }: Children): React.JSX.Element => {
   const { detail, radius } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

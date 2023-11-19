@@ -1,11 +1,17 @@
 import { PositionalAudio, Text } from "@react-three/drei";
-import { GroupProps } from "@react-three/fiber";
+import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { PositionalAudio as PositionalAudioType } from "three";
 
 import badassAudioFile from "Components/Sound/audio/bensound-badass.mp3";
 
-const SoundPositional = (props: GroupProps): JSX.Element => {
+/**
+ * Positional sound.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const SoundPositional = (props: GroupProps): React.JSX.Element => {
   // References.
   const positionalAudioRef = useRef<PositionalAudioType>(null!);
 
@@ -13,7 +19,8 @@ const SoundPositional = (props: GroupProps): JSX.Element => {
   const [toggle, setToggle] = useState(false);
 
   // Event handlers.
-  const clickHandler = () => {
+  const clickHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setToggle((state) => !state);
   };
 

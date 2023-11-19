@@ -18,11 +18,11 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a scene with Cannon-es physics engine for First Person view.
  *
  * @param {LayoutProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
 const SceneCannonFirstPersonLayout = ({
   children,
-}: LayoutProps): JSX.Element => {
+}: LayoutProps): React.JSX.Element => {
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

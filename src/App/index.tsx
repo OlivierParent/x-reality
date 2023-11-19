@@ -8,9 +8,9 @@ import "Styles/main.css";
 /**
  * App.
  *
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const App = (): JSX.Element => {
+const App = (): React.JSX.Element => {
   return (
     <Router>
       <Navigation />

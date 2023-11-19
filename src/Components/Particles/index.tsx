@@ -4,12 +4,18 @@ import { useControls } from "leva";
 import { Particles as ParticlesDefault } from "Components/Particles/Default";
 import { Particles as ParticlesSprites } from "Components/Particles/Sprites";
 
-const PARTICLES = Object.freeze({
+const PARTICLES = {
   Default: <ParticlesDefault />,
   Sprites: <ParticlesSprites />,
-});
+} as const;
 
-const Particles = (props: GroupProps) => {
+/**
+ * Particles.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Particles = (props: GroupProps): React.JSX.Element => {
   const { particles } = useControls("Components", {
     particles: {
       label: "Particles",

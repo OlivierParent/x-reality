@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Texture.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const TexturePage = (props: GroupProps): JSX.Element => {
+const TexturePage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Texture {...props} />

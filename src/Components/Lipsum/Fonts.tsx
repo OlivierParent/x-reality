@@ -6,7 +6,13 @@ import { FONT_FAMILY } from "Libs/font";
 
 const length = Object.keys(FONT_FAMILY).length;
 
-const LipsumFonts = (props: GroupProps) => {
+/**
+ * Lorem ipsum text.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const LipsumFonts = (props: GroupProps): React.JSX.Element => {
   const { color, size, string } = useControls("Components", {
     color: {
       label: "Color",

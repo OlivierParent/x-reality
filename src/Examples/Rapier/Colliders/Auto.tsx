@@ -18,11 +18,11 @@ const colliders: Array<RigidBodyAutoCollider | undefined> = [
  * Rapier auto-colliders demo.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierCollidersAuto = (props: GroupProps): JSX.Element => {
+const RapierCollidersAuto = (props: GroupProps): React.JSX.Element => {
   return (
-    <group {...props}>
+    <group name="Rapier Auto-colliders" {...props}>
       {colliders.map(
         (collider: RigidBodyAutoCollider | undefined, index: number) => (
           <RigidBody
@@ -32,7 +32,10 @@ const RapierCollidersAuto = (props: GroupProps): JSX.Element => {
             type="fixed"
           >
             <Suzanne scale={[SIZE, SIZE, SIZE]} />
-            <Html className={styles["label"]} position={[0, -2 * SIZE, 0]}>
+            <Html //
+              className={styles["label"]}
+              position={[0, -2 * SIZE, 0]}
+            >
               {collider}
             </Html>
           </RigidBody>

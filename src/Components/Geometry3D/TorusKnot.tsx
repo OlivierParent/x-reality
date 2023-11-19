@@ -7,7 +7,14 @@ import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryTorusKnot as TorusKnotGeometry } from "Settings/Leva/Geometry/TorusKnot";
 import { Children } from "Types/Children";
 
-const Geometry3DTorusKnot = ({ children }: Children): JSX.Element => {
+/**
+ * Torus knot geometry.
+ *
+ * @see https://threejs.org/docs/index.html#api/en/geometries/TorusKnotGeometry
+ *
+ * @returns {React.JSX.Element}
+ */
+const Geometry3DTorusKnot = ({ children }: Children): React.JSX.Element => {
   const { p, q, radialSegments, radius, tube, tubularSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

@@ -7,11 +7,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialToon as ToonMaterial } from "Settings/Leva/Material/Toon";
 
 /**
+ * Toon Material.
+ *
  * A material implementing toon shading.
  *
  * @see https://threejs.org/docs/index.html?q=toon#api/en/materials/MeshToonMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialToon = (): JSX.Element => {
+const MaterialToon = (): React.JSX.Element => {
   const {
     color,
     emissive,

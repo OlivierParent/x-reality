@@ -5,6 +5,12 @@ import { Mesh } from "three";
 
 import normalsGlb from "Components/Normals/assets/normals.glb";
 
+/**
+ * Normals.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
 const Normals = (props: GroupProps) => {
   const { scene }: any = useGLTF(normalsGlb, true);
   const normalsRef = useRef<Mesh>(null!);

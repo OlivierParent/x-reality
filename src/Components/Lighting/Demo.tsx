@@ -24,7 +24,12 @@ import { SettingsLevaPosition as LevaPosition } from "Settings/Leva/Position";
 
 const intensityMax = 20;
 
-const LightingDemo = (): JSX.Element => {
+/**
+ * Lighting Demo.
+ *
+ * @returns {React.JSX.Element}
+ */
+const LightingDemo = (): React.JSX.Element => {
   const { helpers, helperSize } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
@@ -121,13 +126,18 @@ const LightingDemo = (): JSX.Element => {
   const pointLightRef = useRef<PointLight>(null!);
   const spotLightRef = useRef<SpotLight>(null!);
 
+  // Helpers.
   useHelper(
     helpers ? directionalLightRef : null,
     DirectionalLightHelper,
     helperSize * directionalLight.intensity,
     directionalLight.color as ColorRepresentation
   );
-
+  useHelper(
+    helpers ? hemisphereLightRef : null,
+    HemisphereLightHelper,
+    helperSize * hemisphereLight.intensity
+  );
   useHelper(
     helpers ? pointLightRef : null,
     PointLightHelper,
@@ -138,11 +148,6 @@ const LightingDemo = (): JSX.Element => {
     helpers ? spotLightRef : null,
     SpotLightHelper,
     spotLight.color as ColorRepresentation
-  );
-  useHelper(
-    helpers ? hemisphereLightRef : null,
-    HemisphereLightHelper,
-    helperSize * hemisphereLight.intensity
   );
 
   useFrame(() => {

@@ -1,23 +1,26 @@
 import { GroupProps } from "@react-three/fiber";
 
-const length = 1;
-const radius = (length / 100) * 2;
-const segments = 32;
-const thickness = length / 100;
+const SIZE = 1;
+const TRIPOD = {
+  LENGTH: SIZE,
+  RADIUS: (SIZE / 100) * 2,
+  SEGMENTS: 32,
+  THICKNESS: SIZE / 100,
+};
 
 /**
  * Tripod model.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const Tripod = (props: GroupProps): JSX.Element => {
+const Tripod = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="Tripod" {...props}>
       <mesh>
         <boxGeometry
           args={
-            [1, 1, 1].map((value) => value * 1.5 * thickness) as [
+            [1, 1, 1].map((value) => value * 1.5 * TRIPOD.THICKNESS) as [
               number,
               number,
               number
@@ -34,7 +37,7 @@ const Tripod = (props: GroupProps): JSX.Element => {
               key={index}
               position={
                 [0, 0, 0].map((v, i) =>
-                  index === i ? length / 2 + thickness * 2 : v
+                  index === i ? TRIPOD.LENGTH / 2 + TRIPOD.THICKNESS * 2 : v
                 ) as [number, number, number]
               }
             >
@@ -42,7 +45,8 @@ const Tripod = (props: GroupProps): JSX.Element => {
                 <boxGeometry
                   args={
                     [1, 1, 1].map(
-                      (v, i) => v * (index === i ? length : thickness)
+                      (v, i) =>
+                        v * (index === i ? TRIPOD.LENGTH : TRIPOD.THICKNESS)
                     ) as [number, number, number]
                   }
                 />
@@ -52,12 +56,14 @@ const Tripod = (props: GroupProps): JSX.Element => {
                 name="Point"
                 position={
                   [0, 0, 0].map((v, i) =>
-                    index === i ? length / 2 + thickness * 3 : v
+                    index === i ? TRIPOD.LENGTH / 2 + TRIPOD.THICKNESS * 3 : v
                   ) as [number, number, number]
                 }
               >
                 <meshBasicMaterial color={0xffffff} />
-                <sphereGeometry args={[radius, segments, segments]} />
+                <sphereGeometry
+                  args={[TRIPOD.RADIUS, TRIPOD.SEGMENTS, TRIPOD.SEGMENTS]}
+                />
               </mesh>
             </group>
           );

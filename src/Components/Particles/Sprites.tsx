@@ -6,7 +6,12 @@ import { SettingsLevaMaterialPoints as PointsMaterial } from "Settings/Leva/Mate
 
 import particleImage from "Components/Particles/assets/Arteveldehogeschool_favicon.png";
 
-const ParticlesSprites = () => {
+/**
+ * Particles with sprites.
+ *
+ * @returns {React.JSX.Element}
+ */
+const ParticlesSprites = (): React.JSX.Element => {
   const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
     useControls("Components", {
       "Icosahedron (20 faces)": folder({

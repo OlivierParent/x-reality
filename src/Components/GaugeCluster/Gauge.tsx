@@ -42,7 +42,13 @@ type GaugeDefaultProps = {
   size: number;
 };
 
-const Gauge = (props: GroupProps & GaugeDefaultProps) => {
+/**
+ * Gauge.
+ *
+ * @param {GroupProps & GaugeDefaultProps} props
+ * @returns {React.JSX.Element}
+ */
+const Gauge = (props: GroupProps & GaugeDefaultProps): React.JSX.Element => {
   const { config: GAUGE, percentage, size: SIZE } = props;
   const [matcapGraphite] = useMatcapTexture(MATCAP.ID.GRAPHITE, MATCAP.SIZE.XL);
   const [matcapBuffedSilver] = useMatcapTexture(

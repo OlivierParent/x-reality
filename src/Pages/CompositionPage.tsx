@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Composition.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const CompositionPage = (props: GroupProps): JSX.Element => {
+const CompositionPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Composition {...props} />

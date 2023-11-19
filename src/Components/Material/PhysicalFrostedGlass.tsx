@@ -5,7 +5,12 @@ import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaMaterialPhysical as PhysicalMaterial } from "Settings/Leva/Material/Physical";
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
 
-const MaterialPhysicalFrostedGlass = (): JSX.Element => {
+/**
+ * Physically-based Material to simulate frosted glass.
+ *
+ * @returns {React.JSX.Element}
+ */
+const MaterialPhysicalFrostedGlass = (): React.JSX.Element => {
   const { roughness, thickness, transmission } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

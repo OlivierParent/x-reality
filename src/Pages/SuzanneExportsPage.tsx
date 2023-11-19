@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for SuzanneExports.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const SuzanneExportsPage = (props: GroupProps): JSX.Element => {
+const SuzanneExportsPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <SuzanneExports {...props} />

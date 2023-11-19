@@ -8,9 +8,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for 2D Geometry.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const Geometry2dPage = (props: GroupProps): JSX.Element => {
+const Geometry2dPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Geometry2D {...props}>

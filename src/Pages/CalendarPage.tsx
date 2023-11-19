@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayoutFrameloopDemand";
  * Page for Calendar.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const CalendarPage = (props: GroupProps): JSX.Element => {
+const CalendarPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Calendar {...props} />

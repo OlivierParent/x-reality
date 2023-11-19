@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Lipsum.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const LipsumPage = (props: GroupProps): JSX.Element => {
+const LipsumPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Lipsum {...props} />

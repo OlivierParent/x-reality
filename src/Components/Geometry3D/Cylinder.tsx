@@ -12,8 +12,10 @@ import { Children } from "Types/Children";
  * Cylinder geometry.
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/CylinderGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DCylinder = ({ children }: Children): JSX.Element => {
+const Geometry3DCylinder = ({ children }: Children): React.JSX.Element => {
   const {
     height,
     heightSegments,

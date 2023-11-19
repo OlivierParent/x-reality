@@ -11,8 +11,10 @@ import { Children } from "Types/Children";
  * Octahedron geometry (8 faces).
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/OctahedronGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DOctahedron = ({ children }: Children): JSX.Element => {
+const Geometry3DOctahedron = ({ children }: Children): React.JSX.Element => {
   const { detail, radius } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

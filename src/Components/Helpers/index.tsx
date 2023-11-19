@@ -10,9 +10,9 @@ import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
  * Three.js Helpers.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const Helpers = (props: GroupProps): JSX.Element => {
+const Helpers = (props: GroupProps): React.JSX.Element => {
   const { axesHelper, gizmoHelper, gridHelper, polarGridHelper, stats } =
     useControls(
       LEVA.SCHEMA.GENERAL,

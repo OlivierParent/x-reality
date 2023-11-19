@@ -15,9 +15,9 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a default scene.
  *
  * @param {LayoutProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const SceneLayout = ({ children }: LayoutProps): JSX.Element => {
+const SceneLayout = ({ children }: LayoutProps): React.JSX.Element => {
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

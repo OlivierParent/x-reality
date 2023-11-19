@@ -13,7 +13,7 @@ import { Material as MaterialToon } from "Components/Material/Toon";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
-const MATERIAL = Object.freeze({
+const MATERIAL = {
   Basic: <MaterialBasic />,
   Lambert: <MaterialLambert />,
   Matcap: <MaterialMatcap />,
@@ -24,9 +24,14 @@ const MATERIAL = Object.freeze({
   Standard: <MaterialStandard />,
   StandardNormalMap: <MaterialStandardNormalMap />,
   Toon: <MaterialToon />,
-});
+} as const;
 
-const Material = () => {
+/**
+ * Material.
+ *
+ * @returns {React.JSX.Element}
+ */
+const Material = (): React.JSX.Element => {
   const { material } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

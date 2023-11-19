@@ -7,11 +7,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Material/Basic";
 
 /**
+ * Basic Material.
+ *
  * A material for drawing geometries in a simple shaded (flat or wireframe) way.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshBasicMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialBasic = (): JSX.Element => {
+const MaterialBasic = (): React.JSX.Element => {
   const {
     color,
     dithering,

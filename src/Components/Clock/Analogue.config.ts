@@ -1,6 +1,6 @@
 const CLOCK_SIZE = 2;
 
-export const CLOCK = Object.freeze({
+export const CLOCK = {
   HH: 12,
   MM: 60,
   SS: 60,
@@ -38,4 +38,4 @@ export const CLOCK = Object.freeze({
     THICKNESS: 0.005 * CLOCK_SIZE,
   },
   SIZE: CLOCK_SIZE,
-});
+} as const;

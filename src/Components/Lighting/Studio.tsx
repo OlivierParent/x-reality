@@ -1,6 +1,6 @@
 import { useHelper } from "@react-three/drei";
 import { folder, useControls } from "leva";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import {
   ColorRepresentation,
   DirectionalLight,
@@ -13,7 +13,12 @@ import { SettingsLevaLighting } from "Settings/Leva/Lighting";
 import { SettingsLevaPosition } from "Settings/Leva/Position";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
-const LightingStudio = (): JSX.Element => {
+/**
+ * Studio Lighting.
+ *
+ * @returns {React.JSX.Element}
+ */
+const LightingStudio = (): React.JSX.Element => {
   const { helpers, helperSize } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
@@ -86,6 +91,7 @@ const LightingStudio = (): JSX.Element => {
   const leftLightRef = useRef<DirectionalLight>(null!);
   const rightLightRef = useRef<DirectionalLight>(null!);
 
+  // Helpers.
   useHelper(
     helpers ? frontLightRef : null,
     DirectionalLightHelper,

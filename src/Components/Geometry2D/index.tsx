@@ -15,8 +15,15 @@ enum GEOMETRY_2D {
   RING = "Ring",
 }
 
-function enableGeometry(name: string, children: ReactNode) {
-  let element;
+/**
+ * Enable geometry component.
+ *
+ * @param {string} name
+ * @param {ReactNode} children
+ * @returns {React.JSX.Element}
+ */
+function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
+  let element: React.JSX.Element;
   switch (name) {
     case GEOMETRY_2D.CIRCLE:
       element = <Circle>{children}</Circle>;
@@ -30,10 +37,16 @@ function enableGeometry(name: string, children: ReactNode) {
     default:
       element = <></>;
   }
+
   return element;
 }
 
-const Geometry2D = ({ children }: Children): JSX.Element => {
+/**
+ * 2D Geometry.
+ *
+ * @returns {React.JSX.Element}
+ */
+const Geometry2D = ({ children }: Children): React.JSX.Element => {
   const { geometry2DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -41,7 +54,12 @@ const Geometry2D = ({ children }: Children): JSX.Element => {
         {
           geometry2DName: {
             label: "Geometry 2D",
-            options: GEOMETRY_2D,
+            options: {
+              "–None– ": GEOMETRY_2D.NONE,
+              "Plane  ": GEOMETRY_2D.PLANE,
+              "Circle ": GEOMETRY_2D.CIRCLE,
+              "Ring   ": GEOMETRY_2D.RING,
+            },
             value: GEOMETRY_2D.PLANE,
           },
         },

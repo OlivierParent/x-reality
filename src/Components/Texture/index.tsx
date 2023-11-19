@@ -4,18 +4,18 @@ import { useControls } from "leva";
 import { Texture as TextureBakedNormals } from "Components/Texture/BakedNormals";
 import { Texture as TextureDefault } from "Components/Texture/Default";
 
-const TEXTURE = Object.freeze({
+const TEXTURE = {
   Default: <TextureDefault />,
   BakedNormals: <TextureBakedNormals />,
-});
+} as const;
 
 /**
  * Texture.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const Texture = (props: GroupProps): JSX.Element => {
+const Texture = (props: GroupProps): React.JSX.Element => {
   const { texture } = useControls("Components", {
     texture: {
       label: "Type",

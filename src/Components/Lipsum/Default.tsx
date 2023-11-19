@@ -5,7 +5,13 @@ import { useControls } from "leva";
 import { FONT_FAMILY } from "Libs/font";
 import { MATCAP } from "Libs/matcap";
 
-const LipsumDefault = (props: GroupProps) => {
+/**
+ * Lorem ipsum text.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const LipsumDefault = (props: GroupProps): React.JSX.Element => {
   const { size, string } = useControls("Components", {
     size: {
       label: "Size",

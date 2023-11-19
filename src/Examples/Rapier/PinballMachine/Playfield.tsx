@@ -15,9 +15,9 @@ const offsetZ = -6;
 /**
  * Pinball machine playfield.
  *
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierPinballMachinePlayfield = (): JSX.Element => {
+const RapierPinballMachinePlayfield = (): React.JSX.Element => {
   return (
     <RigidBody type="fixed">
       <Plane
@@ -34,4 +34,4 @@ const RapierPinballMachinePlayfield = (): JSX.Element => {
   );
 };
 
-export { RapierPinballMachinePlayfield };
+export { RapierPinballMachinePlayfield as Playfield };

@@ -16,9 +16,11 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a scene at an angle with Cannon-es physics engine.
  *
  * @param {LayoutProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const SceneCannonPoseLayout = ({ children }: LayoutProps): JSX.Element => {
+const SceneCannonPoseLayout = ({
+  children,
+}: LayoutProps): React.JSX.Element => {
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

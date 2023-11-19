@@ -20,7 +20,7 @@ import { Vignette } from "Components/Effects/Vignette";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
-const EFFECT = Object.freeze({
+const EFFECT = {
   None: "None",
   Bloom: "Bloom",
   BrightnessContrast: "BrightnessContrast",
@@ -39,7 +39,7 @@ const EFFECT = Object.freeze({
   Sepia: "Sepia",
   ToneMapping: "ToneMapping",
   Vignette: "Vignette",
-});
+} as const;
 
 const Effects = () => {
   const { useEffect } = useControls(
@@ -59,7 +59,7 @@ const Effects = () => {
     Settings.folder(LEVA.ORDER.GENERAL)
   );
 
-  function enableEffect(name: string, element: JSX.Element) {
+  function enableEffect(name: string, element: React.JSX.Element) {
     return useEffect === name ? element : null;
   }
 

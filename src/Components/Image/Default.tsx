@@ -4,7 +4,13 @@ import { DoubleSide, Vector2 } from "three";
 
 import uvGrid from "Components/Image/assets/UV_Grid_Sm.jpg";
 
-const ImageDefault = (props: GroupProps) => {
+/**
+ * Image.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const ImageDefault = (props: GroupProps): React.JSX.Element => {
   const texture = useTexture(uvGrid);
   texture.offset = new Vector2(0, 0);
   texture.repeat = new Vector2(1, 1);

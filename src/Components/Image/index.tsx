@@ -6,11 +6,17 @@ import { Image as ImageSvgDrei } from "Components/Image/SvgDrei";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
-const IMAGE = Object.freeze({
+const IMAGE = {
   Default: <ImageDefault />,
   Svg: <ImageSvgDrei />,
-});
+} as const;
 
+/**
+ * Image.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
 const Image = (props: GroupProps) => {
   const { image } = useControls(
     LEVA.SCHEMA.COMPONENTS,

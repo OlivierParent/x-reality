@@ -7,11 +7,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialLambert as LambertMaterial } from "Settings/Leva/Material/Lambert";
 
 /**
+ * Lambert Material.
+ *
  * A material for non-shiny surfaces, without specular highlights.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshLambertMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialLambert = (): JSX.Element => {
+const MaterialLambert = (): React.JSX.Element => {
   const {
     color,
     dithering,

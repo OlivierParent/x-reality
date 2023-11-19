@@ -7,11 +7,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
 
 /**
+ * Standard Material.
+ *
  * A standard physically based material, using Metallic-Roughness workflow.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialStandard = (): JSX.Element => {
+const MaterialStandard = (): React.JSX.Element => {
   const {
     color,
     dithering,

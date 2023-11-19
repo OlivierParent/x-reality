@@ -12,8 +12,10 @@ import { Children } from "Types/Children";
  * Ring geometry.
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/RingGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry2DRing = ({ children }: Children) => {
+const Geometry2DRing = ({ children }: Children): React.JSX.Element => {
   const { innerRadius, outerRadius, θLength, θSegments, θStart, φSegments } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

@@ -11,8 +11,10 @@ import { Children } from "Types/Children";
  * Plane geometry.
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/PlaneGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry2DPlane = ({ children }: Children): JSX.Element => {
+const Geometry2DPlane = ({ children }: Children): React.JSX.Element => {
   const { height, heightSegments, width, widthSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

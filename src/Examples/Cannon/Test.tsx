@@ -10,9 +10,9 @@ import { Material } from "Components/Material";
  * Cannon-es physics engine test.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const CannonTest = (props: GroupProps): JSX.Element => {
+const CannonTest = (props: GroupProps): React.JSX.Element => {
   const [coneRef] = useCylinder<Mesh>(
     () => ({
       args: [0.001, 0.5, 1, 32],

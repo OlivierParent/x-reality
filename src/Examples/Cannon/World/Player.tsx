@@ -21,9 +21,9 @@ const velocityVector = new Vector3();
  * Player.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const CannonWorldPlayer = (props: GroupProps): JSX.Element => {
+const CannonWorldPlayer = (props: GroupProps): React.JSX.Element => {
   // Keyboard Controls.
   const jumpOn = useKeyboardControls((state) => state.jump);
   const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);

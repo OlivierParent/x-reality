@@ -5,21 +5,29 @@ import { AnimationMixer, Mesh } from "three";
 
 import animationGlb from "Components/Animation/assets/animation.glb";
 
-const Animation = (props: GroupProps) => {
+/**
+ * Animation.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Animation = (props: GroupProps): React.JSX.Element => {
   const { animations, scene }: any = useGLTF(animationGlb, true);
   const animationClip = animations[0];
-  const animationRef = useRef<Mesh>(null!);
-  const mixer = useMemo(
+  const animationMixer = useMemo(
     () => new AnimationMixer(animationClip),
     [animationClip]
   );
 
+  // References.
+  const animationRef = useRef<Mesh>(null!);
+
   useEffect(() => {
-    mixer.clipAction(animationClip, animationRef.current).play();
-  }, [animationClip, mixer]);
+    animationMixer.clipAction(animationClip, animationRef.current).play();
+  }, [animationClip, animationMixer]);
 
   useFrame((state, delta) => {
-    mixer.update(delta);
+    animationMixer.update(delta);
   });
 
   return (

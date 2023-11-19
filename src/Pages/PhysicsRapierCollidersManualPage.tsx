@@ -7,9 +7,11 @@ import { Layout } from "Layouts/SceneRapierLayout";
  * Page for Rapier Colliders Manual.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const PhysicsRapierCollidersManualPage = (props: GroupProps): JSX.Element => {
+const PhysicsRapierCollidersManualPage = (
+  props: GroupProps
+): React.JSX.Element => {
   return (
     <Layout>
       <Colliders {...props} />

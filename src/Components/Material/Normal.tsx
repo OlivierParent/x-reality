@@ -7,11 +7,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialNormal as NormalMaterial } from "Settings/Leva/Material/Normal";
 
 /**
+ * Normal Material.
+ *
  * A material that maps the normal vectors to RGB colors.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialNormal = (): JSX.Element => {
+const MaterialNormal = (): React.JSX.Element => {
   const { dithering, flatShading, opacity, side, transparent, wireframe } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

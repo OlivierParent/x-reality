@@ -8,15 +8,21 @@ import { Lighting as LightingThreePointVolumetric } from "Components/Lighting/Th
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
-const LIGHTING = Object.freeze({
+const LIGHTING = {
   Demo: <LightingDemo />,
   None: null,
   Studio: <LightingStudio />,
   ThreePoint: <LightingThreePoint />,
   ThreePointVolumetric: <LightingThreePointVolumetric />,
-});
+} as const;
 
-const Lighting = (props: GroupProps): JSX.Element => {
+/**
+ * Lighting.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Lighting = (props: GroupProps): React.JSX.Element => {
   const { lighting } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {

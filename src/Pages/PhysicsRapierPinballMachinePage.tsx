@@ -7,9 +7,11 @@ import { Layout } from "Layouts/SceneRapierPinballLayout";
  * Page for Rapier Pinball Machine.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const PhysicsRapierPinballMachinePage = (props: GroupProps): JSX.Element => {
+const PhysicsRapierPinballMachinePage = (
+  props: GroupProps
+): React.JSX.Element => {
   return (
     <Layout>
       <PinballMachine {...props} />

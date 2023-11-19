@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneRapierFirstPersonLayout";
  * Page for Rapier World.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const PhysicsRapierWorldPage = (props: GroupProps): JSX.Element => {
+const PhysicsRapierWorldPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <RapierWorld {...props} />

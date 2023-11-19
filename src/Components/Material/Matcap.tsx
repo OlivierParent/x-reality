@@ -9,11 +9,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialMatcap as MatcapMaterial } from "Settings/Leva/Material/Matcap";
 
 /**
+ * MatCap (Material Capture) Material.
+ *
  * MeshMatcapMaterial is defined by a MatCap (or Lit Sphere) texture, which encodes the material color and shading.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshMatcapMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialMatcap = (): JSX.Element => {
+const MaterialMatcap = (): React.JSX.Element => {
   const { color, dithering, flatShading, opacity, side, transparent } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

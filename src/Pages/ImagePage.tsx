@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Image.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const ImagePage = (props: GroupProps): JSX.Element => {
+const ImagePage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Image {...props} />

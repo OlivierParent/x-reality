@@ -33,9 +33,9 @@ const textProps = {
  * Calendar.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const Calendar = (props: GroupProps): JSX.Element => {
+const Calendar = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="Calendar" {...props}>
       <Text3D name="Month Name" {...shadowProps} {...textProps} size={1}>

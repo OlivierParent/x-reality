@@ -12,8 +12,10 @@ import { Children } from "Types/Children";
  * Cone geometry.
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/ConeGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DCone = ({ children }: Children): JSX.Element => {
+const Geometry3DCone = ({ children }: Children): React.JSX.Element => {
   const {
     height,
     heightSegments,

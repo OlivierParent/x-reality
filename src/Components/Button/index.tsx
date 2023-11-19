@@ -6,12 +6,18 @@ import { Button as ButtonGreenSock } from "Components/Button/GreenSock";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
-const BUTTON = Object.freeze({
+const BUTTON = {
   Default: <ButtonDefault />,
   GreenSock: <ButtonGreenSock />,
-});
+} as const;
 
-const Button = (props: GroupProps): JSX.Element => {
+/**
+ * Button.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Button = (props: GroupProps): React.JSX.Element => {
   const { button } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

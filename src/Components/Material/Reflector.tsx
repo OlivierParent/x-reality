@@ -7,11 +7,13 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialReflector as ReflectorMaterial } from "Settings/Leva/Material/Reflector";
 
 /**
+ * Reflector Material.
+ *
  * An extension of the MeshStandardMaterial, to easily add reflections and/or blur.
  *
  * @see https://drei.pmnd.rs/?path=/story/shaders-meshreflectormaterial--reflector-st
  */
-const MaterialReflector = (): JSX.Element => {
+const MaterialReflector = (): React.JSX.Element => {
   const {
     blur,
     color,

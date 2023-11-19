@@ -7,9 +7,9 @@ import styles from "Components/UserInterface/Navigation.module.css";
 /**
  * Navigation menu.
  *
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const UserInterfaceNavigation = (): JSX.Element => {
+const UserInterfaceNavigation = (): React.JSX.Element => {
   return (
     <nav className={styles["nav"]}>
       <ul>

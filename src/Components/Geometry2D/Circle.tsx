@@ -12,8 +12,10 @@ import { Children } from "Types/Children";
  * Circle geometry.
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/CircleGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry2DCircle = ({ children }: Children) => {
+const Geometry2DCircle = ({ children }: Children): React.JSX.Element => {
   const { radius, segments, θLength, θStart } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

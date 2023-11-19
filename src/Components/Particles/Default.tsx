@@ -3,7 +3,12 @@ import { folder, useControls } from "leva";
 import { SettingsLevaGeometryIcosahedron as IcosahedronGeometry } from "Settings/Leva/Geometry/Icosahedron";
 import { SettingsLevaMaterialPoints as PointsMaterial } from "Settings/Leva/Material/Points";
 
-const ParticlesDefault = () => {
+/**
+ * Particles.
+ *
+ * @returns {React.JSX.Element}
+ */
+const ParticlesDefault = (): React.JSX.Element => {
   const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
     useControls("Components", {
       "Icosahedron (20 faces)": folder({

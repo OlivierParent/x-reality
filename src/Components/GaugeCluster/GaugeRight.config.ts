@@ -1,6 +1,6 @@
 const MARK_VALUE = 10;
 
-export const GAUGE = Object.freeze({
+export const GAUGE = {
   ANGLE: {
     OFFSET: 90,
     RANGE: 270,
@@ -20,4 +20,4 @@ export const GAUGE = Object.freeze({
     MINIMUM: MARK_VALUE * 0,
     SAFE: MARK_VALUE * 3,
   },
-});
+} as const;

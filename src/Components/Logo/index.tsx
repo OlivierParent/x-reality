@@ -1,19 +1,24 @@
 import { useControls } from "leva";
 
-import { Logo as LogoDefault } from "Components/Logo/Default";
 import { Logo as LogoDouble } from "Components/Logo/Double";
+import { Logo as LogoSingle } from "Components/Logo/Single";
 
-const LOGO = Object.freeze({
-  Default: <LogoDefault />,
+const LOGO = {
   Double: <LogoDouble />,
-});
+  Single: <LogoSingle />,
+} as const;
 
-const Logo = () => {
+/**
+ * Logo.
+ *
+ * @returns {React.JSX.Element}
+ */
+const Logo = (): React.JSX.Element => {
   const { logo } = useControls("Components", {
     logo: {
       label: "Logo",
       options: LOGO,
-      value: LOGO.Default,
+      value: LOGO.Single,
     },
   });
 

@@ -7,9 +7,11 @@ import { Vector3 } from "three";
  * Pinball machine cabinet walls.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierPinballMachineCabinetWalls = (props: GroupProps): JSX.Element => {
+const RapierPinballMachineCabinetWalls = (
+  props: GroupProps
+): React.JSX.Element => {
   return (
     <group name="Cabinet Walls" {...props}>
       <RigidBody restitution={3} type="fixed">
@@ -27,4 +29,4 @@ const RapierPinballMachineCabinetWalls = (props: GroupProps): JSX.Element => {
   );
 };
 
-export { RapierPinballMachineCabinetWalls };
+export { RapierPinballMachineCabinetWalls as CabinetWalls };

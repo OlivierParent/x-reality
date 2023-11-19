@@ -11,12 +11,17 @@ import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 
 import { LEVA } from "Configs/leva";
 import { ScoreContext } from "Data/ScoreContext";
-import { RapierPinballMachineBall as Ball } from "Examples/Rapier/PinballMachine/Ball";
-import { RapierPinballMachineBumper as Bumper } from "Examples/Rapier/PinballMachine/Bumper";
-import { RapierPinballMachineCabinetWalls as CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
-import { RapierPinballMachineFlipper as Flipper } from "Examples/Rapier/PinballMachine/Flipper";
-import { RapierPinballMachinePlayfield as Playfield } from "Examples/Rapier/PinballMachine/Playfield";
+import { Ball } from "Examples/Rapier/PinballMachine/Ball";
+import { Bumper } from "Examples/Rapier/PinballMachine/Bumper";
+import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
+import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
+import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
 import { OrientationValue } from "Types/OrientationValue";
+
+const ORIENTATION = {
+  LEFT: "left" as OrientationValue,
+  RIGHT: "right" as OrientationValue,
+} as const;
 
 const positionY = 5;
 const positionZ = -10;
@@ -26,23 +31,20 @@ const ballMiddlePosition = new Vector3(0, positionY - 0.5, positionZ);
 const ballRightPosition = new Vector3(2 * Math.random(), positionY, positionZ);
 const zeroVelocity = new Vector3(0, 0, 0);
 
-const leftOrientation: OrientationValue = "left";
-const rightOrientation: OrientationValue = "right";
-
 /**
  * Pinball machine.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierPinballMachine = (props: GroupProps): JSX.Element => {
+const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
   // Contexts.
   const scoreState = useContext(ScoreContext);
 
   // References.
-  const ballLeft = useRef<RapierRigidBody>(null);
-  const ballMiddle = useRef<RapierRigidBody>(null);
-  const ballRight = useRef<RapierRigidBody>(null);
+  const ballLeft = useRef<RapierRigidBody>(null!);
+  const ballMiddle = useRef<RapierRigidBody>(null!);
+  const ballRight = useRef<RapierRigidBody>(null!);
 
   // States.
   const [counter, setCounter] = useState<number>(0);
@@ -68,29 +70,29 @@ const RapierPinballMachine = (props: GroupProps): JSX.Element => {
   });
 
   const reset = () => {
-    ballLeft.current?.setAngvel(zeroVelocity, true);
-    ballLeft.current?.setLinvel(zeroVelocity, true);
-    ballLeft.current?.setTranslation(
+    ballLeft.current.setAngvel(zeroVelocity, true);
+    ballLeft.current.setLinvel(zeroVelocity, true);
+    ballLeft.current.setTranslation(
       ballLeftPosition.setX(-2 * Math.random()),
       true
     );
-    ballLeft.current?.setRotation(new Quaternion(), true);
+    ballLeft.current.setRotation(new Quaternion(), true);
 
-    ballMiddle.current?.setAngvel(zeroVelocity, true);
-    ballMiddle.current?.setLinvel(zeroVelocity, true);
-    ballMiddle.current?.setTranslation(
+    ballMiddle.current.setAngvel(zeroVelocity, true);
+    ballMiddle.current.setLinvel(zeroVelocity, true);
+    ballMiddle.current.setTranslation(
       ballMiddlePosition.setX(ballMiddlePosition.x * 1 + Math.random()),
       true
     );
-    ballMiddle.current?.setRotation(new Quaternion(), true);
+    ballMiddle.current.setRotation(new Quaternion(), true);
 
-    ballRight.current?.setAngvel(zeroVelocity, true);
-    ballRight.current?.setLinvel(zeroVelocity, true);
-    ballRight.current?.setTranslation(
+    ballRight.current.setAngvel(zeroVelocity, true);
+    ballRight.current.setLinvel(zeroVelocity, true);
+    ballRight.current.setTranslation(
       ballRightPosition.setX(-2 * Math.random()),
       true
     );
-    ballRight.current?.setRotation(new Quaternion(), true);
+    ballRight.current.setRotation(new Quaternion(), true);
   };
 
   const collisionHandler = () => {
@@ -104,9 +106,9 @@ const RapierPinballMachine = (props: GroupProps): JSX.Element => {
 
   useFrame((state, delta) => {
     if (
-      ballLeft.current?.translation().y! < -5 &&
-      ballMiddle.current?.translation().y! < -5 &&
-      ballRight.current?.translation().y! < -5
+      ballLeft.current.translation().y < -5 &&
+      ballMiddle.current.translation().y < -5 &&
+      ballRight.current.translation().y < -5
     ) {
       reset();
     }
@@ -135,11 +137,11 @@ const RapierPinballMachine = (props: GroupProps): JSX.Element => {
         <group name="Flippers">
           <group position={new Vector3(0, 0, 0)}>
             <Flipper
-              orientation={leftOrientation}
+              orientation={ORIENTATION.LEFT}
               position={new Vector3(-1, 0, 0)}
             />
             <Flipper
-              orientation={rightOrientation}
+              orientation={ORIENTATION.RIGHT}
               position={new Vector3(1, 0, 0)}
             />
           </group>

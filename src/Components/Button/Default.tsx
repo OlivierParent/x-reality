@@ -1,12 +1,12 @@
 import { Text } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Euler } from "three";
 
-const ROTATION = Object.freeze({
+const ROTATION = {
   ACTIVE: new Euler(Math.PI / 4, Math.PI / 6),
   INACTIVE: new Euler(0, 0),
-});
+} as const;
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
 enum COLOR {
@@ -27,31 +27,43 @@ enum SCALE {
  * Button.
  *
  * @param {GroupProps} props
- * @returns { JSX.Element }
+ * @returns {React.JSX.Element}
  */
-const ButtonDefault = (props: GroupProps): JSX.Element => {
+const ButtonDefault = (props: GroupProps): React.JSX.Element => {
+  // States.
   const [color, setColor] = useState(COLOR.RED);
   const [hover, setHover] = useState(false);
   const [toggle, setToggle] = useState(false);
 
   // Event handlers.
-  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
+  const clickHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setToggle((state) => !state);
-    setColor(toggle ? COLOR.RED : COLOR.GREEN);
   };
-  const doubleClickHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
+  const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setColor(COLOR.BLUE);
   };
-  const pointerOutHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
+  const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setHover(false);
   };
-  const pointerOverHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
+  const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setHover(true);
   };
+
+  useEffect(() => {
+    // Cursor.
+    const cursor = hover ? "pointer" : "default";
+    window.document.body.style.setProperty("cursor", cursor);
+  }, [hover]);
+
+  useEffect(() => {
+    // Color.
+    const color = toggle ? COLOR.RED : COLOR.GREEN;
+    setColor(color);
+  }, [toggle]);
 
   return (
     <group
@@ -64,7 +76,10 @@ const ButtonDefault = (props: GroupProps): JSX.Element => {
       scale={hover ? SCALE.LARGE : SCALE.SMALL}
       {...props}
     >
-      <mesh onPointerOut={pointerOutHandler} onPointerOver={pointerOverHandler}>
+      <mesh //
+        onPointerOut={pointerOutHandler}
+        onPointerOver={pointerOverHandler}
+      >
         <meshBasicMaterial
           color={color}
           opacity={hover ? OPACITY.LOW : OPACITY.HIGH}
@@ -72,7 +87,10 @@ const ButtonDefault = (props: GroupProps): JSX.Element => {
         />
         <planeGeometry args={[2.5, 0.5]} />
       </mesh>
-      <Text fontSize={0.2} position={[0, 0, SAFE_OFFSET]}>
+      <Text //
+        fontSize={0.2}
+        position={[0, 0, SAFE_OFFSET]}
+      >
         Click or Double Click Me!
       </Text>
     </group>

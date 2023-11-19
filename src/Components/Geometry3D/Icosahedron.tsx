@@ -11,8 +11,10 @@ import { Children } from "Types/Children";
  * Icosahedron geometry (20 faces).
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/IcosahedronGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DIcosahedron = ({ children }: Children): JSX.Element => {
+const Geometry3DIcosahedron = ({ children }: Children): React.JSX.Element => {
   const { detail, radius } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

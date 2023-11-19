@@ -8,7 +8,14 @@ import { SettingsLeva as Settings } from "Settings/Leva";
 import { SettingsLevaGeometryTorus as TorusGeometry } from "Settings/Leva/Geometry/Torus";
 import { Children } from "Types/Children";
 
-const Geometry3DTorus = ({ children }: Children): JSX.Element => {
+/**
+ * Torus geometry.
+ *
+ * @see https://threejs.org/docs/index.html#api/en/geometries/TorusGeometry
+ *
+ * @returns {React.JSX.Element}
+ */
+const Geometry3DTorus = ({ children }: Children): React.JSX.Element => {
   const { arc, radialSegments, radius, tube, tubularSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

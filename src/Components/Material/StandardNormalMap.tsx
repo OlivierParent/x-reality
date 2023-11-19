@@ -5,7 +5,12 @@ import { folder, useControls } from "leva";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
 
-const MaterialStandardNormalMap = (): JSX.Element => {
+/**
+ * Standard Material with Normal Map.
+ *
+ * @returns {React.JSX.Element}
+ */
+const MaterialStandardNormalMap = (): React.JSX.Element => {
   const {
     normalAnisotropy,
     normalOffset,

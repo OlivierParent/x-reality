@@ -12,45 +12,60 @@ import { INTERACTION } from "Configs/interaction";
 type KickerProps = {
   position: Vector3;
 };
-const radiusBottom = 0.1;
-const radiusTop = 0.2;
-const height = 0.25;
+
+const KICKER = {
+  HEIGHT: 0.25,
+  RADIUS: {
+    BOTTOM: 0.1,
+    TOP: 0.2,
+  },
+} as const;
 
 /**
  * Pinball machine kicker.
  *
  * @todo convert to kicker
  * @param {KickerProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierPinballMachineKicker = (props: KickerProps): JSX.Element => {
+const RapierPinballMachineKicker = (props: KickerProps): React.JSX.Element => {
   const { position = new Vector3(0, 0, 0) } = props;
 
-  const bumperRef = useRef<MeshBasicMaterial>(null);
+  // References.
+  const bumperRef = useRef<MeshBasicMaterial>(null!);
+
+  // Event handlers.
+  const collisionEnterHandler = () => {
+    bumperRef.current.color.set("green");
+  };
+  const collisionExitHandler = () => {
+    setTimeout(() => {
+      bumperRef.current.color.set("yellow");
+    }, 500);
+  };
 
   return (
     <group name="Kicker" position={position}>
       <RigidBody
         colliders={false}
-        position={new Vector3(0, height / 2, 0)}
+        position={new Vector3(0, KICKER.HEIGHT / 2, 0)}
         restitution={2.5}
         type="fixed"
       >
         <CylinderCollider
-          args={[height / 2, (radiusBottom + radiusTop) / 2]}
+          args={[
+            KICKER.HEIGHT / 2,
+            (KICKER.RADIUS.BOTTOM + KICKER.RADIUS.TOP) / 2,
+          ]}
           collisionGroups={interactionGroups(INTERACTION.KICKER, [
             INTERACTION.BALL,
           ])}
-          onCollisionEnter={() => {
-            bumperRef.current!.color = new Color(0x00ff00);
-          }}
-          onCollisionExit={() => {
-            setTimeout(() => {
-              bumperRef.current!.color = new Color("yellow");
-            }, 500);
-          }}
+          onCollisionEnter={collisionEnterHandler}
+          onCollisionExit={collisionExitHandler}
         />
-        <Cylinder args={[radiusTop, radiusBottom, height]}>
+        <Cylinder
+          args={[KICKER.RADIUS.TOP, KICKER.RADIUS.BOTTOM, KICKER.HEIGHT]}
+        >
           <meshBasicMaterial
             color={"yellow"}
             opacity={0.5}
@@ -63,4 +78,4 @@ const RapierPinballMachineKicker = (props: KickerProps): JSX.Element => {
   );
 };
 
-export { RapierPinballMachineKicker };
+export { RapierPinballMachineKicker as Kicker };

@@ -10,9 +10,9 @@ const PLANE_SIZE = 10;
  * Floor.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const CannonWorldFloor = (props: GroupProps): JSX.Element => {
+const CannonWorldFloor = (props: GroupProps): React.JSX.Element => {
   const args: [number, number] = [PLANE_SIZE, PLANE_SIZE];
   const mass = 0; // kg
   const rotation: [number, number, number] = [MathUtils.degToRad(-90), 0, 0];

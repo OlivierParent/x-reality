@@ -7,11 +7,15 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Material/Phong";
 
 /**
+ * Phong Material.
+ *
  * A material for shiny surfaces with specular highlights.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshPhongMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialPhong = (): JSX.Element => {
+const MaterialPhong = (): React.JSX.Element => {
   const {
     color,
     dithering,

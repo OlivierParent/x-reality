@@ -1,20 +1,33 @@
 import { Plane, Text, useTexture } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 
-const Painting = (props: GroupProps) => {
-  const texture = useTexture(
-    "https://upload.wikimedia.org/wikipedia/commons/1/11/Vassily_Kandinsky%2C_1925_-In_Blue.jpg"
-  );
+const PAINTING = {
+  CAPTION: "In Blue—Wassily Kandinsky (1925)",
+  SIZE: 4,
+  TEXTURE:
+    "https://upload.wikimedia.org/wikipedia/commons/1/11/Vassily_Kandinsky%2C_1925_-In_Blue.jpg",
+} as const;
+
+/**
+ * Painting.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Painting = (props: GroupProps): React.JSX.Element => {
+  const texture = useTexture(PAINTING.TEXTURE);
   const aspectRatio = texture.image.width / texture.image.height;
-  const size = 4;
 
   return (
     <group {...props}>
-      <Plane args={[size * aspectRatio, size]}>
+      <Plane args={[PAINTING.SIZE * aspectRatio, PAINTING.SIZE]}>
         <meshBasicMaterial map={texture} />
       </Plane>
-      <Text fontSize={size * 0.05} position={[0, -(size / 2 + size * 0.05), 0]}>
-        In Blue &mdash; Vassily Kandinsky (1925)
+      <Text
+        fontSize={PAINTING.SIZE * 0.05}
+        position={[0, -(PAINTING.SIZE / 2 + PAINTING.SIZE * 0.05), 0]}
+      >
+        {PAINTING.CAPTION}
       </Text>
     </group>
   );

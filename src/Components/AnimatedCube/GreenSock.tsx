@@ -1,6 +1,6 @@
 import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Mesh, MeshStandardMaterial, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
@@ -11,10 +11,10 @@ function getPosition() {
   return new Vector3(...newPosition);
 }
 
-const SCALE = Object.freeze({
+const SCALE = {
   LARGE: new Vector3().setScalar(1.5),
   SMALL: new Vector3().setScalar(1),
-});
+} as const;
 
 enum OPACITY {
   HIGH = 1,
@@ -32,9 +32,9 @@ const gsapTimeline: any = gsap.timeline();
  * @see https://gsap.com/
  *
  * @param {GroupProps} props
- * @returns { JSX.Element }
+ * @returns {React.JSX.Element}
  */
-const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
+const AnimatedCubeGreenSock = (props: GroupProps): React.JSX.Element => {
   // References.
   const cubeRef = useRef<Mesh>(null!);
   const materialRef = useRef<MeshStandardMaterial>(null!);
@@ -45,19 +45,21 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   const [position, setPosition] = useState<Vector3>(new Vector3(0, 0, 0));
 
   // Event handlers.
-  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
+  const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     const nextColor = colors.next().value as string;
     const nextPosition = getPosition();
     setColor(nextColor);
     setPosition(nextPosition);
-  };
-  const pointerOutHandler = () => {
+  }, []);
+  const pointerOutHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setHover(false);
-  };
-  const pointerOverHandler = () => {
+  }, []);
+  const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setHover(true);
-  };
+  }, []);
 
   useEffect(() => {
     // Parallel animation with `gsap`.
@@ -70,6 +72,9 @@ const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   }, [color]);
 
   useEffect(() => {
+    // Cursor.
+    const cursor = hover ? "pointer" : "default";
+    window.document.body.style.setProperty("cursor", cursor);
     // Sequential animation with `gsapTimeline`.
     const opacity = hover ? OPACITY.HIGH : OPACITY.LOW;
     const scale = hover ? SCALE.LARGE : SCALE.SMALL;

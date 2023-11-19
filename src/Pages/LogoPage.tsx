@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Logo.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const LogoPage = (props: GroupProps): JSX.Element => {
+const LogoPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
       <Logo {...props} />

@@ -20,6 +20,7 @@ export namespace NAVIGATION {
     PHYSICS_CANNON_WORLD = "cannon/world",
     PHYSICS_RAPIER_COLLIDERS_AUTO = "rapier/colliders/auto",
     PHYSICS_RAPIER_COLLIDERS_MANUAL = "rapier/colliders/manual",
+    PHYSICS_RAPIER_DIORAMA = "rapier/diorama",
     PHYSICS_RAPIER_PINBALL_MACHINE = "rapier/pinball-machine",
     PHYSICS_RAPIER_TEST = "rapier/test",
     PHYSICS_RAPIER_WORLD = "rapier/world",
@@ -101,6 +102,10 @@ export namespace NAVIGATION {
     {
       label: "Physics-Rapier Colliders (Manual)",
       to: PATH.PHYSICS_RAPIER_COLLIDERS_MANUAL,
+    },
+    {
+      label: "Physics-Rapier Diorama",
+      to: PATH.PHYSICS_RAPIER_DIORAMA,
     },
     {
       label: "Physics-Rapier Pinball Machine",

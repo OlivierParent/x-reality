@@ -11,8 +11,10 @@ import { Children } from "Types/Children";
  * Dodecahedron geometry (12 faces).
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/DodecahedronGeometry
+ *
+ * @returns {React.JSX.Element}
  */
-const Geometry3DDodecahedron = ({ children }: Children): JSX.Element => {
+const Geometry3DDodecahedron = ({ children }: Children): React.JSX.Element => {
   const { detail, radius } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

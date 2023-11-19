@@ -4,12 +4,18 @@ import { useControls } from "leva";
 import { Lipsum as LipsumDefault } from "Components/Lipsum/Default";
 import { Lipsum as LipsumFonts } from "Components/Lipsum/Fonts";
 
-const LIPSUM = Object.freeze({
+const LIPSUM = {
   Default: <LipsumDefault />,
   Fonts: <LipsumFonts />,
-});
+} as const;
 
-const Lipsum = (props: GroupProps) => {
+/**
+ * Lorem ipsum text.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Lipsum = (props: GroupProps): React.JSX.Element => {
   const { lipsum } = useControls("Components", {
     lipsum: {
       label: "Lipsum",

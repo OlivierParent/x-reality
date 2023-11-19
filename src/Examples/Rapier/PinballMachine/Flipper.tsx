@@ -22,9 +22,11 @@ const SAFE_OFFSET = 0.1; // Prevent Z Fighting.
  * Pinball machine flipper.
  *
  * @param props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
+const RapierPinballMachineFlipper = (
+  props: FlipperProps
+): React.JSX.Element => {
   const { orientation, position = new Vector3(0, 0, 0) } = props;
 
   const pressedFlipperLeft = useKeyboardControls(
@@ -80,6 +82,7 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
   return (
     <group position={position}>
       <RigidBody
+        canSleep={false} // Important or it will not always update!
         colliders="cuboid"
         collisionGroups={interactionGroups(INTERACTION.FLIPPER, [
           INTERACTION.BALL,
@@ -102,14 +105,14 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
           ref={meshRef}
           position={new Vector3(positionX / 2, 0.125 + SAFE_OFFSET, 0)}
         >
-          <boxGeometry args={[positionX, 0.25, 0.3]} />
-          <meshBasicMaterial color={color} />
+          <boxGeometry args={[Math.abs(positionX), 0.25, 0.3]} />
+          <meshStandardMaterial color={color} transparent={false} />
         </mesh>
       </RigidBody>
       <RigidBody name="Fixation" ref={bodyFixedRef} type="fixed">
         <Box args={[SAFE_OFFSET / 4, SAFE_OFFSET / 4, SAFE_OFFSET / 4]} />
       </RigidBody>
-      <RigidBody ref={null} type="fixed">
+      <RigidBody name="Constraints" type="fixed">
         <BallCollider
           args={[0.1]}
           collisionGroups={interactionGroups(INTERACTION.CONSTRAINT)}
@@ -129,4 +132,4 @@ const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
   );
 };
 
-export { RapierPinballMachineFlipper };
+export { RapierPinballMachineFlipper as Flipper };

@@ -9,9 +9,9 @@ import { Stairs } from "Examples/Cannon/World/Stairs";
  * World.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const CannonWorld = (props: GroupProps): JSX.Element => {
+const CannonWorld = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="World" {...props}>
       <Floor />

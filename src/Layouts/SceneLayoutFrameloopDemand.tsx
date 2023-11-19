@@ -16,9 +16,11 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a default scene with no frameloops.
  *
  * @param {LayoutProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const SceneLayoutFrameloopDemand = ({ children }: LayoutProps): JSX.Element => {
+const SceneLayoutFrameloopDemand = ({
+  children,
+}: LayoutProps): React.JSX.Element => {
   const { flat, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

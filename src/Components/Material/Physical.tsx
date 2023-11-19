@@ -8,11 +8,15 @@ import { SettingsLevaMaterialPhysical as PhysicalMaterial } from "Settings/Leva/
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
 
 /**
+ * Physically-based Material.
+ *
  * An extension of the MeshStandardMaterial, providing more advanced physically-based rendering properties.
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshPhysicalMaterial
+ *
+ * @returns {React.JSX.Element}
  */
-const MaterialPhysical = (): JSX.Element => {
+const MaterialPhysical = (): React.JSX.Element => {
   const {
     clearcoat,
     clearcoatRoughness,

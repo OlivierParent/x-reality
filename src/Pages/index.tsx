@@ -19,6 +19,7 @@ import { PhysicsCannonTestPage } from "Pages/PhysicsCannonTestPage";
 import { PhysicsCannonWorldPage } from "Pages/PhysicsCannonWorldPage";
 import { PhysicsRapierCollidersAutoPage } from "Pages/PhysicsRapierCollidersAutoPage";
 import { PhysicsRapierCollidersManualPage } from "Pages/PhysicsRapierCollidersManualPage";
+import { PhysicsRapierDioramaPage } from "Pages/PhysicsRapierDioramaPage";
 import { PhysicsRapierPinballMachinePage } from "Pages/PhysicsRapierPinballMachinePage";
 import { PhysicsRapierTestPage } from "Pages/PhysicsRapierTestPage";
 import { PhysicsRapierWorldPage } from "Pages/PhysicsRapierWorldPage";
@@ -31,9 +32,9 @@ import { TripodPage } from "Pages/TripodPage";
  * Router and pages.
  *
  * @param {RoutesProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const Pages = (props: RoutesProps): JSX.Element => {
+const Pages = (props: RoutesProps): React.JSX.Element => {
   const allPath = "*";
   const homePath = NAVIGATION.PATH.CLOCK;
   const rootPath = "/";
@@ -120,6 +121,10 @@ const Pages = (props: RoutesProps): JSX.Element => {
       <Route //
         element={<PhysicsRapierCollidersManualPage />}
         path={NAVIGATION.PATH.PHYSICS_RAPIER_COLLIDERS_MANUAL}
+      />
+      <Route //
+        element={<PhysicsRapierDioramaPage />}
+        path={NAVIGATION.PATH.PHYSICS_RAPIER_DIORAMA}
       />
       <Route //
         element={<PhysicsRapierPinballMachinePage />}

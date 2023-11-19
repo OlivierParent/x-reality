@@ -20,12 +20,18 @@ import styles from "Styles/labels.module.css";
 
 const SIZE = 0.25;
 const colliders: Array<any> = [
-  { collider: <BallCollider args={[SIZE] as BallArgs} />, name: "ball" },
+  {
+    collider: <BallCollider args={[SIZE] as BallArgs} />,
+    name: "ball",
+  },
   {
     collider: <CapsuleCollider args={[SIZE, SIZE] as CapsuleArgs} />,
     name: "capsule",
   },
-  { collider: <ConeCollider args={[SIZE, SIZE] as ConeArgs} />, name: "cone" },
+  {
+    collider: <ConeCollider args={[SIZE, SIZE] as ConeArgs} />,
+    name: "cone",
+  },
   {
     collider: <CuboidCollider args={[SIZE, SIZE, SIZE] as CuboidArgs} />,
     name: "cuboid",
@@ -48,11 +54,11 @@ const colliders: Array<any> = [
  * Rapier manual colliders demo.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierCollidersManual = (props: GroupProps): JSX.Element => {
+const RapierCollidersManual = (props: GroupProps): React.JSX.Element => {
   return (
-    <group {...props}>
+    <group name="Rapier Manual Colliders" {...props}>
       {colliders.map(({ collider, name }, index: number) => (
         <RigidBody
           colliders={false}

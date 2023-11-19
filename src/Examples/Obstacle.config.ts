@@ -1,4 +1,4 @@
-export const OBSTACLE = Object.freeze({
+export const OBSTACLE = {
   BOX: {
     COUNT: 10,
     MASS: 0, // kg
@@ -7,4 +7,4 @@ export const OBSTACLE = Object.freeze({
   PLANE: {
     SIZE: 10, // m
   },
-});
+} as const;

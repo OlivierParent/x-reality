@@ -1,38 +1,75 @@
 import { Text } from "@react-three/drei";
 import { GroupProps, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { DoubleSide, Group, MathUtils } from "three";
 
 import { CLOCK } from "Components/Clock/Analogue.config";
 import { MathCircle } from "Utils/MathCircle";
 
-const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
-
-function isFirstHour(mark: number) {
+/**
+ * Is a given mark the first hour mark.
+ *
+ * @param {number} mark
+ * @returns {boolean}
+ */
+function isFirstHour(mark: number): boolean {
   return !(mark % CLOCK.HH);
 }
 
-function isHour(mark: number) {
+/**
+ * Is a given mark an hour mark.
+ *
+ * @param {number} mark
+ * @returns {boolean}
+ */
+function isHour(mark: number): boolean {
   return !(mark % (CLOCK.MM / CLOCK.HH));
 }
 
-const ClockAnalogue = (props: GroupProps) => {
+const ANGLE_START = 90;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
+
+/**
+ * Analogue Clock.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const ClockAnalogue = (props: GroupProps): React.JSX.Element => {
+  // States
+  const [angleHandHours, setAngleHandHours] = React.useState<number>(0);
+  const [angleHandMinutes, setAngleHandMinutes] = React.useState<number>(0);
+  const [angleHandSeconds, setAngleHandSeconds] = React.useState<number>(0);
+
   // References.
   const handHourRef = useRef<Group>(null!);
   const handMinuteRef = useRef<Group>(null!);
   const handSecondRef = useRef<Group>(null!);
 
-  const angleStart = 90;
+  useEffect(() => {
+    const radians = MathUtils.degToRad(angleHandHours);
+    handHourRef.current.rotation.z = radians;
+  }, [angleHandHours]);
+
+  useEffect(() => {
+    const radians = MathUtils.degToRad(angleHandMinutes);
+    handMinuteRef.current.rotation.z = radians;
+  }, [angleHandMinutes]);
+
+  useEffect(() => {
+    const radians = MathUtils.degToRad(angleHandSeconds);
+    handSecondRef.current.rotation.z = radians;
+  }, [angleHandSeconds]);
 
   useFrame(() => {
     const d = new Date();
-    const angleHandHour =
-      -(360 / CLOCK.HH) * (d.getHours() + d.getMinutes() / CLOCK.MM);
-    const angleHandMinute = -(360 / CLOCK.MM) * d.getMinutes();
-    const angleHandSecond = -(360 / CLOCK.SS) * d.getSeconds();
-    handHourRef.current.rotation.z = MathUtils.degToRad(angleHandHour);
-    handMinuteRef.current.rotation.z = MathUtils.degToRad(angleHandMinute);
-    handSecondRef.current.rotation.z = MathUtils.degToRad(angleHandSecond);
+    const h = -(360 / CLOCK.HH) * (d.getHours() + d.getMinutes() / CLOCK.MM);
+    const m = -(360 / CLOCK.MM) * d.getMinutes();
+    const s = -(360 / CLOCK.SS) * d.getSeconds();
+
+    setAngleHandHours(h);
+    setAngleHandMinutes(m);
+    setAngleHandSeconds(s);
   });
 
   return (
@@ -52,7 +89,7 @@ const ClockAnalogue = (props: GroupProps) => {
         <group
           name="Marks"
           position={[0, 0, CLOCK.MARK.THICKNESS / 2 + SAFE_OFFSET]}
-          rotation={[0, 0, MathUtils.degToRad(angleStart)]}
+          rotation={[0, 0, MathUtils.degToRad(ANGLE_START)]}
         >
           {Array(CLOCK.MM)
             .fill(null)
@@ -98,7 +135,7 @@ const ClockAnalogue = (props: GroupProps) => {
             .map((_, index) => {
               const radius = CLOCK.MARK.HH.LENGTH * 7.75;
               const c = new MathCircle(radius);
-              const angle = angleStart - (360 / CLOCK.HH) * index;
+              const angle = ANGLE_START - (360 / CLOCK.HH) * index;
               const { x, y } = c.getCoordinates(angle);
 
               return (
@@ -120,7 +157,7 @@ const ClockAnalogue = (props: GroupProps) => {
         </group>
       </group>
 
-      <group name="Hands" rotation={[0, 0, MathUtils.degToRad(angleStart)]}>
+      <group name="Hands" rotation={[0, 0, MathUtils.degToRad(ANGLE_START)]}>
         <group
           name="Shaft"
           position={[0, 0, CLOCK.HAND.THICKNESS * 2.5 + SAFE_OFFSET]}

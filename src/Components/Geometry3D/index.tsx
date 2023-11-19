@@ -15,60 +15,73 @@ import { TorusKnot } from "Components/Geometry3D/TorusKnot";
 import { SettingsLeva as Settings } from "Settings/Leva";
 import { Children } from "Types/Children";
 
-const GEOMETRY_3D = Object.freeze({
-  Box: "Box",
-  Cone: "Cone",
-  Cylinder: "Cylinder",
-  Dodecahedron: "Dodecahedron",
-  Icosahedron: "Icosahedron",
-  None: "None",
-  Octahedron: "Octahedron",
-  Sphere: "Sphere",
-  Tetrahedron: "Tetrahedron",
-  Torus: "Torus",
-  TorusKnot: "TorusKnot",
-});
+enum GEOMETRY_3D {
+  BOX = "Box",
+  CONE = "Cone",
+  CYLINDER = "Cylinder",
+  DODECAHEDRON = "Dodecahedron",
+  ICOSAHEDRON = "Icosahedron",
+  NONE = "None",
+  OCTAHEDRON = "Octahedron",
+  SPHERE = "Sphere",
+  TETRAHEDRON = "Tetrahedron",
+  TORUS = "Torus",
+  TORUS_KNOT = "TorusKnot",
+}
 
-function enableGeometry(name: string, children: ReactNode) {
-  let element;
+/**
+ * Enable geometry component.
+ *
+ * @param {string} name
+ * @param {ReactNode} children
+ * @returns {React.JSX.Element}
+ */
+function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
+  let element: React.JSX.Element;
   switch (name) {
-    case GEOMETRY_3D.Box:
+    case GEOMETRY_3D.BOX:
       element = <Box>{children}</Box>;
       break;
-    case GEOMETRY_3D.Cone:
+    case GEOMETRY_3D.CONE:
       element = <Cone>{children}</Cone>;
       break;
-    case GEOMETRY_3D.Cylinder:
+    case GEOMETRY_3D.CYLINDER:
       element = <Cylinder>{children}</Cylinder>;
       break;
-    case GEOMETRY_3D.Dodecahedron:
+    case GEOMETRY_3D.DODECAHEDRON:
       element = <Dodecahedron>{children}</Dodecahedron>;
       break;
-    case GEOMETRY_3D.Icosahedron:
+    case GEOMETRY_3D.ICOSAHEDRON:
       element = <Icosahedron>{children}</Icosahedron>;
       break;
-    case GEOMETRY_3D.Octahedron:
+    case GEOMETRY_3D.OCTAHEDRON:
       element = <Octahedron>{children}</Octahedron>;
       break;
-    case GEOMETRY_3D.Sphere:
+    case GEOMETRY_3D.SPHERE:
       element = <Sphere>{children}</Sphere>;
       break;
-    case GEOMETRY_3D.Tetrahedron:
+    case GEOMETRY_3D.TETRAHEDRON:
       element = <Tetrahedron>{children}</Tetrahedron>;
       break;
-    case GEOMETRY_3D.Torus:
+    case GEOMETRY_3D.TORUS:
       element = <Torus>{children}</Torus>;
       break;
-    case GEOMETRY_3D.TorusKnot:
+    case GEOMETRY_3D.TORUS_KNOT:
       element = <TorusKnot>{children}</TorusKnot>;
       break;
     default:
       element = <></>;
   }
+
   return element;
 }
 
-const Geometry3D = ({ children }: Children): JSX.Element => {
+/**
+ * 3D Geometry.
+ *
+ * @returns {React.JSX.Element}
+ */
+const Geometry3D = ({ children }: Children): React.JSX.Element => {
   const { geometry3DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -77,18 +90,19 @@ const Geometry3D = ({ children }: Children): JSX.Element => {
           geometry3DName: {
             label: "Geometry",
             options: {
-              "Box                    ": GEOMETRY_3D.Box,
-              "Cone                   ": GEOMETRY_3D.Cone,
-              "Cylinder               ": GEOMETRY_3D.Cylinder,
-              "Tetrahedron (4 faces)  ": GEOMETRY_3D.Tetrahedron,
-              "Octahedron (8 faces)   ": GEOMETRY_3D.Octahedron,
-              "Dodecahedron (12 faces)": GEOMETRY_3D.Dodecahedron,
-              "Icosahedron (20 faces) ": GEOMETRY_3D.Icosahedron,
-              "Sphere                 ": GEOMETRY_3D.Sphere,
-              "Torus                  ": GEOMETRY_3D.Torus,
-              "Torus Knot             ": GEOMETRY_3D.TorusKnot,
+              "–None–                 ": GEOMETRY_3D.NONE,
+              "Box                    ": GEOMETRY_3D.BOX,
+              "Cylinder               ": GEOMETRY_3D.CYLINDER,
+              "Cone                   ": GEOMETRY_3D.CONE,
+              "Tetrahedron (4 faces)  ": GEOMETRY_3D.TETRAHEDRON,
+              "Octahedron (8 faces)   ": GEOMETRY_3D.OCTAHEDRON,
+              "Dodecahedron (12 faces)": GEOMETRY_3D.DODECAHEDRON,
+              "Icosahedron (20 faces) ": GEOMETRY_3D.ICOSAHEDRON,
+              "Sphere                 ": GEOMETRY_3D.SPHERE,
+              "Torus                  ": GEOMETRY_3D.TORUS,
+              "Torus Knot             ": GEOMETRY_3D.TORUS_KNOT,
             },
-            value: GEOMETRY_3D.Box,
+            value: GEOMETRY_3D.BOX,
           },
         },
         Settings.folder(LEVA.ORDER.GEOMETRY)

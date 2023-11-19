@@ -1,26 +1,29 @@
 {
   "files": {
-    "main.css": "/x-reality/static/css/main.ee13a9a7.css",
-    "main.js": "/x-reality/static/js/main.18c319b0.js",
+    "main.css": "/x-reality/static/css/main.72c57583.css",
+    "main.js": "/x-reality/static/js/main.09fa0af5.js",
     "static/media/bensound-evolution.mp3": "/x-reality/static/media/bensound-evolution.4375aef0bb0aa53f542e.mp3",
     "static/media/bensound-badass.mp3": "/x-reality/static/media/bensound-badass.8ef4f40c2805fd404725.mp3",
     "static/media/BakedNormals.glb": "/x-reality/static/media/BakedNormals.03580610c404bbe4bf6b.glb",
     "static/media/TexturedCube.glb": "/x-reality/static/media/TexturedCube.2b78eebcca182be3ab54.glb",
     "static/media/UV_Grid_Sm.jpg": "/x-reality/static/media/UV_Grid_Sm.8ab40f718b980383b313.jpg",
     "static/media/gltf-logo.glb": "/x-reality/static/media/gltf-logo.d3501fc256ec9ddbd19c.glb",
-    "static/media/suzanne_subdivision_flat_shading.glb": "/x-reality/static/media/suzanne_subdivision_flat_shading.e6447f9684a2d04cbc2f.glb",
-    "static/media/suzanne_subdivision_smooth_shading.glb": "/x-reality/static/media/suzanne_subdivision_smooth_shading.8be56dcaf903022f6c96.glb",
-    "static/media/suzanne_default_flat_shading.glb": "/x-reality/static/media/suzanne_default_flat_shading.7e99ef209ea070214695.glb",
-    "static/media/suzanne_default_smooth_shading.glb": "/x-reality/static/media/suzanne_default_smooth_shading.5ce15588196038fc8b85.glb",
+    "static/media/suzanne_subdivision_smooth_shading.fbx": "/x-reality/static/media/suzanne_subdivision_smooth_shading.427c65aeb8114375ef74.fbx",
+    "static/media/suzanne_subdivision_flat_shading_compressed.glb": "/x-reality/static/media/suzanne_subdivision_flat_shading_compressed.a0cc2832db7d8f7580e8.glb",
+    "static/media/suzanne_subdivision_autosmooth_shading_compressed.glb": "/x-reality/static/media/suzanne_subdivision_autosmooth_shading_compressed.6897d3879d483bd1e6dd.glb",
+    "static/media/suzanne_subdivision_smooth_shading_compressed.glb": "/x-reality/static/media/suzanne_subdivision_smooth_shading_compressed.d13fc80263eda278d80e.glb",
     "static/media/Arteveldehogeschool_favicon.png": "/x-reality/static/media/Arteveldehogeschool_favicon.209a12d12e07efdfbbdd.png",
+    "static/media/suzanne_default_flat_shading_compressed.glb": "/x-reality/static/media/suzanne_default_flat_shading_compressed.0f751a0ab0ceddaf55dd.glb",
+    "static/media/suzanne_default_autosmooth_shading_compressed.glb": "/x-reality/static/media/suzanne_default_autosmooth_shading_compressed.94b62e13c094da9f973f.glb",
     "static/media/animation.glb": "/x-reality/static/media/animation.07175b802826a7629a99.glb",
     "static/media/SVG_logo.svg": "/x-reality/static/media/SVG_logo.31892e959789b5a423bae1652f2e6dd9.svg",
     "static/media/arteveldehogeschool_logo.svg": "/x-reality/static/media/arteveldehogeschool_logo.6220cd577fb250a0bcf4d9b4211e8449.svg",
+    "static/media/suzanne_default_smooth_shading_compressed.glb": "/x-reality/static/media/suzanne_default_smooth_shading_compressed.9c08b0713f18d79adf45.glb",
     "static/media/normals.glb": "/x-reality/static/media/normals.c5aed970e245557969de.glb",
     "index.html": "/x-reality/index.html"
   },
   "entrypoints": [
-    "static/css/main.ee13a9a7.css",
-    "static/js/main.18c319b0.js"
+    "static/css/main.72c57583.css",
+    "static/js/main.09fa0af5.js"
   ]
 }

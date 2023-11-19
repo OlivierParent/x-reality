@@ -9,7 +9,12 @@ import { SettingsLevaColor } from "Settings/Leva/Color";
 import { SettingsLevaLighting } from "Settings/Leva/Lighting";
 import { SettingsLevaPosition } from "Settings/Leva/Position";
 
-const LightingThreePoint = (): JSX.Element => {
+/**
+ * Three Point Lighting.
+ *
+ * @returns {React.JSX.Element}
+ */
+const LightingThreePoint = (): React.JSX.Element => {
   const { helpers } = useControls(LEVA.SCHEMA.LIGHTING, {
     helpers: { label: "Helpers", value: false },
   });
@@ -72,10 +77,12 @@ const LightingThreePoint = (): JSX.Element => {
     Settings.folder(LEVA.ORDER.LIGHTING)
   );
 
+  // References.
   const backLightRef = useRef<SpotLight>(null!);
   const fillLightRef = useRef<SpotLight>(null!);
   const keyLightRef = useRef<SpotLight>(null!);
 
+  // Helpers.
   useHelper(
     helpers ? backLightRef : null,
     SpotLightHelper,

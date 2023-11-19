@@ -9,9 +9,9 @@ import { Material } from "Components/Material";
  * Rapier physics engine test.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const RapierTest = (props: GroupProps): JSX.Element => {
+const RapierTest = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="Rapier Test" {...props}>
       <group name="Floor">

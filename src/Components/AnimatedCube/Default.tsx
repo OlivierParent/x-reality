@@ -1,5 +1,5 @@
 import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Mesh, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
@@ -26,9 +26,9 @@ const initialColor = colors.next().value as string;
  * Animated Cube.
  *
  * @param {GroupProps} props
- * @returns { JSX.Element }
+ * @returns {React.JSX.Element}
  */
-const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
+const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
   // References.
   const cubeRef = useRef<Mesh>(null!);
 
@@ -38,19 +38,30 @@ const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
   const [position, setPosition] = useState(new Vector3());
 
   // Event handlers.
-  const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
-    ev.stopPropagation();
-    setColor(colors.next().value as string);
-    setPosition(new Vector3(...getPosition()));
-  };
-  const pointerOutHandler = () => {
+  const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    const nextColor = colors.next().value as string;
+    const nextPosition = getPosition();
+    setColor(nextColor);
+    setPosition(nextPosition);
+  }, []);
+  const pointerOutHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setHover(false);
-  };
-  const pointerOverHandler = () => {
+  }, []);
+  const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
     setHover(true);
-  };
+  }, []);
+
+  useEffect(() => {
+    // Cursor.
+    const cursor = hover ? "pointer" : "default";
+    window.document.body.style.setProperty("cursor", cursor);
+  }, [hover]);
 
   useFrame(({ clock }) => {
+    // Rotation.
     const delta = clock.getElapsedTime();
     cubeRef.current.rotation.set(delta, delta, delta);
   });

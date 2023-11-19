@@ -27,9 +27,9 @@ const SPEED_TOP = Math.round(
  * Gauge Cluster.
  *
  * @param {GroupProps} props
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-const GaugeCluster = (props: GroupProps): JSX.Element => {
+const GaugeCluster = (props: GroupProps): React.JSX.Element => {
   const [accelerationDirection, setAccelerationDirection] =
     useState<AccelerationDirection>(1);
   const [gear, setGear] = useState<Gear>(1);

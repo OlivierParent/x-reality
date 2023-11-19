@@ -1,9 +1,12 @@
 import { Text } from "@react-three/drei";
 import { GroupProps, useFrame } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MathUtils } from "three";
 
 const ClockDigital = (props: GroupProps) => {
+  // States.
+  const [text, setText] = useState<string>("");
+
   // References.
   const clockRef = useRef<any>(null!);
 
@@ -11,8 +14,13 @@ const ClockDigital = (props: GroupProps) => {
     clockRef.current.rotation.x = -MathUtils.degToRad(30);
   }, []);
 
+  useEffect(() => {
+    clockRef.current.text = text;
+  }, [text]);
+
   useFrame(() => {
-    clockRef.current.text = new Date().toLocaleTimeString();
+    const d = new Date().toLocaleTimeString();
+    setText(d);
   });
 
   return (
