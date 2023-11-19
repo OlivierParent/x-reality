@@ -13,6 +13,7 @@ import { SettingsLevaEffectsSepia as SepiaEffect } from "Settings/Leva/Effects/S
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SepiaEffect.js~SepiaEffect.html
  */
 const EffectsSepia = () => {
+  // Leva.
   const { blendFunction, intensity } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

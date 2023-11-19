@@ -15,6 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry2DPlane = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { height, heightSegments, width, widthSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

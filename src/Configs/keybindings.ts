@@ -7,9 +7,9 @@ export namespace KEYBINDINGS {
     moveForward = "moveForward",
     moveLeft = "moveLeft",
     moveRight = "moveRight",
+    pinballFlipperBoth = "pinballFlipperBoth",
     pinballFlipperLeft = "pinballFlipperLeft",
     pinballFlipperRight = "pinballFlipperRight",
-    pinballFlippers = "pinballFlippers",
     pinballShoot = "pinballShoot",
     run = "run",
   }
@@ -36,9 +36,9 @@ export namespace KEYBINDINGS {
   ];
 
   export const PINBALL: Array<KeyboardControlsEntry> = [
+    { name: CONTROLS.pinballFlipperBoth, keys: ["Space"] },
     { name: CONTROLS.pinballFlipperLeft, keys: ["KeyF"] },
     { name: CONTROLS.pinballFlipperRight, keys: ["KeyJ"] },
-    { name: CONTROLS.pinballFlippers, keys: ["Space"] },
     { name: CONTROLS.pinballShoot, keys: ["Return"] },
   ];
 

@@ -30,6 +30,7 @@ const intensityMax = 20;
  * @returns {React.JSX.Element}
  */
 const LightingDemo = (): React.JSX.Element => {
+  // Leva.
   const { helpers, helperSize } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {

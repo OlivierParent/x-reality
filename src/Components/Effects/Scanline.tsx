@@ -13,6 +13,7 @@ import { SettingsLevaEffectsScanline as ScanlineEffect } from "Settings/Leva/Eff
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ScanlineEffect.js~ScanlineEffect.html
  */
 const EffectsScanline = () => {
+  // Leva.
   const { density, blendFunction } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

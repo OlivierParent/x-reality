@@ -13,6 +13,7 @@ import { SettingsLevaEffectsToneMapping as ToneMappingEffect } from "Settings/Le
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ToneMappingEffect.js~ToneMappingEffect.html
  */
 const EffectsToneMapping = () => {
+  // Leva.
   const {
     adaptationRate,
     averageLuminance,

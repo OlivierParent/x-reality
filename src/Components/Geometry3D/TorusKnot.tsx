@@ -15,6 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DTorusKnot = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { p, q, radialSegments, radius, tube, tubularSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

@@ -17,6 +17,7 @@ import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/
  * @returns {React.JSX.Element}
  */
 const MaterialPhysical = (): React.JSX.Element => {
+  // Leva.
   const {
     clearcoat,
     clearcoatRoughness,

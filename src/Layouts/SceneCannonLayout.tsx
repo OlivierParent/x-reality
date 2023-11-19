@@ -19,6 +19,7 @@ import { LayoutProps } from "Types/LayoutProps";
  * @returns {React.JSX.Element}
  */
 const SceneCannonLayout = ({ children }: LayoutProps): React.JSX.Element => {
+  // Leva.
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

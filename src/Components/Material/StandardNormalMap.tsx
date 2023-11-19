@@ -11,6 +11,7 @@ import { SettingsLeva as Settings } from "Settings/Leva";
  * @returns {React.JSX.Element}
  */
 const MaterialStandardNormalMap = (): React.JSX.Element => {
+  // Leva.
   const {
     normalAnisotropy,
     normalOffset,

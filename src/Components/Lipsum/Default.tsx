@@ -12,6 +12,7 @@ import { MATCAP } from "Libs/matcap";
  * @returns {React.JSX.Element}
  */
 const LipsumDefault = (props: GroupProps): React.JSX.Element => {
+  // Leva.
   const { size, string } = useControls("Components", {
     size: {
       label: "Size",
@@ -25,6 +26,7 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
     },
   });
 
+  // Matcap.
   const [matcapGreenCrystal] = useMatcapTexture(
     MATCAP.ID.GREEN_CRYSTAL,
     MATCAP.SIZE.XL

@@ -13,6 +13,7 @@ import { SettingsLevaEffectsNoise as NoiseEffect } from "Settings/Leva/Effects/N
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/NoiseEffect.js~NoiseEffect.html
  */
 const EffectsNoise = () => {
+  // Leva.
   const { blendFunction, premultiply } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

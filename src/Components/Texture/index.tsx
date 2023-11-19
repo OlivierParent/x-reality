@@ -3,6 +3,8 @@ import { useControls } from "leva";
 
 import { Texture as TextureBakedNormals } from "Components/Texture/BakedNormals";
 import { Texture as TextureDefault } from "Components/Texture/Default";
+import { LEVA } from "Configs/leva";
+import { SettingsLeva } from "Settings/Leva";
 
 const TEXTURE = {
   Default: <TextureDefault />,
@@ -16,16 +18,21 @@ const TEXTURE = {
  * @returns {React.JSX.Element}
  */
 const Texture = (props: GroupProps): React.JSX.Element => {
-  const { texture } = useControls("Components", {
-    texture: {
-      label: "Type",
-      options: {
-        "Default      ": TEXTURE.Default,
-        "Baked Normals": TEXTURE.BakedNormals,
+  // Leva.
+  const { texture } = useControls(
+    LEVA.SCHEMA.COMPONENTS,
+    {
+      texture: {
+        label: "Type",
+        options: {
+          "Default      ": TEXTURE.Default,
+          "Baked Normals": TEXTURE.BakedNormals,
+        },
+        value: TEXTURE.Default,
       },
-      value: TEXTURE.Default,
     },
-  });
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
+  );
 
   return (
     <group name="Texture" {...props}>

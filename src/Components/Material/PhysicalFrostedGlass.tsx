@@ -11,6 +11,7 @@ import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/
  * @returns {React.JSX.Element}
  */
 const MaterialPhysicalFrostedGlass = (): React.JSX.Element => {
+  // Leva.
   const { roughness, thickness, transmission } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

@@ -5,7 +5,7 @@ import {
   RigidBody,
 } from "@react-three/rapier";
 import { useRef } from "react";
-import { Color, MeshBasicMaterial, Vector3 } from "three";
+import { MeshBasicMaterial, Vector3 } from "three";
 
 import { INTERACTION } from "Configs/interaction";
 

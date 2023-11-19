@@ -12,6 +12,7 @@ import { SettingsLevaEffectsPixelation as PixelationEffect } from "Settings/Leva
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/PixelationEffect.js~PixelationEffect.html
  */
 const EffectsPixelation = () => {
+  // Leva.
   const { granularity } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

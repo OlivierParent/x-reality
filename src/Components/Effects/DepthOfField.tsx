@@ -13,6 +13,7 @@ import { SettingsLevaEffectsDepthOfField as DepthOfFieldEffect } from "Settings/
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/DepthOfFieldEffect.js~DepthOfFieldEffect.html
  */
 const EffectsDepthOfField = () => {
+  // Leva.
   const { blendFunction, bokehScale, focalLength, focusDistance } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

@@ -16,6 +16,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DCylinder = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const {
     height,
     heightSegments,

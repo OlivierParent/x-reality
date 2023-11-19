@@ -32,6 +32,7 @@ const ANGLE = {
 const SceneRapierDioramaLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
+  // Leva.
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

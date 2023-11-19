@@ -17,6 +17,7 @@ import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } f
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ChromaticAberrationEffect.js~ChromaticAberrationEffect.html
  */
 const EffectsChromaticAberration = () => {
+  // Leva.
   const { blendFunction, offset } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

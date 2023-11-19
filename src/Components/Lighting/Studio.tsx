@@ -19,6 +19,7 @@ import { SettingsLeva as Settings } from "Settings/Leva";
  * @returns {React.JSX.Element}
  */
 const LightingStudio = (): React.JSX.Element => {
+  // Leva.
   const { helpers, helperSize } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {

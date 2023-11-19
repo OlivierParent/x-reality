@@ -21,6 +21,7 @@ import { LayoutProps } from "Types/LayoutProps";
 const SceneLayoutFrameloopDemand = ({
   children,
 }: LayoutProps): React.JSX.Element => {
+  // Leva.
   const { flat, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

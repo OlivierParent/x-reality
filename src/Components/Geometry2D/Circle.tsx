@@ -16,6 +16,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry2DCircle = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { radius, segments, θLength, θStart } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

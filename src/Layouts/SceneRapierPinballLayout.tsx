@@ -1,4 +1,4 @@
-import { KeyboardControls, Loader } from "@react-three/drei";
+import { KeyboardControls, Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Leva, folder, useControls } from "leva";
@@ -22,6 +22,7 @@ import { LayoutProps } from "Types/LayoutProps";
 const SceneRapierPinballLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
+  // Leva.
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -72,6 +73,11 @@ const SceneRapierPinballLayout = ({
               {children}
             </Physics>
           </KeyboardControls>
+          <OrbitControls
+            enableDamping={true}
+            enablePan={true}
+            enableZoom={true}
+          />
         </Suspense>
       </Canvas>
       <Leva

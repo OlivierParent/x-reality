@@ -15,6 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DOctahedron = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { detail, radius } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

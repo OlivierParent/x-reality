@@ -42,6 +42,7 @@ const EFFECT = {
 } as const;
 
 const Effects = () => {
+  // Leva.
   const { useEffect } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

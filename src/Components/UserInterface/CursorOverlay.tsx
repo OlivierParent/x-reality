@@ -19,6 +19,7 @@ const cursorInactiveEventHandler = () => {
  * @returns {React.JSX.Element}
  */
 const UserInterfaceCursorOverlay = (): React.JSX.Element => {
+  // States.
   const [isActive, setIsActive] = useState(false);
 
   // Execute only once this session.

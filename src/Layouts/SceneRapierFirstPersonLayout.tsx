@@ -23,6 +23,7 @@ import { LayoutProps } from "Types/LayoutProps";
 const SceneRapierFirstPersonLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
+  // Leva.
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

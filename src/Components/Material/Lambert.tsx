@@ -16,6 +16,7 @@ import { SettingsLevaMaterialLambert as LambertMaterial } from "Settings/Leva/Ma
  * @returns {React.JSX.Element}
  */
 const MaterialLambert = (): React.JSX.Element => {
+  // Leva.
   const {
     color,
     dithering,

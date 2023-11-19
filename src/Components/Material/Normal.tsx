@@ -16,6 +16,7 @@ import { SettingsLevaMaterialNormal as NormalMaterial } from "Settings/Leva/Mate
  * @returns {React.JSX.Element}
  */
 const MaterialNormal = (): React.JSX.Element => {
+  // Leva.
   const { dithering, flatShading, opacity, side, transparent, wireframe } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

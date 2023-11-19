@@ -14,6 +14,7 @@ import { SettingsLevaEffectsDotScreen as DotScreenEffect } from "Settings/Leva/E
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/DotScreenEffect.js~DotScreenEffect.html
  */
 const EffectsDotScreen = () => {
+  // Leva.
   const { angle, blendFunction, scale } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

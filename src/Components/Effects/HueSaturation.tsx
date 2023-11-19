@@ -14,6 +14,7 @@ import { SettingsLevaEffectsHueSaturation as HueSaturationEffect } from "Setting
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/HueSaturationEffect.js~HueSaturationEffect.html
  */
 const EffectsHueSaturation = () => {
+  // Leva.
   const { blendFunction, hue, saturation } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

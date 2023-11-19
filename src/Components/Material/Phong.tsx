@@ -16,6 +16,7 @@ import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Materi
  * @returns {React.JSX.Element}
  */
 const MaterialPhong = (): React.JSX.Element => {
+  // Leva.
   const {
     color,
     dithering,

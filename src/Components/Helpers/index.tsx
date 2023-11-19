@@ -13,6 +13,7 @@ import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
  * @returns {React.JSX.Element}
  */
 const Helpers = (props: GroupProps): React.JSX.Element => {
+  // Leva.
   const { axesHelper, gizmoHelper, gridHelper, polarGridHelper, stats } =
     useControls(
       LEVA.SCHEMA.GENERAL,

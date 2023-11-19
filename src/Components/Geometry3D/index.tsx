@@ -82,6 +82,7 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
  * @returns {React.JSX.Element}
  */
 const Geometry3D = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { geometry3DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

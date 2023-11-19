@@ -18,6 +18,7 @@ import { SettingsLevaMaterialMatcap as MatcapMaterial } from "Settings/Leva/Mate
  * @returns {React.JSX.Element}
  */
 const MaterialMatcap = (): React.JSX.Element => {
+  // Leva.
   const { color, dithering, flatShading, opacity, side, transparent } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

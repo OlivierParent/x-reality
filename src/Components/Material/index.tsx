@@ -32,6 +32,7 @@ const MATERIAL = {
  * @returns {React.JSX.Element}
  */
 const Material = (): React.JSX.Element => {
+  // Leva.
   const { material } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

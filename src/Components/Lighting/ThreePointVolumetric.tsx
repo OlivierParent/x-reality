@@ -20,6 +20,7 @@ import { SettingsLevaPosition } from "Settings/Leva/Position";
  * @returns {React.JSX.Element}
  */
 const LightingThreePointVolumetric = (): React.JSX.Element => {
+  // Leva.
   const { helpers } = useControls(LEVA.SCHEMA.LIGHTING, {
     helpers: { label: "Helpers", value: false },
   });

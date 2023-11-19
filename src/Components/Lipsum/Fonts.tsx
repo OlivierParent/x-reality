@@ -13,6 +13,7 @@ const length = Object.keys(FONT_FAMILY).length;
  * @returns {React.JSX.Element}
  */
 const LipsumFonts = (props: GroupProps): React.JSX.Element => {
+  // Leva.
   const { color, size, string } = useControls("Components", {
     color: {
       label: "Color",

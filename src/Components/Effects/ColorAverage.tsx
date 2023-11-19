@@ -13,6 +13,7 @@ import { SettingsLevaEffectsColorAverage as ColorAverageEffect } from "Settings/
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ColorAverageEffect.js~ColorAverageEffect.html
  */
 const EffectsColorAverage = () => {
+  // Leva.
   const { blendFunction } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

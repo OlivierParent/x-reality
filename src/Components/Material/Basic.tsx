@@ -16,6 +16,7 @@ import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Materi
  * @returns {React.JSX.Element}
  */
 const MaterialBasic = (): React.JSX.Element => {
+  // Leva.
   const {
     color,
     dithering,

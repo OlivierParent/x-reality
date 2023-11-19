@@ -14,6 +14,7 @@ import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GlitchEffect.js~GlitchEffect.html
  */
 const EffectsGlitch = () => {
+  // Leva.
   const {
     active,
     blendFunction,

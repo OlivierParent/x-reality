@@ -16,6 +16,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry2DRing = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { innerRadius, outerRadius, θLength, θSegments, θStart, φSegments } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

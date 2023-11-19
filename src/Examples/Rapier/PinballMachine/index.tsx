@@ -12,23 +12,14 @@ import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 import { LEVA } from "Configs/leva";
 import { ScoreContext } from "Data/ScoreContext";
 import { Ball } from "Examples/Rapier/PinballMachine/Ball";
+import { BALL } from "Examples/Rapier/PinballMachine/Ball.config";
 import { Bumper } from "Examples/Rapier/PinballMachine/Bumper";
 import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
 import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
+import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
-import { OrientationValue } from "Types/OrientationValue";
 
-const ORIENTATION = {
-  LEFT: "left" as OrientationValue,
-  RIGHT: "right" as OrientationValue,
-} as const;
-
-const positionY = 5;
-const positionZ = -10;
-
-const ballLeftPosition = new Vector3(-2 * Math.random(), positionY, positionZ);
-const ballMiddlePosition = new Vector3(0, positionY - 0.5, positionZ);
-const ballRightPosition = new Vector3(2 * Math.random(), positionY, positionZ);
+const ORIGIN_VECTOR = new Quaternion();
 const zeroVelocity = new Vector3(0, 0, 0);
 
 /**
@@ -38,17 +29,7 @@ const zeroVelocity = new Vector3(0, 0, 0);
  * @returns {React.JSX.Element}
  */
 const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
-  // Contexts.
-  const scoreState = useContext(ScoreContext);
-
-  // References.
-  const ballLeft = useRef<RapierRigidBody>(null!);
-  const ballMiddle = useRef<RapierRigidBody>(null!);
-  const ballRight = useRef<RapierRigidBody>(null!);
-
-  // States.
-  const [counter, setCounter] = useState<number>(0);
-
+  // Leva.
   useControls(
     LEVA.SCHEMA.SIMULATION,
     {
@@ -57,58 +38,63 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
     { order: LEVA.ORDER.SIMULATION }
   );
 
+  // Contexts.
+  const scoreState = useContext(ScoreContext);
   const rapierCtx = useRapier();
 
-  useEffect(() => {
-    console.log("Rapier", rapierCtx);
+  // References.
+  const leftBallRef = useRef<RapierRigidBody>(null!);
+  const middleBallRef = useRef<RapierRigidBody>(null!);
+  const rightBallRef = useRef<RapierRigidBody>(null!);
 
-    console.log();
-  }, [rapierCtx]);
+  // States.
+  const [counter, setCounter] = useState<number>(0);
 
-  useFrame(() => {
-    scoreState.add(Math.floor(Math.random() * 2));
-  });
-
-  const reset = () => {
-    ballLeft.current.setAngvel(zeroVelocity, true);
-    ballLeft.current.setLinvel(zeroVelocity, true);
-    ballLeft.current.setTranslation(
-      ballLeftPosition.setX(-2 * Math.random()),
-      true
-    );
-    ballLeft.current.setRotation(new Quaternion(), true);
-
-    ballMiddle.current.setAngvel(zeroVelocity, true);
-    ballMiddle.current.setLinvel(zeroVelocity, true);
-    ballMiddle.current.setTranslation(
-      ballMiddlePosition.setX(ballMiddlePosition.x * 1 + Math.random()),
-      true
-    );
-    ballMiddle.current.setRotation(new Quaternion(), true);
-
-    ballRight.current.setAngvel(zeroVelocity, true);
-    ballRight.current.setLinvel(zeroVelocity, true);
-    ballRight.current.setTranslation(
-      ballRightPosition.setX(-2 * Math.random()),
-      true
-    );
-    ballRight.current.setRotation(new Quaternion(), true);
-  };
-
+  // Event handlers.
   const collisionHandler = () => {
     setCounter((state) => state + 1);
-    console.log(counter);
     if (3 < counter) {
       setCounter(0);
-      //   reset()
+      // reset();
     }
   };
 
+  function reset() {
+    leftBallRef.current.setAngvel(zeroVelocity, true);
+    leftBallRef.current.setLinvel(zeroVelocity, true);
+    leftBallRef.current.setTranslation(
+      BALL.LEFT.POSITION.setX(-2 * Math.random()),
+      true
+    );
+    leftBallRef.current.setRotation(ORIGIN_VECTOR, true);
+
+    middleBallRef.current.setAngvel(zeroVelocity, true);
+    middleBallRef.current.setLinvel(zeroVelocity, true);
+    middleBallRef.current.setTranslation(
+      BALL.MIDDLE.POSITION.setX(BALL.MIDDLE.POSITION.x * 1 + Math.random()),
+      true
+    );
+    middleBallRef.current.setRotation(ORIGIN_VECTOR, true);
+
+    rightBallRef.current.setAngvel(zeroVelocity, true);
+    rightBallRef.current.setLinvel(zeroVelocity, true);
+    rightBallRef.current.setTranslation(
+      BALL.RIGHT.POSITION.setX(-2 * Math.random()),
+      true
+    );
+    rightBallRef.current.setRotation(ORIGIN_VECTOR, true);
+  }
+
+  useEffect(() => {
+    console.log("Rapier", rapierCtx);
+  }, [rapierCtx]);
+
   useFrame((state, delta) => {
+    scoreState.add(Math.floor(Math.random() * 2));
     if (
-      ballLeft.current.translation().y < -5 &&
-      ballMiddle.current.translation().y < -5 &&
-      ballRight.current.translation().y < -5
+      leftBallRef.current.translation().y < -5 &&
+      middleBallRef.current.translation().y < -5 &&
+      rightBallRef.current.translation().y < -5
     ) {
       reset();
     }
@@ -137,30 +123,30 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
         <group name="Flippers">
           <group position={new Vector3(0, 0, 0)}>
             <Flipper
-              orientation={ORIENTATION.LEFT}
-              position={new Vector3(-1, 0, 0)}
+              orientation={FLIPPER.LEFT.ORIENTATION}
+              position={FLIPPER.LEFT.POSITION}
             />
             <Flipper
-              orientation={ORIENTATION.RIGHT}
-              position={new Vector3(1, 0, 0)}
+              orientation={FLIPPER.RIGHT.ORIENTATION}
+              position={FLIPPER.RIGHT.POSITION}
             />
           </group>
         </group>
         <group name="Balls">
           <Ball
-            color="hsl(0, 100%, 75%)"
-            position={ballLeftPosition}
-            ref={ballLeft}
+            color={BALL.LEFT.COLOR}
+            position={BALL.LEFT.POSITION}
+            ref={leftBallRef}
           />
           <Ball
-            color="hsl(120, 100%, 75%)"
-            position={ballMiddlePosition}
-            ref={ballMiddle}
+            color={BALL.MIDDLE.COLOR}
+            position={BALL.MIDDLE.POSITION}
+            ref={middleBallRef}
           />
           <Ball
-            color="hsl(240, 100%, 75%)"
-            position={ballRightPosition}
-            ref={ballRight}
+            color={BALL.RIGHT.COLOR}
+            position={BALL.RIGHT.POSITION}
+            ref={rightBallRef}
           />
         </group>
       </group>

@@ -13,6 +13,7 @@ import { SettingsLevaEffectsSMAA as SMAAEffect } from "Settings/Leva/Effects/SMA
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SMAAEffect.js~SMAAEffect.html
  */
 const EffectsSMAA = () => {
+  // Leva.
   const { edgeDetectionMode, preset } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

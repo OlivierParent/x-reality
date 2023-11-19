@@ -23,6 +23,7 @@ const LIGHTING = {
  * @returns {React.JSX.Element}
  */
 const Lighting = (props: GroupProps): React.JSX.Element => {
+  // Leva.
   const { lighting } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {

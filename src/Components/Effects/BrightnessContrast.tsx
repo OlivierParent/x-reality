@@ -16,6 +16,7 @@ import { SettingsLevaEffectsBrightnessContrast as BrightnessContrastEffect } fro
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/BrightnessContrastEffect.js~BrightnessContrastEffect.html
  */
 const EffectsBrightnessContrast = () => {
+  // Leva.
   const { blendFunction, brightness, contrast } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

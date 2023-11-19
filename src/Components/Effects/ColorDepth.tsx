@@ -12,6 +12,7 @@ import { SettingsLevaEffectsColorDepth as ColorDepthEffect } from "Settings/Leva
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ColorDepthEffect.js~ColorDepthEffect.html
  */
 const EffectsColorDepth = () => {
+  // Leva.
   const { bits, blendFunction } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

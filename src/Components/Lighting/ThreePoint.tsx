@@ -15,6 +15,7 @@ import { SettingsLevaPosition } from "Settings/Leva/Position";
  * @returns {React.JSX.Element}
  */
 const LightingThreePoint = (): React.JSX.Element => {
+  // Leva.
   const { helpers } = useControls(LEVA.SCHEMA.LIGHTING, {
     helpers: { label: "Helpers", value: false },
   });

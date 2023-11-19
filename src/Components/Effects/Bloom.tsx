@@ -13,6 +13,7 @@ import { SettingsLevaEffectsBloom as BloomEffect } from "Settings/Leva/Effects/B
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/BloomEffect.js~BloomEffect.html
  */
 const EffectsBloom = () => {
+  // Leva.
   const { blendFunction, intensity, luminanceSmoothing, luminanceThreshold } =
     useControls(
       LEVA.SCHEMA.GENERAL,

@@ -13,6 +13,7 @@ import { SettingsLevaEffectsVignette as VignetteEffect } from "Settings/Leva/Eff
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/VignetteEffect.js~VignetteEffect.html
  */
 const EffectsVignette = () => {
+  // Leva.
   const { blendFunction, darkness, eskil, offset } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

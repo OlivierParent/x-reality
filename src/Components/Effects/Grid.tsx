@@ -13,6 +13,7 @@ import { SettingsLevaEffectsGrid as GridEffect } from "Settings/Leva/Effects/Gri
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GridEffect.js~GridEffect.html
  */
 const EffectsGrid = () => {
+  // Leva.
   const { blendFunction, lineWidth, scale } = useControls(
     LEVA.SCHEMA.GENERAL,
     {

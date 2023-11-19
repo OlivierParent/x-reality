@@ -14,6 +14,7 @@ import { SettingsLevaMaterialReflector as ReflectorMaterial } from "Settings/Lev
  * @see https://drei.pmnd.rs/?path=/story/shaders-meshreflectormaterial--reflector-st
  */
 const MaterialReflector = (): React.JSX.Element => {
+  // Leva.
   const {
     blur,
     color,

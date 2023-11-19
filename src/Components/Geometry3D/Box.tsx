@@ -15,6 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DBox = ({ children }: Children): React.JSX.Element => {
+  // Leva.
   const { depth, depthSegments, height, heightSegments, width, widthSegments } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,
