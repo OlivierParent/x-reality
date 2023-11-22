@@ -6,7 +6,7 @@ import { Suspense } from "react";
 
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
-import { UserInterfaceCursorOverlay as Cursor } from "Components/UserInterface/CursorOverlay";
+import { CursorOverlay } from "Components/UserInterface/CursorOverlay";
 import { KEYBINDINGS } from "Configs/keybindings";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva as Settings } from "Settings/Leva";
@@ -76,7 +76,7 @@ const SceneRapierFirstPersonLayout = ({
           </KeyboardControls>
         </Suspense>
       </Canvas>
-      <Cursor />
+      <CursorOverlay />
       <Leva
         collapsed={false}
         fill={false}

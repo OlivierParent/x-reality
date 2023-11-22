@@ -31,18 +31,20 @@ enum SCALE {
  */
 const ButtonDefault = (props: GroupProps): React.JSX.Element => {
   // States.
-  const [color, setColor] = useState(COLOR.RED);
+  const [color, setColor] = useState(COLOR.BLUE);
   const [hover, setHover] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  const [toggleButton, setToggleButton] = useState(false);
+  const [toggleColor, setToggleColor] = useState(false);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggle((state) => !state);
+    setToggleButton((state) => !state);
   };
   const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setColor(COLOR.BLUE);
+    setToggleButton((state) => !state);
+    setToggleColor((state) => !state);
   };
   const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
@@ -61,9 +63,13 @@ const ButtonDefault = (props: GroupProps): React.JSX.Element => {
 
   useEffect(() => {
     // Color.
-    const color = toggle ? COLOR.RED : COLOR.GREEN;
+    const color = toggleButton
+      ? toggleColor
+        ? COLOR.RED
+        : COLOR.GREEN
+      : COLOR.BLUE;
     setColor(color);
-  }, [toggle]);
+  }, [toggleButton, toggleColor]);
 
   return (
     <group
@@ -72,7 +78,7 @@ const ButtonDefault = (props: GroupProps): React.JSX.Element => {
       onDoubleClick={doubleClickHandler}
       onPointerOut={pointerOutHandler}
       onPointerOver={pointerOverHandler}
-      rotation={toggle ? ROTATION.ACTIVE : ROTATION.INACTIVE}
+      rotation={toggleButton ? ROTATION.ACTIVE : ROTATION.INACTIVE}
       scale={hover ? SCALE.LARGE : SCALE.SMALL}
       {...props}
     >

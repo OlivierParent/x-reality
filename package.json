@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "9.88.16",
+    "@react-three/drei": "9.88.17",
     "@react-three/fiber": "^8.15.11",
     "@react-three/flex": "^1.0.1",
     "@react-three/p2": "^0.0.6",
@@ -23,18 +23,18 @@
     "leva": "0.9.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.19.0",
+    "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
     "three": "0.158.0",
-    "three-stdlib": "^2.28.3"
+    "three-stdlib": "^2.28.7"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.8",
-    "@types/node": "^20.9.2",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@types/three": "^0.158.2",
-    "typescript": "^5.2.2"
+    "@types/jest": "^29.5.10",
+    "@types/node": "^20.9.4",
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "^18.2.17",
+    "@types/three": "^0.158.3",
+    "typescript": "^5.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

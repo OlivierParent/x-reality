@@ -4,7 +4,7 @@ import { GroupProps } from "@react-three/fiber";
 import { useRef } from "react";
 import { DoubleSide, MathUtils, Mesh } from "three";
 
-const PLANE_SIZE = 10;
+const PLANE_SIZE = 100;
 
 /**
  * Floor.

@@ -15,16 +15,16 @@ const SCALE = {
 } as const;
 
 enum COLOR {
-  BLUE = "#00f",
-  GREEN = "#060",
-  RED = "#f00",
+  BLUE = "#0000ff",
+  GREEN = "#00ff00",
+  RED = "#ff0000",
 }
 enum OPACITY {
   HIGH = 1,
   LOW = 0.75,
 }
 
-const initialColor = COLOR.RED;
+const initialColor = COLOR.BLUE;
 const gsapObject = { color: initialColor };
 
 /**
@@ -41,18 +41,20 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
   const materialRef = useRef<MeshBasicMaterial>(null!);
 
   // States.
-  const [color, setColor] = useState(COLOR.RED);
+  const [color, setColor] = useState(initialColor);
   const [hover, setHover] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  const [toggleButton, setToggleButton] = useState(false);
+  const [toggleColor, setToggleColor] = useState(false);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggle((state) => !state);
+    setToggleButton((state) => !state);
   };
   const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setColor(COLOR.BLUE);
+    setToggleButton((state) => !state);
+    setToggleColor((state) => !state);
   };
   const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
@@ -95,16 +97,20 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
 
   useEffect(() => {
     // Color.
-    const color = toggle ? COLOR.RED : COLOR.GREEN;
+    const color = toggleButton
+      ? toggleColor
+        ? COLOR.RED
+        : COLOR.GREEN
+      : COLOR.BLUE;
     setColor(color);
 
     // Rotation.
-    const rotation = toggle ? ROTATION.ACTIVE : ROTATION.INACTIVE;
+    const rotation = toggleButton ? ROTATION.ACTIVE : ROTATION.INACTIVE;
     gsap.to(buttonRef.current.rotation, {
       ...rotation,
       ease: "power2.inOut", // https://gsap.com/docs/v3/Eases/
     });
-  }, [toggle]);
+  }, [toggleButton, toggleColor]);
 
   return (
     <group

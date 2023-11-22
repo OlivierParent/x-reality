@@ -5,13 +5,12 @@ import { useRef } from "react";
 import { Mesh } from "three";
 
 import {
-  cursorActiveEventHandler,
-  cursorInactiveEventHandler,
+  cursorActiveHandler,
+  cursorInactiveHandler,
 } from "Components/UserInterface/CursorOverlay";
 import { OBSTACLE } from "Examples/Obstacle.config";
 
 const RANDOM_COORDINATES = new Array(OBSTACLE.BOX.COUNT).fill(null).map(() => {
-  console.info("random");
   const x = Math.floor(
     Math.random() * OBSTACLE.PLANE.SIZE - OBSTACLE.PLANE.SIZE / 2
   );
@@ -50,10 +49,10 @@ const Obstacle = ({ position }: ObstacleProps) => {
   return (
     <Box
       args={args}
-      onPointerEnter={cursorActiveEventHandler}
-      onPointerLeave={cursorInactiveEventHandler}
-      onPointerOut={cursorInactiveEventHandler}
-      onPointerOver={cursorActiveEventHandler}
+      onPointerEnter={cursorActiveHandler}
+      onPointerLeave={cursorInactiveHandler}
+      onPointerOut={cursorInactiveHandler}
+      onPointerOver={cursorActiveHandler}
       ref={ref}
     >
       <meshBasicMaterial
@@ -74,9 +73,9 @@ const Obstacle = ({ position }: ObstacleProps) => {
 const CannonWorldObstacles = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="Obstacles" {...props}>
-      {obstacles.map(({ position }, index) => {
-        return <Obstacle key={index} position={position} />;
-      })}
+      {obstacles.map(({ position }, index) => (
+        <Obstacle key={index} position={position} />
+      ))}
     </group>
   );
 };

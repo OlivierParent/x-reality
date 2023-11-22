@@ -1,16 +1,18 @@
-import { useState, useMemo } from "react";
+import { ThreeEvent } from "@react-three/fiber";
+import { useMemo, useState } from "react";
+
+import { CUSTOM_EVENTS } from "Configs/custom_events";
 
 import styles from "Components/UserInterface/CursorOverlay.module.css";
 
-const cursorActive = "cursor-active";
-const cursorInactive = "cursor-inactive";
-const cursorActiveEvent = new Event(cursorActive);
-const cursorInactiveEvent = new Event(cursorInactive);
-const cursorActiveEventHandler = () => {
-  window.dispatchEvent(cursorActiveEvent);
+// Event handlers.
+const cursorActiveHandler = (event: ThreeEvent<MouseEvent>) => {
+  event.stopPropagation();
+  window.dispatchEvent(new Event(CUSTOM_EVENTS.CURSOR_ACTIVE));
 };
-const cursorInactiveEventHandler = () => {
-  window.dispatchEvent(cursorInactiveEvent);
+const cursorInactiveHandler = (event: ThreeEvent<MouseEvent>) => {
+  event.stopPropagation();
+  window.dispatchEvent(new Event(CUSTOM_EVENTS.CURSOR_INACTIVE));
 };
 
 /**
@@ -24,26 +26,26 @@ const UserInterfaceCursorOverlay = (): React.JSX.Element => {
 
   // Execute only once this session.
   useMemo(() => {
-    window.addEventListener(cursorActive, () => {
+    window.addEventListener(CUSTOM_EVENTS.CURSOR_ACTIVE, () => {
       setIsActive(true);
     });
-    window.addEventListener(cursorInactive, () => {
+    window.addEventListener(CUSTOM_EVENTS.CURSOR_INACTIVE, () => {
       setIsActive(false);
     });
-
-    return null;
   }, []);
 
+  const backgroundColor = isActive ? "white" : "transparent";
+
   return (
-    <div
+    <div //
       className={styles["cursor"]}
-      style={{ backgroundColor: isActive ? "white" : "transparent" }}
+      style={{ backgroundColor }}
     ></div>
   );
 };
 
 export {
-  cursorActiveEventHandler,
-  cursorInactiveEventHandler,
-  UserInterfaceCursorOverlay,
+  UserInterfaceCursorOverlay as CursorOverlay,
+  cursorActiveHandler,
+  cursorInactiveHandler,
 };

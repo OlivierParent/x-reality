@@ -4,8 +4,8 @@ import { RigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 
 import {
-  cursorActiveEventHandler,
-  cursorInactiveEventHandler,
+  cursorActiveHandler,
+  cursorInactiveHandler,
 } from "Components/UserInterface/CursorOverlay";
 import { OBSTACLE } from "Examples/Obstacle.config";
 
@@ -34,10 +34,10 @@ const Obstacle = ({ position }: ObstacleProps) => {
     <RigidBody colliders="cuboid" type="fixed">
       <Box
         args={[OBSTACLE.BOX.SIZE, OBSTACLE.BOX.SIZE, OBSTACLE.BOX.SIZE]}
-        onPointerEnter={cursorActiveEventHandler}
-        onPointerLeave={cursorInactiveEventHandler}
-        onPointerOut={cursorInactiveEventHandler}
-        onPointerOver={cursorActiveEventHandler}
+        onPointerEnter={cursorActiveHandler}
+        onPointerLeave={cursorInactiveHandler}
+        onPointerOut={cursorInactiveHandler}
+        onPointerOver={cursorActiveHandler}
         position={position}
       >
         <meshBasicMaterial
@@ -59,9 +59,9 @@ const Obstacle = ({ position }: ObstacleProps) => {
 const RapierWorldObstacles = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="Obstacles" {...props}>
-      {obstacles.map(({ position }, index) => {
-        return <Obstacle key={index} position={position} />;
-      })}
+      {obstacles.map(({ position }, index) => (
+        <Obstacle key={index} position={position} />
+      ))}
     </group>
   );
 };

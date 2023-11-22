@@ -3,7 +3,7 @@ import { GroupProps } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { DoubleSide, Euler, MathUtils } from "three";
 
-const PLANE_SIZE = 10;
+const PLANE_SIZE = 100;
 
 /**
  * Floor.

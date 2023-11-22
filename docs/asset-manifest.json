@@ -1,7 +1,8 @@
 {
   "files": {
     "main.css": "/x-reality/static/css/main.72c57583.css",
-    "main.js": "/x-reality/static/js/main.d8e2c367.js",
+    "main.js": "/x-reality/static/js/main.883e35f5.js",
+    "static/js/109.c5bb5652.chunk.js": "/x-reality/static/js/109.c5bb5652.chunk.js",
     "static/media/bensound-evolution.mp3": "/x-reality/static/media/bensound-evolution.4375aef0bb0aa53f542e.mp3",
     "static/media/bensound-badass.mp3": "/x-reality/static/media/bensound-badass.8ef4f40c2805fd404725.mp3",
     "static/media/BakedNormals.glb": "/x-reality/static/media/BakedNormals.03580610c404bbe4bf6b.glb",
@@ -24,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.72c57583.css",
-    "static/js/main.d8e2c367.js"
+    "static/js/main.883e35f5.js"
   ]
 }

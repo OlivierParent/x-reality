@@ -26,7 +26,7 @@ const ClockDigital = (props: GroupProps) => {
   return (
     <group name="Digital Clock" {...props}>
       <Text fontSize={2} ref={clockRef}>
-        {}
+        {"00:00:00"}
       </Text>
     </group>
   );
