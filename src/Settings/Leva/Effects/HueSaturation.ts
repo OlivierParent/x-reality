@@ -10,8 +10,8 @@ export namespace SettingsLevaEffectsHueSaturation {
   export const blendFunction = Effects.blendFunction;
 
   export const hue = (value: number = 0) => ({
-    label: "Hue",
-    hint: "The hue in degrees (converted to radians).",
+    label: "Hue (degrees)",
+    hint: "The hue in radians converted to degrees.",
     max: 180,
     min: -180,
     step: 1,

@@ -6,7 +6,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsBrightnessContrast as BrightnessContrastEffect } from "Settings/Leva/Effects/BrightnessContrast";
 
 /**
@@ -16,7 +16,7 @@ import { SettingsLevaEffectsBrightnessContrast as BrightnessContrastEffect } fro
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/BrightnessContrastEffect.js~BrightnessContrastEffect.html
  */
 const EffectsBrightnessContrast = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, brightness, contrast } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -28,10 +28,10 @@ const EffectsBrightnessContrast = () => {
             contrast: BrightnessContrastEffect.contrast(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

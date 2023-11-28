@@ -144,7 +144,10 @@ const RapierPinballMachineFlipper = (
         args={[SAFE_OFFSET / 4, SAFE_OFFSET / 4, SAFE_OFFSET / 4]}
         position={[impulsePoint.x, impulsePoint.y, impulsePoint.z]}
       >
-        <meshBasicMaterial color={0x0000ff} wireframe={true} />
+        <meshBasicMaterial //
+          color={0x0000ff}
+          wireframe={true}
+        />
       </Box>
     </group>
   );

@@ -4,7 +4,7 @@ import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
 import { MATCAP } from "Libs/matcap";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialMatcap as MatcapMaterial } from "Settings/Leva/Material/Matcap";
 
@@ -18,7 +18,7 @@ import { SettingsLevaMaterialMatcap as MatcapMaterial } from "Settings/Leva/Mate
  * @returns {React.JSX.Element}
  */
 const MaterialMatcap = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { color, dithering, flatShading, opacity, side, transparent } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,
@@ -32,20 +32,20 @@ const MaterialMatcap = (): React.JSX.Element => {
                 side: Material.side(),
                 transparent: Material.transparent(),
               },
-              Settings.folder(LEVA.ORDER.MATERIAL)
+              SettingsLeva.folder(LEVA.ORDER.MATERIAL)
             ),
             "Matcap Material": folder(
               {
                 color: MatcapMaterial.color(),
                 flatShading: MatcapMaterial.flatShading(),
               },
-              Settings.folder(LEVA.ORDER.MATCAP_MATERIAL)
+              SettingsLeva.folder(LEVA.ORDER.MATCAP_MATERIAL)
             ),
           },
-          Settings.folder(LEVA.ORDER.MATERIALS)
+          SettingsLeva.folder(LEVA.ORDER.MATERIALS)
         ),
       },
-      Settings.folder(LEVA.ORDER.COMPONENTS)
+      SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
     );
   const [matcapWornGold] = useMatcapTexture(
     MATCAP.ID.WORN_GOLD,

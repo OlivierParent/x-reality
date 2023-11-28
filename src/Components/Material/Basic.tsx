@@ -2,7 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Material/Basic";
 
@@ -16,7 +16,7 @@ import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Materi
  * @returns {React.JSX.Element}
  */
 const MaterialBasic = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const {
     color,
     dithering,
@@ -38,7 +38,7 @@ const MaterialBasic = (): React.JSX.Element => {
               side: Material.side(),
               transparent: Material.transparent(),
             },
-            Settings.folder(LEVA.ORDER.MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
           ),
           "Basic Material": folder(
             {
@@ -47,13 +47,13 @@ const MaterialBasic = (): React.JSX.Element => {
               refractionRatio: BasicMaterial.refractionRatio(),
               wireframe: BasicMaterial.wireframe(),
             },
-            Settings.folder(LEVA.ORDER.BASIC_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.BASIC_MATERIAL)
           ),
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

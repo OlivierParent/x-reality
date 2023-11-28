@@ -11,7 +11,7 @@ import { Material as MaterialStandard } from "Components/Material/Standard";
 import { Material as MaterialStandardNormalMap } from "Components/Material/StandardNormalMap";
 import { Material as MaterialToon } from "Components/Material/Toon";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 
 const MATERIAL = {
   Basic: <MaterialBasic />,
@@ -32,7 +32,7 @@ const MATERIAL = {
  * @returns {React.JSX.Element}
  */
 const Material = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { material } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -56,10 +56,10 @@ const Material = (): React.JSX.Element => {
             value: MATERIAL.Standard,
           },
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return material;

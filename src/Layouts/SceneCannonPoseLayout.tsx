@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
 import { SettingsLevaPhysics } from "Settings/Leva/Physics";
 import { LayoutProps } from "Types/LayoutProps";
@@ -21,7 +21,7 @@ import { LayoutProps } from "Types/LayoutProps";
 const SceneCannonPoseLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -32,10 +32,10 @@ const SceneCannonPoseLayout = ({
           linear: SettingsLevaCanvas.linear(),
           shadows: SettingsLevaCanvas.shadows(true),
         },
-        Settings.folder(LEVA.ORDER.CANVAS)
+        SettingsLeva.folder(LEVA.ORDER.CANVAS)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
   const { gravity, paused, showDebug } = useControls(
     LEVA.SCHEMA.PHYSICS,
@@ -44,7 +44,7 @@ const SceneCannonPoseLayout = ({
       paused: SettingsLevaPhysics.paused(),
       showDebug: SettingsLevaPhysics.showDebug(true),
     },
-    Settings.folder(LEVA.ORDER.PHYSICS)
+    SettingsLeva.folder(LEVA.ORDER.PHYSICS)
   );
 
   return (

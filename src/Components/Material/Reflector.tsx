@@ -2,7 +2,7 @@ import { MeshReflectorMaterial } from "@react-three/drei";
 import { folder, useControls } from "leva";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialReflector as ReflectorMaterial } from "Settings/Leva/Material/Reflector";
 
@@ -14,7 +14,7 @@ import { SettingsLevaMaterialReflector as ReflectorMaterial } from "Settings/Lev
  * @see https://drei.pmnd.rs/?path=/story/shaders-meshreflectormaterial--reflector-st
  */
 const MaterialReflector = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const {
     blur,
     color,
@@ -51,7 +51,7 @@ const MaterialReflector = (): React.JSX.Element => {
               side: Material.side(),
               transparent: Material.transparent(),
             },
-            Settings.folder(LEVA.ORDER.MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
           ),
           "Standard Material": folder(
             {
@@ -63,7 +63,7 @@ const MaterialReflector = (): React.JSX.Element => {
               roughness: ReflectorMaterial.roughness(1.0),
               wireframe: ReflectorMaterial.wireframe(),
             },
-            Settings.folder(LEVA.ORDER.STANDARD_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.STANDARD_MATERIAL)
           ),
           "Reflector Material": folder(
             {
@@ -80,13 +80,13 @@ const MaterialReflector = (): React.JSX.Element => {
               reflectorOffset: ReflectorMaterial.reflectorOffset(),
               resolution: ReflectorMaterial.resolution(1024),
             },
-            Settings.folder(LEVA.ORDER.REFLECTOR_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.REFLECTOR_MATERIAL)
           ),
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

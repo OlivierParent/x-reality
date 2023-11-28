@@ -7,7 +7,7 @@ import { BlendFunction } from "postprocessing";
 import { Vector2 } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } from "Settings/Leva/Effects/ChromaticAberration";
 
 /**
@@ -17,7 +17,7 @@ import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } f
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ChromaticAberrationEffect.js~ChromaticAberrationEffect.html
  */
 const EffectsChromaticAberration = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, offset } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -30,10 +30,10 @@ const EffectsChromaticAberration = () => {
             offset: ChromaticAberrationEffect.offset(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

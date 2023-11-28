@@ -1,7 +1,7 @@
 export namespace SettingsLevaGeometryCircle {
   export const radius = (value: number = 1.0) => ({
     label: "Radius",
-    hint: "Radius of the circle, default = 1.",
+    hint: "Radius of the circle, default is `1.0`.",
     max: 3.0,
     min: 0.1,
     step: 0.1,
@@ -10,7 +10,7 @@ export namespace SettingsLevaGeometryCircle {
 
   export const segments = (value: number = 8) => ({
     label: "Segments",
-    hint: "Number of segments (triangles), minimum = 3, default = 8.",
+    hint: "Number of segments (triangles), minimum is `3`, default is `8`.",
     max: 64,
     min: 3,
     step: 1,
@@ -18,8 +18,8 @@ export namespace SettingsLevaGeometryCircle {
   });
 
   export const ΘLength = (value: number = 360.0) => ({
-    label: "Θ Length",
-    hint: "The central angle, often called theta, of the circular sector. The default = 2*Math.PI, which makes for a complete circle.",
+    label: "Θ Length (degrees)",
+    hint: "The central angle (theta) of the circular sector in degrees (converted to radians). Default is `360.0` (full circle).",
     max: 360.0,
     min: -360.0,
     step: 0.1,
@@ -27,8 +27,8 @@ export namespace SettingsLevaGeometryCircle {
   });
 
   export const ΘStart = (value: number = 0.0) => ({
-    label: "Θ Start",
-    hint: "Start angle for first segment, default = 0 (three o'clock position).",
+    label: "Θ Start (degrees)",
+    hint: "Start angle (theta) for first segment in degrees (converted to radians). Default is `0.0` (three o'clock position).",
     max: 360.0,
     min: -360.0,
     step: 0.1,

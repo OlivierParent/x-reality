@@ -14,7 +14,7 @@ import particleImage from "Components/Particles/assets/Arteveldehogeschool_favic
  * @returns {React.JSX.Element}
  */
 const ParticlesSprites = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,

@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaGeometryBox as BoxGeometry } from "Settings/Leva/Geometry/Box";
 import { Children } from "Types/Children";
 
@@ -15,7 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DBox = ({ children }: Children): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { depth, depthSegments, height, heightSegments, width, widthSegments } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,
@@ -37,10 +37,10 @@ const Geometry3DBox = ({ children }: Children): React.JSX.Element => {
               }),
             }),
           },
-          Settings.folder(LEVA.ORDER.GEOMETRY)
+          SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
         ),
       },
-      Settings.folder(LEVA.ORDER.COMPONENTS)
+      SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
     );
 
   return (

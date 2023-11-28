@@ -18,7 +18,7 @@ const TEXTURE = {
  * @returns {React.JSX.Element}
  */
 const Texture = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { texture } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

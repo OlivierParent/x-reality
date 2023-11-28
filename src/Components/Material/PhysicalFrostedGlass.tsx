@@ -1,7 +1,7 @@
 import { folder, useControls } from "leva";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterialPhysical as PhysicalMaterial } from "Settings/Leva/Material/Physical";
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
 
@@ -11,7 +11,7 @@ import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/
  * @returns {React.JSX.Element}
  */
 const MaterialPhysicalFrostedGlass = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { roughness, thickness, transmission } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -21,7 +21,7 @@ const MaterialPhysicalFrostedGlass = (): React.JSX.Element => {
         transmission: PhysicalMaterial.transmission(1.0),
       }),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

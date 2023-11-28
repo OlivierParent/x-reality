@@ -12,7 +12,7 @@ import { MATCAP } from "Libs/matcap";
  * @returns {React.JSX.Element}
  */
 const LipsumDefault = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { size, string } = useControls("Components", {
     size: {
       label: "Size",

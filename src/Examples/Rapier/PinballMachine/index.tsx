@@ -11,6 +11,7 @@ import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 
 import { LEVA } from "Configs/leva";
 import { ScoreContext } from "Data/ScoreContext";
+import { Attractor } from "Examples/Rapier/PinballMachine/Attractor";
 import { Ball } from "Examples/Rapier/PinballMachine/Ball";
 import { BALL } from "Examples/Rapier/PinballMachine/Ball.config";
 import { Bumper } from "Examples/Rapier/PinballMachine/Bumper";
@@ -29,7 +30,7 @@ const zeroVelocity = new Vector3(0, 0, 0);
  * @returns {React.JSX.Element}
  */
 const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   useControls(
     LEVA.SCHEMA.SIMULATION,
     {
@@ -115,6 +116,8 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
             />
           </RigidBody>
         </group>
+        <group name="Attractor"></group>
+        <Attractor />
         <group name="Bumpers">
           <Bumper position={new Vector3(0, 0, -2)} />
           <Bumper position={new Vector3(-3, 0, -5)} />

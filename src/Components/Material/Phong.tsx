@@ -2,7 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Material/Phong";
 
@@ -16,7 +16,7 @@ import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Materi
  * @returns {React.JSX.Element}
  */
 const MaterialPhong = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const {
     color,
     dithering,
@@ -41,7 +41,7 @@ const MaterialPhong = (): React.JSX.Element => {
               side: Material.side(),
               transparent: Material.transparent(),
             },
-            Settings.folder(LEVA.ORDER.MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
           ),
           "Phong Material": folder(
             {
@@ -53,13 +53,13 @@ const MaterialPhong = (): React.JSX.Element => {
               specular: PhongMaterial.specular(),
               wireframe: PhongMaterial.wireframe(),
             },
-            Settings.folder(LEVA.ORDER.PHONG_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.PHONG_MATERIAL)
           ),
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

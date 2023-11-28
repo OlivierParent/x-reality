@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { EdgeDetectionMode } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsSMAA as SMAAEffect } from "Settings/Leva/Effects/SMAA";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsSMAA as SMAAEffect } from "Settings/Leva/Effects/SMA
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SMAAEffect.js~SMAAEffect.html
  */
 const EffectsSMAA = () => {
-  // Leva.
+  // Leva Controls.
   const { edgeDetectionMode, preset } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -24,10 +24,10 @@ const EffectsSMAA = () => {
             preset: SMAAEffect.preset(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

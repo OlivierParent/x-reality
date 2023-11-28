@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaGeometryTorusKnot as TorusKnotGeometry } from "Settings/Leva/Geometry/TorusKnot";
 import { Children } from "Types/Children";
 
@@ -15,7 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DTorusKnot = ({ children }: Children): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { p, q, radialSegments, radius, tube, tubularSegments } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -30,7 +30,7 @@ const Geometry3DTorusKnot = ({ children }: Children): React.JSX.Element => {
         }),
       }),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
   return (
     <TorusKnot args={[radius, tube, tubularSegments, radialSegments, p, q]}>

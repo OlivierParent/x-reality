@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction, Resolution } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsDepthOfField as DepthOfFieldEffect } from "Settings/Leva/Effects/DepthOfField";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsDepthOfField as DepthOfFieldEffect } from "Settings/
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/DepthOfFieldEffect.js~DepthOfFieldEffect.html
  */
 const EffectsDepthOfField = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, bokehScale, focalLength, focusDistance } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -28,10 +28,10 @@ const EffectsDepthOfField = () => {
             focusDistance: DepthOfFieldEffect.focusDistance(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

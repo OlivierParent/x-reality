@@ -18,7 +18,7 @@ const ANIMATED_CUBE = {
  * @returns {React.JSX.Element}
  */
 const AnimatedCube = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { cube } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

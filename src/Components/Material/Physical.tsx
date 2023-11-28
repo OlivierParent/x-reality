@@ -2,7 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialPhysical as PhysicalMaterial } from "Settings/Leva/Material/Physical";
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
@@ -17,7 +17,7 @@ import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/
  * @returns {React.JSX.Element}
  */
 const MaterialPhysical = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const {
     clearcoat,
     clearcoatRoughness,
@@ -51,7 +51,7 @@ const MaterialPhysical = (): React.JSX.Element => {
               side: Material.side(),
               transparent: Material.transparent(),
             },
-            Settings.folder(LEVA.ORDER.MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
           ),
           "Standard Material": folder(
             {
@@ -63,7 +63,7 @@ const MaterialPhysical = (): React.JSX.Element => {
               roughness: StandardMaterial.roughness(),
               wireframe: StandardMaterial.wireframe(),
             },
-            Settings.folder(LEVA.ORDER.STANDARD_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.STANDARD_MATERIAL)
           ),
           "Physical Material": folder(
             {
@@ -77,13 +77,13 @@ const MaterialPhysical = (): React.JSX.Element => {
               thickness: PhysicalMaterial.thickness(),
               transmission: PhysicalMaterial.transmission(),
             },
-            Settings.folder(LEVA.ORDER.PHYSICAL_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.PHYSICAL_MATERIAL)
           ),
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

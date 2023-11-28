@@ -18,7 +18,7 @@ const IMAGE = {
  * @returns {React.JSX.Element}
  */
 const Image = (props: GroupProps) => {
-  // Leva.
+  // Leva Controls.
   const { image } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

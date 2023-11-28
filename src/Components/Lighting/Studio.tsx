@@ -8,10 +8,10 @@ import {
 } from "three";
 
 import { LEVA } from "Configs/leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaColor } from "Settings/Leva/Color";
 import { SettingsLevaLighting } from "Settings/Leva/Lighting";
 import { SettingsLevaPosition } from "Settings/Leva/Position";
-import { SettingsLeva as Settings } from "Settings/Leva";
 
 /**
  * Studio Lighting.
@@ -19,14 +19,24 @@ import { SettingsLeva as Settings } from "Settings/Leva";
  * @returns {React.JSX.Element}
  */
 const LightingStudio = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { helpers, helperSize } = useControls(
-    LEVA.SCHEMA.LIGHTING,
+    LEVA.SCHEMA.GENERAL,
     {
-      helpers: SettingsLevaLighting.helpers(),
-      helperSize: SettingsLevaLighting.helperSize(),
+      Helpers: folder(
+        {
+          Lighting: folder(
+            {
+              helpers: SettingsLevaLighting.helpers(),
+              helperSize: SettingsLevaLighting.helperSize(),
+            },
+            SettingsLeva.folder()
+          ),
+        },
+        SettingsLeva.folder(LEVA.ORDER.HELPERS)
+      ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
   const ambientLight = useControls(
     LEVA.SCHEMA.LIGHTING,
@@ -36,10 +46,10 @@ const LightingStudio = (): React.JSX.Element => {
           color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
           intensity: SettingsLevaLighting.intensity(0.2),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const frontLight = useControls(
     LEVA.SCHEMA.LIGHTING,
@@ -51,10 +61,10 @@ const LightingStudio = (): React.JSX.Element => {
           intensity: SettingsLevaLighting.intensity(1.4),
           position: SettingsLevaPosition.position(0, 2, 4),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const leftLight = useControls(
     LEVA.SCHEMA.LIGHTING,
@@ -66,10 +76,10 @@ const LightingStudio = (): React.JSX.Element => {
           intensity: SettingsLevaLighting.intensity(2.0),
           position: SettingsLevaPosition.position(-4, 0, 0),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const rightLight = useControls(
     LEVA.SCHEMA.LIGHTING,
@@ -81,10 +91,10 @@ const LightingStudio = (): React.JSX.Element => {
           intensity: SettingsLevaLighting.intensity(2.0),
           position: SettingsLevaPosition.position(4, 0, 0),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
 
   // References.

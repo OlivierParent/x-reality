@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsGrid as GridEffect } from "Settings/Leva/Effects/Grid";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsGrid as GridEffect } from "Settings/Leva/Effects/Gri
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GridEffect.js~GridEffect.html
  */
 const EffectsGrid = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, lineWidth, scale } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -25,10 +25,10 @@ const EffectsGrid = () => {
             scale: GridEffect.scale(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

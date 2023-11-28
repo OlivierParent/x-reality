@@ -5,7 +5,7 @@ import { Circle } from "Components/Geometry2D/Circle";
 import { Plane } from "Components/Geometry2D/Plane";
 import { Ring } from "Components/Geometry2D/Ring";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { Children } from "Types/Children";
 
 enum GEOMETRY_2D {
@@ -47,7 +47,7 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
  * @returns {React.JSX.Element}
  */
 const Geometry2D = ({ children }: Children): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { geometry2DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -64,10 +64,10 @@ const Geometry2D = ({ children }: Children): React.JSX.Element => {
             value: GEOMETRY_2D.PLANE,
           },
         },
-        Settings.folder(LEVA.ORDER.GEOMETRY)
+        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return enableGeometry(geometry2DName, children);

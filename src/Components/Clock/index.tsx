@@ -13,7 +13,7 @@ import { SettingsLeva } from "Settings/Leva";
  * @returns {React.JSX.Element}
  */
 const Clock = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { showClock } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {

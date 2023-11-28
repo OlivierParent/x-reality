@@ -8,8 +8,8 @@ import { SettingsLevaEffects as Effects } from "Settings/Leva/Effects";
  */
 export namespace SettingsLevaEffectsDotScreen {
   export const angle = (value: number = 180) => ({
-    label: "Angle",
-    hint: "The angle of the dot pattern (converted to radians).",
+    label: "Angle (degrees)",
+    hint: "The angle of the dot pattern in degrees converted to radians.",
     max: 360,
     min: -360,
     step: 1,

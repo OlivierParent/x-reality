@@ -3,7 +3,7 @@ import { GroupProps } from "@react-three/fiber";
 import { folder, useControls } from "leva";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
  * @returns {React.JSX.Element}
  */
 const Helpers = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { axesHelper, gizmoHelper, gridHelper, polarGridHelper, stats } =
     useControls(
       LEVA.SCHEMA.GENERAL,
@@ -26,10 +26,10 @@ const Helpers = (props: GroupProps): React.JSX.Element => {
             polarGridHelper: SettingsLevaHelpers.polarGridHelper(),
             stats: SettingsLevaHelpers.stats(),
           },
-          Settings.folder(LEVA.ORDER.HELPERS)
+          SettingsLeva.folder(LEVA.ORDER.HELPERS)
         ),
       },
-      Settings.folder(LEVA.ORDER.GENERAL)
+      SettingsLeva.folder(LEVA.ORDER.GENERAL)
     );
 
   return (

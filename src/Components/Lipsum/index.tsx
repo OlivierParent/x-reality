@@ -16,7 +16,7 @@ const LIPSUM = {
  * @returns {React.JSX.Element}
  */
 const Lipsum = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { lipsum } = useControls("Components", {
     lipsum: {
       label: "Lipsum",

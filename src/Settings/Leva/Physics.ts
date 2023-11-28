@@ -1,6 +1,6 @@
-export namespace SettingsLevaPhysics {
-  const GRAVITATIONAL_ACCELERATION = 9.80665; // m/s^2
+const GRAVITATIONAL_ACCELERATION = 9.80665; // m/s^2
 
+export namespace SettingsLevaPhysics {
   export const gravity = (
     x: number = 0,
     y: number = -GRAVITATIONAL_ACCELERATION,

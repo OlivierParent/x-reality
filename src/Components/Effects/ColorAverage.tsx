@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsColorAverage as ColorAverageEffect } from "Settings/Leva/Effects/ColorAverage";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsColorAverage as ColorAverageEffect } from "Settings/
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ColorAverageEffect.js~ColorAverageEffect.html
  */
 const EffectsColorAverage = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -25,10 +25,10 @@ const EffectsColorAverage = () => {
             ),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

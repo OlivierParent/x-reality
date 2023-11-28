@@ -1,6 +1,6 @@
 .label {
   --size: 6rem;
-  background: hsla(0, 100%, 0%, 0.75);
+  background: hsla(0, 0%, 0%, 0.75);
   border-radius: 0.5rem;
   border: 2px solid black;
   color: hsl(120, 100%, 70%);

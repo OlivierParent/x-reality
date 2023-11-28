@@ -4,7 +4,7 @@ import { BlendFunction, GlitchMode } from "postprocessing";
 import { Vector2 } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects/Glitch";
 
 /**
@@ -14,7 +14,7 @@ import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GlitchEffect.js~GlitchEffect.html
  */
 const EffectsGlitch = () => {
-  // Leva.
+  // Leva Controls.
   const {
     active,
     blendFunction,
@@ -42,10 +42,10 @@ const EffectsGlitch = () => {
             strength: GlitchEffect.strength(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

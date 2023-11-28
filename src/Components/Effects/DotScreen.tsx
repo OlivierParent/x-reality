@@ -4,7 +4,7 @@ import { BlendFunction } from "postprocessing";
 import { MathUtils } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsDotScreen as DotScreenEffect } from "Settings/Leva/Effects/DotScreen";
 
 /**
@@ -14,7 +14,7 @@ import { SettingsLevaEffectsDotScreen as DotScreenEffect } from "Settings/Leva/E
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/DotScreenEffect.js~DotScreenEffect.html
  */
 const EffectsDotScreen = () => {
-  // Leva.
+  // Leva Controls.
   const { angle, blendFunction, scale } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -26,10 +26,10 @@ const EffectsDotScreen = () => {
             scale: DotScreenEffect.scale(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

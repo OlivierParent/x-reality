@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsNoise as NoiseEffect } from "Settings/Leva/Effects/Noise";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsNoise as NoiseEffect } from "Settings/Leva/Effects/N
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/NoiseEffect.js~NoiseEffect.html
  */
 const EffectsNoise = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, premultiply } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -24,10 +24,10 @@ const EffectsNoise = () => {
             premultiply: NoiseEffect.premultiply(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

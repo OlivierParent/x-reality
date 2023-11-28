@@ -6,7 +6,7 @@ import { Lighting as LightingStudio } from "Components/Lighting/Studio";
 import { Lighting as LightingThreePoint } from "Components/Lighting/ThreePoint";
 import { Lighting as LightingThreePointVolumetric } from "Components/Lighting/ThreePointVolumetric";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 
 const LIGHTING = {
   Demo: <LightingDemo />,
@@ -23,7 +23,7 @@ const LIGHTING = {
  * @returns {React.JSX.Element}
  */
 const Lighting = (props: GroupProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { lighting } = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
@@ -39,7 +39,7 @@ const Lighting = (props: GroupProps): React.JSX.Element => {
         value: LIGHTING.Studio,
       },
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
 
   return (

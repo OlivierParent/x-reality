@@ -3,7 +3,7 @@ import { useNormalTexture } from "@react-three/drei";
 import { folder, useControls } from "leva";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 
 /**
  * Standard Material with Normal Map.
@@ -11,7 +11,7 @@ import { SettingsLeva as Settings } from "Settings/Leva";
  * @returns {React.JSX.Element}
  */
 const MaterialStandardNormalMap = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const {
     normalAnisotropy,
     normalOffset,
@@ -49,7 +49,7 @@ const MaterialStandardNormalMap = (): React.JSX.Element => {
         }),
       }),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
   const [normalMap] = useNormalTexture(
     normalTextureId, // Index or file name, see: https://github.com/emmelleppi/normal-maps/

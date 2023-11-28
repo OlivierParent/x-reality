@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsVignette as VignetteEffect } from "Settings/Leva/Effects/Vignette";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsVignette as VignetteEffect } from "Settings/Leva/Eff
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/VignetteEffect.js~VignetteEffect.html
  */
 const EffectsVignette = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, darkness, eskil, offset } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -26,10 +26,10 @@ const EffectsVignette = () => {
             offset: VignetteEffect.offset(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

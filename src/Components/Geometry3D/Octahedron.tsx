@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaGeometryOctahedron as OctahedronGeometry } from "Settings/Leva/Geometry/Octahedron";
 import { Children } from "Types/Children";
 
@@ -15,7 +15,7 @@ import { Children } from "Types/Children";
  * @returns {React.JSX.Element}
  */
 const Geometry3DOctahedron = ({ children }: Children): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { detail, radius } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -26,10 +26,10 @@ const Geometry3DOctahedron = ({ children }: Children): React.JSX.Element => {
             radius: OctahedronGeometry.radius(),
           }),
         },
-        Settings.folder(LEVA.ORDER.GEOMETRY)
+        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

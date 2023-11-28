@@ -1,7 +1,7 @@
 import { useHelper } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import { folder, useControls } from "leva";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   ColorRepresentation,
   DirectionalLight,
@@ -17,12 +17,13 @@ import {
 } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
-import { SettingsLevaColor as LevaColor } from "Settings/Leva/Color";
-import { SettingsLevaLighting as LevaLighting } from "Settings/Leva/Lighting";
-import { SettingsLevaPosition as LevaPosition } from "Settings/Leva/Position";
+import { SettingsLeva } from "Settings/Leva";
+import { SettingsLevaColor } from "Settings/Leva/Color";
+import { SettingsLevaLighting } from "Settings/Leva/Lighting";
+import { SettingsLevaPosition } from "Settings/Leva/Position";
 
 const intensityMax = 20;
+const target = new Object3D();
 
 /**
  * Lighting Demo.
@@ -30,95 +31,108 @@ const intensityMax = 20;
  * @returns {React.JSX.Element}
  */
 const LightingDemo = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { helpers, helperSize } = useControls(
-    LEVA.SCHEMA.LIGHTING,
+    LEVA.SCHEMA.GENERAL,
     {
-      helpers: LevaLighting.helpers(),
-      helperSize: LevaLighting.helperSize(),
+      Helpers: folder(
+        {
+          Lighting: folder(
+            {
+              helpers: SettingsLevaLighting.helpers(),
+              helperSize: SettingsLevaLighting.helperSize(),
+            },
+            SettingsLeva.folder()
+          ),
+        },
+        SettingsLeva.folder(LEVA.ORDER.HELPERS)
+      ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
   const ambientLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
       "Ambient Light": folder(
         {
-          color: LevaColor.color(),
-          intensity: LevaLighting.intensity(0.2),
+          color: SettingsLevaColor.color(),
+          intensity: SettingsLevaLighting.intensity(0.2),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const directionalLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
       "Directional Light": folder(
         {
-          castShadow: LevaLighting.castShadow(true),
-          color: LevaColor.color("hsl(120, 100%, 70%)"),
-          intensity: LevaLighting.intensity(1),
-          position: LevaPosition.position(4, 4, 1),
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color("hsl(120, 100%, 70%)"),
+          intensity: SettingsLevaLighting.intensity(1),
+          position: SettingsLevaPosition.position(4, 4, 1),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const hemisphereLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
       "Hemisphere Light": folder(
         {
-          castShadow: LevaLighting.castShadow(true),
-          color: LevaColor.color("hsl(210, 100%, 70%)", "Sky"),
-          groundColor: LevaColor.color("hsl(30, 100%, 70%)", "Ground"),
-          intensity: LevaLighting.intensity(1),
-          position: LevaPosition.position(0, 1, 0),
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color("hsl(210, 100%, 70%)", "Sky"),
+          groundColor: SettingsLevaColor.color("hsl(30, 100%, 70%)", "Ground"),
+          intensity: SettingsLevaLighting.intensity(1),
+          position: SettingsLevaPosition.position(0, 1, 0),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const pointLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
       "Point Light": folder(
         {
-          castShadow: LevaLighting.castShadow(true),
-          color: LevaColor.color("hsl(240, 100%, 70%)"),
-          intensity: LevaLighting.intensity(1.0),
-          position: LevaPosition.position(-4, 1, 4),
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color("hsl(240, 100%, 70%)"),
+          distance: SettingsLevaLighting.distance(),
+          decay: SettingsLevaLighting.decay(),
+          intensity: SettingsLevaLighting.intensity(1.0),
+          position: SettingsLevaPosition.position(-4, 1, 4),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
   const spotLight = useControls(
     LEVA.SCHEMA.LIGHTING,
     {
       Spotlight: folder(
         {
-          castShadow: LevaLighting.castShadow(true),
-          color: LevaColor.color("hsl(60, 100%, 70%)"),
-          distance: LevaLighting.distance(),
-          intensity: LevaLighting.intensity(),
-          penumbra: LevaLighting.penumbra(2.5),
-          position: LevaPosition.position(2, 2, 2),
-          target: LevaLighting.target(),
+          angle: SettingsLevaLighting.angle(30),
+          castShadow: SettingsLevaLighting.castShadow(true),
+          color: SettingsLevaColor.color("hsl(60, 100%, 70%)"),
+          decay: SettingsLevaLighting.decay(),
+          distance: SettingsLevaLighting.distance(9),
+          intensity: SettingsLevaLighting.intensity(),
+          penumbra: SettingsLevaLighting.penumbra(2.5),
+          position: SettingsLevaPosition.position(2, 2, 2),
+          target: SettingsLevaLighting.target(),
         },
-        Settings.folder()
+        SettingsLeva.folder()
       ),
     },
-    Settings.folder(LEVA.ORDER.LIGHTING)
+    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
   );
 
   const { scene } = useThree();
-  const target = new Object3D();
   scene.add(target);
 
   // References.
@@ -151,10 +165,11 @@ const LightingDemo = (): React.JSX.Element => {
     spotLight.color as ColorRepresentation
   );
 
-  useFrame(() => {
+  useEffect(() => {
     target.translateX(spotLight.target.x);
+    target.translateY(spotLight.target.y);
     target.translateZ(spotLight.target.z);
-  });
+  }, [spotLight.target.x, spotLight.target.y, spotLight.target.z]);
 
   return (
     <group name="Demo Lighting">
@@ -168,7 +183,7 @@ const LightingDemo = (): React.JSX.Element => {
         color={directionalLight.color}
         intensity={directionalLight.intensity}
         name="Directional Light"
-        position={LevaPosition.toArray(directionalLight.position)}
+        position={SettingsLevaPosition.toArray(directionalLight.position)}
         ref={directionalLightRef}
       />
       <hemisphereLight
@@ -177,25 +192,29 @@ const LightingDemo = (): React.JSX.Element => {
         groundColor={hemisphereLight.groundColor}
         intensity={hemisphereLight.intensity}
         name="Hemisphere Light"
-        position={LevaPosition.toArray(hemisphereLight.position)}
+        position={SettingsLevaPosition.toArray(hemisphereLight.position)}
         ref={hemisphereLightRef}
       />
       <pointLight
         castShadow={pointLight.castShadow}
         color={pointLight.color}
+        distance={pointLight.distance}
+        decay={pointLight.decay}
         intensity={pointLight.intensity}
         name="Point Light"
-        position={LevaPosition.toArray(pointLight.position)}
+        position={SettingsLevaPosition.toArray(pointLight.position)}
         ref={pointLightRef}
       />
       <spotLight
-        angle={MathUtils.degToRad(30)}
+        angle={MathUtils.degToRad(spotLight.angle)}
         castShadow={spotLight.castShadow}
         color={spotLight.color}
+        decay={spotLight.decay}
+        distance={spotLight.distance}
         intensity={spotLight.intensity}
         name="Spotlight"
         penumbra={spotLight.penumbra}
-        position={LevaPosition.toArray(spotLight.position)}
+        position={SettingsLevaPosition.toArray(spotLight.position)}
         ref={spotLightRef}
         target={target}
       />

@@ -12,7 +12,7 @@ import { Sphere } from "Components/Geometry3D/Sphere";
 import { Tetrahedron } from "Components/Geometry3D/Tetrahedron";
 import { Torus } from "Components/Geometry3D/Torus";
 import { TorusKnot } from "Components/Geometry3D/TorusKnot";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { Children } from "Types/Children";
 
 enum GEOMETRY_3D {
@@ -82,7 +82,7 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
  * @returns {React.JSX.Element}
  */
 const Geometry3D = ({ children }: Children): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { geometry3DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -106,10 +106,10 @@ const Geometry3D = ({ children }: Children): React.JSX.Element => {
             value: GEOMETRY_3D.BOX,
           },
         },
-        Settings.folder(LEVA.ORDER.GEOMETRY)
+        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return enableGeometry(geometry3DName, children);

@@ -3,7 +3,7 @@ import { SettingsLevaGeometryCircle as CircleGeometry } from "Settings/Leva/Geom
 export namespace SettingsLevaGeometrySphere {
   export const heightSegments = (value: number = 16) => ({
     label: "Height Segments",
-    hint: "Number of vertical segments. Minimum = 2, default = 16.",
+    hint: "Number of vertical segments. Minimum is `2`, default is `16`.",
     max: 32,
     min: 2,
     step: 1,
@@ -14,7 +14,7 @@ export namespace SettingsLevaGeometrySphere {
 
   export const widthSegments = (value: number = 32) => ({
     label: "Width Segments",
-    hint: "Number of horizontal segments. Minimum = 3, default = 32.",
+    hint: "Number of horizontal segments. Minimum is `3`, default is `32`.",
     max: 64,
     min: 3,
     step: 1,
@@ -22,8 +22,8 @@ export namespace SettingsLevaGeometrySphere {
   });
 
   export const ΘLength = (value: number = 180.0) => ({
-    label: "Θ Length",
-    hint: "Specify vertical sweep angle size. Default = Math.PI.",
+    label: "Θ Length (degrees)",
+    hint: "Specify vertical sweep angle (theta) size in degrees (converted to radians). Default is `180.0`.",
     max: 180.0,
     min: -180.0,
     step: 0.1,
@@ -33,8 +33,8 @@ export namespace SettingsLevaGeometrySphere {
   export const ΘStart = CircleGeometry.ΘStart;
 
   export const ΦLength = (value: number = 360.0) => ({
-    label: "Φ Length",
-    hint: "Specify horizontal sweep angle size. Default = 2*Math.PI.",
+    label: "Φ Length (degrees)",
+    hint: "Specify horizontal sweep angle (phi) size in degrees (converted to radians). Default is `360.0`.",
     max: 360.0,
     min: 0.0,
     step: 0.1,
@@ -42,8 +42,8 @@ export namespace SettingsLevaGeometrySphere {
   });
 
   export const ΦStart = (value: number = 0.0) => ({
-    label: "Φ Start",
-    hint: "Specify horizontal starting angle. Default = 0.",
+    label: "Φ Start (degrees)",
+    hint: "Specify horizontal starting angle (phi) in degrees (converted to radians). Default is `0.0`.",
     max: 360.0,
     min: -360.0,
     step: 0.1,

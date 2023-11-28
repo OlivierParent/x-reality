@@ -18,7 +18,7 @@ import { SMAA } from "Components/Effects/SMAA";
 import { ToneMapping } from "Components/Effects/ToneMapping";
 import { Vignette } from "Components/Effects/Vignette";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 
 const EFFECT = {
   None: "None",
@@ -42,7 +42,7 @@ const EFFECT = {
 } as const;
 
 const Effects = () => {
-  // Leva.
+  // Leva Controls.
   const { useEffect } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -54,10 +54,10 @@ const Effects = () => {
             value: EFFECT.None,
           },
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   function enableEffect(name: string, element: React.JSX.Element) {

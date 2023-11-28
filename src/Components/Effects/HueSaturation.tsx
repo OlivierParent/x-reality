@@ -4,7 +4,7 @@ import { BlendFunction } from "postprocessing";
 import { MathUtils } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsHueSaturation as HueSaturationEffect } from "Settings/Leva/Effects/HueSaturation";
 
 /**
@@ -14,7 +14,7 @@ import { SettingsLevaEffectsHueSaturation as HueSaturationEffect } from "Setting
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/HueSaturationEffect.js~HueSaturationEffect.html
  */
 const EffectsHueSaturation = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, hue, saturation } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -26,10 +26,10 @@ const EffectsHueSaturation = () => {
             saturation: HueSaturationEffect.saturation(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

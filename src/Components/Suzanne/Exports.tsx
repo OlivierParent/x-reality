@@ -1,4 +1,4 @@
-import { Html, useFBX, useGLTF } from "@react-three/drei";
+import { Clone, Html, useFBX, useGLTF } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 
 import suzanneDefaultAutosmoothShadingGlb from "Components/Suzanne/assets/suzanne_default_autosmooth_shading_compressed.glb";
@@ -47,12 +47,24 @@ const SuzanneExports = (props: GroupProps, ref: any): React.JSX.Element => {
   );
 
   const htmlProps = {
-    distanceFactor: 10,
     className: styles["label"],
+    distanceFactor: 10,
   };
 
   return (
     <group {...props}>
+      <group position={[-3.0, 0, 3.0]}>
+        <Clone object={sceneDefaultFlatShading} />
+        <Html //
+          position={[0, -1.25, 0.5]}
+          {...htmlProps}
+        >
+          <h2>Clone (GLB)</h2>
+          <p>Default</p>
+          <p>Flat Shading</p>
+          <p>14kB (compressed)</p>
+        </Html>
+      </group>
       <group position={[-3.0, 0, 0]}>
         <primitive object={sceneDefaultFlatShading} />
         <Html //

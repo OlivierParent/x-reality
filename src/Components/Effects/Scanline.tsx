@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsScanline as ScanlineEffect } from "Settings/Leva/Effects/Scanline";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsScanline as ScanlineEffect } from "Settings/Leva/Eff
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ScanlineEffect.js~ScanlineEffect.html
  */
 const EffectsScanline = () => {
-  // Leva.
+  // Leva Controls.
   const { density, blendFunction } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -24,10 +24,10 @@ const EffectsScanline = () => {
             density: ScanlineEffect.density(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

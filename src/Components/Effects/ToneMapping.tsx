@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsToneMapping as ToneMappingEffect } from "Settings/Leva/Effects/ToneMapping";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsToneMapping as ToneMappingEffect } from "Settings/Le
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ToneMappingEffect.js~ToneMappingEffect.html
  */
 const EffectsToneMapping = () => {
-  // Leva.
+  // Leva Controls.
   const {
     adaptationRate,
     averageLuminance,
@@ -33,10 +33,10 @@ const EffectsToneMapping = () => {
             resolution: ToneMappingEffect.resolution(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

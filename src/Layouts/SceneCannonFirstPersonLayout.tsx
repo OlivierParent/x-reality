@@ -9,7 +9,7 @@ import { Lighting } from "Components/Lighting";
 import { CursorOverlay } from "Components/UserInterface/CursorOverlay";
 import { KEYBINDINGS } from "Configs/keybindings";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
 import { SettingsLevaPhysics } from "Settings/Leva/Physics";
 import { LayoutProps } from "Types/LayoutProps";
@@ -23,7 +23,7 @@ import { LayoutProps } from "Types/LayoutProps";
 const SceneCannonFirstPersonLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { flat, frameloop, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -34,10 +34,10 @@ const SceneCannonFirstPersonLayout = ({
           linear: SettingsLevaCanvas.linear(),
           shadows: SettingsLevaCanvas.shadows(true),
         },
-        Settings.folder(LEVA.ORDER.CANVAS)
+        SettingsLeva.folder(LEVA.ORDER.CANVAS)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
   const { gravity, paused, showDebug } = useControls(
     LEVA.SCHEMA.PHYSICS,
@@ -46,7 +46,7 @@ const SceneCannonFirstPersonLayout = ({
       paused: SettingsLevaPhysics.paused(),
       showDebug: SettingsLevaPhysics.showDebug(true),
     },
-    Settings.folder(LEVA.ORDER.PHYSICS)
+    SettingsLeva.folder(LEVA.ORDER.PHYSICS)
   );
 
   return (

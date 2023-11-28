@@ -3,7 +3,7 @@ import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaEffectsSepia as SepiaEffect } from "Settings/Leva/Effects/Sepia";
 
 /**
@@ -13,7 +13,7 @@ import { SettingsLevaEffectsSepia as SepiaEffect } from "Settings/Leva/Effects/S
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SepiaEffect.js~SepiaEffect.html
  */
 const EffectsSepia = () => {
-  // Leva.
+  // Leva Controls.
   const { blendFunction, intensity } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -24,10 +24,10 @@ const EffectsSepia = () => {
             intensity: SepiaEffect.intensity(),
           }),
         },
-        Settings.folder(LEVA.ORDER.EFFECTS_COMPOSER)
+        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

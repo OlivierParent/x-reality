@@ -2,7 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialToon as ToonMaterial } from "Settings/Leva/Material/Toon";
 
@@ -36,7 +36,7 @@ const MaterialToon = (): React.JSX.Element => {
               side: Material.side(),
               transparent: Material.transparent(),
             },
-            Settings.folder(LEVA.ORDER.MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
           ),
           "Toon Material": folder(
             {
@@ -45,13 +45,13 @@ const MaterialToon = (): React.JSX.Element => {
               emissiveIntensity: ToonMaterial.emissiveIntensity(),
               wireframe: ToonMaterial.wireframe(),
             },
-            Settings.folder(LEVA.ORDER.TOON_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.TOON_MATERIAL)
           ),
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (

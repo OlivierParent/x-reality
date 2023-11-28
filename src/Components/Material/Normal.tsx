@@ -2,7 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialNormal as NormalMaterial } from "Settings/Leva/Material/Normal";
 
@@ -16,7 +16,7 @@ import { SettingsLevaMaterialNormal as NormalMaterial } from "Settings/Leva/Mate
  * @returns {React.JSX.Element}
  */
 const MaterialNormal = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { dithering, flatShading, opacity, side, transparent, wireframe } =
     useControls(
       LEVA.SCHEMA.COMPONENTS,
@@ -30,20 +30,20 @@ const MaterialNormal = (): React.JSX.Element => {
                 side: Material.side(),
                 transparent: Material.transparent(),
               },
-              Settings.folder(LEVA.ORDER.MATERIAL)
+              SettingsLeva.folder(LEVA.ORDER.MATERIAL)
             ),
             "Normal Material": folder(
               {
                 flatShading: NormalMaterial.flatShading(),
                 wireframe: NormalMaterial.wireframe(),
               },
-              Settings.folder(LEVA.ORDER.NORMAL_MATERIAL)
+              SettingsLeva.folder(LEVA.ORDER.NORMAL_MATERIAL)
             ),
           },
-          Settings.folder(LEVA.ORDER.MATERIALS)
+          SettingsLeva.folder(LEVA.ORDER.MATERIALS)
         ),
       },
-      Settings.folder(LEVA.ORDER.COMPONENTS)
+      SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
     );
 
   return (

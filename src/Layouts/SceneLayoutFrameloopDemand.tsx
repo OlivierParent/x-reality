@@ -8,7 +8,7 @@ import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
 import { FRAMELOOPS } from "Configs/frameloops";
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
 import { LayoutProps } from "Types/LayoutProps";
 
@@ -21,7 +21,7 @@ import { LayoutProps } from "Types/LayoutProps";
 const SceneLayoutFrameloopDemand = ({
   children,
 }: LayoutProps): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const { flat, linear, shadows } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -31,10 +31,10 @@ const SceneLayoutFrameloopDemand = ({
           linear: SettingsLevaCanvas.linear(),
           shadows: SettingsLevaCanvas.shadows(true),
         },
-        Settings.folder(LEVA.ORDER.CANVAS)
+        SettingsLeva.folder(LEVA.ORDER.CANVAS)
       ),
     },
-    Settings.folder(LEVA.ORDER.GENERAL)
+    SettingsLeva.folder(LEVA.ORDER.GENERAL)
   );
 
   return (

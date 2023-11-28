@@ -2,7 +2,7 @@ import { folder, useControls } from "leva";
 import { Side } from "three";
 
 import { LEVA } from "Configs/leva";
-import { SettingsLeva as Settings } from "Settings/Leva";
+import { SettingsLeva } from "Settings/Leva";
 import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 import { SettingsLevaMaterialLambert as LambertMaterial } from "Settings/Leva/Material/Lambert";
 
@@ -16,7 +16,7 @@ import { SettingsLevaMaterialLambert as LambertMaterial } from "Settings/Leva/Ma
  * @returns {React.JSX.Element}
  */
 const MaterialLambert = (): React.JSX.Element => {
-  // Leva.
+  // Leva Controls.
   const {
     color,
     dithering,
@@ -38,7 +38,7 @@ const MaterialLambert = (): React.JSX.Element => {
               side: Material.side(),
               transparent: Material.transparent(),
             },
-            Settings.folder(LEVA.ORDER.MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
           ),
           "Lambert Material": folder(
             {
@@ -47,13 +47,13 @@ const MaterialLambert = (): React.JSX.Element => {
               emissiveIntensity: LambertMaterial.emissiveIntensity(),
               wireframe: LambertMaterial.wireframe(),
             },
-            Settings.folder(LEVA.ORDER.LAMBERT_MATERIAL)
+            SettingsLeva.folder(LEVA.ORDER.LAMBERT_MATERIAL)
           ),
         },
-        Settings.folder(LEVA.ORDER.MATERIALS)
+        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
       ),
     },
-    Settings.folder(LEVA.ORDER.COMPONENTS)
+    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
   );
 
   return (
