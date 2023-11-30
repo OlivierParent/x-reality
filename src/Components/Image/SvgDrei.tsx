@@ -5,6 +5,8 @@ import { Vector3 } from "three";
 import arteveldehogeschoolLogo from "Components/Image/assets/arteveldehogeschool_logo.svg";
 import svgLogo from "Components/Image/assets/SVG_logo.svg";
 
+const SCALE = 0.0075;
+
 const svgLogoUrl =
   "https://upload.wikimedia.org/wikipedia/commons/0/02/SVG_logo.svg";
 
@@ -23,8 +25,6 @@ const images = [
   },
 ];
 
-const SCALE = 0.0075;
-
 /**
  * Image.
  *
@@ -35,7 +35,12 @@ const ImageSvgDrei = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="SVG Image" {...props}>
       {images.map(({ position, src }, index) => (
-        <Svg position={position} key={index} scale={SCALE} src={src} />
+        <Svg //
+          key={index}
+          position={position}
+          scale={SCALE}
+          src={src}
+        />
       ))}
     </group>
   );
