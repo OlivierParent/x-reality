@@ -1,10 +1,7 @@
 import { EffectComposer, Vignette } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsVignette as VignetteEffect } from "Settings/Leva/Effects/Vignette";
+import { useLeva } from "Hooks/Leva/Effects/Vignette";
 
 /**
  * Vignette effect.
@@ -14,23 +11,12 @@ import { SettingsLevaEffectsVignette as VignetteEffect } from "Settings/Leva/Eff
  */
 const EffectsVignette = () => {
   // Leva Controls.
-  const { blendFunction, darkness, eskil, offset } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Vignette Effect": folder({
-            blendFunction: VignetteEffect.blendFunction(BlendFunction.NORMAL),
-            darkness: VignetteEffect.darkness(),
-            eskil: VignetteEffect.eskil(),
-            offset: VignetteEffect.offset(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+    darkness,
+    eskil,
+    offset,
+  } = useLeva();
 
   return (
     <EffectComposer>

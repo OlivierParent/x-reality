@@ -1,11 +1,8 @@
 import { Ring } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryRing as RingGeometry } from "Settings/Leva/Geometry/Ring";
+import { useLeva } from "Hooks/Leva/Geometry2D/Ring";
 import { Children } from "Types/Children";
 
 /**
@@ -17,32 +14,14 @@ import { Children } from "Types/Children";
  */
 const Geometry2DRing = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { innerRadius, outerRadius, θLength, θSegments, θStart, φSegments } =
-    useControls(
-      LEVA.SCHEMA.COMPONENTS,
-      {
-        Geometry: folder(
-          {
-            Ring: folder({
-              "XY Plane": folder({
-                innerRadius: RingGeometry.innerRadius(),
-                outerRadius: RingGeometry.outerRadius(),
-                Θ: folder({
-                  θSegments: RingGeometry.ΘSegments(),
-                  θStart: RingGeometry.ΘStart(),
-                  θLength: RingGeometry.ΘLength(),
-                }),
-                Φ: folder({
-                  φSegments: RingGeometry.ΦSegments(),
-                }),
-              }),
-            }),
-          },
-          SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-        ),
-      },
-      SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-    );
+  const {
+    innerRadius, //
+    outerRadius,
+    θLength,
+    θSegments,
+    θStart,
+    φSegments,
+  } = useLeva();
 
   return (
     <Ring

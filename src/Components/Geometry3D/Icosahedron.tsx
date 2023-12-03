@@ -1,10 +1,7 @@
 import { Icosahedron } from "@react-three/drei";
-import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryIcosahedron as IcosahedronGeometry } from "Settings/Leva/Geometry/Icosahedron";
+import { useLeva } from "Hooks/Leva/Geometry3D/Icosahedron";
 import { Children } from "Types/Children";
 
 /**
@@ -16,21 +13,7 @@ import { Children } from "Types/Children";
  */
 const Geometry3DIcosahedron = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { detail, radius } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Icosahedron: folder({
-            detail: IcosahedronGeometry.detail(),
-            radius: IcosahedronGeometry.radius(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  const { detail, radius } = useLeva();
 
   return (
     <Icosahedron args={[radius, detail]}>

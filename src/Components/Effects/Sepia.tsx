@@ -1,10 +1,7 @@
 import { EffectComposer, Sepia } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsSepia as SepiaEffect } from "Settings/Leva/Effects/Sepia";
+import { useLeva } from "Hooks/Leva/Effects/Sepia";
 
 /**
  * Sepia effect.
@@ -14,21 +11,10 @@ import { SettingsLevaEffectsSepia as SepiaEffect } from "Settings/Leva/Effects/S
  */
 const EffectsSepia = () => {
   // Leva Controls.
-  const { blendFunction, intensity } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Sepia Effect": folder({
-            blendFunction: SepiaEffect.blendFunction(BlendFunction.NORMAL),
-            intensity: SepiaEffect.intensity(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+    intensity,
+  } = useLeva();
 
   return (
     <EffectComposer>

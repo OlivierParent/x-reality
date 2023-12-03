@@ -1,10 +1,7 @@
 import { Dodecahedron } from "@react-three/drei";
-import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryDodecahedron as DodecahedronGeometry } from "Settings/Leva/Geometry/Dodecahedron";
+import { useLeva } from "Hooks/Leva/Geometry3D/Dodecahedron";
 import { Children } from "Types/Children";
 
 /**
@@ -16,21 +13,7 @@ import { Children } from "Types/Children";
  */
 const Geometry3DDodecahedron = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { detail, radius } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Dodecahedron: folder({
-            detail: DodecahedronGeometry.detail(),
-            radius: DodecahedronGeometry.radius(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  const { detail, radius } = useLeva();
 
   return (
     <Dodecahedron args={[radius, detail]}>

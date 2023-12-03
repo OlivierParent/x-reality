@@ -1,17 +1,15 @@
 import { Debug, Physics } from "@react-three/cannon";
 import { KeyboardControls, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Leva, folder, useControls } from "leva";
+import { Leva } from "leva";
 import { Suspense } from "react";
 
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
 import { CursorOverlay } from "Components/UserInterface/CursorOverlay";
 import { KEYBINDINGS } from "Configs/keybindings";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
-import { SettingsLevaPhysics } from "Settings/Leva/Physics";
+import { useLeva as useLevaCanvas } from "Hooks/Leva/Layout/Canvas";
+import { useLeva as useLevaPhysics } from "Hooks/Leva/Layout/Physics";
 import { LayoutProps } from "Types/LayoutProps";
 
 /**
@@ -24,55 +22,36 @@ const SceneCannonFirstPersonLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
   // Leva Controls.
-  const { flat, frameloop, linear, shadows } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      Canvas: folder(
-        {
-          flat: SettingsLevaCanvas.flat(),
-          frameloop: SettingsLevaCanvas.frameloop(),
-          linear: SettingsLevaCanvas.linear(),
-          shadows: SettingsLevaCanvas.shadows(true),
-        },
-        SettingsLeva.folder(LEVA.ORDER.CANVAS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
-  const { gravity, paused, showDebug } = useControls(
-    LEVA.SCHEMA.PHYSICS,
-    {
-      gravity: SettingsLevaPhysics.gravity(),
-      paused: SettingsLevaPhysics.paused(),
-      showDebug: SettingsLevaPhysics.showDebug(true),
-    },
-    SettingsLeva.folder(LEVA.ORDER.PHYSICS)
-  );
+  const canvasControls = useLevaCanvas();
+  const physicsControls = useLevaPhysics();
 
   return (
     <>
       <Canvas
         camera={undefined}
-        flat={flat}
-        frameloop={frameloop}
-        linear={linear}
+        flat={canvasControls.flat}
+        frameloop={canvasControls.frameloop}
+        linear={canvasControls.linear}
         orthographic={false}
-        shadows={shadows}
+        shadows={canvasControls.shadows}
       >
         <Suspense>
           <Helpers />
           <Lighting />
           <KeyboardControls map={KEYBINDINGS.UNIVERSAL}>
             <Physics
-              gravity={[gravity.x, gravity.y, gravity.z]}
-              isPaused={paused}
+              gravity={[
+                physicsControls.gravity.x,
+                physicsControls.gravity.y,
+                physicsControls.gravity.z,
+              ]}
+              isPaused={physicsControls.paused}
             >
-              {(!showDebug && children) ||
-                (showDebug && (
-                  <Debug color={0xff00ff} scale={showDebug ? 1 : 0}>
-                    {children}
-                  </Debug>
-                ))}
+              {physicsControls.showDebug ? (
+                <Debug color={0xff00ff}>{children}</Debug>
+              ) : (
+                children
+              )}
             </Physics>
           </KeyboardControls>
         </Suspense>

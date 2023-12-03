@@ -1,16 +1,16 @@
 import { Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
-import { Leva, folder, useControls } from "leva";
+import { Leva } from "leva";
 import { Suspense } from "react";
 
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
-import { SettingsLevaPhysics } from "Settings/Leva/Physics";
+import { useLeva as useLevaCanvas } from "Hooks/Leva/Layout/Canvas";
+import { useLeva as useLevaPhysics } from "Hooks/Leva/Layout/Physics";
 import { LayoutProps } from "Types/LayoutProps";
+
+const CAMERA = { fov: 45, position: [7, 7, 7] } as const;
 
 /**
  * Layout for a scene at an angle with Rapier physics engine.
@@ -22,40 +22,18 @@ const SceneRapierPoseLayout = ({
   children,
 }: LayoutProps): React.JSX.Element => {
   // Leva Controls.
-  const { flat, frameloop, linear, shadows } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      Canvas: folder(
-        {
-          flat: SettingsLevaCanvas.flat(),
-          frameloop: SettingsLevaCanvas.frameloop(),
-          linear: SettingsLevaCanvas.linear(),
-          shadows: SettingsLevaCanvas.shadows(true),
-        },
-        SettingsLeva.folder(LEVA.ORDER.CANVAS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
-  const { gravity, paused, showDebug } = useControls(
-    LEVA.SCHEMA.PHYSICS,
-    {
-      gravity: SettingsLevaPhysics.gravity(),
-      paused: SettingsLevaPhysics.paused(),
-      showDebug: SettingsLevaPhysics.showDebug(true),
-    },
-    SettingsLeva.folder(LEVA.ORDER.PHYSICS)
-  );
+  const canvasControls = useLevaCanvas();
+  const physicsControls = useLevaPhysics();
 
   return (
     <>
       <Canvas
-        camera={{ fov: 45, position: [7, 7, 7] }}
-        flat={flat}
-        frameloop={frameloop}
-        linear={linear}
+        camera={CAMERA}
+        flat={canvasControls.flat}
+        frameloop={canvasControls.frameloop}
+        linear={canvasControls.linear}
         orthographic={false}
-        shadows={shadows}
+        shadows={canvasControls.shadows}
       >
         <Suspense>
           <Helpers />
@@ -67,9 +45,13 @@ const SceneRapierPoseLayout = ({
           />
           <Physics
             colliders={undefined}
-            debug={showDebug}
-            gravity={[gravity.x, gravity.y, gravity.z]}
-            paused={paused}
+            debug={physicsControls.showDebug}
+            gravity={[
+              physicsControls.gravity.x,
+              physicsControls.gravity.y,
+              physicsControls.gravity.z,
+            ]}
+            paused={physicsControls.paused}
             timeStep="vary"
             updatePriority={undefined}
           >

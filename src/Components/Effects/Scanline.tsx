@@ -1,10 +1,7 @@
 import { EffectComposer, Scanline } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsScanline as ScanlineEffect } from "Settings/Leva/Effects/Scanline";
+import { useLeva } from "Hooks/Leva/Effects/Scanline";
 
 /**
  * Scanline effect.
@@ -14,21 +11,10 @@ import { SettingsLevaEffectsScanline as ScanlineEffect } from "Settings/Leva/Eff
  */
 const EffectsScanline = () => {
   // Leva Controls.
-  const { density, blendFunction } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Scanline Effect": folder({
-            blendFunction: ScanlineEffect.blendFunction(BlendFunction.OVERLAY),
-            density: ScanlineEffect.density(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    density, //
+    blendFunction,
+  } = useLeva();
 
   return (
     <EffectComposer>

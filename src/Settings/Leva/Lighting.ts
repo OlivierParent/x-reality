@@ -14,14 +14,6 @@ export namespace SettingsLevaLighting {
     return { label: "Cast Shadow", value };
   }
 
-  export function helpers(value: boolean = false) {
-    return { hint: "Show light helpers.", label: "Lights", value };
-  }
-
-  export function helperSize(value: number = 0.5, max: number = 2) {
-    return { hint: "Light helper size.", label: "Size", max, min: 0, value };
-  }
-
   export function decay(value: number = 2.0) {
     return {
       hint: "The amount the light dims along the distance of the light. Expects a `Float`. Default is `2.0`.",
@@ -40,6 +32,14 @@ export namespace SettingsLevaLighting {
       step: 0.1,
       value,
     };
+  }
+
+  export function helperShow(value: boolean = false) {
+    return { hint: "Show light helpers.", label: "Show", value };
+  }
+
+  export function helperSize(value: number = 0.5, max: number = 2) {
+    return { hint: "Light helper size.", label: "Size", max, min: 0, value };
   }
 
   export function intensity(value: number = 1) {

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 
+import { BuildStamp } from "Components/UserInterface/BuildStamp";
 import { NAVIGATION } from "Configs/navigation";
 
 import styles from "Components/UserInterface/Navigation.module.css";
@@ -28,6 +29,9 @@ const UserInterfaceNavigation = (): React.JSX.Element => {
           </li>
         ))}
       </ul>
+      <div className={styles["nav__buildstamp"]}>
+        <BuildStamp />
+      </div>
     </nav>
   );
 };

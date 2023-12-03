@@ -19,8 +19,8 @@ const ClockDigital = (props: GroupProps) => {
   }, [text]);
 
   useFrame(() => {
-    const d = new Date().toLocaleTimeString();
-    setText(d);
+    const dateText = new Date().toLocaleTimeString();
+    setText(dateText);
   });
 
   return (

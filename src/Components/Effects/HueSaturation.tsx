@@ -1,11 +1,8 @@
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 import { MathUtils } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsHueSaturation as HueSaturationEffect } from "Settings/Leva/Effects/HueSaturation";
+import { useLeva } from "Hooks/Leva/Effects/HueSaturation";
 
 /**
  * Hue/saturation effect.
@@ -15,22 +12,11 @@ import { SettingsLevaEffectsHueSaturation as HueSaturationEffect } from "Setting
  */
 const EffectsHueSaturation = () => {
   // Leva Controls.
-  const { blendFunction, hue, saturation } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Hue/Saturation Effect": folder({
-            blendFunction: HueSaturationEffect.blendFunction(),
-            hue: HueSaturationEffect.hue(),
-            saturation: HueSaturationEffect.saturation(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+    hue,
+    saturation,
+  } = useLeva();
 
   return (
     <EffectComposer>

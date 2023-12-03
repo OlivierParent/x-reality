@@ -2,12 +2,9 @@ import {
   BrightnessContrast,
   EffectComposer,
 } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsBrightnessContrast as BrightnessContrastEffect } from "Settings/Leva/Effects/BrightnessContrast";
+import { useLeva } from "Hooks/Leva/Effects/BrightnessContrast";
 
 /**
  * Brightness/contrast effect.
@@ -17,22 +14,11 @@ import { SettingsLevaEffectsBrightnessContrast as BrightnessContrastEffect } fro
  */
 const EffectsBrightnessContrast = () => {
   // Leva Controls.
-  const { blendFunction, brightness, contrast } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Brightness/Contrast Effect": folder({
-            blendFunction: BrightnessContrastEffect.blendFunction(),
-            brightness: BrightnessContrastEffect.brightness(),
-            contrast: BrightnessContrastEffect.contrast(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+    brightness,
+    contrast,
+  } = useLeva();
 
   return (
     <EffectComposer>

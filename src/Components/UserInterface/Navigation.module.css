@@ -20,6 +20,11 @@
   padding-top: 0.25em;
 }
 
+.nav__buildstamp {
+  color: hsla(0, 0%, 100%, 0.1);
+  padding: 0.5em 1em;
+}
+
 .nav__item {
   background-color: hsla(0, 0%, 100%, 0.1);
   border-radius: 0.25em;

@@ -2,6 +2,7 @@ import { Text, useMatcapTexture } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
+import { LEVA } from "Configs/leva";
 import { FONT_FAMILY } from "Libs/font";
 import { MATCAP } from "Libs/matcap";
 
@@ -13,7 +14,10 @@ import { MATCAP } from "Libs/matcap";
  */
 const LipsumDefault = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { size, string } = useControls("Components", {
+  const {
+    size, //
+    string,
+  } = useControls(LEVA.SCHEMA.COMPONENTS, {
     size: {
       label: "Size",
       max: 1.0,

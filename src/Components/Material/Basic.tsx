@@ -1,10 +1,6 @@
-import { folder, useControls } from "leva";
 import { Side } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
-import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Material/Basic";
+import { useLeva } from "Hooks/Leva/Material/Basic";
 
 /**
  * Basic Material.
@@ -26,35 +22,7 @@ const MaterialBasic = (): React.JSX.Element => {
     side,
     transparent,
     wireframe,
-  } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Materials: folder(
-        {
-          Material: folder(
-            {
-              dithering: Material.dithering(),
-              opacity: Material.opacity(),
-              side: Material.side(),
-              transparent: Material.transparent(),
-            },
-            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
-          ),
-          "Basic Material": folder(
-            {
-              color: BasicMaterial.color(),
-              reflectivity: BasicMaterial.reflectivity(),
-              refractionRatio: BasicMaterial.refractionRatio(),
-              wireframe: BasicMaterial.wireframe(),
-            },
-            SettingsLeva.folder(LEVA.ORDER.BASIC_MATERIAL)
-          ),
-        },
-        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  } = useLeva();
 
   return (
     <meshBasicMaterial

@@ -1,15 +1,13 @@
 import { Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { folder, Leva, useControls } from "leva";
+import { Leva } from "leva";
 import { Suspense } from "react";
 
 import { Effects } from "Components/Effects";
 import { Helpers } from "Components/Helpers";
 import { Lighting } from "Components/Lighting";
 import { FRAMELOOPS } from "Configs/frameloops";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaCanvas } from "Settings/Leva/Canvas";
+import { useLeva as useLevaCanvas } from "Hooks/Leva/Layout/Canvas";
 import { LayoutProps } from "Types/LayoutProps";
 
 /**
@@ -22,30 +20,17 @@ const SceneLayoutFrameloopDemand = ({
   children,
 }: LayoutProps): React.JSX.Element => {
   // Leva Controls.
-  const { flat, linear, shadows } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      Canvas: folder(
-        {
-          flat: SettingsLevaCanvas.flat(),
-          linear: SettingsLevaCanvas.linear(),
-          shadows: SettingsLevaCanvas.shadows(true),
-        },
-        SettingsLeva.folder(LEVA.ORDER.CANVAS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const canvasControls = useLevaCanvas();
 
   return (
     <>
       <Canvas
         camera={undefined}
-        flat={flat}
+        flat={canvasControls.flat}
         frameloop={FRAMELOOPS.DEMAND}
-        linear={linear}
+        linear={canvasControls.linear}
         orthographic={false}
-        shadows={shadows}
+        shadows={canvasControls.shadows}
       >
         <Suspense>
           <Effects />

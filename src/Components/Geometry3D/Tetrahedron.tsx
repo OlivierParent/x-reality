@@ -1,10 +1,7 @@
 import { Tetrahedron } from "@react-three/drei";
-import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryTetrahedron as TetrahedronGeometry } from "Settings/Leva/Geometry/Tetrahedron";
+import { useLeva } from "Hooks/Leva/Geometry3D/Tetrahedron";
 import { Children } from "Types/Children";
 
 /**
@@ -16,21 +13,7 @@ import { Children } from "Types/Children";
  */
 const Geometry3DTetrahedron = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { detail, radius } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Tetrahedron: folder({
-            detail: TetrahedronGeometry.detail(),
-            radius: TetrahedronGeometry.radius(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  const { detail, radius } = useLeva();
 
   return (
     <Tetrahedron args={[radius, detail]}>

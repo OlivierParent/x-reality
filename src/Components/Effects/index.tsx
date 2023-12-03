@@ -20,26 +20,26 @@ import { Vignette } from "Components/Effects/Vignette";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
-const EFFECT = {
-  None: "None",
-  Bloom: "Bloom",
-  BrightnessContrast: "BrightnessContrast",
-  ChromaticAberration: "ChromaticAberration",
-  ColorAverage: "ColorAverage",
-  ColorDepth: "ColorDepth",
-  DepthOfField: "DepthOfField",
-  DotScreen: "DotScreen",
-  Glitch: "Glitch",
-  Grid: "Grid",
-  HueSaturation: "HueSaturation",
-  Noise: "Noise",
-  Pixelation: "Pixelation",
-  SMAA: "SMAA",
-  Scanline: "Scanline",
-  Sepia: "Sepia",
-  ToneMapping: "ToneMapping",
-  Vignette: "Vignette",
-} as const;
+enum EFFECT {
+  None = "None",
+  Bloom = "Bloom",
+  BrightnessContrast = "BrightnessContrast",
+  ChromaticAberration = "ChromaticAberration",
+  ColorAverage = "ColorAverage",
+  ColorDepth = "ColorDepth",
+  DepthOfField = "DepthOfField",
+  DotScreen = "DotScreen",
+  Glitch = "Glitch",
+  Grid = "Grid",
+  HueSaturation = "HueSaturation",
+  Noise = "Noise",
+  Pixelation = "Pixelation",
+  SMAA = "SMAA",
+  Scanline = "Scanline",
+  Sepia = "Sepia",
+  ToneMapping = "ToneMapping",
+  Vignette = "Vignette",
+}
 
 const Effects = () => {
   // Leva Controls.

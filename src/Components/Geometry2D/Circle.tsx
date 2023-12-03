@@ -1,11 +1,8 @@
 import { Circle } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryCircle as CircleGeometry } from "Settings/Leva/Geometry/Circle";
+import { useLeva } from "Hooks/Leva/Geometry2D/Circle";
 import { Children } from "Types/Children";
 
 /**
@@ -17,27 +14,12 @@ import { Children } from "Types/Children";
  */
 const Geometry2DCircle = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { radius, segments, θLength, θStart } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Circle: folder({
-            "XY Plane": folder({
-              radius: CircleGeometry.radius(),
-              segments: CircleGeometry.segments(),
-              Θ: folder({
-                θStart: CircleGeometry.ΘStart(),
-                θLength: CircleGeometry.ΘLength(),
-              }),
-            }),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  const {
+    radius, //
+    segments,
+    θLength,
+    θStart,
+  } = useLeva();
 
   return (
     <Circle

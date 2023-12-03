@@ -36,7 +36,7 @@ const Lighting = (props: GroupProps): React.JSX.Element => {
           "Three Point           ": LIGHTING.ThreePoint,
           "Three Point Volumetric": LIGHTING.ThreePointVolumetric,
         },
-        value: LIGHTING.Studio,
+        value: LIGHTING.ThreePointVolumetric,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.LIGHTING)

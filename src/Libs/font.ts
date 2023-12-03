@@ -17,12 +17,17 @@ export namespace FONT_FAMILY {
 
   export const ASAP: FontFamily = {
     name: "Asap",
-    url: "https://fonts.gstatic.com/s/asap/v26/KFOOCniXp96a4Tc2DaTeuDAoKsE617JFc49knOIYdjTYkqUsLQ.woff",
+    url: "https://fonts.gstatic.com/s/asap/v30/KFOOCniXp96a4Tc2DaTeuDAoKsE617JFc49knOIYdjTYkqUsLQ.woff",
   };
 
   export const CODA: FontFamily = {
     name: "Coda",
     url: "https://fonts.gstatic.com/s/coda/v21/SLXHc1jY5nQ8JUE.woff",
+  };
+
+  export const MONSIEUR_LA_DOULAISE: FontFamily = {
+    name: "Monsieur La Doulaise",
+    url: "https://fonts.gstatic.com/s/monsieurladoulaise/v18/_Xmz-GY4rjmCbQfc-aPRaa4pqV340p7EZl5d.woff",
   };
 
   export const PLAY: FontFamily = {
@@ -37,7 +42,7 @@ export namespace FONT_FAMILY {
 
   export const PRESS_START_2P: FontFamily = {
     name: "Press Start 2P",
-    url: "https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK0nR.woff",
+    url: "(https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK0nR.woff",
   };
 
   export const REDACTED_SCRIPT: FontFamily = {
@@ -57,7 +62,7 @@ export namespace FONT_FAMILY {
 
   export const SILKSCREEN: FontFamily = {
     name: "Silkscreen",
-    url: "https://fonts.gstatic.com/s/silkscreen/v1/m8JXjfVPf62XiF7kO-i9ULc.woff",
+    url: "https://fonts.gstatic.com/s/silkscreen/v4/m8JXjfVPf62XiF7kO-i9ULc.woff",
   };
 
   export const TANGERINE: FontFamily = {

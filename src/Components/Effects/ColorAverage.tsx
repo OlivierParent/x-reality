@@ -1,10 +1,7 @@
 import { ColorAverage, EffectComposer } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsColorAverage as ColorAverageEffect } from "Settings/Leva/Effects/ColorAverage";
+import { useLeva } from "Hooks/Leva/Effects/ColorAverage";
 
 /**
  * Color average effect.
@@ -14,22 +11,9 @@ import { SettingsLevaEffectsColorAverage as ColorAverageEffect } from "Settings/
  */
 const EffectsColorAverage = () => {
   // Leva Controls.
-  const { blendFunction } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Color Average Effect": folder({
-            blendFunction: ColorAverageEffect.blendFunction(
-              BlendFunction.NORMAL
-            ),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+  } = useLeva();
 
   return (
     <EffectComposer>

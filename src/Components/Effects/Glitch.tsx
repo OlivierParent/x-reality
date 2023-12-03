@@ -1,11 +1,8 @@
 import { EffectComposer, Glitch } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction, GlitchMode } from "postprocessing";
 import { Vector2 } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsGlitch as GlitchEffect } from "Settings/Leva/Effects/Glitch";
+import { useLeva } from "Hooks/Leva/Effects/Glitch";
 
 /**
  * Glitch effect.
@@ -25,28 +22,7 @@ const EffectsGlitch = () => {
     mode,
     ratio,
     strength,
-  } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Glitch Effect": folder({
-            active: GlitchEffect.active(),
-            blendFunction: GlitchEffect.blendFunction(BlendFunction.NORMAL),
-            columns: GlitchEffect.columns(),
-            delay: GlitchEffect.delay(),
-            dtSize: GlitchEffect.dtSize(),
-            duration: GlitchEffect.duration(),
-            mode: GlitchEffect.mode(),
-            ratio: GlitchEffect.ratio(),
-            strength: GlitchEffect.strength(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  } = useLeva();
 
   return (
     <EffectComposer>

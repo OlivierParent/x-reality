@@ -2,6 +2,7 @@ import { Plane, Text } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 import { useControls } from "leva";
 
+import { LEVA } from "Configs/leva";
 import { FONT_FAMILY } from "Libs/font";
 
 const length = Object.keys(FONT_FAMILY).length;
@@ -14,7 +15,11 @@ const length = Object.keys(FONT_FAMILY).length;
  */
 const LipsumFonts = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { color, size, string } = useControls("Components", {
+  const {
+    color, //
+    size,
+    string,
+  } = useControls(LEVA.SCHEMA.COMPONENTS, {
     color: {
       label: "Color",
       value: "#ffffff",
@@ -52,7 +57,15 @@ const LipsumFonts = (props: GroupProps): React.JSX.Element => {
 
           return (
             <group position={[0, start + index * lineSize, 0]}>
-              <Text position={[0, size, 0]}>{fontFamily.name}</Text>
+              <Text
+                color={0x333333}
+                fontSize={0.2}
+                maxWidth={10}
+                position={[0, size, 0]}
+                textAlign="right"
+              >
+                {fontFamily.name}
+              </Text>
               <Text
                 color={color}
                 font={fontFamily.url}

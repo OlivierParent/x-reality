@@ -2,13 +2,10 @@ import {
   ChromaticAberration,
   EffectComposer,
 } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 import { Vector2 } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } from "Settings/Leva/Effects/ChromaticAberration";
+import { useLeva } from "Hooks/Leva/Effects/ChromaticAberration";
 
 /**
  * Chromatic aberration effect.
@@ -18,23 +15,10 @@ import { SettingsLevaEffectsChromaticAberration as ChromaticAberrationEffect } f
  */
 const EffectsChromaticAberration = () => {
   // Leva Controls.
-  const { blendFunction, offset } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Chromatic Aberration Effect": folder({
-            blendFunction: ChromaticAberrationEffect.blendFunction(
-              BlendFunction.NORMAL
-            ),
-            offset: ChromaticAberrationEffect.offset(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+    offset,
+  } = useLeva();
 
   return (
     <EffectComposer>

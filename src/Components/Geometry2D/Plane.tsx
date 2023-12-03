@@ -1,10 +1,7 @@
 import { Plane } from "@react-three/drei";
-import { folder, useControls } from "leva";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryPlane as PlaneGeometry } from "Settings/Leva/Geometry/Plane";
+import { useLeva } from "Hooks/Leva/Geometry2D/Plane";
 import { Children } from "Types/Children";
 
 /**
@@ -16,27 +13,12 @@ import { Children } from "Types/Children";
  */
 const Geometry2DPlane = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { height, heightSegments, width, widthSegments } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Plane: folder({
-            "X Axis": folder({
-              width: PlaneGeometry.width(),
-              widthSegments: PlaneGeometry.widthSegments(),
-            }),
-            "Y Axis": folder({
-              height: PlaneGeometry.height(),
-              heightSegments: PlaneGeometry.heightSegments(),
-            }),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  const {
+    height, //
+    heightSegments,
+    width,
+    widthSegments,
+  } = useLeva();
 
   return (
     <Plane args={[width, height, widthSegments, heightSegments]}>

@@ -1,11 +1,8 @@
 import { Cone } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryCone as ConeGeometry } from "Settings/Leva/Geometry/Cone";
+import { useLeva } from "Hooks/Leva/Geometry3D/Cone";
 import { Children } from "Types/Children";
 
 /**
@@ -25,32 +22,7 @@ const Geometry3DCone = ({ children }: Children): React.JSX.Element => {
     radius,
     θLength,
     θStart,
-  } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Cone: folder({
-            "XZ Plane": folder({
-              radius: ConeGeometry.radius(),
-              radialSegments: ConeGeometry.radialSegments(),
-              openEnded: ConeGeometry.openEnded(),
-              Θ: folder({
-                θStart: ConeGeometry.ΘStart(),
-                θLength: ConeGeometry.ΘLength(),
-              }),
-            }),
-            "Y Axis": folder({
-              height: ConeGeometry.height(),
-              heightSegments: ConeGeometry.heightSegments(),
-            }),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  } = useLeva();
 
   return (
     <Cone

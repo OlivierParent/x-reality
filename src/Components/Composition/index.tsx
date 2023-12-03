@@ -8,7 +8,7 @@ import { SuzanneFrostedGlass } from "Components/Suzanne/FrostedGlass";
 
 const Composition = (props: GroupProps) => {
   return (
-    <group {...props}>
+    <group name="Composition" {...props}>
       <Painting position={[0, 0, -1]} />
       <SuzanneFrostedGlass position={[0, 0, 1]} />
       <Circle

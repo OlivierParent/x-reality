@@ -1,5 +1,4 @@
 import { useHelper } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { useEffect, useRef } from "react";
 import {
   ColorRepresentation,
@@ -9,10 +8,7 @@ import {
   SpotLightHelper,
 } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaColor } from "Settings/Leva/Color";
-import { SettingsLevaLighting } from "Settings/Leva/Lighting";
+import { useLeva } from "Hooks/Leva/Lighting/ThreePoint";
 import { SettingsLevaPosition } from "Settings/Leva/Position";
 
 const backLightTarget = new Object3D();
@@ -26,96 +22,8 @@ const keyLightTarget = new Object3D();
  */
 const LightingThreePoint = (): React.JSX.Element => {
   // Leva Controls.
-  const { helpers } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      Helpers: folder(
-        {
-          Lighting: folder(
-            {
-              helpers: SettingsLevaLighting.helpers(),
-            },
-            SettingsLeva.folder()
-          ),
-        },
-        SettingsLeva.folder(LEVA.ORDER.HELPERS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
-  const ambientLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Ambient Light": folder(
-        {
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          intensity: SettingsLevaLighting.intensity(0.2),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const backLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Back Light": folder(
-        {
-          angle: SettingsLevaLighting.angle(30),
-          castShadow: SettingsLevaLighting.castShadow(true),
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          decay: SettingsLevaLighting.decay(),
-          distance: SettingsLevaLighting.distance(9),
-          intensity: SettingsLevaLighting.intensity(75.0),
-          penumbra: SettingsLevaLighting.penumbra(),
-          position: SettingsLevaPosition.position(4, 2, -4),
-          target: SettingsLevaLighting.target(),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const fillLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Fill Light": folder(
-        {
-          angle: SettingsLevaLighting.angle(30),
-          castShadow: SettingsLevaLighting.castShadow(true),
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
-          decay: SettingsLevaLighting.decay(),
-          distance: SettingsLevaLighting.distance(9),
-          intensity: SettingsLevaLighting.intensity(75.0),
-          penumbra: SettingsLevaLighting.penumbra(),
-          position: SettingsLevaPosition.position(-4, 2, 4),
-          target: SettingsLevaLighting.target(),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const keyLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Key Light": folder(
-        {
-          angle: SettingsLevaLighting.angle(30),
-          castShadow: SettingsLevaLighting.castShadow(true),
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
-          decay: SettingsLevaLighting.decay(),
-          distance: SettingsLevaLighting.distance(9),
-          intensity: SettingsLevaLighting.intensity(75.0),
-          penumbra: SettingsLevaLighting.penumbra(),
-          position: SettingsLevaPosition.position(4, 2, 4),
-          target: SettingsLevaLighting.target(),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
+  const { lightHelper, ambientLight, backLight, fillLight, keyLight } =
+    useLeva();
 
   // References.
   const backLightRef = useRef<SpotLight>(null!);
@@ -124,17 +32,17 @@ const LightingThreePoint = (): React.JSX.Element => {
 
   // Helpers.
   useHelper(
-    helpers ? backLightRef : null,
+    lightHelper.show ? backLightRef : null,
     SpotLightHelper,
     backLight.color as ColorRepresentation
   );
   useHelper(
-    helpers ? fillLightRef : null,
+    lightHelper.show ? fillLightRef : null,
     SpotLightHelper,
     fillLight.color as ColorRepresentation
   );
   useHelper(
-    helpers ? keyLightRef : null,
+    lightHelper.show ? keyLightRef : null,
     SpotLightHelper,
     keyLight.color as ColorRepresentation
   );

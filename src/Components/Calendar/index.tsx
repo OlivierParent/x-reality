@@ -5,8 +5,10 @@ const d = new Date();
 const dayName = d
   .toLocaleDateString(undefined, { weekday: "short" })
   .toUpperCase();
-const dayNumber = d.toLocaleDateString(undefined, { day: "2-digit" });
-const fullYear = d.getUTCFullYear();
+const dayNumber = d //
+  .toLocaleDateString(undefined, { day: "2-digit" });
+const fullYear = d //
+  .getUTCFullYear();
 const monthName = d
   .toLocaleDateString(undefined, { month: "long" })
   .toUpperCase();

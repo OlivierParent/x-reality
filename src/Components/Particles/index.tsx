@@ -3,6 +3,7 @@ import { useControls } from "leva";
 
 import { Particles as ParticlesDefault } from "Components/Particles/Default";
 import { Particles as ParticlesSprites } from "Components/Particles/Sprites";
+import { LEVA } from "Configs/leva";
 
 const PARTICLES = {
   Default: <ParticlesDefault />,
@@ -16,7 +17,8 @@ const PARTICLES = {
  * @returns {React.JSX.Element}
  */
 const Particles = (props: GroupProps): React.JSX.Element => {
-  const { particles } = useControls("Components", {
+  // Leva Controls.
+  const { particles } = useControls(LEVA.SCHEMA.COMPONENTS, {
     particles: {
       label: "Particles",
       options: PARTICLES,

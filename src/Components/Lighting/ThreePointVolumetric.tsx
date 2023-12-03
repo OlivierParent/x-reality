@@ -1,5 +1,4 @@
 import { SpotLight, useHelper } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { useEffect, useRef } from "react";
 import {
   ColorRepresentation,
@@ -9,11 +8,7 @@ import {
   SpotLight as ThreeSpotLight,
 } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaColor } from "Settings/Leva/Color";
-import { SettingsLevaLighting } from "Settings/Leva/Lighting";
-import { SettingsLevaPosition } from "Settings/Leva/Position";
+import { fromLevaPosition, useLeva } from "Hooks/Leva/Lighting/ThreePoint";
 
 const backLightTarget = new Object3D();
 const fillLightTarget = new Object3D();
@@ -26,93 +21,8 @@ const keyLightTarget = new Object3D();
  */
 const LightingThreePointVolumetric = (): React.JSX.Element => {
   // Leva Controls.
-  const { helpers } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      Helpers: folder(
-        {
-          Lighting: folder({
-            helpers: SettingsLevaLighting.helpers(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.HELPERS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const ambientLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Ambient Light": folder(
-        {
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          intensity: SettingsLevaLighting.intensity(0.2),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const backLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Back Light": folder(
-        {
-          angle: SettingsLevaLighting.angle(30),
-          castShadow: SettingsLevaLighting.castShadow(true),
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Warm),
-          decay: SettingsLevaLighting.decay(),
-          distance: SettingsLevaLighting.distance(9),
-          intensity: SettingsLevaLighting.intensity(75.0),
-          penumbra: SettingsLevaLighting.penumbra(),
-          position: SettingsLevaPosition.position(4, 2, -4),
-          target: SettingsLevaLighting.target(),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const fillLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Fill Light": folder(
-        {
-          angle: SettingsLevaLighting.angle(30),
-          castShadow: SettingsLevaLighting.castShadow(true),
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Blueish),
-          decay: SettingsLevaLighting.decay(),
-          distance: SettingsLevaLighting.distance(9),
-          intensity: SettingsLevaLighting.intensity(75.0),
-          penumbra: SettingsLevaLighting.penumbra(),
-          position: SettingsLevaPosition.position(-4, 2, 4),
-          target: SettingsLevaLighting.target(),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
-  const keyLight = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      "Key Light": folder(
-        {
-          angle: SettingsLevaLighting.angle(30),
-          castShadow: SettingsLevaLighting.castShadow(true),
-          color: SettingsLevaColor.color(SettingsLevaColor.values.Reddish),
-          decay: SettingsLevaLighting.decay(),
-          distance: SettingsLevaLighting.distance(9),
-          intensity: SettingsLevaLighting.intensity(75.0),
-          penumbra: SettingsLevaLighting.penumbra(),
-          position: SettingsLevaPosition.position(4, 2, 4),
-          target: SettingsLevaLighting.target(),
-        },
-        SettingsLeva.folder()
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
+  const { lightHelper, ambientLight, backLight, fillLight, keyLight } =
+    useLeva();
 
   // References.
   const backLightRef = useRef<ThreeSpotLight>(null!);
@@ -121,17 +31,17 @@ const LightingThreePointVolumetric = (): React.JSX.Element => {
 
   // Helpers.
   useHelper(
-    helpers ? backLightRef : null,
+    lightHelper.show ? backLightRef : null,
     SpotLightHelper,
     backLight.color as ColorRepresentation
   );
   useHelper(
-    helpers ? fillLightRef : null,
+    lightHelper.show ? fillLightRef : null,
     SpotLightHelper,
     fillLight.color as ColorRepresentation
   );
   useHelper(
-    helpers ? keyLightRef : null,
+    lightHelper.show ? keyLightRef : null,
     SpotLightHelper,
     keyLight.color as ColorRepresentation
   );
@@ -170,7 +80,7 @@ const LightingThreePointVolumetric = (): React.JSX.Element => {
         intensity={backLight.intensity}
         name="Back Light"
         penumbra={backLight.penumbra}
-        position={SettingsLevaPosition.toArray(backLight.position)}
+        position={fromLevaPosition(backLight.position)}
         ref={backLightRef}
         target={backLightTarget}
       />
@@ -183,7 +93,7 @@ const LightingThreePointVolumetric = (): React.JSX.Element => {
         intensity={fillLight.intensity}
         name="Fill Light"
         penumbra={fillLight.penumbra}
-        position={SettingsLevaPosition.toArray(fillLight.position)}
+        position={fromLevaPosition(fillLight.position)}
         ref={fillLightRef}
         target={fillLightTarget}
       />
@@ -196,7 +106,7 @@ const LightingThreePointVolumetric = (): React.JSX.Element => {
         intensity={keyLight.intensity}
         name="Key Light"
         penumbra={keyLight.penumbra}
-        position={SettingsLevaPosition.toArray(keyLight.position)}
+        position={fromLevaPosition(keyLight.position)}
         ref={keyLightRef}
         target={keyLightTarget}
       />

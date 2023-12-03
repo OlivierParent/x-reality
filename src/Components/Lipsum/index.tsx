@@ -3,6 +3,7 @@ import { useControls } from "leva";
 
 import { Lipsum as LipsumDefault } from "Components/Lipsum/Default";
 import { Lipsum as LipsumFonts } from "Components/Lipsum/Fonts";
+import { LEVA } from "Configs/leva";
 
 const LIPSUM = {
   Default: <LipsumDefault />,
@@ -17,7 +18,7 @@ const LIPSUM = {
  */
 const Lipsum = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { lipsum } = useControls("Components", {
+  const { lipsum } = useControls(LEVA.SCHEMA.COMPONENTS, {
     lipsum: {
       label: "Lipsum",
       options: LIPSUM,

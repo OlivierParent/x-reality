@@ -1,11 +1,8 @@
 import { DotScreen, EffectComposer } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 import { MathUtils } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsDotScreen as DotScreenEffect } from "Settings/Leva/Effects/DotScreen";
+import { useLeva } from "Hooks/Leva/Effects/DotScreen";
 
 /**
  * Dot screen effect.
@@ -15,22 +12,11 @@ import { SettingsLevaEffectsDotScreen as DotScreenEffect } from "Settings/Leva/E
  */
 const EffectsDotScreen = () => {
   // Leva Controls.
-  const { angle, blendFunction, scale } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Dot Screen Effect": folder({
-            angle: DotScreenEffect.angle(),
-            blendFunction: DotScreenEffect.blendFunction(BlendFunction.NORMAL),
-            scale: DotScreenEffect.scale(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    angle, //
+    blendFunction,
+    scale,
+  } = useLeva();
 
   return (
     <EffectComposer>

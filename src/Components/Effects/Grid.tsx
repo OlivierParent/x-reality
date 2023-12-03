@@ -1,10 +1,7 @@
 import { EffectComposer, Grid } from "@react-three/postprocessing";
-import { folder, useControls } from "leva";
 import { BlendFunction } from "postprocessing";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaEffectsGrid as GridEffect } from "Settings/Leva/Effects/Grid";
+import { useLeva } from "Hooks/Leva/Effects/Grid";
 
 /**
  * Grid effect.
@@ -14,22 +11,11 @@ import { SettingsLevaEffectsGrid as GridEffect } from "Settings/Leva/Effects/Gri
  */
 const EffectsGrid = () => {
   // Leva Controls.
-  const { blendFunction, lineWidth, scale } = useControls(
-    LEVA.SCHEMA.GENERAL,
-    {
-      "Effects Composer": folder(
-        {
-          "Grid Effect": folder({
-            blendFunction: GridEffect.blendFunction(BlendFunction.NORMAL),
-            lineWidth: GridEffect.lineWidth(),
-            scale: GridEffect.scale(),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.GENERAL)
-  );
+  const {
+    blendFunction, //
+    lineWidth,
+    scale,
+  } = useLeva();
 
   return (
     <EffectComposer>

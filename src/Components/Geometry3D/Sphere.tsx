@@ -1,11 +1,8 @@
 import { Sphere } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometrySphere as SphereGeometry } from "Settings/Leva/Geometry/Sphere";
+import { useLeva } from "Hooks/Leva/Geometry3D/Sphere";
 import { Children } from "Types/Children";
 
 /**
@@ -25,34 +22,7 @@ const Geometry3DSphere = ({ children }: Children): React.JSX.Element => {
     θStart,
     φLength,
     φStart,
-  } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Sphere: folder({
-            "Transverse Plane": folder({
-              radius: SphereGeometry.radius(),
-              widthSegments: SphereGeometry.widthSegments(),
-              Φ: folder({
-                φStart: SphereGeometry.ΦStart(),
-                φLength: SphereGeometry.ΦLength(),
-              }),
-            }),
-            "Frontal Plane": folder({
-              heightSegments: SphereGeometry.heightSegments(),
-              Θ: folder({
-                θStart: SphereGeometry.ΘStart(),
-                θLength: SphereGeometry.ΘLength(),
-              }),
-            }),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  } = useLeva();
 
   return (
     <Sphere

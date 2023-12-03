@@ -1,7 +1,4 @@
-import { folder, useControls } from "leva";
-
-import { SettingsLevaGeometryIcosahedron as IcosahedronGeometry } from "Settings/Leva/Geometry/Icosahedron";
-import { SettingsLevaMaterialPoints as PointsMaterial } from "Settings/Leva/Material/Points";
+import { useLeva } from "Hooks/Leva/Particles";
 
 /**
  * Particles.
@@ -9,20 +6,9 @@ import { SettingsLevaMaterialPoints as PointsMaterial } from "Settings/Leva/Mate
  * @returns {React.JSX.Element}
  */
 const ParticlesDefault = (): React.JSX.Element => {
+  // Leva Controls.
   const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
-    useControls("Components", {
-      "Icosahedron (20 faces)": folder({
-        detail: IcosahedronGeometry.detail(3),
-        radius: IcosahedronGeometry.radius(2),
-      }),
-      "Points Material": folder({
-        color: PointsMaterial.color(),
-        opacity: PointsMaterial.opacity(),
-        size: PointsMaterial.size(),
-        sizeAttenuation: PointsMaterial.sizeAttenuation(),
-        transparent: PointsMaterial.transparent(),
-      }),
-    });
+    useLeva();
 
   return (
     <points>

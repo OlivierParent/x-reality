@@ -1,11 +1,8 @@
 import { Cylinder } from "@react-three/drei";
-import { folder, useControls } from "leva";
 import { MathUtils } from "three";
 
 import { Material } from "Components/Material";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaGeometryCylinder as CylinderGeometry } from "Settings/Leva/Geometry/Cylinder";
+import { useLeva } from "Hooks/Leva/Geometry3D/Cylinder";
 import { Children } from "Types/Children";
 
 /**
@@ -26,33 +23,7 @@ const Geometry3DCylinder = ({ children }: Children): React.JSX.Element => {
     radiusTop,
     θLength,
     θStart,
-  } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          Cylinder: folder({
-            "XZ Plane": folder({
-              radiusBottom: CylinderGeometry.radiusBottom(),
-              radiusTop: CylinderGeometry.radiusTop(),
-              radialSegments: CylinderGeometry.radialSegments(),
-              openEnded: CylinderGeometry.openEnded(),
-              Θ: folder({
-                θStart: CylinderGeometry.ΘStart(),
-                θLength: CylinderGeometry.ΘLength(),
-              }),
-            }),
-            "Y Axis": folder({
-              height: CylinderGeometry.height(),
-              heightSegments: CylinderGeometry.heightSegments(),
-            }),
-          }),
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  } = useLeva();
 
   return (
     <Cylinder

@@ -1,9 +1,15 @@
+import { FONT_FAMILY } from "Libs/font";
+
 const CLOCK_SIZE = 2;
 
 export const CLOCK = {
   HH: 12,
   MM: 60,
   SS: 60,
+  BRAND: {
+    COLOR: 0xcccccc,
+    FONT: FONT_FAMILY.MONSIEUR_LA_DOULAISE.url,
+  },
   HAND: {
     HH: {
       COLOR: 0xffffff,
@@ -23,6 +29,7 @@ export const CLOCK = {
     THICKNESS: 0.02 * CLOCK_SIZE,
   },
   MARK: {
+    FONT: FONT_FAMILY.CODA.url,
     HH: {
       COLOR: 0xff0000,
       COLOR_FIRST: 0x0000ff,

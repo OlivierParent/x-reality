@@ -1,10 +1,6 @@
-import { folder, useControls } from "leva";
 import { Side } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
-import { SettingsLevaMaterialNormal as NormalMaterial } from "Settings/Leva/Material/Normal";
+import { useLeva } from "Hooks/Leva/Material/Normal";
 
 /**
  * Normal Material.
@@ -18,33 +14,7 @@ import { SettingsLevaMaterialNormal as NormalMaterial } from "Settings/Leva/Mate
 const MaterialNormal = (): React.JSX.Element => {
   // Leva Controls.
   const { dithering, flatShading, opacity, side, transparent, wireframe } =
-    useControls(
-      LEVA.SCHEMA.COMPONENTS,
-      {
-        Materials: folder(
-          {
-            Material: folder(
-              {
-                dithering: Material.dithering(),
-                opacity: Material.opacity(),
-                side: Material.side(),
-                transparent: Material.transparent(),
-              },
-              SettingsLeva.folder(LEVA.ORDER.MATERIAL)
-            ),
-            "Normal Material": folder(
-              {
-                flatShading: NormalMaterial.flatShading(),
-                wireframe: NormalMaterial.wireframe(),
-              },
-              SettingsLeva.folder(LEVA.ORDER.NORMAL_MATERIAL)
-            ),
-          },
-          SettingsLeva.folder(LEVA.ORDER.MATERIALS)
-        ),
-      },
-      SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-    );
+    useLeva();
 
   return (
     <meshNormalMaterial

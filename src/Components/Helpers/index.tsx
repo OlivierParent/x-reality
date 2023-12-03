@@ -1,10 +1,7 @@
 import { GizmoHelper, GizmoViewport, Stats } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
-import { folder, useControls } from "leva";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
+import { useLeva } from "Hooks/Leva/Helpers";
 
 /**
  * Three.js Helpers.
@@ -14,29 +11,22 @@ import { SettingsLevaHelpers } from "Settings/Leva/Helpers";
  */
 const Helpers = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { axesHelper, gizmoHelper, gridHelper, polarGridHelper, stats } =
-    useControls(
-      LEVA.SCHEMA.GENERAL,
-      {
-        Helpers: folder(
-          {
-            axesHelper: SettingsLevaHelpers.axesHelper(),
-            gizmoHelper: SettingsLevaHelpers.gizmoHelper(true),
-            gridHelper: SettingsLevaHelpers.gridHelper(),
-            polarGridHelper: SettingsLevaHelpers.polarGridHelper(),
-            stats: SettingsLevaHelpers.stats(),
-          },
-          SettingsLeva.folder(LEVA.ORDER.HELPERS)
-        ),
-      },
-      SettingsLeva.folder(LEVA.ORDER.GENERAL)
-    );
+  const {
+    axesHelper, //
+    gizmoHelper,
+    gridHelper,
+    polarGridHelper,
+    stats,
+  } = useLeva();
 
   return (
     <group name="Helpers" {...props}>
       {axesHelper && <axesHelper />}
       {gizmoHelper && (
-        <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
+        <GizmoHelper //
+          alignment="bottom-right"
+          margin={[80, 80]}
+        >
           <GizmoViewport
             axisColors={[
               "hsl(0, 100%, 50%)",

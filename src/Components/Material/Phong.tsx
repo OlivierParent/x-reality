@@ -1,10 +1,6 @@
-import { folder, useControls } from "leva";
 import { Side } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
-import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Material/Phong";
+import { useLeva } from "Hooks/Leva/Material/Phong";
 
 /**
  * Phong Material.
@@ -29,38 +25,7 @@ const MaterialPhong = (): React.JSX.Element => {
     specular,
     transparent,
     wireframe,
-  } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Materials: folder(
-        {
-          Material: folder(
-            {
-              dithering: Material.dithering(),
-              opacity: Material.opacity(),
-              side: Material.side(),
-              transparent: Material.transparent(),
-            },
-            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
-          ),
-          "Phong Material": folder(
-            {
-              color: PhongMaterial.color(),
-              emissive: PhongMaterial.emissive(),
-              emissiveIntensity: PhongMaterial.emissiveIntensity(),
-              flatShading: PhongMaterial.flatShading(),
-              shininess: PhongMaterial.shininess(),
-              specular: PhongMaterial.specular(),
-              wireframe: PhongMaterial.wireframe(),
-            },
-            SettingsLeva.folder(LEVA.ORDER.PHONG_MATERIAL)
-          ),
-        },
-        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  } = useLeva();
 
   return (
     <meshPhongMaterial

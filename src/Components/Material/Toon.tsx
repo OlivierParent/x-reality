@@ -1,10 +1,6 @@
-import { folder, useControls } from "leva";
 import { Side } from "three";
 
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
-import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
-import { SettingsLevaMaterialToon as ToonMaterial } from "Settings/Leva/Material/Toon";
+import { useLeva } from "Hooks/Leva/Material/Toon";
 
 /**
  * Toon Material.
@@ -24,35 +20,7 @@ const MaterialToon = (): React.JSX.Element => {
     side,
     transparent,
     wireframe,
-  } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Materials: folder(
-        {
-          Material: folder(
-            {
-              dithering: Material.dithering(),
-              opacity: Material.opacity(),
-              side: Material.side(),
-              transparent: Material.transparent(),
-            },
-            SettingsLeva.folder(LEVA.ORDER.MATERIAL)
-          ),
-          "Toon Material": folder(
-            {
-              color: ToonMaterial.color(),
-              emissive: ToonMaterial.emissive(),
-              emissiveIntensity: ToonMaterial.emissiveIntensity(),
-              wireframe: ToonMaterial.wireframe(),
-            },
-            SettingsLeva.folder(LEVA.ORDER.TOON_MATERIAL)
-          ),
-        },
-        SettingsLeva.folder(LEVA.ORDER.MATERIALS)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  } = useLeva();
 
   return (
     <meshToonMaterial
