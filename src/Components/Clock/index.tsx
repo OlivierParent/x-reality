@@ -6,6 +6,11 @@ import { Clock as ClockDigital } from "Components/Clock/Digital";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
+const CLOCK = {
+  Analogue: <ClockAnalogue />,
+  Digital: <ClockDigital />,
+} as const;
+
 /**
  * Clock.
  *
@@ -19,10 +24,8 @@ const Clock = (props: GroupProps): React.JSX.Element => {
     {
       showClock: {
         label: "Clock",
-        options: {
-          Analogue: <ClockAnalogue />,
-          Digital: <ClockDigital />,
-        },
+        options: CLOCK,
+        value: CLOCK.Analogue,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

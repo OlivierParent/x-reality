@@ -1,6 +1,6 @@
 import { Text } from "@react-three/drei";
 import { GroupProps, useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { DoubleSide, Group, MathUtils } from "three";
 
 import { CLOCK } from "Components/Clock/Analogue.config";
@@ -144,6 +144,17 @@ const Hands = (): React.JSX.Element => {
   const handMinuteRef = useRef<Group>(null!);
   const handSecondRef = useRef<Group>(null!);
 
+  const setTime = useCallback(() => {
+    const d = new Date();
+    const h = -(360 / CLOCK.HH) * (d.getHours() + d.getMinutes() / CLOCK.MM);
+    const m = -(360 / CLOCK.MM) * d.getMinutes();
+    const s = -(360 / CLOCK.SS) * d.getSeconds();
+
+    setAngleHandHours(h);
+    setAngleHandMinutes(m);
+    setAngleHandSeconds(s);
+  }, [setAngleHandHours, setAngleHandMinutes, setAngleHandSeconds]);
+
   useEffect(() => {
     const radians = MathUtils.degToRad(angleHandHours);
     handHourRef.current.rotation.z = radians;
@@ -160,15 +171,14 @@ const Hands = (): React.JSX.Element => {
   }, [angleHandSeconds]);
 
   useFrame(() => {
-    const d = new Date();
-    const h = -(360 / CLOCK.HH) * (d.getHours() + d.getMinutes() / CLOCK.MM);
-    const m = -(360 / CLOCK.MM) * d.getMinutes();
-    const s = -(360 / CLOCK.SS) * d.getSeconds();
-
-    setAngleHandHours(h);
-    setAngleHandMinutes(m);
-    setAngleHandSeconds(s);
+    // Set time on each frame.
+    setTime();
   });
+
+  useLayoutEffect(() => {
+    // Set time before first render.
+    setTime();
+  }, [setTime]);
 
   return (
     <group name="Hands" rotation={[0, 0, MathUtils.degToRad(ANGLE_START)]}>
