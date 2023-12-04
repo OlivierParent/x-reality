@@ -1,7 +1,7 @@
 import { useTexture } from "@react-three/drei";
 
 import particleImage from "Components/Particles/assets/Arteveldehogeschool_favicon.png";
-import { useLeva } from "Hooks/Leva/Particles";
+import { useLeva } from "Hooks/Leva/Particles/Points";
 
 /**
  * Particles with sprites.
@@ -10,8 +10,15 @@ import { useLeva } from "Hooks/Leva/Particles";
  */
 const ParticlesSprites = (): React.JSX.Element => {
   // Leva Controls.
-  const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
-    useLeva();
+  const {
+    color, //
+    detail,
+    opacity,
+    radius,
+    size,
+    sizeAttenuation,
+    transparent,
+  } = useLeva();
 
   const sprite = useTexture(particleImage);
 

@@ -1,9 +1,8 @@
 import { GroupProps } from "@react-three/fiber";
-import { useControls } from "leva";
 
 import { Lipsum as LipsumDefault } from "Components/Lipsum/Default";
 import { Lipsum as LipsumFonts } from "Components/Lipsum/Fonts";
-import { LEVA } from "Configs/leva";
+import { useLeva } from "Hooks/Leva/Lipsum";
 
 const LIPSUM = {
   Default: <LipsumDefault />,
@@ -18,13 +17,7 @@ const LIPSUM = {
  */
 const Lipsum = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { lipsum } = useControls(LEVA.SCHEMA.COMPONENTS, {
-    lipsum: {
-      label: "Lipsum",
-      options: LIPSUM,
-      value: LIPSUM.Default,
-    },
-  });
+  const { lipsum } = useLeva(LIPSUM);
 
   return (
     <group name="Lipsum" {...props}>

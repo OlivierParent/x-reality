@@ -25,8 +25,8 @@
     $ yarn add @react-three/postprocessing
     $ yarn add @react-three/rapier @react-three/rapier-addons
     $ yarn add @react-three/test-renderer
+    $ yarn add @react-three/xr
     $ yarn add gsap
-    $ yarn add lamina
     $ yarn add leva
     $ yarn add three three-stdlib
 
@@ -87,12 +87,9 @@
     - [GitHub](https://github.com/pmndrs/react-postprocessing)
       → [Releases](https://github.com/pmndrs/react-postprocessing/releases)
     - [Post Processing](https://vanruesc.github.io/postprocessing/public/docs/)
-  - [React Spring](https://react-spring.io/)
-    - [Documentation](https://docs.pmnd.rs/react-spring)
-    - [GitHub](https://github.com/pmndrs/react-spring)
-      → [Releases](https://github.com/pmndrs/react-spring/releases)
-- Lamina
-  - [GitHub](https://github.com/pmndrs/lamina)
+  - React XR
+    - [GitHub](https://github.com/pmndrs/react-xr)
+      → [Releases](https://github.com/pmndrs/react-xr/releases)
 - Leva
 
   - [GitHub](https://github.com/pmndrs/leva)

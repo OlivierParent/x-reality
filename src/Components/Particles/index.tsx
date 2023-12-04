@@ -1,9 +1,8 @@
 import { GroupProps } from "@react-three/fiber";
-import { useControls } from "leva";
 
 import { Particles as ParticlesDefault } from "Components/Particles/Default";
 import { Particles as ParticlesSprites } from "Components/Particles/Sprites";
-import { LEVA } from "Configs/leva";
+import { useLeva } from "Hooks/Leva/Particles";
 
 const PARTICLES = {
   Default: <ParticlesDefault />,
@@ -18,13 +17,7 @@ const PARTICLES = {
  */
 const Particles = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { particles } = useControls(LEVA.SCHEMA.COMPONENTS, {
-    particles: {
-      label: "Particles",
-      options: PARTICLES,
-      value: PARTICLES.Default,
-    },
-  });
+  const { particles } = useLeva(PARTICLES);
 
   return (
     <group name="Particles" {...props}>

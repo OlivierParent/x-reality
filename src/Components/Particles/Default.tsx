@@ -1,4 +1,4 @@
-import { useLeva } from "Hooks/Leva/Particles";
+import { useLeva } from "Hooks/Leva/Particles/Points";
 
 /**
  * Particles.
@@ -7,8 +7,15 @@ import { useLeva } from "Hooks/Leva/Particles";
  */
 const ParticlesDefault = (): React.JSX.Element => {
   // Leva Controls.
-  const { color, detail, opacity, radius, size, sizeAttenuation, transparent } =
-    useLeva();
+  const {
+    color, //
+    detail,
+    opacity,
+    radius,
+    size,
+    sizeAttenuation,
+    transparent,
+  } = useLeva();
 
   return (
     <points>

@@ -1,5 +1,3 @@
-import { LEVA } from "Configs/leva";
-import { folder, useControls } from "leva";
 import { ReactNode } from "react";
 
 import { Box } from "Components/Geometry3D/Box";
@@ -12,7 +10,7 @@ import { Sphere } from "Components/Geometry3D/Sphere";
 import { Tetrahedron } from "Components/Geometry3D/Tetrahedron";
 import { Torus } from "Components/Geometry3D/Torus";
 import { TorusKnot } from "Components/Geometry3D/TorusKnot";
-import { SettingsLeva } from "Settings/Leva";
+import { useLeva } from "Hooks/Leva/Geometry3D";
 import { Children } from "Types/Children";
 
 enum GEOMETRY_3D {
@@ -83,34 +81,7 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
  */
 const Geometry3D = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { geometry3DName } = useControls(
-    LEVA.SCHEMA.COMPONENTS,
-    {
-      Geometry: folder(
-        {
-          geometry3DName: {
-            label: "Geometry",
-            options: {
-              "–None–                 ": GEOMETRY_3D.NONE,
-              "Box                    ": GEOMETRY_3D.BOX,
-              "Cylinder               ": GEOMETRY_3D.CYLINDER,
-              "Cone                   ": GEOMETRY_3D.CONE,
-              "Tetrahedron (4 faces)  ": GEOMETRY_3D.TETRAHEDRON,
-              "Octahedron (8 faces)   ": GEOMETRY_3D.OCTAHEDRON,
-              "Dodecahedron (12 faces)": GEOMETRY_3D.DODECAHEDRON,
-              "Icosahedron (20 faces) ": GEOMETRY_3D.ICOSAHEDRON,
-              "Sphere                 ": GEOMETRY_3D.SPHERE,
-              "Torus                  ": GEOMETRY_3D.TORUS,
-              "Torus Knot             ": GEOMETRY_3D.TORUS_KNOT,
-            },
-            value: GEOMETRY_3D.BOX,
-          },
-        },
-        SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
-      ),
-    },
-    SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
-  );
+  const { geometry3DName } = useLeva(GEOMETRY_3D);
 
   return enableGeometry(geometry3DName, children);
 };

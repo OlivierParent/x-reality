@@ -21,8 +21,13 @@ const keyLightTarget = new Object3D();
  */
 const LightingThreePointVolumetric = (): React.JSX.Element => {
   // Leva Controls.
-  const { lightHelper, ambientLight, backLight, fillLight, keyLight } =
-    useLeva();
+  const {
+    lightHelper, //
+    ambientLight,
+    backLight,
+    fillLight,
+    keyLight,
+  } = useLeva();
 
   // References.
   const backLightRef = useRef<ThreeSpotLight>(null!);

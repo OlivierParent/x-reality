@@ -19,7 +19,7 @@ export const PLAYER = {
     FORWARD: 2,
     LATERAL: 1,
     LONGITUDINAL: 1,
-    NORMAL: 0,
+    NORMAL: 0.5,
     RUN: 3,
   },
 } as const;

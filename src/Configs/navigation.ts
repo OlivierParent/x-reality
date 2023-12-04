@@ -28,7 +28,7 @@ export namespace NAVIGATION {
     SUZANNE = "suzanne/material",
     SUZANNE_EXPORTS = "suzanne/exports",
     TELEVISION = "television",
-    TEXTURE = "texture",
+    TEXTURED_MESH = "textured-mesh",
     TRIPOD = "tripod",
   }
 
@@ -138,8 +138,8 @@ export namespace NAVIGATION {
       to: PATH.TELEVISION,
     },
     {
-      label: "Texture",
-      to: PATH.TEXTURE,
+      label: "Textured Mesh",
+      to: PATH.TEXTURED_MESH,
     },
     {
       label: "Tripod",

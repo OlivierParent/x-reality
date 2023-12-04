@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "9.89.1",
+    "@react-three/drei": "9.90.0",
     "@react-three/fiber": "^8.15.12",
     "@react-three/flex": "^1.0.1",
     "@react-three/p2": "^0.0.6",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.10",
-    "@types/node": "^20.10.2",
+    "@types/node": "^20.10.3",
     "@types/preval.macro": "^3.0.2",
     "@types/react": "^18.2.41",
     "@types/react-dom": "^18.2.17",

@@ -27,7 +27,7 @@ import { PhysicsRapierWorldXRPage } from "Pages/PhysicsRapierWorldXRPage";
 import { SuzanneExportsPage } from "Pages/SuzanneExportsPage";
 import { SuzannePage } from "Pages/SuzannePage";
 import { TelevisionPage } from "Pages/TelevisionPage";
-import { TexturePage } from "Pages/TexturePage";
+import { TexturedMeshPage } from "Pages/TexturedMeshPage";
 import { TripodPage } from "Pages/TripodPage";
 
 /**
@@ -161,8 +161,8 @@ const Pages = (props: RoutesProps): React.JSX.Element => {
         path={NAVIGATION.PATH.TRIPOD}
       />
       <Route //
-        element={<TexturePage />}
-        path={NAVIGATION.PATH.TEXTURE}
+        element={<TexturedMeshPage />}
+        path={NAVIGATION.PATH.TEXTURED_MESH}
       />
     </Routes>
   );

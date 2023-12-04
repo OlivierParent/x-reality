@@ -75,13 +75,15 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
         : PLAYER.VELOCITY.DEFAULT;
     velocityVector.set(
       lateralDirectionModifier * lateralVelocityModifier * runModifier,
-      normalDirectionModifier * normalVelocityModifier * runModifier, // Camera quaternion should not affect velocity on gravity/normal axis.
+      0, // Camera quaternion should not affect velocity on gravity/normal axis.
       longitudinalDirectionModifier * longitudinalVelocityModifier * runModifier
     );
 
     // Match velocityVector direction to Camera direction.
     velocityVector.applyQuaternion(camera.quaternion);
-    velocityVector.y = playerVelocity.y; // Add velocity on gravity axis back after applying camera quaternion.
+    velocityVector.y =
+      playerVelocity.y +
+      normalDirectionModifier * normalVelocityModifier * runModifier; // Add velocity on gravity axis back after applying camera quaternion.
 
     // Reset angular velocity of Player if no movement detected.
     if (!moveBackwardOn && !moveForwardOn && !moveLeftOn && !moveRightOn) {
@@ -91,6 +93,7 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
     // Apply linear velocity to Player.
     player.setLinvel(velocityVector);
 
+    // Get Player position.
     const playerPosition = player.translation();
 
     // Match Camera position to Player position.

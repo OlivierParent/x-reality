@@ -1967,10 +1967,10 @@
     cannon-es "^0.20.0"
     cannon-es-debugger "^1.0.0"
 
-"@react-three/drei@9.89.1":
-  version "9.89.1"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.89.1.tgz#b139eccd87cc1ad8db1b72881e297b7615d4f2c6"
-  integrity sha512-lsSt3w7k2PwSCh0lps9jg4da3DKLp/wMKUQ4SO4b2vpDBn9JaSeIH/rAE3mzc+KEKxAtPTCybo5622abhdeL9w==
+"@react-three/drei@9.90.0":
+  version "9.90.0"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.90.0.tgz#84a694bb94b25b3e11d1166640984d223fb31e50"
+  integrity sha512-rf+YWq7xfUkAnyFFMhnQkCJ5GdQazgfEIfpnB8GdrZBA5Z2C8i9F2CYWPS9rA0husowcpnLUnLfu3xIAqGdDAA==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@mediapipe/tasks-vision" "0.10.8"
@@ -2527,10 +2527,10 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^20.10.2":
-  version "20.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.2.tgz#32a5e8228357f57714ad28d52229ab04880c2814"
-  integrity sha512-37MXfxkb0vuIlRKHNxwCkb60PNBpR94u4efQuN4JgIAm66zfCDXGSAFCef9XUWFovX2R1ok6Z7MHhtdVXXkkIw==
+"@types/node@^20.10.3":
+  version "20.10.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.3.tgz#4900adcc7fc189d5af5bb41da8f543cea6962030"
+  integrity sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==
   dependencies:
     undici-types "~5.26.4"
 

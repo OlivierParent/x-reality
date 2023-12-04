@@ -6,11 +6,24 @@ import { Material } from "Components/Material/Reflector";
 import { Painting } from "Components/Painting";
 import { SuzanneFrostedGlass } from "Components/Suzanne/FrostedGlass";
 
-const Composition = (props: GroupProps) => {
+/**
+ * Composition with a painting and Suzanne.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const Composition = (props: GroupProps): React.JSX.Element => {
   return (
-    <group name="Composition" {...props}>
-      <Painting position={[0, 0, -1]} />
-      <SuzanneFrostedGlass position={[0, 0, 1]} />
+    <group //
+      name="Composition"
+      {...props}
+    >
+      <Painting //
+        position={[0, 0, -1]}
+      />
+      <SuzanneFrostedGlass //
+        position={[0, 0, 1]}
+      />
       <Circle
         args={[10, 10]}
         position={[0, -2.5, 0]}

@@ -13,6 +13,8 @@ import normalsGlb from "Components/Normals/assets/normals.glb";
  */
 const Normals = (props: GroupProps) => {
   const { scene }: any = useGLTF(normalsGlb, true);
+
+  // References.
   const normalsRef = useRef<Mesh>(null!);
 
   useFrame(() => {

@@ -1,16 +1,14 @@
 import { GroupProps } from "@react-three/fiber";
-import { useControls } from "leva";
 
 import { Lighting as LightingDemo } from "Components/Lighting/Demo";
 import { Lighting as LightingStudio } from "Components/Lighting/Studio";
 import { Lighting as LightingThreePoint } from "Components/Lighting/ThreePoint";
 import { Lighting as LightingThreePointVolumetric } from "Components/Lighting/ThreePointVolumetric";
-import { LEVA } from "Configs/leva";
-import { SettingsLeva } from "Settings/Leva";
+import { useLeva } from "Hooks/Leva/Lighting";
 
 const LIGHTING = {
   Demo: <LightingDemo />,
-  None: null,
+  None: undefined,
   Studio: <LightingStudio />,
   ThreePoint: <LightingThreePoint />,
   ThreePointVolumetric: <LightingThreePointVolumetric />,
@@ -24,23 +22,7 @@ const LIGHTING = {
  */
 const Lighting = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { lighting } = useControls(
-    LEVA.SCHEMA.LIGHTING,
-    {
-      lighting: {
-        label: "Lighting",
-        options: {
-          "None                  ": LIGHTING.None,
-          "Demo                  ": LIGHTING.Demo,
-          "Studio                ": LIGHTING.Studio,
-          "Three Point           ": LIGHTING.ThreePoint,
-          "Three Point Volumetric": LIGHTING.ThreePointVolumetric,
-        },
-        value: LIGHTING.ThreePointVolumetric,
-      },
-    },
-    SettingsLeva.folder(LEVA.ORDER.LIGHTING)
-  );
+  const { lighting } = useLeva(LIGHTING);
 
   return (
     <group name="Lighting" {...props}>

@@ -1,7 +1,8 @@
-import { useControls } from "leva";
+import { GroupProps } from "@react-three/fiber";
 
 import { Logo as LogoDouble } from "Components/Logo/Double";
 import { Logo as LogoSingle } from "Components/Logo/Single";
+import { useLeva } from "Hooks/Leva/Logo";
 
 const LOGO = {
   Double: <LogoDouble />,
@@ -11,18 +12,18 @@ const LOGO = {
 /**
  * Logo.
  *
+ *  @param {GroupProps} props
  * @returns {React.JSX.Element}
  */
-const Logo = (): React.JSX.Element => {
-  const { logo } = useControls("Components", {
-    logo: {
-      label: "Logo",
-      options: LOGO,
-      value: LOGO.Single,
-    },
-  });
+const Logo = (props: GroupProps): React.JSX.Element => {
+  // Leva Controls.
+  const { logo } = useLeva(LOGO);
 
-  return <group name="Logos">{logo}</group>;
+  return (
+    <group name="Logos" {...props}>
+      {logo}
+    </group>
+  );
 };
 
 export { Logo };

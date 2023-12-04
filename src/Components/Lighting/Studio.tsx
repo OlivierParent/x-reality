@@ -15,8 +15,13 @@ import { fromLevaPosition, useLeva } from "Hooks/Leva/Lighting/Studio";
  */
 const LightingStudio = (): React.JSX.Element => {
   // Leva Controls.
-  const { lightHelper, ambientLight, frontLight, leftLight, rightLight } =
-    useLeva();
+  const {
+    lightHelper, //
+    ambientLight,
+    frontLight,
+    leftLight,
+    rightLight,
+  } = useLeva();
 
   // References.
   const frontLightRef = useRef<DirectionalLight>(null!);
