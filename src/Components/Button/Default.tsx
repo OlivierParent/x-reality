@@ -1,4 +1,4 @@
-import { Text } from "@react-three/drei";
+import { Text, useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { Euler } from "three";
@@ -36,6 +36,8 @@ const ButtonDefault = (props: GroupProps): React.JSX.Element => {
   const [toggleButton, setToggleButton] = useState(false);
   const [toggleColor, setToggleColor] = useState(false);
 
+  useCursor(hover);
+
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
@@ -54,12 +56,6 @@ const ButtonDefault = (props: GroupProps): React.JSX.Element => {
     event.stopPropagation();
     setHover(true);
   };
-
-  useEffect(() => {
-    // Cursor.
-    const cursor = hover ? "pointer" : "default";
-    window.document.body.style.setProperty("cursor", cursor);
-  }, [hover]);
 
   useEffect(() => {
     // Color.

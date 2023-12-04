@@ -1,5 +1,6 @@
+import { useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Mesh, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
@@ -54,11 +55,7 @@ const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
     setHover(true);
   }, []);
 
-  useEffect(() => {
-    // Cursor.
-    const cursor = hover ? "pointer" : "default";
-    window.document.body.style.setProperty("cursor", cursor);
-  }, [hover]);
+  useCursor(hover);
 
   useFrame(({ clock }) => {
     // Rotation.

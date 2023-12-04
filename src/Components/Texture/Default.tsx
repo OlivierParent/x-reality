@@ -11,6 +11,7 @@ import cubeGlb from "Components/Texture/assets/TexturedCube.glb";
  */
 const TextureDefault = (props: GroupProps): React.JSX.Element => {
   const { nodes, materials }: any = useGLTF(cubeGlb, true);
+
   return (
     <group name="Texture Default" {...props}>
       <group position={[-1.5, 0, 0]}>
@@ -18,7 +19,10 @@ const TextureDefault = (props: GroupProps): React.JSX.Element => {
           geometry={nodes.Cube_1.geometry}
           material={materials["MaterialTexture"]}
         />
-        <mesh geometry={nodes.Cube_2.geometry} material={materials["Blue"]} />
+        <mesh //
+          geometry={nodes.Cube_2.geometry}
+          material={materials["Blue"]}
+        />
       </group>
       {nodes.Cube.children.map((child: any, index: number) => {
         return (

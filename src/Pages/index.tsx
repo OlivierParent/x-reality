@@ -23,8 +23,10 @@ import { PhysicsRapierDioramaPage } from "Pages/PhysicsRapierDioramaPage";
 import { PhysicsRapierPinballMachinePage } from "Pages/PhysicsRapierPinballMachinePage";
 import { PhysicsRapierTestPage } from "Pages/PhysicsRapierTestPage";
 import { PhysicsRapierWorldPage } from "Pages/PhysicsRapierWorldPage";
+import { PhysicsRapierWorldXRPage } from "Pages/PhysicsRapierWorldXRPage";
 import { SuzanneExportsPage } from "Pages/SuzanneExportsPage";
 import { SuzannePage } from "Pages/SuzannePage";
+import { TelevisionPage } from "Pages/TelevisionPage";
 import { TexturePage } from "Pages/TexturePage";
 import { TripodPage } from "Pages/TripodPage";
 
@@ -139,12 +141,20 @@ const Pages = (props: RoutesProps): React.JSX.Element => {
         path={NAVIGATION.PATH.PHYSICS_RAPIER_WORLD}
       />
       <Route //
+        element={<PhysicsRapierWorldXRPage />}
+        path={NAVIGATION.PATH.PHYSICS_RAPIER_WORLD_XR}
+      />
+      <Route //
         element={<SuzanneExportsPage />}
         path={NAVIGATION.PATH.SUZANNE_EXPORTS}
       />
       <Route //
         element={<SuzannePage />}
         path={NAVIGATION.PATH.SUZANNE}
+      />
+      <Route //
+        element={<TelevisionPage />}
+        path={NAVIGATION.PATH.TELEVISION}
       />
       <Route //
         element={<TripodPage />}

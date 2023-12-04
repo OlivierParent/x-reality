@@ -1,6 +1,6 @@
-import { useGLTF } from "@react-three/drei";
+import { useCursor, useGLTF } from "@react-three/drei";
 import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Mesh } from "three";
 
 import gltfLogoGlb from "Components/Logo/assets/gltf-logo.glb";
@@ -37,11 +37,7 @@ const LogoSingle = (props: GroupProps): React.JSX.Element => {
     setHover(true);
   };
 
-  useEffect(() => {
-    // Cursor.
-    const cursor = hover ? "pointer" : "default";
-    window.document.body.style.setProperty("cursor", cursor);
-  }, [hover]);
+  useCursor(hover);
 
   useFrame(() => {
     // Rotation.

@@ -1,3 +1,4 @@
+import { useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -61,6 +62,8 @@ const AnimatedCubeGreenSock = (props: GroupProps): React.JSX.Element => {
     setHover(true);
   }, []);
 
+  useCursor(hover);
+
   useEffect(() => {
     // Parallel animation with `gsap`.
     gsap.to(gsapObject, {
@@ -72,9 +75,6 @@ const AnimatedCubeGreenSock = (props: GroupProps): React.JSX.Element => {
   }, [color]);
 
   useEffect(() => {
-    // Cursor.
-    const cursor = hover ? "pointer" : "default";
-    window.document.body.style.setProperty("cursor", cursor);
     // Sequential animation with `gsapTimeline`.
     const opacity = hover ? OPACITY.HIGH : OPACITY.LOW;
     const scale = hover ? SCALE.LARGE : SCALE.SMALL;

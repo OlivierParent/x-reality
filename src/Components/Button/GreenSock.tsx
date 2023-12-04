@@ -1,4 +1,4 @@
-import { Text } from "@react-three/drei";
+import { Text, useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
@@ -46,6 +46,8 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
   const [toggleButton, setToggleButton] = useState(false);
   const [toggleColor, setToggleColor] = useState(false);
 
+  useCursor(hover);
+
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
@@ -76,10 +78,6 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
   }, [color]);
 
   useEffect(() => {
-    // Cursor.
-    const cursor = hover ? "pointer" : "default";
-    window.document.body.style.setProperty("cursor", cursor);
-
     // Opacity.
     const opacity = hover ? OPACITY.HIGH : OPACITY.LOW;
     gsap.to(materialRef.current, {

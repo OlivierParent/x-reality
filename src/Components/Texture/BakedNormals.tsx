@@ -12,6 +12,7 @@ import cubeGlb from "Components/Texture/assets/BakedNormals.glb";
  */
 const TextureBakedNormals = (props: GroupProps): React.JSX.Element => {
   const { nodes, materials }: any = useGLTF(cubeGlb, true);
+
   return (
     <group name="Texture with Baked Normals" {...props}>
       <mesh
