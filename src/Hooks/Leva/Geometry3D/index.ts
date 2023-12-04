@@ -17,6 +17,7 @@ function useLeva(GEOMETRY_3D: any) {
             options: {
               "—None—                 ": GEOMETRY_3D.NONE,
               "Box                    ": GEOMETRY_3D.BOX,
+              "Rounded Box            ": GEOMETRY_3D.ROUNDED_BOX,
               "Cylinder               ": GEOMETRY_3D.CYLINDER,
               "Cone                   ": GEOMETRY_3D.CONE,
               "Tetrahedron (4 faces)  ": GEOMETRY_3D.TETRAHEDRON,

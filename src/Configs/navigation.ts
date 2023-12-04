@@ -32,7 +32,7 @@ export namespace NAVIGATION {
     TRIPOD = "tripod",
   }
 
-  export const ITEMS: Array<NavigationItem> = [
+  export const ITEMS: NavigationItem[] = [
     {
       label: "Animated Cube",
       to: PATH.ANIMATED_CUBE,

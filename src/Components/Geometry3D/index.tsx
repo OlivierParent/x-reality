@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Box } from "Components/Geometry3D/Box";
 import { Cone } from "Components/Geometry3D/Cone";
 import { Cylinder } from "Components/Geometry3D/Cylinder";
+import { RoundedBox } from "Components/Geometry3D/RoundedBox";
 import { Dodecahedron } from "Components/Geometry3D/Dodecahedron";
 import { Icosahedron } from "Components/Geometry3D/Icosahedron";
 import { Octahedron } from "Components/Geometry3D/Octahedron";
@@ -21,6 +22,7 @@ enum GEOMETRY_3D {
   ICOSAHEDRON = "Icosahedron",
   NONE = "None",
   OCTAHEDRON = "Octahedron",
+  ROUNDED_BOX = "RoundedBox",
   SPHERE = "Sphere",
   TETRAHEDRON = "Tetrahedron",
   TORUS = "Torus",
@@ -54,6 +56,9 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
       break;
     case GEOMETRY_3D.OCTAHEDRON:
       element = <Octahedron>{children}</Octahedron>;
+      break;
+    case GEOMETRY_3D.ROUNDED_BOX:
+      element = <RoundedBox>{children}</RoundedBox>;
       break;
     case GEOMETRY_3D.SPHERE:
       element = <Sphere>{children}</Sphere>;

@@ -13,8 +13,14 @@ import { Children } from "Types/Children";
  */
 const Geometry3DBox = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { depth, depthSegments, height, heightSegments, width, widthSegments } =
-    useLeva();
+  const {
+    depth, //
+    depthSegments,
+    height,
+    heightSegments,
+    width,
+    widthSegments,
+  } = useLeva();
 
   return (
     <Box

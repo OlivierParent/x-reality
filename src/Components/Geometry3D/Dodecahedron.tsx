@@ -13,7 +13,10 @@ import { Children } from "Types/Children";
  */
 const Geometry3DDodecahedron = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { detail, radius } = useLeva();
+  const {
+    detail, //
+    radius,
+  } = useLeva();
 
   return (
     <Dodecahedron args={[radius, detail]}>

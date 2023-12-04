@@ -3,7 +3,7 @@ import { SettingsLevaGeometryCircle as CircleGeometry } from "Settings/Leva/Geom
 export namespace SettingsLevaGeometrySphere {
   export const heightSegments = (value: number = 16) => ({
     label: "Height Segments",
-    hint: "Number of vertical segments. Minimum is `2`, default is `16`.",
+    hint: "Number of vertical segments. Default is `16`, minimum is `2`.",
     max: 32,
     min: 2,
     step: 1,
@@ -14,7 +14,7 @@ export namespace SettingsLevaGeometrySphere {
 
   export const widthSegments = (value: number = 32) => ({
     label: "Width Segments",
-    hint: "Number of horizontal segments. Minimum is `3`, default is `32`.",
+    hint: "Number of horizontal segments. Default is `32`, minimum is `3`.",
     max: 64,
     min: 3,
     step: 1,

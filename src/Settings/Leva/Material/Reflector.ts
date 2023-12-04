@@ -31,7 +31,7 @@ export namespace SettingsLevaMaterialReflector {
 
   export const depthScale = (value: number = 0) => ({
     label: "Depth Factor Scale",
-    hint: "Scale the depth factor (0 = no depth, default = 0",
+    hint: "Scale the depth factor. Default is `0` (no depth).",
     min: 0,
     step: 0.01,
     value,
@@ -39,7 +39,7 @@ export namespace SettingsLevaMaterialReflector {
 
   export const depthToBlurRatioBias = (value: number = 0.25) => ({
     label: "Depth to Blur Ratio Bias",
-    hint: "Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. It accepts values between 0 and 1, default is 0.25. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture.",
+    hint: "Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. Default is `0.25` and must be between `0` and `1`. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture.",
     max: 1,
     min: 0,
     step: 0.01,

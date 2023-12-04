@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 import { Bloom } from "Components/Effects/Bloom";
 import { BrightnessContrast } from "Components/Effects/BrightnessContrast";
 import { ChromaticAberration } from "Components/Effects/ChromaticAberration";

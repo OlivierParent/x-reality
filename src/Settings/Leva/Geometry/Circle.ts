@@ -1,7 +1,7 @@
 export namespace SettingsLevaGeometryCircle {
   export const radius = (value: number = 1.0) => ({
     label: "Radius",
-    hint: "Radius of the circle, default is `1.0`.",
+    hint: "Radius of the circle. Default is `1.0`.",
     max: 3.0,
     min: 0.1,
     step: 0.1,
@@ -10,7 +10,7 @@ export namespace SettingsLevaGeometryCircle {
 
   export const segments = (value: number = 8) => ({
     label: "Segments",
-    hint: "Number of segments (triangles), minimum is `3`, default is `8`.",
+    hint: "Number of segments (triangles). Default is `8`, minimum is `3`.",
     max: 64,
     min: 3,
     step: 1,
