@@ -13,7 +13,14 @@ import { Children } from "Types/Children";
  */
 const Geometry3DTorusKnot = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { p, q, radialSegments, radius, tube, tubularSegments } = useLeva();
+  const {
+    p, //
+    q,
+    radialSegments,
+    radius,
+    tube,
+    tubularSegments,
+  } = useLeva();
 
   return (
     <TorusKnot args={[radius, tube, tubularSegments, radialSegments, p, q]}>

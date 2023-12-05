@@ -14,7 +14,13 @@ import { Children } from "Types/Children";
  */
 const Geometry3DTorus = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { arc, radialSegments, radius, tube, tubularSegments } = useLeva();
+  const {
+    arc, //
+    radialSegments,
+    radius,
+    tube,
+    tubularSegments,
+  } = useLeva();
 
   return (
     <Torus
