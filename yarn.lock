@@ -2041,17 +2041,17 @@
     postprocessing "^6.32.1"
     three-stdlib "^2.23.4"
 
-"@react-three/rapier-addons@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@react-three/rapier-addons/-/rapier-addons-3.0.2.tgz#69faa0e23235e0e5edee1c8937f68bb665580c5b"
-  integrity sha512-q2gOPhejP+Az3g1Y1S884DEMamydIY3r7OQqBDAopvbDm/sn7CuJu8zdDbtIPt600UWcO7qmVLfU7FckeXvt/w==
+"@react-three/rapier-addons@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@react-three/rapier-addons/-/rapier-addons-3.0.3.tgz#9858f3ad327e501ecbd826d37c3676bd943d13fa"
+  integrity sha512-EsFKDqGDmz48tqafN6XXpvdu2uwmWB6WqYjp/qnHG2FlwmdK5Cx1Ie/CpE1X0x8OBSeil6rFTySbkhU+bWu7fQ==
   dependencies:
     three-stdlib "2.23.9"
 
-"@react-three/rapier@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@react-three/rapier/-/rapier-1.1.2.tgz#778717c56cfdba03d5d0f8f6429a8cc0c4e9a922"
-  integrity sha512-xnMUEqVgAwUyLTzIzWfTrA5WeQ9BtfC/6QfZ3U2ZCnqTWpRtdYF09uTynzcsEiJFFb2JXD7ly0J0ppWl9kNJ+Q==
+"@react-three/rapier@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@react-three/rapier/-/rapier-1.2.0.tgz#31ea22a36953063e50ab23f91dfcafe25370cb05"
+  integrity sha512-NlUgCf8xQpLIKjTkM0+EWUmNKVn1w1rFuPdbUKR3W2qvTZmJr36tAaoI5f2tPHoD81YleulcXjd/u8OeKTSz1Q==
   dependencies:
     "@dimforge/rapier3d-compat" "0.11.2"
     three-stdlib "2.23.9"
@@ -2485,10 +2485,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^29.5.10":
-  version "29.5.10"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.10.tgz#a10fc5bab9e426081c12b2ef73d24d4f0c9b7f50"
-  integrity sha512-tE4yxKEphEyxj9s4inideLHktW/x6DwesIwWZ9NN1FKf9zbJYsnhBoA9vrHA/IuIOKwPa5PcFBNV4lpMIOEzyQ==
+"@types/jest@^29.5.11":
+  version "29.5.11"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.11.tgz#0c13aa0da7d0929f078ab080ae5d4ced80fa2f2c"
+  integrity sha512-S2mHmYIVe13vrm6q4kN6fLYYAka15ALQki/vgDC3mIukEOx8WJlv0kQPM+d4w8Gp6u0uSdKND04IlTXBv0rwnQ==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -2611,10 +2611,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.2.41":
-  version "18.2.41"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.41.tgz#9eea044246bdb10510df89ef7f8422a8b6ad8fb9"
-  integrity sha512-CwOGr/PiLiNBxEBqpJ7fO3kocP/2SSuC9fpH5K7tusrg4xPSRT/193rzolYwQnTN02We/ATXKnb6GqA5w4fRxw==
+"@types/react@^18.2.42":
+  version "18.2.42"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.42.tgz#6f6b11a904f6d96dda3c2920328a97011a00aba7"
+  integrity sha512-c1zEr96MjakLYus/wPnuWDo1/zErfdU9rNsIGmE+NV71nx88FG9Ttgo5dqorXTu/LImX2f63WBP986gJkMPNbA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -10011,10 +10011,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.2.tgz#00d1c7c1c46928c5845c1ee8d0cc2791031d4c43"
-  integrity sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==
+typescript@^5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
+  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

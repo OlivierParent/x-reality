@@ -1,10 +1,10 @@
 import { Sphere, useMatcapTexture } from "@react-three/drei";
 import {
-  interactionGroups,
   RapierRigidBody,
   RigidBody,
+  interactionGroups,
 } from "@react-three/rapier";
-import { forwardRef, Ref } from "react";
+import { Ref, forwardRef } from "react";
 
 import { INTERACTION } from "Configs/interaction";
 import { MATCAP } from "Libs/matcap";

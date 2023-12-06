@@ -47,7 +47,13 @@ const RapierPinballMachineBumper = (props: BumperProps): React.JSX.Element => {
     <group name="Bumper" position={position}>
       <RigidBody
         colliders={false}
-        position={new Vector3(0, BUMPER.HEIGHT / 2, 0)}
+        position={
+          new Vector3(
+            0, //
+            BUMPER.HEIGHT / 2,
+            0
+          )
+        }
         restitution={2.5}
         type="fixed"
       >
@@ -62,10 +68,17 @@ const RapierPinballMachineBumper = (props: BumperProps): React.JSX.Element => {
             INTERACTION.BUMPER,
             INTERACTION.BALL
           )}
-          solverGroups={interactionGroups(INTERACTION.BUMPER, INTERACTION.BALL)}
+          solverGroups={interactionGroups(
+            INTERACTION.BUMPER, //
+            INTERACTION.BALL
+          )}
         />
         <Cylinder
-          args={[BUMPER.RADIUS.TOP, BUMPER.RADIUS.BOTTOM, BUMPER.HEIGHT]}
+          args={[
+            BUMPER.RADIUS.TOP, //
+            BUMPER.RADIUS.BOTTOM,
+            BUMPER.HEIGHT,
+          ]}
         >
           <meshBasicMaterial
             color={"yellow"}

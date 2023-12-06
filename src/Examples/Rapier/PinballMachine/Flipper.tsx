@@ -47,8 +47,8 @@ const RapierPinballMachineFlipper = (
   const isPressed = flipperBothOn || (isLeft ? flipperLeftOn : flipperRightOn);
 
   const color = isPressed ? 0x0000ff : isLeft ? 0xff0000 : 0x00ff00;
-  const rotationY = 40 * (isLeft ? -1 : 1);
-  const positionX = 0.8 * (isLeft ? 1 : -1);
+  const rotationY = (isLeft ? -1 : 1) * 40;
+  const positionX = (isLeft ? 1 : -1) * 0.8;
 
   // References.
   const meshRef = useRef<Mesh>(null!);
@@ -66,15 +66,19 @@ const RapierPinballMachineFlipper = (
   ];
   useRevoluteJoint(bodyDynamicRef, bodyFixedRef, params);
 
-  const impulseVector = { x: 0, y: 0, z: 0.01 };
+  const impulseVector = {
+    x: 0,
+    y: 0,
+    z: 0.01,
+  };
   const impulsePoint = {
-    x: positionX + 10 * (isLeft ? -1 : 1),
+    x: positionX + (isLeft ? -1 : 1) * 10,
     y: 0.25,
     z: 0.3,
   };
 
   useEffect(() => {
-    console.log(shootOn);
+    console.info("shootOn:", shootOn);
   }, [shootOn]);
 
   useFrame((state, delta) => {
@@ -101,7 +105,13 @@ const RapierPinballMachineFlipper = (
         name="Flipper"
         ref={bodyDynamicRef}
         restitution={2.5}
-        rotation={new Euler(0, MathUtils.degToRad(rotationY), 0)}
+        rotation={
+          new Euler(
+            0, //
+            MathUtils.degToRad(rotationY),
+            0
+          )
+        }
         type="dynamic"
         solverGroups={interactionGroups(INTERACTION.FLIPPER, [
           INTERACTION.BALL,
@@ -127,14 +137,22 @@ const RapierPinballMachineFlipper = (
           args={[0.1]}
           collisionGroups={interactionGroups(INTERACTION.CONSTRAINT)}
           name="Upper Constraint"
-          position={[(0.8 - 0.1) * (isLeft ? 1 : -1), 0.125 + SAFE_OFFSET, 0]}
+          position={[
+            (0.8 - 0.1) * (isLeft ? 1 : -1), //
+            0.125 + SAFE_OFFSET,
+            0,
+          ]}
           restitution={-999}
         />
         <BallCollider
           args={[0.1]}
           collisionGroups={interactionGroups(INTERACTION.CONSTRAINT)}
           name="Lower Constraint"
-          position={[(0.8 - 0.5) * (isLeft ? 1 : -1), 0.125 + SAFE_OFFSET, 0.7]}
+          position={[
+            (0.8 - 0.5) * (isLeft ? 1 : -1), //
+            0.125 + SAFE_OFFSET,
+            0.7,
+          ]}
           restitution={-999}
         />
       </RigidBody>
@@ -142,7 +160,11 @@ const RapierPinballMachineFlipper = (
       <Box
         name="Impulse point visualisation"
         args={[SAFE_OFFSET / 4, SAFE_OFFSET / 4, SAFE_OFFSET / 4]}
-        position={[impulsePoint.x, impulsePoint.y, impulsePoint.z]}
+        position={[
+          impulsePoint.x, //
+          impulsePoint.y,
+          impulsePoint.z,
+        ]}
       >
         <meshBasicMaterial //
           color={0x0000ff}

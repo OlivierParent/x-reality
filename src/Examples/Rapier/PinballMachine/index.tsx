@@ -6,19 +6,21 @@ import {
   useRapier,
 } from "@react-three/rapier";
 import { button, useControls } from "leva";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 
 import { LEVA } from "Configs/leva";
 import { ScoreContext } from "Data/ScoreContext";
 import { Attractor } from "Examples/Rapier/PinballMachine/Attractor";
 import { Ball } from "Examples/Rapier/PinballMachine/Ball";
-import { BALL } from "Examples/Rapier/PinballMachine/Ball.config";
+import { BALL, POSITION } from "Examples/Rapier/PinballMachine/Ball.config";
 import { Bumper } from "Examples/Rapier/PinballMachine/Bumper";
 import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
 import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
 import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
+
+const LOWER_LIMIT_Y = -5;
 
 const ORIGIN_VECTOR = new Quaternion();
 const zeroVelocity = new Vector3(0, 0, 0);
@@ -34,7 +36,9 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
   useControls(
     LEVA.SCHEMA.SIMULATION,
     {
-      reset: button(() => reset()),
+      "Store Snapshot": button(() => storeSnapshot()),
+      "Restore Snapshot": button(() => restoreSnapshot()),
+      Reset: button(() => reset()),
     },
     { order: LEVA.ORDER.SIMULATION }
   );
@@ -47,24 +51,58 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
   const leftBallRef = useRef<RapierRigidBody>(null!);
   const middleBallRef = useRef<RapierRigidBody>(null!);
   const rightBallRef = useRef<RapierRigidBody>(null!);
+  const snapshotRef = useRef<Uint8Array>(null!);
 
   // States.
   const [counter, setCounter] = useState<number>(0);
+  // const [reset, setReset] = useState<boolean>(false);
 
   // Event handlers.
   const collisionHandler = () => {
     setCounter((state) => state + 1);
     if (3 < counter) {
       setCounter(0);
-      // reset();
+      // restoreSnapshot();
     }
   };
+
+  const restoreSnapshot = useCallback(() => {
+    console.info("Rapier: restoring snapshot...");
+    const snapshot = rapierCtx.rapier.World.restoreSnapshot(
+      snapshotRef.current
+    );
+    rapierCtx.setWorld(snapshot);
+  }, [rapierCtx]);
+
+  const storeSnapshot = useCallback(() => {
+    console.info("Rapier: taking snapshot...");
+    const snapshot = rapierCtx.world.takeSnapshot();
+    snapshotRef.current = snapshot;
+  }, [rapierCtx]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      storeSnapshot();
+    }, 250);
+  }, [storeSnapshot]);
+
+  useFrame((state, delta) => {
+    scoreState.add(Math.floor(Math.random() * 2));
+    if (
+      leftBallRef.current.translation().y < LOWER_LIMIT_Y &&
+      middleBallRef.current.translation().y < LOWER_LIMIT_Y &&
+      rightBallRef.current.translation().y < LOWER_LIMIT_Y
+    ) {
+      reset();
+      // setReset(true);
+    }
+  });
 
   function reset() {
     leftBallRef.current.setAngvel(zeroVelocity, true);
     leftBallRef.current.setLinvel(zeroVelocity, true);
     leftBallRef.current.setTranslation(
-      BALL.LEFT.POSITION.setX(-2 * Math.random()),
+      BALL.LEFT.POSITION.setX(POSITION.X.EXTREMITY * Math.random() + 0.5),
       true
     );
     leftBallRef.current.setRotation(ORIGIN_VECTOR, true);
@@ -72,7 +110,7 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
     middleBallRef.current.setAngvel(zeroVelocity, true);
     middleBallRef.current.setLinvel(zeroVelocity, true);
     middleBallRef.current.setTranslation(
-      BALL.MIDDLE.POSITION.setX(BALL.MIDDLE.POSITION.x * 1 + Math.random()),
+      BALL.MIDDLE.POSITION.setX(POSITION.X.CENTER * (Math.random() * 2 - 1)),
       true
     );
     middleBallRef.current.setRotation(ORIGIN_VECTOR, true);
@@ -80,26 +118,11 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
     rightBallRef.current.setAngvel(zeroVelocity, true);
     rightBallRef.current.setLinvel(zeroVelocity, true);
     rightBallRef.current.setTranslation(
-      BALL.RIGHT.POSITION.setX(-2 * Math.random()),
+      BALL.RIGHT.POSITION.setX(POSITION.X.EXTREMITY * -Math.random() - 0.5),
       true
     );
     rightBallRef.current.setRotation(ORIGIN_VECTOR, true);
   }
-
-  useEffect(() => {
-    console.log("Rapier", rapierCtx);
-  }, [rapierCtx]);
-
-  useFrame((state, delta) => {
-    scoreState.add(Math.floor(Math.random() * 2));
-    if (
-      leftBallRef.current.translation().y < -5 &&
-      middleBallRef.current.translation().y < -5 &&
-      rightBallRef.current.translation().y < -5
-    ) {
-      reset();
-    }
-  });
 
   return (
     <group name="Pinball Machine Game" {...props}>
