@@ -34,6 +34,7 @@ const RapierPinballMachineBall = forwardRef(
           INTERACTION.FLIPPER,
           INTERACTION.KICKER,
           INTERACTION.PLUNGER,
+          INTERACTION.SENSOR,
         ])}
         density={1}
         friction={undefined}
@@ -49,7 +50,10 @@ const RapierPinballMachineBall = forwardRef(
         ])}
       >
         <Sphere args={[radius]}>
-          <meshMatcapMaterial color={color} matcap={matcapWornGold} />
+          <meshMatcapMaterial //
+            color={color}
+            matcap={matcapWornGold}
+          />
         </Sphere>
       </RigidBody>
     );

@@ -2,15 +2,17 @@ import { Plane } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { Euler, MathUtils, Vector3 } from "three";
 
-const width = 10;
-const height = 16;
-const thickness = 0.125;
-
-const halfWidth = width / 2;
-const halfHeight = thickness / 2;
-const halfDepth = height / 2;
-
-const offsetZ = -6;
+const OFFSET_Z = -6;
+const PLAYFIELD = {
+  WIDTH: 10,
+  HEIGHT: 16,
+  THICKNESS: 0.125,
+} as const;
+const PLAYFIELD_COLLIDER = {
+  WIDTH: PLAYFIELD.WIDTH / 2,
+  HEIGHT: PLAYFIELD.THICKNESS / 2,
+  DEPTH: PLAYFIELD.HEIGHT / 2,
+} as const;
 
 /**
  * Pinball machine playfield.
@@ -21,14 +23,18 @@ const RapierPinballMachinePlayfield = (): React.JSX.Element => {
   return (
     <RigidBody type="fixed">
       <Plane
-        args={[width, height]}
+        args={[PLAYFIELD.WIDTH, PLAYFIELD.HEIGHT]}
         rotation={new Euler(MathUtils.degToRad(-90), 0, 0)}
-        position={new Vector3(0, 0, offsetZ)}
+        position={new Vector3(0, 0, OFFSET_Z)}
       />
       <CuboidCollider
-        args={[halfWidth, halfHeight, halfDepth]}
+        args={[
+          PLAYFIELD_COLLIDER.WIDTH,
+          PLAYFIELD_COLLIDER.HEIGHT,
+          PLAYFIELD_COLLIDER.DEPTH,
+        ]}
         restitution={0.25}
-        position={new Vector3(0, 0, offsetZ)}
+        position={new Vector3(0, 0, OFFSET_Z)}
       />
     </RigidBody>
   );

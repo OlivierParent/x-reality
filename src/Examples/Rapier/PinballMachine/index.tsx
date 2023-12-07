@@ -3,6 +3,7 @@ import {
   CuboidCollider,
   RapierRigidBody,
   RigidBody,
+  interactionGroups,
   useRapier,
 } from "@react-three/rapier";
 import { button, useControls } from "leva";
@@ -19,6 +20,7 @@ import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
 import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
 import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
+import { INTERACTION } from "Configs/interaction";
 
 const LOWER_LIMIT_Y = -5;
 
@@ -59,6 +61,7 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
 
   // Event handlers.
   const collisionHandler = () => {
+    console.info("Rapier: collision detected!");
     setCounter((state) => state + 1);
     if (3 < counter) {
       setCounter(0);
@@ -130,17 +133,21 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
         <group name="Cabinet">
           <Playfield />
           <CabinetWalls />
-
-          <RigidBody onCollisionEnter={collisionHandler} type="fixed">
+          <RigidBody type="fixed">
             <CuboidCollider
+              collisionGroups={interactionGroups(INTERACTION.SENSOR, [
+                INTERACTION.BALL,
+              ])}
               args={[4.7, 0.125, 0.125]}
+              onCollisionEnter={collisionHandler}
               position={new Vector3(0, 0.125, 2)}
               sensor={true}
             />
           </RigidBody>
         </group>
-        <group name="Attractor"></group>
-        <Attractor />
+        <group name="Attractor">
+          <Attractor />
+        </group>
         <group name="Bumpers">
           <Bumper position={new Vector3(0, 0, -2)} />
           <Bumper position={new Vector3(-3, 0, -5)} />

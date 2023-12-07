@@ -1,4 +1,4 @@
-import { Box, useKeyboardControls } from "@react-three/drei";
+import { Box, Sphere, useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import {
   BallCollider,
@@ -16,6 +16,7 @@ import { INTERACTION } from "Configs/interaction";
 import { FlipperProps } from "Types/FlipperProps";
 import { OrientationValue } from "Types/OrientationValue";
 
+const HELPER_SIZE = 0.25;
 const SAFE_OFFSET = 0.1; // Prevent Z Fighting.
 
 /**
@@ -99,9 +100,8 @@ const RapierPinballMachineFlipper = (
         collisionGroups={interactionGroups(INTERACTION.FLIPPER, [
           INTERACTION.BALL,
           INTERACTION.CONSTRAINT,
-          INTERACTION.FLIPPER,
         ])}
-        mass={10000}
+        mass={10000000}
         name="Flipper"
         ref={bodyDynamicRef}
         restitution={2.5}
@@ -116,7 +116,6 @@ const RapierPinballMachineFlipper = (
         solverGroups={interactionGroups(INTERACTION.FLIPPER, [
           INTERACTION.BALL,
           INTERACTION.CONSTRAINT,
-          INTERACTION.FLIPPER,
         ])}
       >
         <mesh
@@ -129,7 +128,7 @@ const RapierPinballMachineFlipper = (
       </RigidBody>
 
       <RigidBody name="Fixation" ref={bodyFixedRef} type="fixed">
-        <Box args={[SAFE_OFFSET / 4, SAFE_OFFSET / 4, SAFE_OFFSET / 4]} />
+        <Box args={[HELPER_SIZE / 4, HELPER_SIZE / 4, HELPER_SIZE / 4]} />
       </RigidBody>
 
       <RigidBody name="Constraints" type="fixed">
@@ -157,9 +156,9 @@ const RapierPinballMachineFlipper = (
         />
       </RigidBody>
 
-      <Box
+      <Sphere
         name="Impulse point visualisation"
-        args={[SAFE_OFFSET / 4, SAFE_OFFSET / 4, SAFE_OFFSET / 4]}
+        args={[HELPER_SIZE, 4, 4]}
         position={[
           impulsePoint.x, //
           impulsePoint.y,
@@ -170,7 +169,7 @@ const RapierPinballMachineFlipper = (
           color={0x0000ff}
           wireframe={true}
         />
-      </Box>
+      </Sphere>
     </group>
   );
 };

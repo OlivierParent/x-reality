@@ -7,8 +7,8 @@ export const CLOCK = {
   MM: 60,
   SS: 60,
   BRAND: {
-    COLOR: 0xcccccc,
-    FONT: FONT_FAMILY.MONSIEUR_LA_DOULAISE.url,
+    COLOR: 0x666666,
+    FONT: FONT_FAMILY.NOTO_SANS.url,
   },
   HAND: {
     HH: {
@@ -43,6 +43,9 @@ export const CLOCK = {
     },
     OFFSET: 0.05 * CLOCK_SIZE,
     THICKNESS: 0.005 * CLOCK_SIZE,
+  },
+  PLATE: {
+    COLOR: 0x999999,
   },
   SIZE: CLOCK_SIZE,
 } as const;

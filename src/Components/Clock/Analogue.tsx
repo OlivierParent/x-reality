@@ -28,6 +28,7 @@ function isHour(mark: number): boolean {
 }
 
 const ANGLE_START = 90;
+const BRAND_NAME = "/ɔ.li.vje pa.ʁɑ̃/";
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
 /**
@@ -42,7 +43,7 @@ const Face = (): React.JSX.Element => {
         <mesh receiveShadow={true}>
           <circleGeometry args={[CLOCK.SIZE, CLOCK.MM]} />
           <meshStandardMaterial
-            color={0x999999}
+            color={CLOCK.PLATE.COLOR}
             opacity={0.75}
             side={DoubleSide}
             transparent={true}
@@ -51,8 +52,16 @@ const Face = (): React.JSX.Element => {
       </group>
       <group
         name="Marks"
-        position={[0, 0, CLOCK.MARK.THICKNESS / 2 + SAFE_OFFSET]}
-        rotation={[0, 0, MathUtils.degToRad(ANGLE_START)]}
+        position={[
+          0, //
+          0,
+          CLOCK.MARK.THICKNESS / 2 + SAFE_OFFSET,
+        ]}
+        rotation={[
+          0, //
+          0,
+          MathUtils.degToRad(ANGLE_START),
+        ]}
       >
         {Array(CLOCK.MM)
           .fill(null)
@@ -65,11 +74,19 @@ const Face = (): React.JSX.Element => {
               <group
                 name="Mark"
                 key={index}
-                rotation={[0, 0, MathUtils.degToRad(angle)]}
+                rotation={[
+                  0, //
+                  0,
+                  MathUtils.degToRad(angle),
+                ]}
               >
                 <mesh
                   castShadow={true}
-                  position={[CLOCK.SIZE - CLOCK.MARK.OFFSET * 1.5, 0, 0]}
+                  position={[
+                    CLOCK.SIZE - CLOCK.MARK.OFFSET * 1.5, //
+                    0,
+                    0,
+                  ]}
                 >
                   <boxGeometry
                     args={[
@@ -118,10 +135,10 @@ const Face = (): React.JSX.Element => {
         <Text //
           color={CLOCK.BRAND.COLOR}
           font={CLOCK.BRAND.FONT}
-          fontSize={CLOCK.SIZE / 8}
+          fontSize={CLOCK.SIZE / 10}
           position={[0, -CLOCK.SIZE / 3, SAFE_OFFSET]}
         >
-          Olivier Parent
+          {BRAND_NAME}
         </Text>
       </group>
     </group>

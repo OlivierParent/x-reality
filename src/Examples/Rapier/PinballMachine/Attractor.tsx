@@ -4,7 +4,7 @@ import { Vector3 } from "three";
 
 const POSITION = new Vector3(0, 0, -5);
 const SPHERE = {
-  RADIUS: 0.1,
+  RADIUS: 0.6,
   SEGMENTS: {
     HEIGHT: 8,
     WIDTH: 8,
@@ -28,7 +28,13 @@ const RapierPinballMachineAttractor = () => {
           SPHERE.SEGMENTS.HEIGHT,
         ]}
         position={POSITION}
-      />
+      >
+        <meshBasicMaterial //
+          color={0xff00ff}
+          opacity={0.5}
+          transparent={true}
+        />
+      </Sphere>
     </>
   );
 };

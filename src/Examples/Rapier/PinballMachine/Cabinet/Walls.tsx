@@ -12,17 +12,31 @@ import { Vector3 } from "three";
 const RapierPinballMachineCabinetWalls = (
   props: GroupProps
 ): React.JSX.Element => {
+  const material = <meshBasicMaterial color={0xaaaaaa} />;
+
   return (
     <group name="Cabinet Walls" {...props}>
-      <RigidBody restitution={3} type="fixed">
-        <Box args={[10, 0.25, 0.25]} position={new Vector3(0, 0.125, -14)}>
-          <meshBasicMaterial color={0xaaaaaa} />
+      <RigidBody //
+        restitution={3}
+        type="fixed"
+      >
+        <Box //
+          args={[10, 0.25, 0.25]}
+          position={new Vector3(0, 0.125, -14)}
+        >
+          {material}
         </Box>
-        <Box args={[0.25, 0.25, 16]} position={new Vector3(-5, 0.125, -6)}>
-          <meshBasicMaterial color={0xaaaaaa} />
+        <Box //
+          args={[0.25, 0.25, 16]}
+          position={new Vector3(-5, 0.125, -6)}
+        >
+          {material}
         </Box>
-        <Box args={[0.25, 0.25, 16]} position={new Vector3(5, 0.125, -6)}>
-          <meshBasicMaterial color={0xaaaaaa} />
+        <Box //
+          args={[0.25, 0.25, 16]}
+          position={new Vector3(5, 0.125, -6)}
+        >
+          {material}
         </Box>
       </RigidBody>
     </group>

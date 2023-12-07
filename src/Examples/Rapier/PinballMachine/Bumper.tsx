@@ -14,6 +14,10 @@ type BumperProps = {
 };
 
 const BUMPER = {
+  COLOR: {
+    ACTIVE: "green",
+    INACTIVE: "yellow",
+  },
   HEIGHT: 0.25,
   RADIUS: {
     BOTTOM: 0.1,
@@ -35,11 +39,11 @@ const RapierPinballMachineBumper = (props: BumperProps): React.JSX.Element => {
 
   // Event handlers.
   const collisionEnterHandler = () => {
-    bumperRef.current.color.set("green");
+    bumperRef.current.color.set(BUMPER.COLOR.ACTIVE);
   };
   const collisionExitHandler = () => {
     setTimeout(() => {
-      bumperRef.current.color.set("yellow");
+      bumperRef.current.color.set(BUMPER.COLOR.INACTIVE);
     }, 500);
   };
 
@@ -81,10 +85,10 @@ const RapierPinballMachineBumper = (props: BumperProps): React.JSX.Element => {
           ]}
         >
           <meshBasicMaterial
-            color={"yellow"}
+            color={BUMPER.COLOR.INACTIVE}
             opacity={0.5}
-            transparent={true}
             ref={bumperRef}
+            transparent={true}
           />
         </Cylinder>
       </RigidBody>
