@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/x-reality/static/css/main.3bb852d3.css",
-    "main.js": "/x-reality/static/js/main.febbce36.js",
+    "main.js": "/x-reality/static/js/main.72ae29ad.js",
     "static/js/109.c5bb5652.chunk.js": "/x-reality/static/js/109.c5bb5652.chunk.js",
     "static/media/Video_by_Ricky_Esquivel.mp4": "/x-reality/static/media/Video_by_Ricky_Esquivel.1a08d0ed11a51bed97c3.mp4",
     "static/media/bensound-evolution.mp3": "/x-reality/static/media/bensound-evolution.4375aef0bb0aa53f542e.mp3",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.3bb852d3.css",
-    "static/js/main.febbce36.js"
+    "static/js/main.72ae29ad.js"
   ]
 }

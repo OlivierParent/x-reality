@@ -56,7 +56,10 @@ const LipsumFonts = (props: GroupProps): React.JSX.Element => {
           const fontFamily = FONT_FAMILY[key as keyof typeof FONT_FAMILY];
 
           return (
-            <group position={[0, start + index * lineSize, 0]}>
+            <group //
+              key={key}
+              position={[0, start + index * lineSize, 0]}
+            >
               <Text
                 color={0x333333}
                 fontSize={0.2}

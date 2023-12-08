@@ -31,15 +31,12 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
   });
 
   // Matcap.
-  const [matcapGreenCrystal] = useMatcapTexture(
-    MATCAP.ID.GREEN_CRYSTAL,
-    MATCAP.SIZE.XL
-  );
-  const [matcapSilvery] = useMatcapTexture(MATCAP.ID.SILVERY, MATCAP.SIZE.XL);
-  const [matcapWornGold] = useMatcapTexture(
-    MATCAP.ID.WORN_GOLD,
-    MATCAP.SIZE.XL
-  );
+  const [matcapGreenCrystal] = //
+    useMatcapTexture(MATCAP.ID.GREEN_CRYSTAL, MATCAP.SIZE.XL);
+  const [matcapSilvery] = //
+    useMatcapTexture(MATCAP.ID.SILVERY, MATCAP.SIZE.XL);
+  const [matcapTitanium] = //
+    useMatcapTexture(MATCAP.ID.TITANIUM, MATCAP.SIZE.XL);
 
   return (
     <group name="Default Lipsum" {...props}>
@@ -53,7 +50,7 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
         position={[0, 0.5, 0]}
       >
         {string}
-        <meshMatcapMaterial matcap={matcapWornGold} />
+        <meshMatcapMaterial matcap={matcapTitanium} />
       </Text>
       <Text
         font={FONT_FAMILY.ARCHITECTS_DAUGHTER.url}

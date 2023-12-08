@@ -72,7 +72,7 @@ export namespace FONT_FAMILY {
 
   export const PRESS_START_2P: FontFamily = {
     name: "Press Start 2P",
-    url: "(https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK0nR.woff",
+    url: "https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK0nR.woff",
   };
 
   export const REDACTED_SCRIPT: FontFamily = {

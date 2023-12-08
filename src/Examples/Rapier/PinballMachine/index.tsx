@@ -7,9 +7,17 @@ import {
   useRapier,
 } from "@react-three/rapier";
 import { button, useControls } from "leva";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import {
+  MutableRefObject,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 
+import { INTERACTION } from "Configs/interaction";
 import { LEVA } from "Configs/leva";
 import { ScoreContext } from "Data/ScoreContext";
 import { Attractor } from "Examples/Rapier/PinballMachine/Attractor";
@@ -20,12 +28,25 @@ import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
 import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
 import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
-import { INTERACTION } from "Configs/interaction";
-
-const LOWER_LIMIT_Y = -5;
 
 const ORIGIN_VECTOR = new Quaternion();
-const zeroVelocity = new Vector3(0, 0, 0);
+const ZERO_VECTOR = new Vector3(0, 0, 0);
+
+/**
+ * Reset position, rotation, and velocity of an object.
+ *
+ * @param {MutableRefObject<RapierRigidBody>} object
+ * @param {Vector3} position
+ */
+function resetObject(
+  object: MutableRefObject<RapierRigidBody>,
+  position: Vector3
+) {
+  object.current.setAngvel(ZERO_VECTOR, true); // Angular velocity.
+  object.current.setLinvel(ZERO_VECTOR, true); // Linear velocity.
+  object.current.setTranslation(position, true); // Position.
+  object.current.setRotation(ORIGIN_VECTOR, true); // Rotation.
+}
 
 /**
  * Pinball machine.
@@ -57,17 +78,22 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
 
   // States.
   const [counter, setCounter] = useState<number>(0);
-  // const [reset, setReset] = useState<boolean>(false);
 
   // Event handlers.
   const collisionHandler = () => {
     console.info("Rapier: collision detected!");
     setCounter((state) => state + 1);
-    if (3 < counter) {
-      setCounter(0);
-      // restoreSnapshot();
-    }
   };
+
+  const reset = useCallback(() => {
+    console.info("Rapier: resetting...");
+    BALL.LEFT.POSITION.setX(-POSITION.X.EXTREMITY * (Math.random() + 0.5));
+    BALL.MIDDLE.POSITION.setX(POSITION.X.CENTER * (Math.random() * 2 - 1));
+    BALL.RIGHT.POSITION.setX(POSITION.X.EXTREMITY * (Math.random() + 0.5));
+    resetObject(leftBallRef, BALL.LEFT.POSITION);
+    resetObject(middleBallRef, BALL.MIDDLE.POSITION);
+    resetObject(rightBallRef, BALL.RIGHT.POSITION);
+  }, []);
 
   const restoreSnapshot = useCallback(() => {
     console.info("Rapier: restoring snapshot...");
@@ -84,6 +110,17 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
   }, [rapierCtx]);
 
   useEffect(() => {
+    console.info("Rapier: counter", counter);
+    if (3 <= counter) {
+      setTimeout(() => {
+        console.info("Rapier: calling reset.");
+        reset();
+      }, 2000);
+      setCounter(0);
+    }
+  }, [counter, reset]);
+
+  useEffect(() => {
     setTimeout(() => {
       storeSnapshot();
     }, 250);
@@ -91,41 +128,7 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
 
   useFrame((state, delta) => {
     scoreState.add(Math.floor(Math.random() * 2));
-    if (
-      leftBallRef.current.translation().y < LOWER_LIMIT_Y &&
-      middleBallRef.current.translation().y < LOWER_LIMIT_Y &&
-      rightBallRef.current.translation().y < LOWER_LIMIT_Y
-    ) {
-      reset();
-      // setReset(true);
-    }
   });
-
-  function reset() {
-    leftBallRef.current.setAngvel(zeroVelocity, true);
-    leftBallRef.current.setLinvel(zeroVelocity, true);
-    leftBallRef.current.setTranslation(
-      BALL.LEFT.POSITION.setX(POSITION.X.EXTREMITY * Math.random() + 0.5),
-      true
-    );
-    leftBallRef.current.setRotation(ORIGIN_VECTOR, true);
-
-    middleBallRef.current.setAngvel(zeroVelocity, true);
-    middleBallRef.current.setLinvel(zeroVelocity, true);
-    middleBallRef.current.setTranslation(
-      BALL.MIDDLE.POSITION.setX(POSITION.X.CENTER * (Math.random() * 2 - 1)),
-      true
-    );
-    middleBallRef.current.setRotation(ORIGIN_VECTOR, true);
-
-    rightBallRef.current.setAngvel(zeroVelocity, true);
-    rightBallRef.current.setLinvel(zeroVelocity, true);
-    rightBallRef.current.setTranslation(
-      BALL.RIGHT.POSITION.setX(POSITION.X.EXTREMITY * -Math.random() - 0.5),
-      true
-    );
-    rightBallRef.current.setRotation(ORIGIN_VECTOR, true);
-  }
 
   return (
     <group name="Pinball Machine Game" {...props}>
@@ -135,11 +138,11 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
           <CabinetWalls />
           <RigidBody type="fixed">
             <CuboidCollider
+              args={[4.7, 0.125, 0.125]}
               collisionGroups={interactionGroups(INTERACTION.SENSOR, [
                 INTERACTION.BALL,
               ])}
-              args={[4.7, 0.125, 0.125]}
-              onCollisionEnter={collisionHandler}
+              onCollisionExit={collisionHandler}
               position={new Vector3(0, 0.125, 2)}
               sensor={true}
             />
@@ -165,23 +168,23 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
             />
           </group>
         </group>
-        <group name="Balls">
-          <Ball
-            color={BALL.LEFT.COLOR}
-            position={BALL.LEFT.POSITION}
-            ref={leftBallRef}
-          />
-          <Ball
-            color={BALL.MIDDLE.COLOR}
-            position={BALL.MIDDLE.POSITION}
-            ref={middleBallRef}
-          />
-          <Ball
-            color={BALL.RIGHT.COLOR}
-            position={BALL.RIGHT.POSITION}
-            ref={rightBallRef}
-          />
-        </group>
+      </group>
+      <group name="Balls">
+        <Ball
+          color={BALL.LEFT.COLOR}
+          position={BALL.LEFT.POSITION}
+          ref={leftBallRef}
+        />
+        <Ball
+          color={BALL.MIDDLE.COLOR}
+          position={BALL.MIDDLE.POSITION}
+          ref={middleBallRef}
+        />
+        <Ball
+          color={BALL.RIGHT.COLOR}
+          position={BALL.RIGHT.POSITION}
+          ref={rightBallRef}
+        />
       </group>
     </group>
   );

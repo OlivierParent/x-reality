@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "9.90.0",
+    "@react-three/drei": "9.90.1",
     "@react-three/fiber": "^8.15.12",
     "@react-three/flex": "^1.0.1",
     "@react-three/p2": "^0.0.6",

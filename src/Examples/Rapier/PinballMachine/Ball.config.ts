@@ -5,7 +5,7 @@ export const POSITION = {
     CENTER: 0.001,
     EXTREMITY: 1,
   },
-  Y: 5,
+  Y: 7,
   Z: -10,
 } as const;
 
@@ -13,7 +13,7 @@ export const BALL = {
   LEFT: {
     COLOR: "hsl(0, 100%, 75%)",
     POSITION: new Vector3(
-      POSITION.X.EXTREMITY * -Math.random() - 0.5,
+      -POSITION.X.EXTREMITY * (Math.random() + 0.5),
       POSITION.Y,
       POSITION.Z
     ),
@@ -22,14 +22,14 @@ export const BALL = {
     COLOR: "hsl(120, 100%, 75%)",
     POSITION: new Vector3(
       POSITION.X.CENTER * (Math.random() * 2 - 1),
-      POSITION.Y - 0.5,
-      POSITION.Z
+      POSITION.Y,
+      POSITION.Z - 0.5
     ),
   },
   RIGHT: {
     COLOR: "hsl(240, 100%, 75%)",
     POSITION: new Vector3(
-      POSITION.X.EXTREMITY * Math.random() + 0.5,
+      POSITION.X.EXTREMITY * (Math.random() + 0.5),
       POSITION.Y,
       POSITION.Z
     ),
