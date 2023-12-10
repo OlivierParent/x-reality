@@ -11,11 +11,11 @@ import { Vector3 } from "three";
 
 import { PLAYER } from "Examples/Player.config";
 
-const ORIGIN_VECTOR = new Vector3();
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
+const ZERO_VECTOR = new Vector3();
 
-const positionVector = new Vector3();
-const velocityVector = new Vector3();
+const positionVector = ZERO_VECTOR.clone();
+const velocityVector = ZERO_VECTOR.clone();
 
 /**
  * Player.
@@ -45,9 +45,9 @@ const CannonWorldPlayer = (props: GroupProps): React.JSX.Element => {
     useRef<any>(null!)
   );
 
-  // Store Player velocity
+  // Store Player velocity and position.
   const playerVelocity = useRef([0, 0, 0]);
-  const playerPosition = useRef(ORIGIN_VECTOR);
+  const playerPosition = useRef(ZERO_VECTOR);
 
   useEffect(() => {
     playerApi.velocity.subscribe((v) => (playerVelocity.current = v));
@@ -60,7 +60,7 @@ const CannonWorldPlayer = (props: GroupProps): React.JSX.Element => {
     const camera = pointerRef.current.getObject();
     const shadow = shadowRef.current;
 
-    // Move Player
+    // Move Player.
     const lateralDirectionModifier = //
       moveRightOn
         ? PLAYER.DIRECTION.RIGHT

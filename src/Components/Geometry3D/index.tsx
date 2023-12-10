@@ -20,7 +20,7 @@ enum GEOMETRY_3D {
   CYLINDER = "Cylinder",
   DODECAHEDRON = "Dodecahedron",
   ICOSAHEDRON = "Icosahedron",
-  NONE = "None",
+  NONE = "—None—",
   OCTAHEDRON = "Octahedron",
   ROUNDED_BOX = "RoundedBox",
   SPHERE = "Sphere",

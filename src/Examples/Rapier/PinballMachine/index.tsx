@@ -29,8 +29,8 @@ import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
 import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
 
-const ORIGIN_VECTOR = new Quaternion();
-const ZERO_VECTOR = new Vector3(0, 0, 0);
+const ZERO_QUATERNION = new Quaternion();
+const ZERO_VECTOR = new Vector3();
 
 /**
  * Reset position, rotation, and velocity of an object.
@@ -45,7 +45,7 @@ function resetObject(
   object.current.setAngvel(ZERO_VECTOR, true); // Angular velocity.
   object.current.setLinvel(ZERO_VECTOR, true); // Linear velocity.
   object.current.setTranslation(position, true); // Position.
-  object.current.setRotation(ORIGIN_VECTOR, true); // Rotation.
+  object.current.setRotation(ZERO_QUATERNION, true); // Rotation.
 }
 
 /**

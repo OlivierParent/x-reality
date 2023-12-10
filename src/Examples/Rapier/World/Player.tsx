@@ -11,10 +11,10 @@ import { Vector3 } from "three";
 
 import { PLAYER } from "Examples/Player.config";
 
-const ORIGIN_VECTOR = new Vector3();
 const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
+const ZERO_VECTOR = new Vector3();
 
-const velocityVector = new Vector3();
+const velocityVector = ZERO_VECTOR.clone();
 
 /**
  * Player.
@@ -87,7 +87,7 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
 
     // Reset angular velocity of Player if no movement detected.
     if (!moveBackwardOn && !moveForwardOn && !moveLeftOn && !moveRightOn) {
-      player.setAngvel(ORIGIN_VECTOR);
+      player.setAngvel(ZERO_VECTOR);
     }
 
     // Apply linear velocity to Player.

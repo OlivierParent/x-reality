@@ -42,29 +42,30 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
 
   // States.
   const [color, setColor] = useState(initialColor);
-  const [hover, setHover] = useState(false);
-  const [toggleButton, setToggleButton] = useState(false);
-  const [toggleColor, setToggleColor] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isToggledButton, setIsToggledButton] = useState(false);
+  const [isToggledColor, setIsToggledColor] = useState(false);
 
-  useCursor(hover);
+  // Cursor on hover.
+  useCursor(isHovered);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggleButton((state) => !state);
+    setIsToggledButton((state) => !state);
   };
   const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggleButton((state) => !state);
-    setToggleColor((state) => !state);
+    setIsToggledButton((state) => !state);
+    setIsToggledColor((state) => !state);
   };
   const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(false);
+    setIsHovered(false);
   };
   const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(true);
+    setIsHovered(true);
   };
 
   useEffect(() => {
@@ -79,36 +80,36 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
 
   useEffect(() => {
     // Opacity.
-    const opacity = hover ? OPACITY.HIGH : OPACITY.LOW;
+    const opacity = isHovered ? OPACITY.HIGH : OPACITY.LOW;
     gsap.to(materialRef.current, {
       opacity,
       duration: 0.125, // Default: 0.5
     });
 
     // Scale.
-    const scale = hover ? SCALE.LARGE : SCALE.SMALL;
+    const scale = isHovered ? SCALE.LARGE : SCALE.SMALL;
     gsap.to(buttonRef.current.scale, {
       ...scale,
       duration: 0.125, // Default: 0.5
     });
-  }, [hover]);
+  }, [isHovered]);
 
   useEffect(() => {
     // Color.
-    const color = toggleButton
-      ? toggleColor
+    const color = isToggledButton
+      ? isToggledColor
         ? COLOR.RED
         : COLOR.GREEN
       : COLOR.BLUE;
     setColor(color);
 
     // Rotation.
-    const rotation = toggleButton ? ROTATION.ACTIVE : ROTATION.INACTIVE;
+    const rotation = isToggledButton ? ROTATION.ACTIVE : ROTATION.INACTIVE;
     gsap.to(buttonRef.current.rotation, {
       ...rotation,
       ease: "power2.inOut", // https://gsap.com/docs/v3/Eases/
     });
-  }, [toggleButton, toggleColor]);
+  }, [isToggledButton, isToggledColor]);
 
   return (
     <group

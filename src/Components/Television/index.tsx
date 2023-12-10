@@ -36,24 +36,25 @@ const height = TELEVISION.SIZE;
  */
 function Television(props: GroupProps): React.JSX.Element {
   // States.
-  const [hover, setHover] = useState<boolean>(false);
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isToggled, setIsToggled] = useState<boolean>(false);
 
   // Event handlers.
   const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggle((state) => !state);
+    setIsToggled((state) => !state);
   }, []);
   const pointerOutHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(false);
+    setIsHovered(false);
   }, []);
   const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(true);
+    setIsHovered(true);
   }, []);
 
-  useCursor(hover);
+  // Cursor on hover.
+  useCursor(isHovered);
 
   return (
     <group name="Television" {...props}>
@@ -86,7 +87,7 @@ function Television(props: GroupProps): React.JSX.Element {
           position={[0, 0, SAFE_OFFSET]}
         >
           <MaterialVideo //
-            play={toggle}
+            play={isToggled}
             src={VIDEO_ITEMS[0].src}
           />
         </Plane>

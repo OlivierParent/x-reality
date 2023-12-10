@@ -21,7 +21,7 @@ const LogoDouble = (props: GroupProps): React.JSX.Element => {
 
   // States.
   const [clockwise, setClockwise] = useState(false);
-  const [hover, setHover] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const speed = 0.025;
   const direction = clockwise ? 1 : -1;
@@ -34,14 +34,15 @@ const LogoDouble = (props: GroupProps): React.JSX.Element => {
   };
   const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(false);
+    setIsHovered(false);
   };
   const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(true);
+    setIsHovered(true);
   };
 
-  useCursor(hover);
+  // Cursor on hover.
+  useCursor(isHovered);
 
   useFrame(() => {
     // Rotation.

@@ -32,40 +32,41 @@ enum SCALE {
 const ButtonDefault = (props: GroupProps): React.JSX.Element => {
   // States.
   const [color, setColor] = useState(COLOR.BLUE);
-  const [hover, setHover] = useState(false);
-  const [toggleButton, setToggleButton] = useState(false);
-  const [toggleColor, setToggleColor] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isToggledButton, setIsToggledButton] = useState(false);
+  const [isToggledColor, setIsToggledColor] = useState(false);
 
-  useCursor(hover);
+  // Cursor on hover.
+  useCursor(isHovered);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggleButton((state) => !state);
+    setIsToggledButton((state) => !state);
   };
   const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggleButton((state) => !state);
-    setToggleColor((state) => !state);
+    setIsToggledButton((state) => !state);
+    setIsToggledColor((state) => !state);
   };
   const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(false);
+    setIsHovered(false);
   };
   const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(true);
+    setIsHovered(true);
   };
 
   useEffect(() => {
     // Color.
-    const color = toggleButton
-      ? toggleColor
+    const color = isToggledButton
+      ? isToggledColor
         ? COLOR.RED
         : COLOR.GREEN
       : COLOR.BLUE;
     setColor(color);
-  }, [toggleButton, toggleColor]);
+  }, [isToggledButton, isToggledColor]);
 
   return (
     <group
@@ -74,8 +75,8 @@ const ButtonDefault = (props: GroupProps): React.JSX.Element => {
       onDoubleClick={doubleClickHandler}
       onPointerOut={pointerOutHandler}
       onPointerOver={pointerOverHandler}
-      rotation={toggleButton ? ROTATION.ACTIVE : ROTATION.INACTIVE}
-      scale={hover ? SCALE.LARGE : SCALE.SMALL}
+      rotation={isToggledButton ? ROTATION.ACTIVE : ROTATION.INACTIVE}
+      scale={isHovered ? SCALE.LARGE : SCALE.SMALL}
       {...props}
     >
       <mesh //
@@ -84,7 +85,7 @@ const ButtonDefault = (props: GroupProps): React.JSX.Element => {
       >
         <meshBasicMaterial
           color={color}
-          opacity={hover ? OPACITY.LOW : OPACITY.HIGH}
+          opacity={isHovered ? OPACITY.HIGH : OPACITY.LOW}
           transparent={true}
         />
         <planeGeometry args={[2.5, 0.5]} />

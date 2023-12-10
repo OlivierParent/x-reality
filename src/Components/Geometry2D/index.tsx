@@ -8,7 +8,7 @@ import { Children } from "Types/Children";
 
 enum GEOMETRY_2D {
   CIRCLE = "Circle",
-  NONE = "None",
+  NONE = "—None—",
   PLANE = "Plane",
   RING = "Ring",
 }

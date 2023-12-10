@@ -28,13 +28,16 @@ const RapierPinballMachineBall = forwardRef(
 
     return (
       <RigidBody
+        canSleep={false}
         colliders="ball"
         collisionGroups={interactionGroups(INTERACTION.BALL, [
+          INTERACTION.BALL,
           INTERACTION.BUMPER,
           INTERACTION.FLIPPER,
           INTERACTION.KICKER,
           INTERACTION.PLUNGER,
           INTERACTION.SENSOR,
+          INTERACTION.WALL,
         ])}
         density={1}
         friction={undefined}
@@ -43,10 +46,12 @@ const RapierPinballMachineBall = forwardRef(
         restitution={0}
         type="dynamic"
         solverGroups={interactionGroups(INTERACTION.BALL, [
+          INTERACTION.BALL,
           INTERACTION.BUMPER,
           INTERACTION.FLIPPER,
           INTERACTION.KICKER,
           INTERACTION.PLUNGER,
+          INTERACTION.WALL,
         ])}
       >
         <Sphere args={[radius]}>

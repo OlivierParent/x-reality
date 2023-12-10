@@ -5,8 +5,8 @@ import { Button as ButtonGreenSock } from "Components/Button/GreenSock";
 import { useLeva } from "Hooks/Leva/Button";
 
 const BUTTON = {
-  Default: <ButtonDefault />,
-  GreenSock: <ButtonGreenSock />,
+  "—Default—": <ButtonDefault />,
+  "GreenSock GSAP": <ButtonGreenSock />,
 } as const;
 
 /**

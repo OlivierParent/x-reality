@@ -12,14 +12,8 @@ function useLeva(LIGHTING: any) {
     {
       lighting: {
         label: "Lighting",
-        options: {
-          "—None—                ": LIGHTING.None,
-          "Demo                  ": LIGHTING.Demo,
-          "Studio                ": LIGHTING.Studio,
-          "Three Point           ": LIGHTING.ThreePoint,
-          "Three Point Volumetric": LIGHTING.ThreePointVolumetric,
-        },
-        value: LIGHTING.ThreePointVolumetric,
+        options: LIGHTING,
+        value: LIGHTING["Three Point Volumetric"],
       },
     },
     SettingsLeva.folder(LEVA.ORDER.LIGHTING)

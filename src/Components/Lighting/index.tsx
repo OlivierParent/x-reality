@@ -7,11 +7,11 @@ import { Lighting as LightingThreePointVolumetric } from "Components/Lighting/Th
 import { useLeva } from "Hooks/Leva/Lighting";
 
 const LIGHTING = {
+  "—None—": undefined,
   Demo: <LightingDemo />,
-  None: undefined,
   Studio: <LightingStudio />,
-  ThreePoint: <LightingThreePoint />,
-  ThreePointVolumetric: <LightingThreePointVolumetric />,
+  "Three Point": <LightingThreePoint />,
+  "Three Point Volumetric": <LightingThreePointVolumetric />,
 } as const;
 
 /**

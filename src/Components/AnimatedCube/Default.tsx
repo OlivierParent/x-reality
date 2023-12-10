@@ -20,6 +20,8 @@ enum SCALE {
   SMALL = 1,
 }
 
+const ORIGIN_VECTOR = new Vector3();
+
 const colors = colorsGenerator();
 const initialColor = colors.next().value as string;
 
@@ -35,8 +37,8 @@ const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
 
   // States.
   const [color, setColor] = useState(initialColor);
-  const [hover, setHover] = useState(false);
-  const [position, setPosition] = useState(new Vector3());
+  const [isHovered, setIsHovered] = useState(false);
+  const [position, setPosition] = useState(ORIGIN_VECTOR);
 
   // Event handlers.
   const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
@@ -48,14 +50,15 @@ const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
   }, []);
   const pointerOutHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(false);
+    setIsHovered(false);
   }, []);
   const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(true);
+    setIsHovered(true);
   }, []);
 
-  useCursor(hover);
+  // Cursor on hover.
+  useCursor(isHovered);
 
   useFrame(({ clock }) => {
     // Rotation.
@@ -71,12 +74,12 @@ const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
         onPointerOver={pointerOverHandler}
         position={position}
         ref={cubeRef}
-        scale={hover ? SCALE.LARGE : SCALE.SMALL}
+        scale={isHovered ? SCALE.LARGE : SCALE.SMALL}
       >
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial
           color={color}
-          opacity={hover ? OPACITY.HIGH : OPACITY.LOW}
+          opacity={isHovered ? OPACITY.HIGH : OPACITY.LOW}
           transparent={true}
           wireframe={false}
         />

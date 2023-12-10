@@ -1,7 +1,21 @@
 import { Box } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
-import { RigidBody } from "@react-three/rapier";
-import { Vector3 } from "three";
+import { RigidBody, interactionGroups } from "@react-three/rapier";
+import { INTERACTION } from "Configs/interaction";
+import { MeshBasicMaterial, Vector3 } from "three";
+
+const WALL = {
+  THICKNESS: 0.25,
+  HEIGHT: 0.3,
+} as const;
+
+const materialLeft = new MeshBasicMaterial();
+const materialMiddle = new MeshBasicMaterial();
+const materialRight = new MeshBasicMaterial();
+
+materialLeft.color.setHSL(0 / 3, 1, 0.5);
+materialMiddle.color.setHSL(2 / 3, 1, 0.5);
+materialRight.color.setHSL(1 / 3, 1, 0.5);
 
 /**
  * Pinball machine cabinet walls.
@@ -12,32 +26,50 @@ import { Vector3 } from "three";
 const RapierPinballMachineCabinetWalls = (
   props: GroupProps
 ): React.JSX.Element => {
-  const material = <meshBasicMaterial color={0xaaaaaa} />;
-
   return (
     <group name="Cabinet Walls" {...props}>
       <RigidBody //
         restitution={3}
         type="fixed"
+        collisionGroups={interactionGroups(INTERACTION.WALL, [
+          INTERACTION.BALL,
+        ])}
+        solverGroups={interactionGroups(INTERACTION.WALL, [INTERACTION.BALL])}
       >
         <Box //
-          args={[10, 0.25, 0.25]}
-          position={new Vector3(0, 0.125, -14)}
-        >
-          {material}
-        </Box>
+          args={[10, WALL.HEIGHT, WALL.THICKNESS]}
+          material={materialMiddle}
+          name="Side Wall Top"
+          position={new Vector3(0, WALL.HEIGHT / 2, -14)}
+        />
         <Box //
-          args={[0.25, 0.25, 16]}
-          position={new Vector3(-5, 0.125, -6)}
-        >
-          {material}
-        </Box>
+          args={[16, WALL.HEIGHT, WALL.THICKNESS]}
+          material={materialLeft}
+          name="Side Wall Left"
+          position={new Vector3(-5, WALL.HEIGHT / 2, -6)}
+          rotation={[0, Math.PI / 2, 0]}
+        />
         <Box //
-          args={[0.25, 0.25, 16]}
-          position={new Vector3(5, 0.125, -6)}
-        >
-          {material}
-        </Box>
+          args={[16, WALL.HEIGHT, WALL.THICKNESS]}
+          material={materialRight}
+          name="Side Wall Right"
+          position={new Vector3(5, WALL.HEIGHT / 2, -6)}
+          rotation={[0, -Math.PI / 2, 0]}
+        />
+        <Box //
+          args={[3, WALL.HEIGHT, WALL.THICKNESS]}
+          material={materialLeft}
+          name="Side Wall Bottom Left"
+          position={new Vector3(-2.4, WALL.HEIGHT / 2, -0.55)}
+          rotation={[0, -Math.PI / 9, 0]}
+        />
+        <Box //
+          args={[3, WALL.HEIGHT, WALL.THICKNESS]}
+          material={materialRight}
+          name="Side Wall Bottom Right"
+          position={new Vector3(2.4, WALL.HEIGHT / 2, -0.55)}
+          rotation={[0, Math.PI / 9, 0]}
+        />
       </RigidBody>
     </group>
   );

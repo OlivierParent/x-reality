@@ -15,21 +15,21 @@ audio.volume = 0.02;
  */
 const SoundGlobal = (props: GroupProps): React.JSX.Element => {
   // States.
-  const [toggle, setToggle] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggle((state) => !state);
+    setIsToggled((state) => !state);
   };
 
   useEffect(() => {
-    if (toggle) {
+    if (isToggled) {
       audio.play();
     } else {
       audio.pause();
     }
-  }, [toggle]);
+  }, [isToggled]);
 
   return (
     <group {...props}>
@@ -38,7 +38,8 @@ const SoundGlobal = (props: GroupProps): React.JSX.Element => {
         onClick={clickHandler}
         position={[0, 0.5, 0]}
       >
-        Global Audio, {toggle ? "playing" : "music"}: https://www.bensound.com
+        Global Audio, {isToggled ? "playing" : "music"}:
+        https://www.bensound.com
       </Text>
     </group>
   );

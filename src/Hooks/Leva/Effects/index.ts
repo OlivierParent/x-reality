@@ -15,7 +15,7 @@ function useLeva(EFFECT: any) {
           effect: {
             label: "Effect",
             options: EFFECT,
-            value: EFFECT.None,
+            value: EFFECT["—None—"],
           },
         },
         SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)

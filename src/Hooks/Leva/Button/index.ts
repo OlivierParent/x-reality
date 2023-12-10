@@ -13,7 +13,7 @@ function useLeva(BUTTON: any) {
       button: {
         label: "Button",
         options: BUTTON,
-        value: BUTTON.GreenSock,
+        value: BUTTON["GreenSock GSAP"],
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

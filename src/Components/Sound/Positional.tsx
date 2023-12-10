@@ -16,12 +16,12 @@ const SoundPositional = (props: GroupProps): React.JSX.Element => {
   const positionalAudioRef = useRef<PositionalAudioType>(null!);
 
   // States.
-  const [toggle, setToggle] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setToggle((state) => !state);
+    setIsToggled((state) => !state);
   };
 
   useEffect(() => {
@@ -31,12 +31,12 @@ const SoundPositional = (props: GroupProps): React.JSX.Element => {
   }, []);
 
   useEffect(() => {
-    if (toggle) {
+    if (isToggled) {
       positionalAudioRef.current.play();
     } else {
       positionalAudioRef.current.stop();
     }
-  }, [toggle]);
+  }, [isToggled]);
 
   return (
     <group {...props}>
@@ -45,7 +45,7 @@ const SoundPositional = (props: GroupProps): React.JSX.Element => {
         onClick={clickHandler}
         position={[0, 0.5, 0]}
       >
-        Positional Audio, {toggle ? "playing" : "music"}:
+        Positional Audio, {isToggled ? "playing" : "music"}:
         https://www.bensound.com
       </Text>
       <PositionalAudio

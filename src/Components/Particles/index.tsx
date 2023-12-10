@@ -5,7 +5,7 @@ import { Particles as ParticlesSprites } from "Components/Particles/Sprites";
 import { useLeva } from "Hooks/Leva/Particles";
 
 const PARTICLES = {
-  Default: <ParticlesDefault />,
+  "—Default—": <ParticlesDefault />,
   Sprites: <ParticlesSprites />,
 } as const;
 

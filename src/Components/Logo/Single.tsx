@@ -21,7 +21,7 @@ const LogoSingle = (props: GroupProps): React.JSX.Element => {
 
   // States.
   const [clockwise, setClockwise] = useState(false);
-  const [hover, setHover] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Event handlers.
   const clickHandler = (event: ThreeEvent<MouseEvent>) => {
@@ -30,14 +30,14 @@ const LogoSingle = (props: GroupProps): React.JSX.Element => {
   };
   const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(false);
+    setIsHovered(false);
   };
   const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setHover(true);
+    setIsHovered(true);
   };
 
-  useCursor(hover);
+  useCursor(isHovered);
 
   useFrame(() => {
     // Rotation.

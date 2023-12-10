@@ -7,4 +7,5 @@ export enum INTERACTION {
   "KICKER",
   "PLUNGER",
   "SENSOR",
+  "WALL",
 }

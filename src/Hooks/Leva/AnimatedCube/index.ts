@@ -13,7 +13,7 @@ function useLeva(ANIMATED_CUBE: any) {
       cube: {
         label: "Animated Cube",
         options: ANIMATED_CUBE,
-        value: ANIMATED_CUBE.GreenSock,
+        value: ANIMATED_CUBE["Framer Motion 3D"],
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

@@ -24,7 +24,8 @@ export namespace NAVIGATION {
     PHYSICS_RAPIER_PINBALL_MACHINE = "rapier/pinball-machine",
     PHYSICS_RAPIER_TEST = "rapier/test",
     PHYSICS_RAPIER_WORLD = "rapier/world",
-    PHYSICS_RAPIER_WORLD_XR = "rapier/world-xr",
+    PHYSICS_RAPIER_XR_AR = "rapier/xr-ar",
+    PHYSICS_RAPIER_XR_VR = "rapier/xr-vr",
     SUZANNE = "suzanne/material",
     SUZANNE_EXPORTS = "suzanne/exports",
     TELEVISION = "television",
@@ -122,8 +123,12 @@ export namespace NAVIGATION {
       to: PATH.PHYSICS_RAPIER_WORLD,
     },
     {
-      label: "Physics-Rapier World (XR)",
-      to: PATH.PHYSICS_RAPIER_WORLD_XR,
+      label: "Physics-Rapier XR (AR)",
+      to: PATH.PHYSICS_RAPIER_XR_AR,
+    },
+    {
+      label: "Physics-Rapier XR (VR)",
+      to: PATH.PHYSICS_RAPIER_XR_VR,
     },
     {
       label: "Suzanne",

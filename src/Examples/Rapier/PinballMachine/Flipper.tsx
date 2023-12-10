@@ -2,14 +2,14 @@ import { Box, Sphere, useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import {
   BallCollider,
-  interactionGroups,
   RapierRigidBody,
   RevoluteJointParams,
   RigidBody,
-  useRevoluteJoint,
   Vector3Tuple,
+  interactionGroups,
+  useRevoluteJoint,
 } from "@react-three/rapier";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Euler, MathUtils, Mesh, Vector3 } from "three";
 
 import { INTERACTION } from "Configs/interaction";
@@ -17,7 +17,13 @@ import { FlipperProps } from "Types/FlipperProps";
 import { OrientationValue } from "Types/OrientationValue";
 
 const HELPER_SIZE = 0.25;
+const IMPULSE_VECTOR = new Vector3(0, 0, 0.01);
 const SAFE_OFFSET = 0.1; // Prevent Z Fighting.
+enum COLOR {
+  RED = 0xff0000,
+  GREEN = 0x00ff00,
+  BLUE = 0x0000ff,
+}
 
 /**
  * Pinball machine flipper.
@@ -47,8 +53,8 @@ const RapierPinballMachineFlipper = (
   const isLeft = orientation === ("left" as OrientationValue);
   const isPressed = flipperBothOn || (isLeft ? flipperLeftOn : flipperRightOn);
 
-  const color = isPressed ? 0x0000ff : isLeft ? 0xff0000 : 0x00ff00;
-  const rotationY = (isLeft ? -1 : 1) * 40;
+  const color = isPressed ? COLOR.BLUE : isLeft ? COLOR.RED : COLOR.GREEN;
+  const rotationY = MathUtils.degToRad((isLeft ? -1 : 1) * 40);
   const positionX = (isLeft ? 1 : -1) * 0.8;
 
   // References.
@@ -67,16 +73,15 @@ const RapierPinballMachineFlipper = (
   ];
   useRevoluteJoint(bodyDynamicRef, bodyFixedRef, params);
 
-  const impulseVector = {
-    x: 0,
-    y: 0,
-    z: 0.01,
-  };
-  const impulsePoint = {
-    x: positionX + (isLeft ? -1 : 1) * 10,
-    y: 0.25,
-    z: 0.3,
-  };
+  const impulsePoint = useMemo(
+    () =>
+      new Vector3(
+        positionX + (isLeft ? -1 : 1) * 10, //
+        0.25,
+        0.3
+      ),
+    [isLeft, positionX]
+  );
 
   useEffect(() => {
     console.info("shootOn:", shootOn);
@@ -85,7 +90,7 @@ const RapierPinballMachineFlipper = (
   useFrame((state, delta) => {
     if (isPressed) {
       bodyDynamicRef.current.applyImpulseAtPoint(
-        impulseVector,
+        IMPULSE_VECTOR,
         impulsePoint,
         true
       );
@@ -101,17 +106,11 @@ const RapierPinballMachineFlipper = (
           INTERACTION.BALL,
           INTERACTION.CONSTRAINT,
         ])}
-        mass={10000000}
+        mass={100000}
         name="Flipper"
         ref={bodyDynamicRef}
-        restitution={2.5}
-        rotation={
-          new Euler(
-            0, //
-            MathUtils.degToRad(rotationY),
-            0
-          )
-        }
+        restitution={3}
+        rotation={new Euler(0, rotationY, 0)}
         type="dynamic"
         solverGroups={interactionGroups(INTERACTION.FLIPPER, [
           INTERACTION.BALL,
@@ -159,14 +158,10 @@ const RapierPinballMachineFlipper = (
       <Sphere
         name="Impulse point visualisation"
         args={[HELPER_SIZE, 4, 4]}
-        position={[
-          impulsePoint.x, //
-          impulsePoint.y,
-          impulsePoint.z,
-        ]}
+        position={impulsePoint}
       >
         <meshBasicMaterial //
-          color={0x0000ff}
+          color={COLOR.BLUE}
           wireframe={true}
         />
       </Sphere>

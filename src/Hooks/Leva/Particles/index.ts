@@ -13,7 +13,7 @@ function useLeva(PARTICLES: any) {
       particles: {
         label: "Particles",
         options: PARTICLES,
-        value: PARTICLES.Default,
+        value: PARTICLES["—Default—"],
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

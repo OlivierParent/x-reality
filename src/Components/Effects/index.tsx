@@ -18,7 +18,7 @@ import { Vignette } from "Components/Effects/Vignette";
 import { useLeva } from "Hooks/Leva/Effects";
 
 const EFFECT = {
-  None: undefined,
+  "—None—": undefined,
   Bloom: <Bloom />,
   BrightnessContrast: <BrightnessContrast />,
   ChromaticAberration: <ChromaticAberration />,
