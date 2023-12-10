@@ -6,7 +6,7 @@ import {
 } from "@react-three/drei";
 import { GroupProps, useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Vector3 } from "three";
 
 import { PLAYER } from "Examples/Player.config";
@@ -36,6 +36,17 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
   const pointerRef = useRef<any>(null!);
   const shadowRef = useRef<any>(null!);
 
+  // States.
+  const [canJump, setCanJump] = useState(true);
+  const [hasJumped, setHasJumped] = useState(false);
+
+  useEffect(() => {
+    if (hasJumped) {
+      setTimeout(() => setCanJump(true), 1000);
+      setTimeout(() => setHasJumped(false), 230);
+    }
+  }, [hasJumped]);
+
   useFrame(() => {
     const camera = pointerRef.current.getObject();
     const player = playerRef.current;
@@ -52,6 +63,7 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
         ? PLAYER.DIRECTION.LEFT
         : PLAYER.DIRECTION.NONE;
     const lateralVelocityModifier = PLAYER.VELOCITY.LATERAL;
+
     const longitudinalDirectionModifier = //
       moveForwardOn
         ? PLAYER.DIRECTION.FORWARD
@@ -63,16 +75,26 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
         ? PLAYER.VELOCITY.FORWARD
         : moveBackwardOn
         ? PLAYER.VELOCITY.DEFAULT
-        : PLAYER.VELOCITY.DEFAULT;
+        : PLAYER.VELOCITY.NONE;
+
+    if (canJump && !hasJumped && jumpOn) {
+      setHasJumped(true);
+      setCanJump(false);
+    }
     const normalDirectionModifier = //
       jumpOn //
         ? PLAYER.DIRECTION.UP
-        : PLAYER.DIRECTION.DOWN;
-    const normalVelocityModifier = PLAYER.VELOCITY.NORMAL;
+        : PLAYER.DIRECTION.NONE;
+    const normalVelocityModifier =
+      hasJumped && jumpOn //
+        ? PLAYER.VELOCITY.NORMAL
+        : PLAYER.VELOCITY.NONE;
+
     const runModifier = //
       runOn //
         ? PLAYER.VELOCITY.RUN
         : PLAYER.VELOCITY.DEFAULT;
+
     velocityVector.set(
       lateralDirectionModifier * lateralVelocityModifier * runModifier,
       0, // Camera quaternion should not affect velocity on gravity/normal axis.
@@ -82,8 +104,7 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
     // Match velocityVector direction to Camera direction.
     velocityVector.applyQuaternion(camera.quaternion);
     velocityVector.y =
-      playerVelocity.y +
-      normalDirectionModifier * normalVelocityModifier * runModifier; // Add velocity on gravity axis back after applying camera quaternion.
+      playerVelocity.y + normalDirectionModifier * normalVelocityModifier; // Add velocity on gravity axis back after applying camera quaternion.
 
     // Reset angular velocity of Player if no movement detected.
     if (!moveBackwardOn && !moveForwardOn && !moveLeftOn && !moveRightOn) {
