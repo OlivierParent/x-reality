@@ -6,7 +6,7 @@ import { SettingsLeva } from "Settings/Leva";
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(EFFECT: any) {
+function useLeva(options: any, value: any) {
   const { effect } = useControls(
     LEVA.SCHEMA.GENERAL,
     {
@@ -14,8 +14,8 @@ function useLeva(EFFECT: any) {
         {
           effect: {
             label: "Effect",
-            options: EFFECT,
-            value: EFFECT["—None—"],
+            options,
+            value,
           },
         },
         SettingsLeva.folder(LEVA.ORDER.EFFECTS_COMPOSER)

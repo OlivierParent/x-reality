@@ -6,14 +6,14 @@ import { SettingsLeva } from "Settings/Leva";
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(CLOCK: any) {
+function useLeva(options: any, value: any) {
   const { clock } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
       clock: {
         label: "Clock",
-        options: CLOCK,
-        value: CLOCK.Analogue,
+        options,
+        value,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

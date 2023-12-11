@@ -9,7 +9,7 @@ import { colorsGenerator } from "Utils/color";
 function getPosition() {
   const newPosition = [5, 4, 0].map((value) => (Math.random() * 2 - 1) * value);
 
-  return new Vector3(...newPosition);
+  return new Vector3().fromArray(newPosition);
 }
 
 enum OPACITY {
@@ -68,9 +68,18 @@ const AnimatedCubeFramerMotion3d = (props: GroupProps): React.JSX.Element => {
   useCursor(isHovered);
 
   useEffect(() => {
-    const opacity = isHovered ? OPACITY.HIGH : OPACITY.LOW;
+    // Opacity.
+    const opacity = //
+      isHovered //
+        ? OPACITY.HIGH
+        : OPACITY.LOW;
     setOpacity(opacity);
-    const scale: number = isHovered ? SCALE.LARGE : SCALE.SMALL;
+
+    // Scale
+    const scale: number = //
+      isHovered //
+        ? SCALE.LARGE
+        : SCALE.SMALL;
     setScale(scale);
   }, [isHovered]);
 

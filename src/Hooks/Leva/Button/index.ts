@@ -6,14 +6,14 @@ import { SettingsLeva } from "Settings/Leva";
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(BUTTON: any) {
+function useLeva(options: any, value: any) {
   const { button } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
       button: {
         label: "Button",
-        options: BUTTON,
-        value: BUTTON["GreenSock GSAP"],
+        options,
+        value,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

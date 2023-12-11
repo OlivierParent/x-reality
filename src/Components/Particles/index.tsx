@@ -4,9 +4,9 @@ import { Particles as ParticlesDefault } from "Components/Particles/Default";
 import { Particles as ParticlesSprites } from "Components/Particles/Sprites";
 import { useLeva } from "Hooks/Leva/Particles";
 
-const PARTICLES = {
-  "—Default—": <ParticlesDefault />,
-  Sprites: <ParticlesSprites />,
+const LEVA_OPTIONS = {
+  "\u2014Default\u2014": <ParticlesDefault />,
+  "Sprites\u0000": <ParticlesSprites />,
 } as const;
 
 /**
@@ -17,7 +17,10 @@ const PARTICLES = {
  */
 const Particles = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { particles } = useLeva(PARTICLES);
+  const { particles } = useLeva(
+    LEVA_OPTIONS,
+    LEVA_OPTIONS["\u2014Default\u2014"]
+  );
 
   return (
     <group name="Particles" {...props}>

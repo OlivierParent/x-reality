@@ -9,7 +9,7 @@ import { colorsGenerator } from "Utils/color";
 function getPosition() {
   const newPosition = [5, 4, 0].map((value) => (Math.random() * 2 - 1) * value);
 
-  return new Vector3(...newPosition);
+  return new Vector3().fromArray(newPosition);
 }
 
 enum OPACITY {
@@ -78,12 +78,21 @@ const AnimatedCubeGreenSock = (props: GroupProps): React.JSX.Element => {
 
   useEffect(() => {
     // Sequential animation with `gsapTimeline`.
-    const opacity = isHovered ? OPACITY.HIGH : OPACITY.LOW;
-    const scale = isHovered ? SCALE.LARGE : SCALE.SMALL;
+    // Opacity.
+    const opacity = //
+      isHovered //
+        ? OPACITY.HIGH
+        : OPACITY.LOW;
     gsapTimeline.to(materialRef.current, {
       opacity,
       duration: 0.125, // Default: 0.5
     });
+
+    // Scale.
+    const scale = //
+      isHovered //
+        ? SCALE.LARGE
+        : SCALE.SMALL;
     gsapTimeline.to(cubeRef.current.scale, {
       ...scale,
       duration: 0.125, // Default: 0.5
@@ -92,6 +101,7 @@ const AnimatedCubeGreenSock = (props: GroupProps): React.JSX.Element => {
 
   useEffect(() => {
     // Parallel animation with `gsap`.
+    // Position.
     gsap.to(cubeRef.current.position, {
       ...position,
       duration: 0.25, // Default: 0.5

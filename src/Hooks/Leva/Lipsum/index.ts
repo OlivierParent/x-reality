@@ -6,14 +6,14 @@ import { SettingsLeva } from "Settings/Leva";
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(LIPSUM: any) {
+function useLeva(options: any, value: any) {
   const { lipsum } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
       lipsum: {
         label: "Lipsum",
-        options: LIPSUM,
-        value: LIPSUM.Default,
+        options,
+        value,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

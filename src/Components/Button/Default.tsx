@@ -3,12 +3,6 @@ import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { Euler } from "three";
 
-const ROTATION = {
-  ACTIVE: new Euler(Math.PI / 4, Math.PI / 6),
-  INACTIVE: new Euler(0, 0),
-} as const;
-const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
-
 enum COLOR {
   BLUE = 0x0000ff,
   GREEN = 0x006600,
@@ -22,6 +16,16 @@ enum SCALE {
   LARGE = 1.25,
   SMALL = 1,
 }
+
+const ROTATION = {
+  ACTIVE: new Euler(
+    Math.PI / 4, //
+    Math.PI / 6,
+    0
+  ),
+  INACTIVE: new Euler(),
+} as const;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 
 /**
  * Button.

@@ -6,14 +6,14 @@ import { SettingsLeva } from "Settings/Leva";
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(ANIMATED_CUBE: any) {
+function useLeva(options: any, value: any) {
   const { cube } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
       cube: {
         label: "Animated Cube",
-        options: ANIMATED_CUBE,
-        value: ANIMATED_CUBE["Framer Motion 3D"],
+        options,
+        value,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

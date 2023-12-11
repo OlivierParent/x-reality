@@ -2,7 +2,7 @@ import { Plane, Text, useTexture } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 
 const PAINTING = {
-  CAPTION: "In Blue—Wassily Kandinsky (1925)",
+  CAPTION: "In Blue\u2014Wassily Kandinsky (1925)",
   SIZE: 4,
   TEXTURE:
     "https://upload.wikimedia.org/wikipedia/commons/1/11/Vassily_Kandinsky%2C_1925_-In_Blue.jpg",

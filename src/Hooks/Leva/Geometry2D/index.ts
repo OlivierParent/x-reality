@@ -15,10 +15,10 @@ function useLeva(GEOMETRY_2D: any) {
           geometry2DName: {
             label: "Geometry 2D",
             options: {
-              "—None— ": GEOMETRY_2D.NONE,
-              "Plane  ": GEOMETRY_2D.PLANE,
-              "Circle ": GEOMETRY_2D.CIRCLE,
-              "Ring   ": GEOMETRY_2D.RING,
+              "\u2014None\u2014": GEOMETRY_2D.NONE,
+              "Plane\u0000": GEOMETRY_2D.PLANE,
+              "Circle\u0000": GEOMETRY_2D.CIRCLE,
+              "Ring\u0000": GEOMETRY_2D.RING,
             },
             value: GEOMETRY_2D.PLANE,
           },

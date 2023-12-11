@@ -17,34 +17,35 @@ import { ToneMapping } from "Components/Effects/ToneMapping";
 import { Vignette } from "Components/Effects/Vignette";
 import { useLeva } from "Hooks/Leva/Effects";
 
-const EFFECT = {
-  "—None—": undefined,
-  Bloom: <Bloom />,
-  BrightnessContrast: <BrightnessContrast />,
-  ChromaticAberration: <ChromaticAberration />,
-  ColorAverage: <ColorAverage />,
-  ColorDepth: <ColorDepth />,
-  DepthOfField: <DepthOfField />,
-  DotScreen: <DotScreen />,
-  Glitch: <Glitch />,
-  Grid: <Grid />,
-  HueSaturation: <HueSaturation />,
-  Noise: <Noise />,
-  Pixelation: <Pixelation />,
-  SMAA: <SMAA />,
-  Scanline: <Scanline />,
-  Sepia: <Sepia />,
-  ToneMapping: <ToneMapping />,
-  Vignette: <Vignette />,
+const LEVA_OPTIONS = {
+  "\u2014None\u2014": <></>,
+  "Bloom\u0000": <Bloom />,
+  "BrightnessContrast\u0000": <BrightnessContrast />,
+  "ChromaticAberration\u0000": <ChromaticAberration />,
+  "ColorAverage\u0000": <ColorAverage />,
+  "ColorDepth\u0000": <ColorDepth />,
+  "DepthOfField\u0000": <DepthOfField />,
+  "DotScreen\u0000": <DotScreen />,
+  "Glitch\u0000": <Glitch />,
+  "Grid\u0000": <Grid />,
+  "HueSaturation\u0000": <HueSaturation />,
+  '"Noise\u0000"': <Noise />,
+  "Pixelation\u0000": <Pixelation />,
+  "SMAA\u0000": <SMAA />,
+  "Scanline\u0000": <Scanline />,
+  "Sepia\u0000": <Sepia />,
+  "ToneMapping\u0000": <ToneMapping />,
+  "Vignette\u0000": <Vignette />,
 } as const;
 
 /**
+ * Effects.
  *
  * @returns {React.JSX.Element}
  */
 const Effects = (): React.JSX.Element => {
   // Leva Controls.
-  const { effect } = useLeva(EFFECT);
+  const { effect } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS["\u2014None\u2014"]);
 
   return (
     <group name="Effects">

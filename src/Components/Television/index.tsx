@@ -97,7 +97,7 @@ function Television(props: GroupProps): React.JSX.Element {
         fontSize={0.1}
         position={[0, -0.1, 0]}
       >
-        {`${VIDEO_ITEMS[0].title} — ${VIDEO_ITEMS[0].url}`}
+        {`${VIDEO_ITEMS[0].title} \u2014 ${VIDEO_ITEMS[0].url}`}
       </Text>
     </group>
   );

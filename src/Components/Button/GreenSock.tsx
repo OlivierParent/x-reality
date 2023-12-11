@@ -2,17 +2,7 @@ import { Text, useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { Group, MeshBasicMaterial, Vector3 } from "three";
-
-const ROTATION = {
-  ACTIVE: { x: Math.PI / 4, y: Math.PI / 6 },
-  INACTIVE: { x: 0, y: 0 },
-} as const;
-const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
-const SCALE = {
-  LARGE: new Vector3().setScalar(1.25),
-  SMALL: new Vector3().setScalar(1),
-} as const;
+import { Euler, Group, MeshBasicMaterial, Vector3 } from "three";
 
 enum COLOR {
   BLUE = "#0000ff",
@@ -23,6 +13,20 @@ enum OPACITY {
   HIGH = 1,
   LOW = 0.75,
 }
+
+const ROTATION = {
+  ACTIVE: new Euler(
+    Math.PI / 4, //
+    Math.PI / 6,
+    0
+  ),
+  INACTIVE: new Euler(),
+} as const;
+const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
+const SCALE = {
+  LARGE: new Vector3().setScalar(1.25),
+  SMALL: new Vector3().setScalar(1),
+} as const;
 
 const initialColor = COLOR.BLUE;
 const gsapObject = { color: initialColor };
@@ -80,14 +84,20 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
 
   useEffect(() => {
     // Opacity.
-    const opacity = isHovered ? OPACITY.HIGH : OPACITY.LOW;
+    const opacity = //
+      isHovered //
+        ? OPACITY.HIGH
+        : OPACITY.LOW;
     gsap.to(materialRef.current, {
       opacity,
       duration: 0.125, // Default: 0.5
     });
 
     // Scale.
-    const scale = isHovered ? SCALE.LARGE : SCALE.SMALL;
+    const scale = //
+      isHovered //
+        ? SCALE.LARGE
+        : SCALE.SMALL;
     gsap.to(buttonRef.current.scale, {
       ...scale,
       duration: 0.125, // Default: 0.5
@@ -104,9 +114,15 @@ const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
     setColor(color);
 
     // Rotation.
-    const rotation = isToggledButton ? ROTATION.ACTIVE : ROTATION.INACTIVE;
+    const rotation = //
+      isToggledButton //
+        ? ROTATION.ACTIVE
+        : ROTATION.INACTIVE;
+    console.log("rotation", { ...rotation, x: rotation.x }, rotation.toArray());
     gsap.to(buttonRef.current.rotation, {
-      ...rotation,
+      x: rotation.x,
+      y: rotation.y,
+      z: rotation.z,
       ease: "power2.inOut", // https://gsap.com/docs/v3/Eases/
     });
   }, [isToggledButton, isToggledColor]);

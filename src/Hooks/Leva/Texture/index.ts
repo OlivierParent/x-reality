@@ -6,18 +6,14 @@ import { SettingsLeva } from "Settings/Leva";
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(TEXTURE: any) {
+function useLeva(options: any, value: any) {
   const { texturedMesh } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
       texturedMesh: {
         label: "Type",
-        options: {
-          "Default      ": TEXTURE.DEFAULT,
-          "Baked Normals": TEXTURE.BAKED_NORMALS,
-          "Video        ": TEXTURE.VIDEO,
-        },
-        value: TEXTURE.DEFAULT,
+        options,
+        value,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)

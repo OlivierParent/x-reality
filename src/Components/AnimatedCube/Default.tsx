@@ -8,7 +8,7 @@ import { colorsGenerator } from "Utils/color";
 function getPosition() {
   const newPosition = [5, 4, 0].map((value) => (Math.random() * 2 - 1) * value);
 
-  return new Vector3(...newPosition);
+  return new Vector3().fromArray(newPosition);
 }
 
 enum OPACITY {

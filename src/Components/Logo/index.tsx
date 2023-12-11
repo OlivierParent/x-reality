@@ -4,9 +4,9 @@ import { Logo as LogoDouble } from "Components/Logo/Double";
 import { Logo as LogoSingle } from "Components/Logo/Single";
 import { useLeva } from "Hooks/Leva/Logo";
 
-const LOGO = {
-  Double: <LogoDouble />,
-  Single: <LogoSingle />,
+const LEVA_OPTIONS = {
+  "Double\u0000": <LogoDouble />,
+  "Single\u0000": <LogoSingle />,
 } as const;
 
 /**
@@ -17,7 +17,7 @@ const LOGO = {
  */
 const Logo = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { logo } = useLeva(LOGO);
+  const { logo } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS["Single\u0000"]);
 
   return (
     <group name="Logos" {...props}>

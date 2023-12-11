@@ -4,9 +4,9 @@ import { Clock as ClockAnalogue } from "Components/Clock/Analogue";
 import { Clock as ClockDigital } from "Components/Clock/Digital";
 import { useLeva } from "Hooks/Leva/Clock";
 
-const CLOCK = {
-  Analogue: <ClockAnalogue />,
-  Digital: <ClockDigital />,
+const LEVA_OPTIONS = {
+  "Analogue\u0000": <ClockAnalogue />,
+  "Digital\u0000": <ClockDigital />,
 } as const;
 
 /**
@@ -17,7 +17,7 @@ const CLOCK = {
  */
 const Clock = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { clock } = useLeva(CLOCK);
+  const { clock } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS["Analogue\u0000"]);
 
   return (
     <group name="Clock" {...props}>
