@@ -26,6 +26,7 @@ export const BALL = {
       POSITION.Z - 0.5
     ),
   },
+  RADIUS: 0.125,
   RIGHT: {
     COLOR: "hsl(240, 100%, 75%)",
     POSITION: new Vector3(

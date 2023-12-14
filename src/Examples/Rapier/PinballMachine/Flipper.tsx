@@ -9,7 +9,7 @@ import {
   interactionGroups,
   useRevoluteJoint,
 } from "@react-three/rapier";
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Euler, MathUtils, Mesh, Vector3 } from "three";
 
 import { INTERACTION } from "Configs/interaction";
@@ -46,9 +46,6 @@ const RapierPinballMachineFlipper = (
   const flipperRightOn = useKeyboardControls(
     (state) => state.pinballFlipperRight
   );
-  const shootOn = useKeyboardControls(
-    (state) => state.pinballShoot //
-  );
 
   const isLeft = orientation === ("left" as OrientationValue);
   const isPressed = flipperBothOn || (isLeft ? flipperLeftOn : flipperRightOn);
@@ -82,10 +79,6 @@ const RapierPinballMachineFlipper = (
       ),
     [isLeft, positionX]
   );
-
-  useEffect(() => {
-    console.info("shootOn:", shootOn);
-  }, [shootOn]);
 
   useFrame((state, delta) => {
     if (isPressed) {

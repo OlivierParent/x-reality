@@ -34,7 +34,7 @@ const height = TELEVISION.SIZE;
  *
  * @returns {React.JSX.Element}
  */
-function Television(props: GroupProps): React.JSX.Element {
+const Television = (props: GroupProps): React.JSX.Element => {
   // States.
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isToggled, setIsToggled] = useState<boolean>(false);
@@ -101,6 +101,6 @@ function Television(props: GroupProps): React.JSX.Element {
       </Text>
     </group>
   );
-}
+};
 
 export { Television };

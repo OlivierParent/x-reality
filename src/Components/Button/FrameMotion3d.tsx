@@ -118,14 +118,30 @@ const ButtonFrameMotion3d = (props: GroupProps): React.JSX.Element => {
           rotateY: rotation.y,
           rotateZ: rotation.z,
         }}
+        transition={{
+          duration: 0.5,
+          scale: {
+            duration: 0.125, //
+          },
+          ease: "easeInOut", // https://www.framer.com/motion/transition/#tween
+        }}
       >
         <motion.mesh //
           onPointerOut={pointerOutHandler}
           onPointerOver={pointerOverHandler}
         >
           <motion.meshBasicMaterial //
-            animate={{ color, opacity }}
+            animate={{
+              color, //
+              opacity,
+            }}
             transparent={true}
+            transition={{
+              duration: 0.5,
+              opacity: {
+                duration: 0.125, //
+              },
+            }}
           />
           <planeGeometry args={[2.5, 0.5]} />
         </motion.mesh>

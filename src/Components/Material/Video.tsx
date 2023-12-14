@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { VideoTexture } from "three";
 
+type MaterialVideoProps = {
+  play: boolean;
+  src: string;
+};
+
 const video = document.createElement("video");
 const videoTexture = new VideoTexture(video);
 
@@ -12,12 +17,9 @@ const videoTexture = new VideoTexture(video);
  * @returns {React.JSX.Element}
  */
 const MaterialVideo = ({
-  src,
   play = false,
-}: {
-  src: string;
-  play: boolean;
-}): React.JSX.Element => {
+  src,
+}: MaterialVideoProps): React.JSX.Element => {
   useEffect(() => {
     video.setAttribute("loop", "true");
     video.setAttribute("mute", "false");

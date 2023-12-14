@@ -28,6 +28,7 @@ import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
 import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
 import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
+import { Plunger } from "Examples/Rapier/PinballMachine/PlungerAssembly";
 
 const ZERO_QUATERNION = new Quaternion();
 const ZERO_VECTOR = new Vector3();
@@ -167,6 +168,10 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
               position={FLIPPER.RIGHT.POSITION}
             />
           </group>
+        </group>
+        <group name="Plunger Assembly" position={[4.7, 0, 1.6]}>
+          <Ball color={"cyan"} position={new Vector3(0, 3, -5)} />
+          <Plunger position={new Vector3(0, 0, 0)} />
         </group>
       </group>
       <group name="Balls">

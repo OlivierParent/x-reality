@@ -91,17 +91,34 @@ const AnimatedCubeFramerMotion3d = (props: GroupProps): React.JSX.Element => {
   return (
     <group name="Animated Cube with Framer Motion 3D" {...props}>
       <motion.mesh
-        animate={{ ...position, scale }}
+        animate={{
+          ...position, //
+          scale,
+        }}
         onClick={clickHandler}
         onPointerOut={pointerOutHandler}
         onPointerOver={pointerOverHandler}
         ref={cubeRef}
-        transition={{ duration: 0.25 }}
+        transition={{
+          duration: 0.25, //
+          scale: {
+            duration: 0.125, //
+          },
+        }}
       >
         <boxGeometry args={[1, 1, 1]} />
         <motion.meshStandardMaterial
-          animate={{ color, opacity }}
+          animate={{
+            color, //
+            opacity,
+          }}
           ref={materialRef}
+          transition={{
+            opacity: {
+              delay: 0.125, //
+              duration: 0.125,
+            },
+          }}
           transparent={true}
           wireframe={false}
         />
