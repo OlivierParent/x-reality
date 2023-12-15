@@ -1,7 +1,7 @@
 import { GroupProps } from "@react-three/fiber";
 
 import { Button as ButtonDefault } from "Components/Button/Default";
-import { Button as ButtonFramerMotion3d } from "Components/Button/FrameMotion3d";
+import { Button as ButtonFramerMotion3d } from "Components/Button/FramerMotion3d";
 import { Button as ButtonGreenSock } from "Components/Button/GreenSock";
 import { useLeva } from "Hooks/Leva/Button";
 
