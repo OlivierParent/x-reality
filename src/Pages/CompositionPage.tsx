@@ -17,4 +17,4 @@ const CompositionPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { CompositionPage };
+export default CompositionPage;

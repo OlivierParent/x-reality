@@ -4,8 +4,6 @@ import {
   useKeyboardControls,
   useMatcapTexture,
 } from "@react-three/drei";
-import { Euler, Vector2Tuple, Vector3 } from "three";
-
 import {
   RapierRigidBody,
   RigidBody,
@@ -16,12 +14,16 @@ import {
 import { PLUNGER_ASSEMBLY } from "Examples/Rapier/PinballMachine/PlungerAssembly.config";
 import { MATCAP } from "Libs/matcap";
 import { useEffect, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { Euler, Vector2Tuple, Vector3 } from "three";
+// import { useFrame } from "@react-three/fiber";
+
 import { INTERACTION } from "Configs/interaction";
 
 type PlungerProps = {
   position: Vector3;
 };
+
+const ZERO_VECTOR = new Vector3();
 
 /**
  * Pinball machine plunger.
@@ -36,8 +38,12 @@ const RapierPinballMachinePlunger = (
     MATCAP.ID.TITANIUM, //
     MATCAP.SIZE.XL
   );
+  const { position = ZERO_VECTOR } = props;
 
-  const { position = new Vector3(0, 0, 0) } = props;
+  // Keyboard Controls.
+  const shootOn = useKeyboardControls(
+    (state) => state.pinballShoot //
+  );
 
   // References.
   const bodyPlungerRef = useRef<RapierRigidBody>(null!);
@@ -49,10 +55,6 @@ const RapierPinballMachinePlunger = (
 
   const jointAxis: Vector3Tuple = [0, 0, 1]; // Axis of the joint.
   const limits: Vector2Tuple = [-0.1, 0.1];
-
-  const shootOn = useKeyboardControls(
-    (state) => state.pinballShoot //
-  );
 
   usePrismaticJoint(bodyPlungerRef, bodyConstraintARef, [
     plungerJointPosition,

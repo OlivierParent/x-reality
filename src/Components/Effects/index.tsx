@@ -15,27 +15,27 @@ import { Scanline } from "Components/Effects/Scanline";
 import { Sepia } from "Components/Effects/Sepia";
 import { ToneMapping } from "Components/Effects/ToneMapping";
 import { Vignette } from "Components/Effects/Vignette";
-import { useLeva } from "Hooks/Leva/Effects";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/Effects";
 
 const LEVA_OPTIONS = {
-  "\u2014None\u2014": <></>,
-  "Bloom\u0000": <Bloom />,
-  "BrightnessContrast\u0000": <BrightnessContrast />,
-  "ChromaticAberration\u0000": <ChromaticAberration />,
-  "ColorAverage\u0000": <ColorAverage />,
-  "ColorDepth\u0000": <ColorDepth />,
-  "DepthOfField\u0000": <DepthOfField />,
-  "DotScreen\u0000": <DotScreen />,
-  "Glitch\u0000": <Glitch />,
-  "Grid\u0000": <Grid />,
-  "HueSaturation\u0000": <HueSaturation />,
-  '"Noise\u0000"': <Noise />,
-  "Pixelation\u0000": <Pixelation />,
-  "SMAA\u0000": <SMAA />,
-  "Scanline\u0000": <Scanline />,
-  "Sepia\u0000": <Sepia />,
-  "ToneMapping\u0000": <ToneMapping />,
-  "Vignette\u0000": <Vignette />,
+  [LEVA_OPTION.NONE]: <></>,
+  [LEVA_OPTION.BLOOM]: <Bloom />,
+  [LEVA_OPTION.BRIGHTNESS_CONTRAST]: <BrightnessContrast />,
+  [LEVA_OPTION.CHROMATIC_ABERRATION]: <ChromaticAberration />,
+  [LEVA_OPTION.COLOR_AVERAGE]: <ColorAverage />,
+  [LEVA_OPTION.COLOR_DEPTH]: <ColorDepth />,
+  [LEVA_OPTION.DEPTH_OF_FIELD]: <DepthOfField />,
+  [LEVA_OPTION.DOT_SCREEN]: <DotScreen />,
+  [LEVA_OPTION.GLITCH]: <Glitch />,
+  [LEVA_OPTION.GRID]: <Grid />,
+  [LEVA_OPTION.HUE_SATURATION]: <HueSaturation />,
+  [LEVA_OPTION.NOISE]: <Noise />,
+  [LEVA_OPTION.PIXELATION]: <Pixelation />,
+  [LEVA_OPTION.SMAA]: <SMAA />,
+  [LEVA_OPTION.SCANLINE]: <Scanline />,
+  [LEVA_OPTION.SEPIA]: <Sepia />,
+  [LEVA_OPTION.TONE_MAPPING]: <ToneMapping />,
+  [LEVA_OPTION.VIGNETTE]: <Vignette />,
 } as const;
 
 /**
@@ -45,7 +45,7 @@ const LEVA_OPTIONS = {
  */
 const Effects = (): React.JSX.Element => {
   // Leva Controls.
-  const { effect } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS["\u2014None\u2014"]);
+  const { effect } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.NONE]);
 
   return (
     <group name="Effects">

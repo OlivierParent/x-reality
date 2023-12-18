@@ -17,4 +17,4 @@ const PhysicsRapierTestPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { PhysicsRapierTestPage };
+export default PhysicsRapierTestPage;

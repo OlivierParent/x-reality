@@ -17,4 +17,4 @@ const TexturedMeshPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { TexturedMeshPage };
+export default TexturedMeshPage;

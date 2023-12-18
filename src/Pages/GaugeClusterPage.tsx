@@ -17,4 +17,4 @@ const GaugeClusterPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { GaugeClusterPage };
+export default GaugeClusterPage;

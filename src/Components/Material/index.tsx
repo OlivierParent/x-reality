@@ -8,20 +8,20 @@ import { Material as MaterialPhysicalFrostedGlass } from "Components/Material/Ph
 import { Material as MaterialStandard } from "Components/Material/Standard";
 import { Material as MaterialStandardNormalMap } from "Components/Material/StandardNormalMap";
 import { Material as MaterialToon } from "Components/Material/Toon";
-import { useLeva } from "Hooks/Leva/Material";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/Material";
 
 const LEVA_OPTIONS = {
-  "\u2014None\u2014": <></>,
-  "Basic (Flat, no light)": <MaterialBasic />,
-  "Matcap (Material Capture, no light)": <MaterialMatcap />,
-  "Lambert (NPBR, Gouraud)": <MaterialLambert />,
-  "Phong (NPBR, Blinn-Phong)": <MaterialPhong />,
-  "Normal\u0000": <MaterialNormal />,
-  "Standard (PBR, Metallic-Roughness)": <MaterialStandard />,
-  "Standard - Normal Map": <MaterialStandardNormalMap />,
-  "Physical (PBR, extension of Standard)": <MaterialPhysical />,
-  "Physical - Frosted Glass": <MaterialPhysicalFrostedGlass />,
-  "Toon\u0000": <MaterialToon />,
+  [LEVA_OPTION.NONE]: undefined,
+  [LEVA_OPTION.BASIC]: <MaterialBasic />,
+  [LEVA_OPTION.MATCAP]: <MaterialMatcap />,
+  [LEVA_OPTION.LAMBERT]: <MaterialLambert />,
+  [LEVA_OPTION.PHONG]: <MaterialPhong />,
+  [LEVA_OPTION.NORMAL]: <MaterialNormal />,
+  [LEVA_OPTION.STANDARD]: <MaterialStandard />,
+  [LEVA_OPTION.STANDARD_NORMAL_MAP]: <MaterialStandardNormalMap />,
+  [LEVA_OPTION.PHYSICAL]: <MaterialPhysical />,
+  [LEVA_OPTION.PHYSICAL_FROSTED_GLASS]: <MaterialPhysicalFrostedGlass />,
+  [LEVA_OPTION.TOON]: <MaterialToon />,
 } as const;
 
 /**
@@ -33,7 +33,7 @@ const Material = (): React.JSX.Element => {
   // Leva Controls.
   const { material } = useLeva(
     LEVA_OPTIONS,
-    LEVA_OPTIONS["Standard (PBR, Metallic-Roughness)"]
+    LEVA_OPTIONS[LEVA_OPTION.STANDARD]
   );
 
   return <>{material}</>;

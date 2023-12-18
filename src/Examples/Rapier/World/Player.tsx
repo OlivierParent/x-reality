@@ -24,12 +24,24 @@ const velocityVector = ZERO_VECTOR.clone();
  */
 const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
   // Keyboard Controls.
-  const jumpOn = useKeyboardControls((state) => state.jump);
-  const moveBackwardOn = useKeyboardControls((state) => state.moveBackward);
-  const moveForwardOn = useKeyboardControls((state) => state.moveForward);
-  const moveLeftOn = useKeyboardControls((state) => state.moveLeft);
-  const moveRightOn = useKeyboardControls((state) => state.moveRight);
-  const runOn = useKeyboardControls((state) => state.run);
+  const playerJumpOn = useKeyboardControls(
+    (state) => state.playerJump //
+  );
+  const playerMoveBackwardOn = useKeyboardControls(
+    (state) => state.playerMoveBackward
+  );
+  const playerMoveForwardOn = useKeyboardControls(
+    (state) => state.playerMoveForward
+  );
+  const playerMoveLeftOn = useKeyboardControls(
+    (state) => state.playerMoveLeft //
+  );
+  const playerMoveRightOn = useKeyboardControls(
+    (state) => state.playerMoveRight
+  );
+  const playerRunOn = useKeyboardControls(
+    (state) => state.playerRun //
+  );
 
   // References.
   const playerRef = useRef<any>(null!);
@@ -57,41 +69,41 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
 
     // Move Player
     const lateralDirectionModifier = //
-      moveRightOn
+      playerMoveRightOn
         ? PLAYER.DIRECTION.RIGHT
-        : moveLeftOn
+        : playerMoveLeftOn
         ? PLAYER.DIRECTION.LEFT
         : PLAYER.DIRECTION.NONE;
     const lateralVelocityModifier = PLAYER.VELOCITY.LATERAL;
 
     const longitudinalDirectionModifier = //
-      moveForwardOn
+      playerMoveForwardOn
         ? PLAYER.DIRECTION.FORWARD
-        : moveBackwardOn
+        : playerMoveBackwardOn
         ? PLAYER.DIRECTION.BACKWARD
         : PLAYER.DIRECTION.NONE;
     const longitudinalVelocityModifier = //
-      moveForwardOn
+      playerMoveForwardOn
         ? PLAYER.VELOCITY.FORWARD
-        : moveBackwardOn
+        : playerMoveBackwardOn
         ? PLAYER.VELOCITY.DEFAULT
         : PLAYER.VELOCITY.NONE;
 
-    if (canJump && !hasJumped && jumpOn) {
+    if (canJump && !hasJumped && playerJumpOn) {
       setHasJumped(true);
       setCanJump(false);
     }
     const normalDirectionModifier = //
-      jumpOn //
+      playerJumpOn //
         ? PLAYER.DIRECTION.UP
         : PLAYER.DIRECTION.NONE;
     const normalVelocityModifier =
-      hasJumped && jumpOn //
+      hasJumped && playerJumpOn //
         ? PLAYER.VELOCITY.NORMAL
         : PLAYER.VELOCITY.NONE;
 
     const runModifier = //
-      runOn //
+      playerRunOn //
         ? PLAYER.VELOCITY.RUN
         : PLAYER.VELOCITY.DEFAULT;
 
@@ -107,7 +119,12 @@ const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
       playerVelocity.y + normalDirectionModifier * normalVelocityModifier; // Add velocity on gravity axis back after applying camera quaternion.
 
     // Reset angular velocity of Player if no movement detected.
-    if (!moveBackwardOn && !moveForwardOn && !moveLeftOn && !moveRightOn) {
+    if (
+      !playerMoveBackwardOn &&
+      !playerMoveForwardOn &&
+      !playerMoveLeftOn &&
+      !playerMoveRightOn
+    ) {
       player.setAngvel(ZERO_VECTOR);
     }
 

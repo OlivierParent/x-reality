@@ -17,4 +17,4 @@ const ParticlesPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { ParticlesPage };
+export default ParticlesPage;

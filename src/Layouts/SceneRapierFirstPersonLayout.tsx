@@ -38,7 +38,7 @@ const SceneRapierFirstPersonLayout = ({
         <Suspense>
           <Helpers />
           <Lighting />
-          <KeyboardControls map={KEYBINDINGS.UNIVERSAL}>
+          <KeyboardControls map={KEYBINDINGS.CONFIG_FIRST_PERSON_UNIVERSAL}>
             <Physics
               colliders={undefined}
               debug={physicsControls.showDebug}

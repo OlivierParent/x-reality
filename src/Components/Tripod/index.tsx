@@ -34,7 +34,7 @@ const Tripod = (props: GroupProps): React.JSX.Element => {
         .map((value, index) => {
           return (
             <group
-              key={index}
+              key={`axis-${index}`}
               position={
                 [0, 0, 0].map((v, i) =>
                   index === i ? TRIPOD.LENGTH / 2 + TRIPOD.THICKNESS * 2 : v

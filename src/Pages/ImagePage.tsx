@@ -17,4 +17,4 @@ const ImagePage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { ImagePage };
+export default ImagePage;

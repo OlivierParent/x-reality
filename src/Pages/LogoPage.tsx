@@ -17,4 +17,4 @@ const LogoPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { LogoPage };
+export default LogoPage;

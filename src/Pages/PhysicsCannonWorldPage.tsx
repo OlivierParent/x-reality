@@ -17,4 +17,4 @@ const PhysicsCannonWorldPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { PhysicsCannonWorldPage };
+export default PhysicsCannonWorldPage;

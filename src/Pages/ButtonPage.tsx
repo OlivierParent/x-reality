@@ -17,4 +17,4 @@ const ButtonPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { ButtonPage };
+export default ButtonPage;

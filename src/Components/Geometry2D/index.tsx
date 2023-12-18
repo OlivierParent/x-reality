@@ -3,15 +3,15 @@ import { ReactNode } from "react";
 import { Circle } from "Components/Geometry2D/Circle";
 import { Plane } from "Components/Geometry2D/Plane";
 import { Ring } from "Components/Geometry2D/Ring";
-import { useLeva } from "Hooks/Leva/Geometry2D";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/Geometry2D";
 import { Children } from "Types/Children";
 
-enum GEOMETRY_2D {
-  CIRCLE = "Circle",
-  NONE = "\u2014None\u2014",
-  PLANE = "Plane",
-  RING = "Ring",
-}
+const LEVA_OPTIONS = {
+  [LEVA_OPTION.NONE]: LEVA_OPTION.NONE,
+  [LEVA_OPTION.PLANE]: LEVA_OPTION.PLANE,
+  [LEVA_OPTION.CIRCLE]: LEVA_OPTION.CIRCLE,
+  [LEVA_OPTION.RING]: LEVA_OPTION.RING,
+} as const;
 
 /**
  * Enable geometry component.
@@ -23,13 +23,13 @@ enum GEOMETRY_2D {
 function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
   let element: React.JSX.Element;
   switch (name) {
-    case GEOMETRY_2D.CIRCLE:
+    case LEVA_OPTION.CIRCLE:
       element = <Circle>{children}</Circle>;
       break;
-    case GEOMETRY_2D.PLANE:
+    case LEVA_OPTION.PLANE:
       element = <Plane>{children}</Plane>;
       break;
-    case GEOMETRY_2D.RING:
+    case LEVA_OPTION.RING:
       element = <Ring>{children}</Ring>;
       break;
     default:
@@ -46,7 +46,10 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
  */
 const Geometry2D = ({ children }: Children): React.JSX.Element => {
   // Leva Controls.
-  const { geometry2DName } = useLeva(GEOMETRY_2D);
+  const { geometry2DName } = useLeva(
+    LEVA_OPTIONS,
+    LEVA_OPTIONS[LEVA_OPTION.PLANE]
+  );
 
   return <>{enableGeometry(geometry2DName, children)}</>;
 };

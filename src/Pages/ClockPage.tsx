@@ -17,4 +17,4 @@ const ClockPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { ClockPage };
+export default ClockPage;

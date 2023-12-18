@@ -17,4 +17,4 @@ const NormalsPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { NormalsPage };
+export default NormalsPage;

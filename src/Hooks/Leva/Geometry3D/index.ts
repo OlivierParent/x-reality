@@ -3,10 +3,25 @@ import { folder, useControls } from "leva";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
+enum LEVA_OPTION {
+  BOX = "Box",
+  CONE = "Cone",
+  CYLINDER = "Cylinder",
+  DODECAHEDRON = "Dodecahedron (12 faces)",
+  ICOSAHEDRON = "Icosahedron",
+  NONE = "\u2014None\u2014",
+  OCTAHEDRON = "Octahedron (8 faces)",
+  ROUNDED_BOX = "Rounded Box",
+  SPHERE = "Sphere",
+  TETRAHEDRON = "Tetrahedron (4 faces)",
+  TORUS = "Torus",
+  TORUS_KNOT = "Torus Knot",
+}
+
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(GEOMETRY_3D: any) {
+function useLeva(options: any, value: any) {
   const { geometry3DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -14,21 +29,8 @@ function useLeva(GEOMETRY_3D: any) {
         {
           geometry3DName: {
             label: "Geometry",
-            options: {
-              "\u2014None\u2014": GEOMETRY_3D.NONE,
-              "Box\u0000": GEOMETRY_3D.BOX,
-              "Rounded Box": GEOMETRY_3D.ROUNDED_BOX,
-              "Cylinder\u0000": GEOMETRY_3D.CYLINDER,
-              "Cone\u0000": GEOMETRY_3D.CONE,
-              "Tetrahedron (4 faces)": GEOMETRY_3D.TETRAHEDRON,
-              "Octahedron (8 faces)": GEOMETRY_3D.OCTAHEDRON,
-              "Dodecahedron (12 faces)": GEOMETRY_3D.DODECAHEDRON,
-              "Icosahedron (20 faces)": GEOMETRY_3D.ICOSAHEDRON,
-              "Sphere\u0000": GEOMETRY_3D.SPHERE,
-              "Torus\u0000": GEOMETRY_3D.TORUS,
-              "Torus Knot": GEOMETRY_3D.TORUS_KNOT,
-            },
-            value: GEOMETRY_3D.BOX,
+            options,
+            value,
           },
         },
         SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
@@ -42,4 +44,4 @@ function useLeva(GEOMETRY_3D: any) {
   };
 }
 
-export { useLeva };
+export { LEVA_OPTION, useLeva };

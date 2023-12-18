@@ -1,4 +1,4 @@
-import { KeyboardControls, Loader, OrbitControls } from "@react-three/drei";
+import { KeyboardControls, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Leva } from "leva";
@@ -37,7 +37,7 @@ const SceneRapierPinballLayout = ({
         <Suspense>
           <Helpers />
           <Lighting />
-          <KeyboardControls map={KEYBINDINGS.PINBALL}>
+          <KeyboardControls map={KEYBINDINGS.CONFIG_PINBALL_MACHINE}>
             <Physics
               colliders={undefined}
               debug={physicsControls.showDebug}
@@ -53,11 +53,6 @@ const SceneRapierPinballLayout = ({
               {children}
             </Physics>
           </KeyboardControls>
-          <OrbitControls
-            enableDamping={true}
-            enablePan={true}
-            enableZoom={true}
-          />
         </Suspense>
       </Canvas>
       <Leva

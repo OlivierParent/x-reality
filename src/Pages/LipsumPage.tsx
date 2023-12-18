@@ -17,4 +17,4 @@ const LipsumPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { LipsumPage };
+export default LipsumPage;

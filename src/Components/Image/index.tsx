@@ -2,11 +2,11 @@ import { GroupProps } from "@react-three/fiber";
 
 import { Image as ImageDefault } from "Components/Image/Default";
 import { Image as ImageSvgDrei } from "Components/Image/SvgDrei";
-import { useLeva } from "Hooks/Leva/Image";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/Image";
 
-const IMAGE = {
-  Default: <ImageDefault />,
-  Svg: <ImageSvgDrei />,
+const LEVA_OPTIONS = {
+  [LEVA_OPTION.DEFAULT]: <ImageDefault />,
+  [LEVA_OPTION.SVG]: <ImageSvgDrei />,
 } as const;
 
 /**
@@ -17,7 +17,7 @@ const IMAGE = {
  */
 const Image = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { image } = useLeva(IMAGE);
+  const { image } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.DEFAULT]);
 
   return (
     <group name="Image" {...props}>

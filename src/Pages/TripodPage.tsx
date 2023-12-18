@@ -17,4 +17,4 @@ const TripodPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { TripodPage };
+export default TripodPage;

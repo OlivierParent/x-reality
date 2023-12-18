@@ -5,14 +5,18 @@ import { CUSTOM_EVENTS } from "Configs/custom_events";
 
 import styles from "Components/UserInterface/CursorOverlay.module.css";
 
+// Events.
+const cursorActiveEvent = new Event(CUSTOM_EVENTS.CURSOR_ACTIVE);
+const cursorInactiveEvent = new Event(CUSTOM_EVENTS.CURSOR_INACTIVE);
+
 // Event handlers.
 const cursorActiveHandler = (event: ThreeEvent<MouseEvent>) => {
   event.stopPropagation();
-  window.dispatchEvent(new Event(CUSTOM_EVENTS.CURSOR_ACTIVE));
+  window.dispatchEvent(cursorActiveEvent);
 };
 const cursorInactiveHandler = (event: ThreeEvent<MouseEvent>) => {
   event.stopPropagation();
-  window.dispatchEvent(new Event(CUSTOM_EVENTS.CURSOR_INACTIVE));
+  window.dispatchEvent(cursorInactiveEvent);
 };
 
 /**

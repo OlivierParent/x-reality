@@ -17,4 +17,4 @@ const TelevisionPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { TelevisionPage };
+export default TelevisionPage;

@@ -20,4 +20,4 @@ const Geometry2dPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { Geometry2dPage };
+export default Geometry2dPage;

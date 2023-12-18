@@ -26,6 +26,7 @@ export namespace NAVIGATION {
     PHYSICS_RAPIER_WORLD = "rapier/world",
     PHYSICS_RAPIER_XR_AR = "rapier/xr-ar",
     PHYSICS_RAPIER_XR_VR = "rapier/xr-vr",
+    STATIC_SCENE = "static-scene",
     SUZANNE = "suzanne/material",
     SUZANNE_EXPORTS = "suzanne/exports",
     TELEVISION = "television",
@@ -129,6 +130,10 @@ export namespace NAVIGATION {
     {
       label: "Physics-Rapier XR (VR)",
       to: PATH.PHYSICS_RAPIER_XR_VR,
+    },
+    {
+      label: "Static Scene",
+      to: PATH.STATIC_SCENE,
     },
     {
       label: "Suzanne",

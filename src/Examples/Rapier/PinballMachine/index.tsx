@@ -1,4 +1,4 @@
-import { GroupProps, useFrame } from "@react-three/fiber";
+import { GroupProps, useFrame, useThree } from "@react-three/fiber";
 import {
   CuboidCollider,
   RapierRigidBody,
@@ -30,6 +30,10 @@ import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
 import { Plunger } from "Examples/Rapier/PinballMachine/PlungerAssembly";
 
+const CAMERA = {
+  POSITION: new Vector3(0, 3, 5),
+  TARGET: new Vector3(0, 0, -2),
+} as const;
 const ZERO_QUATERNION = new Quaternion();
 const ZERO_VECTOR = new Vector3();
 
@@ -43,11 +47,23 @@ function resetObject(
   object: MutableRefObject<RapierRigidBody>,
   position: Vector3
 ) {
-  object.current.setAngvel(ZERO_VECTOR, true); // Angular velocity.
-  object.current.setLinvel(ZERO_VECTOR, true); // Linear velocity.
-  object.current.setTranslation(position, true); // Position.
-  object.current.setRotation(ZERO_QUATERNION, true); // Rotation.
+  // Angular velocity.
+  object.current.setAngvel(ZERO_VECTOR, true);
+  // Linear velocity.
+  object.current.setLinvel(ZERO_VECTOR, true);
+  // Rotation.
+  object.current.setRotation(ZERO_QUATERNION, true);
+  // Position.
+  object.current.setTranslation(position, true);
 }
+
+enum LEVA_BUTTON {
+  RESTORE_SNAPSHOT = "Restore Snapshot",
+  STORE_SNAPSHOT = "Store Snapshot",
+  RESET = "Reset",
+}
+
+const rotation = new Euler(MathUtils.degToRad(20), 0, 0);
 
 /**
  * Pinball machine.
@@ -60,9 +76,9 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
   useControls(
     LEVA.SCHEMA.SIMULATION,
     {
-      "Store Snapshot": button(() => storeSnapshot()),
-      "Restore Snapshot": button(() => restoreSnapshot()),
-      Reset: button(() => reset()),
+      [LEVA_BUTTON.STORE_SNAPSHOT]: button(() => storeSnapshot()),
+      [LEVA_BUTTON.RESTORE_SNAPSHOT]: button(() => restoreSnapshot()),
+      [LEVA_BUTTON.RESET]: button(() => reset()),
     },
     { order: LEVA.ORDER.SIMULATION }
   );
@@ -70,6 +86,7 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
   // Contexts.
   const scoreState = useContext(ScoreContext);
   const rapierCtx = useRapier();
+  const { camera } = useThree();
 
   // References.
   const leftBallRef = useRef<RapierRigidBody>(null!);
@@ -86,6 +103,7 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
     setCounter((state) => state + 1);
   };
 
+  // Callbacks.
   const reset = useCallback(() => {
     console.info("Rapier: resetting...");
     BALL.LEFT.POSITION.setX(-POSITION.X.EXTREMITY * (Math.random() + 0.5));
@@ -95,7 +113,6 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
     resetObject(middleBallRef, BALL.MIDDLE.POSITION);
     resetObject(rightBallRef, BALL.RIGHT.POSITION);
   }, []);
-
   const restoreSnapshot = useCallback(() => {
     console.info("Rapier: restoring snapshot...");
     const snapshot = rapierCtx.rapier.World.restoreSnapshot(
@@ -103,12 +120,16 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
     );
     rapierCtx.setWorld(snapshot);
   }, [rapierCtx]);
-
   const storeSnapshot = useCallback(() => {
     console.info("Rapier: taking snapshot...");
     const snapshot = rapierCtx.world.takeSnapshot();
     snapshotRef.current = snapshot;
   }, [rapierCtx]);
+
+  useEffect(() => {
+    camera.position.set(...CAMERA.POSITION.toArray());
+    camera.lookAt(...CAMERA.TARGET.toArray());
+  }, [camera]);
 
   useEffect(() => {
     console.info("Rapier: counter", counter);
@@ -133,7 +154,7 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
 
   return (
     <group name="Pinball Machine Game" {...props}>
-      <group name="Tilt" rotation={new Euler(MathUtils.degToRad(20), 0, 0)}>
+      <group name="Tilt" rotation={rotation}>
         <group name="Cabinet">
           <Playfield />
           <CabinetWalls />

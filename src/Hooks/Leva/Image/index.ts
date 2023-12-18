@@ -3,17 +3,22 @@ import { useControls } from "leva";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
+enum LEVA_OPTION {
+  DEFAULT = "\u2014Default\u2014",
+  SVG = "SVG",
+}
+
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(IMAGE: any) {
+function useLeva(options: any, value: any) {
   const { image } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
       image: {
         label: "Image",
-        options: IMAGE,
-        value: IMAGE.Default,
+        options,
+        value,
       },
     },
     SettingsLeva.folder(LEVA.ORDER.COMPONENTS)
@@ -24,4 +29,4 @@ function useLeva(IMAGE: any) {
   };
 }
 
-export { useLeva };
+export { LEVA_OPTION, useLeva };

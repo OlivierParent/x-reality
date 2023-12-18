@@ -17,4 +17,4 @@ const SuzanneExportsPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { SuzanneExportsPage };
+export default SuzanneExportsPage;

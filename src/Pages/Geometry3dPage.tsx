@@ -19,4 +19,4 @@ const Geometry3dPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { Geometry3dPage };
+export default Geometry3dPage;

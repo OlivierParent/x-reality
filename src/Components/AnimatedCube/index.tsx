@@ -3,12 +3,12 @@ import { GroupProps } from "@react-three/fiber";
 import { AnimatedCube as AnimatedCubeDefault } from "Components/AnimatedCube/Default";
 import { AnimatedCube as AnimatedCubeFramerMotion3d } from "Components/AnimatedCube/FramerMotion3d";
 import { AnimatedCube as AnimatedCubeGreenSock } from "Components/AnimatedCube/GreenSock";
-import { useLeva } from "Hooks/Leva/AnimatedCube";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/AnimatedCube";
 
 const LEVA_OPTIONS = {
-  "\u2014Default\u2014": <AnimatedCubeDefault />,
-  "Framer Motion 3D": <AnimatedCubeFramerMotion3d />,
-  "GreenSock GSAP": <AnimatedCubeGreenSock />,
+  [LEVA_OPTION.DEFAULT]: <AnimatedCubeDefault />,
+  [LEVA_OPTION.FRAMER_MOTION_3D]: <AnimatedCubeFramerMotion3d />,
+  [LEVA_OPTION.GREENSOCK_GSAP]: <AnimatedCubeGreenSock />,
 } as const;
 
 /**
@@ -19,7 +19,10 @@ const LEVA_OPTIONS = {
  */
 const AnimatedCube = (props: GroupProps): React.JSX.Element => {
   // Leva Controls.
-  const { cube } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS["Framer Motion 3D"]);
+  const { cube } = useLeva(
+    LEVA_OPTIONS,
+    LEVA_OPTIONS[LEVA_OPTION.FRAMER_MOTION_3D]
+  );
 
   return (
     <group name="Animated Cube" {...props}>

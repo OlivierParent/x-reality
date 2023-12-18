@@ -17,4 +17,4 @@ const PhysicsRapierDioramaPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { PhysicsRapierDioramaPage };
+export default PhysicsRapierDioramaPage;

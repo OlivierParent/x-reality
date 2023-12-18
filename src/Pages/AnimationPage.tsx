@@ -17,4 +17,4 @@ const AnimationPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { AnimationPage };
+export default AnimationPage;

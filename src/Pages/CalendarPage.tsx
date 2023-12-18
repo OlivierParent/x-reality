@@ -17,4 +17,4 @@ const CalendarPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { CalendarPage };
+export default CalendarPage;

@@ -17,4 +17,4 @@ const PhysicsRapierWorldPage = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { PhysicsRapierWorldPage };
+export default PhysicsRapierWorldPage;

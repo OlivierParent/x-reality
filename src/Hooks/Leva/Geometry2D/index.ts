@@ -3,10 +3,17 @@ import { folder, useControls } from "leva";
 import { LEVA } from "Configs/leva";
 import { SettingsLeva } from "Settings/Leva";
 
+enum LEVA_OPTION {
+  CIRCLE = "Circle",
+  NONE = "\u2014None\u2014",
+  PLANE = "Plane",
+  RING = "Ring",
+}
+
 /**
  * Custom React Hook for Leva Controls.
  */
-function useLeva(GEOMETRY_2D: any) {
+function useLeva(options: any, value: any) {
   const { geometry2DName } = useControls(
     LEVA.SCHEMA.COMPONENTS,
     {
@@ -14,13 +21,8 @@ function useLeva(GEOMETRY_2D: any) {
         {
           geometry2DName: {
             label: "Geometry 2D",
-            options: {
-              "\u2014None\u2014": GEOMETRY_2D.NONE,
-              "Plane\u0000": GEOMETRY_2D.PLANE,
-              "Circle\u0000": GEOMETRY_2D.CIRCLE,
-              "Ring\u0000": GEOMETRY_2D.RING,
-            },
-            value: GEOMETRY_2D.PLANE,
+            options,
+            value,
           },
         },
         SettingsLeva.folder(LEVA.ORDER.GEOMETRY)
@@ -34,4 +36,4 @@ function useLeva(GEOMETRY_2D: any) {
   };
 }
 
-export { useLeva };
+export { LEVA_OPTION, useLeva };

@@ -19,4 +19,4 @@ const PhysicsRapierPinballMachinePage = (
   );
 };
 
-export { PhysicsRapierPinballMachinePage };
+export default PhysicsRapierPinballMachinePage;

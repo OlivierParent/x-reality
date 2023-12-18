@@ -19,4 +19,4 @@ const PhysicsRapierCollidersManualPage = (
   );
 };
 
-export { PhysicsRapierCollidersManualPage };
+export default PhysicsRapierCollidersManualPage;

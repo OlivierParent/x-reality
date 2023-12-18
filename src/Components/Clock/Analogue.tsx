@@ -73,7 +73,7 @@ const Face = (): React.JSX.Element => {
             return (
               <group
                 name="Mark"
-                key={index}
+                key={`mark-${index}`}
                 rotation={[
                   0, //
                   0,
@@ -123,7 +123,7 @@ const Face = (): React.JSX.Element => {
                 color={CLOCK.MARK.MM.COLOR}
                 font={CLOCK.MARK.FONT}
                 fontSize={CLOCK.SIZE / 8}
-                key={index}
+                key={`hour-${index}`}
                 position={[x, y, SAFE_OFFSET]}
               >
                 {index ? index : CLOCK.HH}
