@@ -1,25 +1,17 @@
-import { Plane, RoundedBox, Svg, Text, useCursor } from "@react-three/drei";
+import { Plane, RoundedBox, Svg, Text } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useCallback, useState } from "react";
 
-import bootstrapIconsVolumeDownSvg from "bootstrap-icons/icons/volume-down.svg";
-
 import { Material as MaterialVideo } from "Components/Material/Video";
+import { TELEVISION } from "Components/Television/Television.config";
 import { VideoItem } from "Types/VideoItem";
 
 import videoByDanaNettles from "Components/Television/assets/Video_by_Dana_Nettles.mp4";
+import bootstrapIconsVolumeDownSvg from "bootstrap-icons/icons/volume-down.svg";
+import { MathUtils } from "three/src/math/MathUtils";
+import { Remote } from "./Remote";
 
 const SAFE_OFFSET = 0.01; // Safe offset to avoid z-fighting.
-const TELEVISION = {
-  ASPECT_RATIO: 16 / 9,
-  SIZE: 2,
-  DEPTH: 0.2,
-  EDGE: {
-    SIZE: 0.1,
-    RADIUS: 0.1,
-  },
-} as const;
-
 const VIDEO_ITEMS: VideoItem[] = [
   {
     src: videoByDanaNettles,
@@ -28,8 +20,8 @@ const VIDEO_ITEMS: VideoItem[] = [
   },
 ];
 
-const width = TELEVISION.SIZE * TELEVISION.ASPECT_RATIO;
 const height = TELEVISION.SIZE;
+const width = TELEVISION.SIZE * TELEVISION.PANEL.ASPECT_RATIO;
 
 /**
  * Television.
@@ -38,32 +30,51 @@ const height = TELEVISION.SIZE;
  */
 const Television = (props: GroupProps): React.JSX.Element => {
   // States.
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isToggled, setIsToggled] = useState<boolean>(false);
+  const [isLoopToggled, setIsLoopToggled] = useState<boolean>(true);
+  const [isMutedToggled, setIsMutedToggled] = useState<boolean>(false);
+  const [isPlayToggled, setIsPlayToggled] = useState<boolean>(false);
+  const [volume, setVolume] = useState<number>(TELEVISION.VOLUME.MAXIMUM);
 
   // Event handlers.
-  const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+  const loopClickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setIsToggled((state) => !state);
+    setIsLoopToggled((state) => !state);
   }, []);
-  const pointerOutHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+  const mutedClickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setIsHovered(false);
+    setIsMutedToggled((state) => !state);
   }, []);
-  const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+  const playClickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    setIsHovered(true);
+    setIsPlayToggled((state) => !state);
   }, []);
+  const volumeDownClickHandler = useCallback(
+    (event: ThreeEvent<MouseEvent>) => {
+      event.stopPropagation();
+      setVolume((volume) => {
+        volume -= TELEVISION.VOLUME.STEP;
 
-  // Cursor on hover.
-  useCursor(isHovered);
+        return TELEVISION.VOLUME.MINIMUM < volume
+          ? volume
+          : TELEVISION.VOLUME.MINIMUM;
+      });
+    },
+    []
+  );
+  const volumeUpClickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    setVolume((volume) => {
+      volume += TELEVISION.VOLUME.STEP;
+
+      return volume < TELEVISION.VOLUME.MAXIMUM
+        ? volume
+        : TELEVISION.VOLUME.MAXIMUM;
+    });
+  }, []);
 
   return (
     <group name="Television" {...props}>
       <group
-        onClick={clickHandler} // Sound is only allowed after a user action.
-        onPointerOut={pointerOutHandler}
-        onPointerOver={pointerOverHandler}
         position={[
           0,
           (TELEVISION.SIZE + TELEVISION.EDGE.RADIUS) / 2 +
@@ -88,12 +99,28 @@ const Television = (props: GroupProps): React.JSX.Element => {
           args={[width, height]}
           position={[0, 0, SAFE_OFFSET]}
         >
-          <MaterialVideo //
-            play={isToggled}
+          <MaterialVideo
+            loop={isLoopToggled}
+            muted={isMutedToggled}
+            play={isPlayToggled}
             src={VIDEO_ITEMS[0].src}
+            volume={volume / TELEVISION.VOLUME.MAXIMUM}
           />
         </Plane>
       </group>
+      <Remote
+        isLoopToggled={isLoopToggled}
+        isMutedToggled={isMutedToggled}
+        isPlayToggled={isPlayToggled}
+        loopClickHandler={loopClickHandler}
+        mutedClickHandler={mutedClickHandler}
+        playClickHandler={playClickHandler}
+        position={[0, 0, 3]}
+        rotation={[-MathUtils.degToRad(45), 0, 0]}
+        volume={volume}
+        volumeDownClickHandler={volumeDownClickHandler}
+        volumeUpClickHandler={volumeUpClickHandler}
+      />
       <Text //
         color={0x666666}
         fontSize={0.1}

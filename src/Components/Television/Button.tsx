@@ -1,8 +1,8 @@
-import { Html, Plane } from "@react-three/drei";
+import { Circle, Html, useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
-import { useState } from "react";
-import { Euler, Vector3 } from "three";
 import { motion } from "framer-motion-3d";
+import { useCallback, useState } from "react";
+import { Euler, Vector3 } from "three";
 
 import { TELEVISION } from "Components/Television/Television.config";
 import {
@@ -17,8 +17,8 @@ type TelevisionButtonProps = {
   tooltip?: string;
 } & GroupProps;
 
-const height = TELEVISION.SIZE * TELEVISION.BUTTON.SIZE;
-const width = TELEVISION.SIZE * TELEVISION.BUTTON.SIZE;
+const radius = (TELEVISION.SIZE * TELEVISION.BUTTON.SIZE) / 2;
+const segments = 32;
 
 const TelevisionButton = ({
   clickHandler,
@@ -30,21 +30,24 @@ const TelevisionButton = ({
 }: TelevisionButtonProps): React.JSX.Element => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const pointerOverHandler = (event: ThreeEvent<MouseEvent>) => {
+  const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     cursorActiveHandler(event);
     setIsHovered(true);
-  };
-  const pointerOutHandler = (event: ThreeEvent<MouseEvent>) => {
+  }, []);
+  const pointerOutHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     cursorInactiveHandler(event);
     setIsHovered(false);
-  };
+  }, []);
+
+  // Cursor on hover.
+  useCursor(isHovered);
 
   return (
     <group name="Television Button" position={position} rotation={rotation}>
-      <Plane
-        args={[width, height]}
+      <Circle
+        args={[radius, segments]}
         name="Loop Button"
         onClick={clickHandler}
         onPointerEnter={pointerOverHandler}
@@ -65,11 +68,15 @@ const TelevisionButton = ({
           }}
           transparent={true}
         />
-      </Plane>
+      </Circle>
       {tooltip !== "" && isHovered && (
         <Html
           name="Tooltip"
-          position={[TELEVISION.BUTTON.SIZE * 1.5, 0, 0]}
+          position={[
+            TELEVISION.BUTTON.SIZE * 1.7, //
+            TELEVISION.BUTTON.SIZE * 0.95,
+            0,
+          ]}
           style={{
             color: "hsl(120, 100%, 50%)",
             fontFamily: "monospace",
@@ -84,4 +91,4 @@ const TelevisionButton = ({
   );
 };
 
-export { TelevisionButton };
+export { TelevisionButton as Button };

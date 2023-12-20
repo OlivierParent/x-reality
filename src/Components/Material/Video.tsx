@@ -2,8 +2,11 @@ import { useEffect } from "react";
 import { VideoTexture } from "three";
 
 type MaterialVideoProps = {
-  play: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  play?: boolean;
   src: string;
+  volume?: number;
 };
 
 const video = document.createElement("video");
@@ -14,16 +17,23 @@ const videoTexture = new VideoTexture(video);
  *
  * A material displaying a video.
  *
+ * @param {MaterialVideoProps} props
  * @returns {React.JSX.Element}
  */
 const MaterialVideo = ({
+  loop = true,
+  muted = false,
   play = false,
   src,
+  volume = 1,
 }: MaterialVideoProps): React.JSX.Element => {
   useEffect(() => {
-    video.setAttribute("loop", "true");
-    video.setAttribute("mute", "false");
-  }, []);
+    video.loop = loop;
+  }, [loop]);
+
+  useEffect(() => {
+    video.setAttribute("muted", muted ? "true" : "false");
+  }, [muted]);
 
   useEffect(() => {
     if (play) {
@@ -38,9 +48,13 @@ const MaterialVideo = ({
     video.load();
   }, [src]);
 
+  useEffect(() => {
+    video.volume = volume;
+  }, [volume]);
+
   return (
     <meshBasicMaterial //
-      color={0xffffff}
+      color="white"
       map={videoTexture}
       toneMapped={false}
     />
