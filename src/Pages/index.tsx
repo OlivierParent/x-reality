@@ -75,6 +75,9 @@ const PhysicsRapierXrArPage = lazy(
 const PhysicsRapierXrVrPage = lazy(
   () => import("Pages/PhysicsRapierXrVrPage") //
 );
+const SpringPage = lazy(
+  () => import("Pages/SpringPage") //
+);
 const StaticScenePage = lazy(
   () => import("Pages/StaticScenePage") //
 );
@@ -212,6 +215,10 @@ const Pages = (props: RoutesProps): React.JSX.Element => {
         <Route //
           element={<PhysicsRapierXrVrPage />}
           path={NAVIGATION.PATH.PHYSICS_RAPIER_XR_VR}
+        />
+        <Route //
+          element={<SpringPage />}
+          path={NAVIGATION.PATH.SPRING}
         />
         <Route //
           element={<StaticScenePage />}

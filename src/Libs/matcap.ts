@@ -26,8 +26,12 @@ export namespace MATCAP {
      */
     GRAPHITE = "2D2D2F_C6C2C5_727176_94949B",
     /**
-     * @see https://github.com/emmelleppi/matcaps/blob/master/PAGE-3.md#2e763a_78a0b7_b3d1cf_14f209
+     * @see https://github.com/emmelleppi/matcaps/blob/master/PAGE-10.md#54c104_bbfa0f_97ef04_7ae104
      * @see https://pixologic.com/zbrush/downloadcenter/img/matcaps/images/erklaerbar/ok_green_crystal.jpg
+     */
+    GREEN = "54C104_BBFA0F_97EF04_7AE104",
+    /**
+     * @see https://github.com/emmelleppi/matcaps/blob/master/PAGE-3.md#2e763a_78a0b7_b3d1cf_14f209
      */
     GREEN_CRYSTAL = "2E763A_78A0B7_B3D1CF_14F209",
     /**

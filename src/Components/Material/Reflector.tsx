@@ -7,7 +7,7 @@ import { useLeva } from "Hooks/Leva/Material/Reflector";
  *
  * An extension of the MeshStandardMaterial, to easily add reflections and/or blur.
  *
- * @see https://drei.pmnd.rs/?path=/story/shaders-meshreflectormaterial--reflector-st
+ * @see https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs
  *
  * @returns {React.JSX.Element}
  */

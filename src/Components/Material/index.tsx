@@ -5,9 +5,11 @@ import { Material as MaterialNormal } from "Components/Material/Normal";
 import { Material as MaterialPhong } from "Components/Material/Phong";
 import { Material as MaterialPhysical } from "Components/Material/Physical";
 import { Material as MaterialPhysicalFrostedGlass } from "Components/Material/PhysicalFrostedGlass";
+import { Material as MaterialReflector } from "Components/Material/Reflector";
 import { Material as MaterialStandard } from "Components/Material/Standard";
 import { Material as MaterialStandardNormalMap } from "Components/Material/StandardNormalMap";
 import { Material as MaterialToon } from "Components/Material/Toon";
+import { Material as MaterialTransmission } from "Components/Material/Transmission";
 import { LEVA_OPTION, useLeva } from "Hooks/Leva/Material";
 
 const LEVA_OPTIONS = {
@@ -22,6 +24,8 @@ const LEVA_OPTIONS = {
   [LEVA_OPTION.PHYSICAL]: <MaterialPhysical />,
   [LEVA_OPTION.PHYSICAL_FROSTED_GLASS]: <MaterialPhysicalFrostedGlass />,
   [LEVA_OPTION.TOON]: <MaterialToon />,
+  [LEVA_OPTION.DREI_REFLECTOR]: <MaterialReflector />,
+  [LEVA_OPTION.DREI_TRANSMISSION]: <MaterialTransmission />,
 } as const;
 
 /**

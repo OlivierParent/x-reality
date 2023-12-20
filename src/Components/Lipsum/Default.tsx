@@ -30,13 +30,19 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
     },
   });
 
-  // Matcap.
-  const [matcapGreenCrystal] = //
-    useMatcapTexture(MATCAP.ID.GREEN_CRYSTAL, MATCAP.SIZE.XL);
-  const [matcapSilvery] = //
-    useMatcapTexture(MATCAP.ID.SILVERY, MATCAP.SIZE.XL);
-  const [matcapTitanium] = //
-    useMatcapTexture(MATCAP.ID.TITANIUM, MATCAP.SIZE.XL);
+  // Matcap Textures.
+  const [greenCrystalMatcapTexture] = useMatcapTexture(
+    MATCAP.ID.GREEN_CRYSTAL, //
+    MATCAP.SIZE.XL
+  );
+  const [silveryMatcapTexture] = useMatcapTexture(
+    MATCAP.ID.SILVERY, //
+    MATCAP.SIZE.XL
+  );
+  const [titaniumMatcapTexture] = useMatcapTexture(
+    MATCAP.ID.TITANIUM, //
+    MATCAP.SIZE.XL
+  );
 
   return (
     <group name="Default Lipsum" {...props}>
@@ -50,7 +56,7 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
         position={[0, 0.5, 0]}
       >
         {string}
-        <meshMatcapMaterial matcap={matcapTitanium} />
+        <meshMatcapMaterial matcap={titaniumMatcapTexture} />
       </Text>
       <Text
         font={FONT_FAMILY.ARCHITECTS_DAUGHTER.url}
@@ -58,7 +64,7 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
         position={[0, -0.5, 0.1]}
       >
         {string}
-        <meshMatcapMaterial matcap={matcapGreenCrystal} opacity={0.5} />
+        <meshMatcapMaterial matcap={greenCrystalMatcapTexture} opacity={0.5} />
       </Text>
       <Text
         color={0x000000}
@@ -69,7 +75,7 @@ const LipsumDefault = (props: GroupProps): React.JSX.Element => {
         position={[0, -1.5, 0.2]}
       >
         {string}
-        <meshMatcapMaterial matcap={matcapSilvery} opacity={0.9} />
+        <meshMatcapMaterial matcap={silveryMatcapTexture} opacity={0.9} />
       </Text>
     </group>
   );

@@ -58,7 +58,7 @@ const RapierPinballMachineBumper = (props: BumperProps): React.JSX.Element => {
             0
           )
         }
-        restitution={2.5}
+        restitution={2}
         type="fixed"
       >
         <CylinderCollider

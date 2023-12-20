@@ -7,7 +7,7 @@ import { useLeva } from "Hooks/Leva/Material/Toon";
  *
  * A material implementing toon shading.
  *
- * @see https://threejs.org/docs/index.html?q=toon#api/en/materials/MeshToonMaterial
+ * @see https://threejs.org/docs/index.html#api/en/materials/MeshToonMaterial
  *
  * @returns {React.JSX.Element}
  */

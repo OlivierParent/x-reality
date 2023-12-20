@@ -6,7 +6,7 @@ import {
   interactionGroups,
   useRapier,
 } from "@react-three/rapier";
-import { button, useControls } from "leva";
+import { button } from "leva";
 import {
   MutableRefObject,
   useCallback,
@@ -18,7 +18,6 @@ import {
 import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 
 import { INTERACTION } from "Configs/interaction";
-import { LEVA } from "Configs/leva";
 import { ScoreContext } from "Data/ScoreContext";
 import { Attractor } from "Examples/Rapier/PinballMachine/Attractor";
 import { Ball } from "Examples/Rapier/PinballMachine/Ball";
@@ -28,7 +27,8 @@ import { CabinetWalls } from "Examples/Rapier/PinballMachine/Cabinet/Walls";
 import { Flipper } from "Examples/Rapier/PinballMachine/Flipper";
 import { FLIPPER } from "Examples/Rapier/PinballMachine/Flipper.config";
 import { Playfield } from "Examples/Rapier/PinballMachine/Playfield";
-import { Plunger } from "Examples/Rapier/PinballMachine/PlungerAssembly";
+import { PlungerAssembly } from "Examples/Rapier/PinballMachine/PlungerAssembly";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/PinballMachine";
 
 const CAMERA = {
   POSITION: new Vector3(0, 3, 5),
@@ -57,13 +57,8 @@ function resetObject(
   object.current.setTranslation(position, true);
 }
 
-enum LEVA_BUTTON {
-  RESTORE_SNAPSHOT = "Restore Snapshot",
-  STORE_SNAPSHOT = "Store Snapshot",
-  RESET = "Reset",
-}
-
 const rotation = new Euler(MathUtils.degToRad(20), 0, 0);
+// const rotation = new Euler(MathUtils.degToRad(0), 0, 0);
 
 /**
  * Pinball machine.
@@ -72,16 +67,15 @@ const rotation = new Euler(MathUtils.degToRad(20), 0, 0);
  * @returns {React.JSX.Element}
  */
 const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
+  // Leva Options.
+  const LEVA_OPTIONS = {
+    [LEVA_OPTION.STORE_SNAPSHOT]: button(() => storeSnapshot()),
+    [LEVA_OPTION.RESTORE_SNAPSHOT]: button(() => restoreSnapshot()),
+    [LEVA_OPTION.RESET]: button(() => reset()),
+  };
+
   // Leva Controls.
-  useControls(
-    LEVA.SCHEMA.SIMULATION,
-    {
-      [LEVA_BUTTON.STORE_SNAPSHOT]: button(() => storeSnapshot()),
-      [LEVA_BUTTON.RESTORE_SNAPSHOT]: button(() => restoreSnapshot()),
-      [LEVA_BUTTON.RESET]: button(() => reset()),
-    },
-    { order: LEVA.ORDER.SIMULATION }
-  );
+  useLeva(LEVA_OPTIONS);
 
   // Contexts.
   const scoreState = useContext(ScoreContext);
@@ -190,9 +184,10 @@ const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
             />
           </group>
         </group>
-        <group name="Plunger Assembly" position={[4.7, 0, 1.6]}>
+        <group name="Plunger Assembly" position={[4.7, 0, 2]}>
+          <Attractor position={new Vector3(0, 0, 0)} />
           <Ball color={"cyan"} position={new Vector3(0, 3, -5)} />
-          <Plunger position={new Vector3(0, 0, 0)} />
+          <PlungerAssembly position={new Vector3(0, 0, 0)} />
         </group>
       </group>
       <group name="Balls">

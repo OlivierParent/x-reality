@@ -5,6 +5,8 @@ import { SettingsLeva } from "Settings/Leva";
 
 enum LEVA_OPTION {
   BASIC = "Basic (Flat, no light)",
+  DREI_REFLECTOR = "Reflector (Drei)",
+  DREI_TRANSMISSION = "Transmission (Drei)",
   LAMBERT = "Lambert (NPBR, Gouraud)",
   MATCAP = "Matcap (Material Capture, no light)",
   NONE = "\u2014None\u2014",

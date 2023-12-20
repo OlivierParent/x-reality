@@ -3,7 +3,7 @@ import { SettingsLevaMaterial as Material } from "Settings/Leva/Material";
 /**
  * Points Material settings for Leva.
  *
- * @see https://threejs.org/docs/index.html?q=point#api/en/materials/PointsMaterial
+ * @see https://threejs.org/docs/index.html#api/en/materials/PointsMaterial
  */
 export namespace SettingsLevaMaterialPoints {
   export const color = BasicMaterial.color;

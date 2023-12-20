@@ -29,12 +29,15 @@ const RapierPinballMachineCabinetWalls = (
   return (
     <group name="Cabinet Walls" {...props}>
       <RigidBody //
-        restitution={3}
-        type="fixed"
         collisionGroups={interactionGroups(INTERACTION.WALL, [
           INTERACTION.BALL,
         ])}
-        solverGroups={interactionGroups(INTERACTION.WALL, [INTERACTION.BALL])}
+        restitution={0.25}
+        friction={0.5}
+        solverGroups={interactionGroups(INTERACTION.WALL, [
+          INTERACTION.BALL, //
+        ])}
+        type="fixed"
       >
         <Box //
           args={[10, WALL.HEIGHT, WALL.THICKNESS]}
@@ -57,17 +60,17 @@ const RapierPinballMachineCabinetWalls = (
           rotation={[0, -Math.PI / 2, 0]}
         />
         <Box //
-          args={[3, WALL.HEIGHT, WALL.THICKNESS]}
+          args={[3.5, WALL.HEIGHT, WALL.THICKNESS]}
           material={materialLeft}
           name="Side Wall Bottom Left"
-          position={new Vector3(-2.4, WALL.HEIGHT / 2, -0.55)}
+          position={new Vector3(-2.6, WALL.HEIGHT / 2, -0.6)}
           rotation={[0, -Math.PI / 9, 0]}
         />
         <Box //
-          args={[3, WALL.HEIGHT, WALL.THICKNESS]}
+          args={[3.5, WALL.HEIGHT, WALL.THICKNESS]}
           material={materialRight}
           name="Side Wall Bottom Right"
-          position={new Vector3(2.4, WALL.HEIGHT / 2, -0.55)}
+          position={new Vector3(2.6, WALL.HEIGHT / 2, -0.6)}
           rotation={[0, Math.PI / 9, 0]}
         />
       </RigidBody>

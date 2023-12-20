@@ -17,7 +17,7 @@ const RapierDioramaFloor = (props: GroupProps): React.JSX.Element => {
 
   return (
     <group name="Floor" {...props}>
-      <RigidBody type="fixed">
+      <RigidBody ccd={true} type="fixed">
         <Box //
           args={args}
           receiveShadow={true}

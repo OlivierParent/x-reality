@@ -1,6 +1,10 @@
 import { Sphere } from "@react-three/drei";
+import { GroupProps } from "@react-three/fiber";
+import { interactionGroups } from "@react-three/rapier";
 import { Attractor } from "@react-three/rapier-addons";
 import { Vector3 } from "three";
+
+import { INTERACTION } from "Configs/interaction";
 
 const POSITION = new Vector3(0, 0, -5);
 const SPHERE = {
@@ -11,14 +15,24 @@ const SPHERE = {
   },
 } as const;
 
-const RapierPinballMachineAttractor = () => {
+/**
+ *  Pinball machine attractor.
+ *
+ * @param {GroupProps} props
+ * @returns {React.JSX.Element}
+ */
+const RapierPinballMachineAttractor = (
+  props: GroupProps
+): React.JSX.Element => {
   return (
-    <>
+    <group name="Attractor" {...props}>
       <Attractor //
-        collisionGroups={undefined}
+        collisionGroups={interactionGroups(INTERACTION.ATTRACTOR, [
+          INTERACTION.BALL,
+        ])}
         position={POSITION}
-        range={0.5}
-        strength={0.02}
+        range={0.05}
+        strength={0.01}
         type="linear"
       />
       <Sphere //
@@ -35,7 +49,7 @@ const RapierPinballMachineAttractor = () => {
           transparent={true}
         />
       </Sphere>
-    </>
+    </group>
   );
 };
 

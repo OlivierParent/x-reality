@@ -21,7 +21,7 @@ const RapierPinballMachineBall = forwardRef(
   (props: BallProps, ref?: Ref<RapierRigidBody>): React.JSX.Element => {
     const { color = 0xffffff, position, radius = 0.125 } = props;
 
-    const [matcapTitanium] = useMatcapTexture(
+    const [titaniumMatcapTexture] = useMatcapTexture(
       MATCAP.ID.TITANIUM,
       MATCAP.SIZE.XL
     );
@@ -29,35 +29,40 @@ const RapierPinballMachineBall = forwardRef(
     return (
       <RigidBody
         canSleep={false}
+        ccd={true}
         colliders="ball"
         collisionGroups={interactionGroups(INTERACTION.BALL, [
+          INTERACTION.ATTRACTOR,
           INTERACTION.BALL,
           INTERACTION.BUMPER,
           INTERACTION.FLIPPER,
           INTERACTION.KICKER,
+          INTERACTION.PLAYFIELD,
           INTERACTION.PLUNGER,
           INTERACTION.SENSOR,
           INTERACTION.WALL,
         ])}
-        density={1}
-        friction={undefined}
+        friction={0.1}
+        mass={1}
         position={position}
         ref={ref}
         restitution={0}
-        type="dynamic"
         solverGroups={interactionGroups(INTERACTION.BALL, [
+          INTERACTION.ATTRACTOR,
           INTERACTION.BALL,
           INTERACTION.BUMPER,
           INTERACTION.FLIPPER,
           INTERACTION.KICKER,
+          INTERACTION.PLAYFIELD,
           INTERACTION.PLUNGER,
           INTERACTION.WALL,
         ])}
+        type="dynamic"
       >
         <Sphere args={[radius]}>
           <meshMatcapMaterial //
             color={color}
-            matcap={matcapTitanium}
+            matcap={titaniumMatcapTexture}
           />
         </Sphere>
       </RigidBody>

@@ -1,6 +1,8 @@
-import { Plane, RoundedBox, Text, useCursor } from "@react-three/drei";
+import { Plane, RoundedBox, Svg, Text, useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useCallback, useState } from "react";
+
+import bootstrapIconsVolumeDownSvg from "bootstrap-icons/icons/volume-down.svg";
 
 import { Material as MaterialVideo } from "Components/Material/Video";
 import { VideoItem } from "Types/VideoItem";
@@ -99,6 +101,9 @@ const Television = (props: GroupProps): React.JSX.Element => {
       >
         {`${VIDEO_ITEMS[0].title} \u2014 ${VIDEO_ITEMS[0].url}`}
       </Text>
+      <Svg src={bootstrapIconsVolumeDownSvg}>
+        <meshBasicMaterial color={0x666666} />
+      </Svg>
     </group>
   );
 };

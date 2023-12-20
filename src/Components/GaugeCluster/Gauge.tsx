@@ -14,8 +14,6 @@ import { BackSide, MathUtils } from "three";
 import { FONT_FAMILY } from "Libs/font";
 import { MATCAP } from "Libs/matcap";
 
-const CLOCKWISE = -1;
-
 type GaugeDefaultProps = {
   config: {
     ANGLE: {
@@ -42,6 +40,8 @@ type GaugeDefaultProps = {
   size: number;
 };
 
+const CLOCKWISE = -1;
+
 /**
  * Gauge.
  *
@@ -49,13 +49,25 @@ type GaugeDefaultProps = {
  * @returns {React.JSX.Element}
  */
 const Gauge = (props: GroupProps & GaugeDefaultProps): React.JSX.Element => {
-  const { config: GAUGE, percentage, size: SIZE } = props;
-  const [matcapGraphite] = useMatcapTexture(MATCAP.ID.GRAPHITE, MATCAP.SIZE.XL);
-  const [matcapBuffedSilver] = useMatcapTexture(
+  const {
+    config: GAUGE, //
+    percentage,
+    size: SIZE,
+  } = props;
+
+  // Matcap Textures.
+  const [buffedSilverMatcapTexture] = useMatcapTexture(
     MATCAP.ID.BUFFED_SILVER,
     MATCAP.SIZE.XL
   );
-  const [matcapTitanium] = useMatcapTexture(MATCAP.ID.TITANIUM, MATCAP.SIZE.XL);
+  const [graphiteMatcapTexture] = useMatcapTexture(
+    MATCAP.ID.GRAPHITE, //
+    MATCAP.SIZE.XL
+  );
+  const [titaniumMatcapTexture] = useMatcapTexture(
+    MATCAP.ID.TITANIUM, //
+    MATCAP.SIZE.XL
+  );
 
   const CIRCLE = SIZE * 0.8;
   const LENGTH_LG = SIZE * 0.1;
@@ -77,7 +89,7 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): React.JSX.Element => {
     <group name="Gauge" {...props}>
       <group name="Face">
         <Circle args={[SIZE, 60]}>
-          <meshMatcapMaterial matcap={matcapGraphite} />
+          <meshMatcapMaterial matcap={graphiteMatcapTexture} />
         </Circle>
         <group position={[0, -SIZE * 0.6, SAFE_OFFSET]}>
           <Text fontSize={SIZE * 0.15} font={FONT_FAMILY.CODA.url}>
@@ -200,7 +212,7 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): React.JSX.Element => {
             castShadow={true}
             rotation={[-MathUtils.degToRad(90), 0, 0]}
           >
-            <meshMatcapMaterial matcap={matcapBuffedSilver} />
+            <meshMatcapMaterial matcap={buffedSilverMatcapTexture} />
           </Cylinder>
           <group
             rotation={[
@@ -221,7 +233,7 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): React.JSX.Element => {
         </group>
         <group name="Rim">
           <Torus args={[SIZE * 0.975, SIZE * 0.025, 3, 120]}>
-            <meshMatcapMaterial matcap={matcapTitanium} />
+            <meshMatcapMaterial matcap={titaniumMatcapTexture} />
           </Torus>
         </group>
       </group>

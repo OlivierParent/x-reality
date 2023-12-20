@@ -18,15 +18,18 @@ const MaterialMatcap = (): React.JSX.Element => {
   const { color, dithering, flatShading, opacity, side, transparent } =
     useLeva();
 
-  // Texture.
-  const [matcapTitanium] = useMatcapTexture(MATCAP.ID.TITANIUM, MATCAP.SIZE.XL);
+  // Matcap Textures.
+  const [titaniumMatcapTexture] = useMatcapTexture(
+    MATCAP.ID.TITANIUM, //
+    MATCAP.SIZE.XL
+  );
 
   return (
     <meshMatcapMaterial
       color={color}
       dithering={dithering}
       flatShading={flatShading}
-      matcap={matcapTitanium}
+      matcap={titaniumMatcapTexture}
       opacity={opacity}
       side={side as Side}
       transparent={transparent}

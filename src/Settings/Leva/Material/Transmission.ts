@@ -4,11 +4,11 @@ import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Materi
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
 
 /**
- * Mesh Reflector Material (Drei) settings for Leva.
+ * Mesh Transmission Material (Drei) settings for Leva.
  *
- * @see https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs
+ * @see https://drei.pmnd.rs/?path=/docs/shaders-meshtransmissionmaterial--docs
  */
-export namespace SettingsLevaMaterialReflector {
+export namespace SettingsLevaMaterialTransmission {
   export const alphaMap = BasicMaterial.alphaMap;
 
   export const aoMap = BasicMaterial.aoMap;

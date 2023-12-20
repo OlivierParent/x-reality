@@ -1,10 +1,12 @@
 export enum INTERACTION {
+  "ATTRACTOR",
   "BALL",
   "BUMPER",
   "CABINET",
   "CONSTRAINT",
   "FLIPPER",
   "KICKER",
+  "PLAYFIELD",
   "PLUNGER",
   "SENSOR",
   "WALL",

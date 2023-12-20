@@ -91,18 +91,19 @@ const RapierPinballMachineFlipper = (
   });
 
   return (
-    <group name="Flipper" position={position}>
+    <group name="Flipper Assembly" position={position}>
       <RigidBody
         canSleep={false} // Important or it will not always update!
+        ccd={true}
         colliders="cuboid"
         collisionGroups={interactionGroups(INTERACTION.FLIPPER, [
           INTERACTION.BALL,
           INTERACTION.CONSTRAINT,
         ])}
-        mass={100000}
+        mass={1}
         name="Flipper"
         ref={bodyDynamicRef}
-        restitution={3}
+        restitution={2}
         rotation={new Euler(0, rotationY, 0)}
         type="dynamic"
         solverGroups={interactionGroups(INTERACTION.FLIPPER, [
@@ -123,11 +124,11 @@ const RapierPinballMachineFlipper = (
         <Box args={[HELPER_SIZE / 4, HELPER_SIZE / 4, HELPER_SIZE / 4]} />
       </RigidBody>
 
-      <RigidBody name="Constraints" type="fixed">
+      <RigidBody name="Flipper Constraints" type="fixed">
         <BallCollider
           args={[0.1]}
           collisionGroups={interactionGroups(INTERACTION.CONSTRAINT)}
-          name="Upper Constraint"
+          name="Flipper Constraint Upper"
           position={[
             (0.8 - 0.1) * (isLeft ? 1 : -1), //
             0.125 + SAFE_OFFSET,
@@ -138,7 +139,7 @@ const RapierPinballMachineFlipper = (
         <BallCollider
           args={[0.1]}
           collisionGroups={interactionGroups(INTERACTION.CONSTRAINT)}
-          name="Lower Constraint"
+          name="Flipper Constraint Lower"
           position={[
             (0.8 - 0.5) * (isLeft ? 1 : -1), //
             0.125 + SAFE_OFFSET,
