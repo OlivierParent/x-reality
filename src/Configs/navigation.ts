@@ -26,7 +26,7 @@ export namespace NAVIGATION {
     PHYSICS_RAPIER_WORLD = "rapier/world",
     PHYSICS_RAPIER_XR_AR = "rapier/xr-ar",
     PHYSICS_RAPIER_XR_VR = "rapier/xr-vr",
-    SPRING = "spring",
+    SPRING_ANIMATION = "spring-animation",
     STATIC_SCENE = "static-scene",
     SUZANNE = "suzanne/material",
     SUZANNE_EXPORTS = "suzanne/exports",
@@ -133,8 +133,8 @@ export namespace NAVIGATION {
       to: PATH.PHYSICS_RAPIER_XR_VR,
     },
     {
-      label: "Spring—based Animation",
-      to: PATH.SPRING,
+      label: "Spring-based Animation",
+      to: PATH.SPRING_ANIMATION,
     },
     {
       label: "Static Scene",

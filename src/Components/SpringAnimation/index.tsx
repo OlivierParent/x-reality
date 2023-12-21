@@ -4,48 +4,13 @@ import {
   useMatcapTexture,
 } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
-import { useSpring, useMotionValueEvent } from "framer-motion";
+import { useMotionValueEvent, useSpring } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import { useCallback, useEffect, useState } from "react";
-import { DoubleSide, MathUtils, Vector3 } from "three";
+import { DoubleSide, Vector3 } from "three";
 
+import { SPRING } from "Components/SpringAnimation/SpringAnimation.config";
 import { MATCAP } from "Libs/matcap";
-
-const SPRING = {
-  NORMALISED: {
-    MAXIMUM: 350 / 360,
-    MINIMUM: 10 / 360,
-  },
-  OPACITY: {
-    MAXIMUM: 1,
-    MINIMUM: 0.25,
-  },
-  RING: {
-    PHI: { SEGMENTS: 1 },
-    RADIUS: {
-      INNER: 1.1,
-      OUTER: 1.9,
-    },
-    THETA: {
-      LENGTH: Math.PI * 2,
-      SEGMENTS: 64,
-      START: Math.PI / 2,
-    },
-  },
-  SETTINGS: {
-    DAMPING: 20,
-    STIFFNESS: 200,
-  },
-  TORUS: {
-    ARC: MathUtils.degToRad(360),
-    RADIUS: 1.5,
-    SEGMENTS: {
-      RADIAL: 32,
-      TUBULAR: 64,
-    },
-    TUBE: 0.5,
-  },
-} as const;
 
 const ZERO_VECTOR = new Vector3();
 const position = new Vector3();
@@ -53,12 +18,12 @@ const position = new Vector3();
 let opacity: number = SPRING.OPACITY.MINIMUM;
 
 /**
- * Spring.
+ * Spring-based Animation.
  *
  * @param {GroupProps} props
  * @returns {React.JSX.Element}
  */
-const Spring = (props: GroupProps): React.JSX.Element => {
+const SpringAnimation = (props: GroupProps): React.JSX.Element => {
   // Matcap Textures.
   const [greenMatcapTexture] = useMatcapTexture(
     MATCAP.ID.GREEN,
@@ -68,6 +33,7 @@ const Spring = (props: GroupProps): React.JSX.Element => {
   // Springs.
   const angleSpringNormalised = useSpring(SPRING.NORMALISED.MINIMUM, {
     damping: SPRING.SETTINGS.DAMPING,
+    mass: SPRING.SETTINGS.MASS,
     stiffness: SPRING.SETTINGS.STIFFNESS,
   });
 
@@ -75,8 +41,8 @@ const Spring = (props: GroupProps): React.JSX.Element => {
   const [angleNormalised, setAngleNormalised] = useState(
     SPRING.NORMALISED.MINIMUM
   );
-  const [isToggled, setIsToggled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isToggled, setIsToggled] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   // Event handlers.
   const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
@@ -98,12 +64,12 @@ const Spring = (props: GroupProps): React.JSX.Element => {
   useEffect(() => {
     if (isToggled) {
       angleSpringNormalised.set(SPRING.NORMALISED.MAXIMUM);
+      position.set(0, 0, -0.5);
       opacity = SPRING.OPACITY.MAXIMUM;
-      position.set(0, 0, 0.5);
     } else {
       angleSpringNormalised.set(SPRING.NORMALISED.MINIMUM);
-      opacity = SPRING.OPACITY.MINIMUM;
       position.set(0, 0, 0);
+      opacity = SPRING.OPACITY.MINIMUM;
     }
   }, [isToggled, angleSpringNormalised]);
 
@@ -130,14 +96,15 @@ const Spring = (props: GroupProps): React.JSX.Element => {
           ]}
         />
         <MeshTransmissionMaterial
-          emissive={"green"}
-          emissiveIntensity={0.25}
           distortionScale={0.5}
-          temporalDistortion={0.0}
+          emissive="green"
+          emissiveIntensity={0.25}
+          temporalDistortion={0.1}
+          anisotropicBlur={0.5}
           wireframe={false}
         />
       </mesh>
-      <motion.mesh //
+      <motion.mesh
         animate={{ ...position }}
         initial={{ ...position }}
         name="Ring"
@@ -164,4 +131,4 @@ const Spring = (props: GroupProps): React.JSX.Element => {
   );
 };
 
-export { Spring };
+export { SpringAnimation };

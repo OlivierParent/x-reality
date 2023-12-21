@@ -20,10 +20,12 @@ enum SCALE {
   SMALL = 1,
 }
 
+const ALPHA = 0.1;
 const ORIGIN_VECTOR = new Vector3();
 
 const colors = colorsGenerator();
 const initialColor = colors.next().value as string;
+const scale = new Vector3();
 
 /**
  * Animated Cube.
@@ -61,9 +63,14 @@ const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
   useCursor(isHovered);
 
   useFrame(({ clock }) => {
+    // Position.
+    cubeRef.current.position.lerp(position, ALPHA);
     // Rotation.
     const delta = clock.getElapsedTime();
     cubeRef.current.rotation.set(delta, delta, delta);
+    // Scale.
+    const scaleScalar = isHovered ? SCALE.LARGE : SCALE.SMALL;
+    cubeRef.current.scale.lerp(scale.setScalar(scaleScalar), ALPHA);
   });
 
   return (
@@ -72,9 +79,8 @@ const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
         onClick={clickHandler}
         onPointerOut={pointerOutHandler}
         onPointerOver={pointerOverHandler}
-        position={position}
         ref={cubeRef}
-        scale={isHovered ? SCALE.LARGE : SCALE.SMALL}
+        scale={SCALE.SMALL}
       >
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial

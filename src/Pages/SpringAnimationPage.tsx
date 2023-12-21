@@ -1,10 +1,10 @@
 import { GroupProps } from "@react-three/fiber";
 
-import { Spring } from "Components/Spring";
+import { SpringAnimation } from "Components/SpringAnimation";
 import { Layout } from "Layouts/SceneLayout";
 
 /**
- * Page for Spring.
+ * Page for Spring-based Animation.
  *
  * @param {GroupProps} props
  * @returns {React.JSX.Element}
@@ -12,7 +12,7 @@ import { Layout } from "Layouts/SceneLayout";
 const SpringPage = (props: GroupProps): React.JSX.Element => {
   return (
     <Layout>
-      <Spring />
+      <SpringAnimation />
     </Layout>
   );
 };

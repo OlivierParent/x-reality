@@ -1,7 +1,7 @@
 import { Text, useCursor } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Euler } from "three";
 
 enum COLOR {
@@ -51,10 +51,10 @@ const ButtonFrameMotion3d = (props: GroupProps): React.JSX.Element => {
   useCursor(isHovered);
 
   // Event handlers.
-  const clickHandler = (event: ThreeEvent<MouseEvent>) => {
+  const clickHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     setIsToggledButton((state) => !state);
-  };
+  }, []);
   const doubleClickHandler = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     setIsToggledButton((state) => !state);
