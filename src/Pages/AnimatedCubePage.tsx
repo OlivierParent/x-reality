@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Animated Cube.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const AnimatedCubePage = (props: GroupProps): React.JSX.Element => {
+const AnimatedCubePage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <AnimatedCube {...props} />

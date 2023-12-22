@@ -15,9 +15,9 @@ const LEVA_OPTIONS = {
  * Texture.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Texture = (props: GroupProps): React.JSX.Element => {
+const Texture = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { texturedMesh } = useLeva(
     LEVA_OPTIONS,

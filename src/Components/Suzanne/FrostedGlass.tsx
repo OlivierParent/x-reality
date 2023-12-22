@@ -10,10 +10,10 @@ import suzanneDefaultFlatShadingGlb from "Components/Suzanne/assets/suzanne_defa
  * Suzanne model with frosted glass material.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const SuzanneFrostedGlass = forwardRef(
-  (props: GroupProps, ref: any): React.JSX.Element => {
+  (props: GroupProps, ref: any): JSX.Element => {
     const { nodes }: any = useGLTF(suzanneDefaultFlatShadingGlb, true);
 
     return (

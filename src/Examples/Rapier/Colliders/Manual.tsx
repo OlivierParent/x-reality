@@ -54,9 +54,9 @@ const colliders: Array<any> = [
  * Rapier manual colliders demo.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierCollidersManual = (props: GroupProps): React.JSX.Element => {
+const RapierCollidersManual = (props: GroupProps): JSX.Element => {
   return (
     <group name="Rapier Manual Colliders" {...props}>
       {colliders.map(({ collider, name }, index: number) => (

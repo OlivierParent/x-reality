@@ -3,9 +3,9 @@ import { useLeva } from "Hooks/Leva/Material/PhysicalFrostedGlass";
 /**
  * Physically-based Material to simulate frosted glass.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialPhysicalFrostedGlass = (): React.JSX.Element => {
+const MaterialPhysicalFrostedGlass = (): JSX.Element => {
   // Leva Controls.
   const { roughness, thickness, transmission } = useLeva();
 

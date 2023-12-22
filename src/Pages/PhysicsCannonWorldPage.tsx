@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneCannonFirstPersonLayout";
  * Page for Cannon-es World.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const PhysicsCannonWorldPage = (props: GroupProps): React.JSX.Element => {
+const PhysicsCannonWorldPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <CannonWorld {...props} />

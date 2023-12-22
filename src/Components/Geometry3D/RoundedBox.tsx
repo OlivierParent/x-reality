@@ -9,9 +9,9 @@ import { Children } from "Types/Children";
  *
  * @see https://github.com/pmndrs/drei#roundedbox
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry3DRoundedBox = ({ children }: Children): React.JSX.Element => {
+const Geometry3DRoundedBox = ({ children }: Children): JSX.Element => {
   // Leva Controls.
   const {
     bevelSegments,

@@ -25,11 +25,9 @@ const ANGLE = {
  * Layout for a diorama scene with Rapier physics engine.
  *
  * @param {LayoutProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SceneRapierDioramaLayout = ({
-  children,
-}: LayoutProps): React.JSX.Element => {
+const SceneRapierDioramaLayout = ({ children }: LayoutProps): JSX.Element => {
   // Leva Controls.
   const canvasControls = useLevaCanvas();
   const physicsControls = useLevaPhysics();

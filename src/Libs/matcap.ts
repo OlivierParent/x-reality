@@ -6,7 +6,6 @@
  * - @see https://pixologic.com/zbrush/downloadcenter/library/
  * - @see https://www.badking.com.au/site/product-category/materials/
  * - @see https://www.zbrushcentral.com/t/matcap-repository/205029
- *
  */
 export namespace MATCAP {
   export enum ID {

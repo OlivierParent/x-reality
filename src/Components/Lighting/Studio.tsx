@@ -11,9 +11,9 @@ import { fromLevaPosition, useLeva } from "Hooks/Leva/Lighting/Studio";
 /**
  * Studio Lighting.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LightingStudio = (): React.JSX.Element => {
+const LightingStudio = (): JSX.Element => {
   // Leva Controls.
   const {
     lightHelper, //

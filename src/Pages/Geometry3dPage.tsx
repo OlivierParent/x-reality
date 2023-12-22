@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
 /**
  * Page for 3D Geometry.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry3dPage = (props: GroupProps): React.JSX.Element => {
+const Geometry3dPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <Geometry3D {...props}>

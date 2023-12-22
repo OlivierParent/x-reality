@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Lambert";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshLambertMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialLambert = (): React.JSX.Element => {
+const MaterialLambert = (): JSX.Element => {
   // Leva Controls.
   const {
     color,

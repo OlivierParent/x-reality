@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Clock.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ClockPage = (props: GroupProps): React.JSX.Element => {
+const ClockPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <Clock {...props} />

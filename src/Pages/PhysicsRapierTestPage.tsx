@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneRapierPoseLayout";
  * Page for Rapier Test.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const PhysicsRapierTestPage = (props: GroupProps): React.JSX.Element => {
+const PhysicsRapierTestPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <RapierTest {...props} />

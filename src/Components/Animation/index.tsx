@@ -9,9 +9,9 @@ import animationGlb from "Components/Animation/assets/animation.glb";
  * Animation.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Animation = (props: GroupProps): React.JSX.Element => {
+const Animation = (props: GroupProps): JSX.Element => {
   const { animations, scene }: any = useGLTF(animationGlb, true);
   const animationClip = animations[0];
   const animationMixer = useMemo(

@@ -6,9 +6,9 @@ import { useLeva } from "Hooks/Leva/Material/StandardNormalMap";
 /**
  * Standard Material with Normal Map.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialStandardNormalMap = (): React.JSX.Element => {
+const MaterialStandardNormalMap = (): JSX.Element => {
   // Leva Controls.
   const {
     normalAnisotropy,

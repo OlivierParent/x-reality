@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/DepthOfField";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/depth-of-field
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/DepthOfFieldEffect.js~DepthOfFieldEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsDepthOfField = () => {
   // Leva Controls.

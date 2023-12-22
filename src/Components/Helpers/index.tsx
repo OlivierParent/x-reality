@@ -7,9 +7,9 @@ import { useLeva } from "Hooks/Leva/Helpers";
  * Three.js Helpers.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Helpers = (props: GroupProps): React.JSX.Element => {
+const Helpers = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const {
     axesHelper, //

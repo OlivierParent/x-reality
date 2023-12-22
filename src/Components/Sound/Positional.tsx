@@ -9,9 +9,9 @@ import badassAudioFile from "Components/Sound/audio/bensound-badass.mp3";
  * Positional sound.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SoundPositional = (props: GroupProps): React.JSX.Element => {
+const SoundPositional = (props: GroupProps): JSX.Element => {
   // References.
   const positionalAudioRef = useRef<PositionalAudioType>(null!);
 

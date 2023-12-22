@@ -1,4 +1,5 @@
 export type NavigationItem = {
+  element: JSX.Element;
   label: string;
-  to: string;
+  path: string;
 };

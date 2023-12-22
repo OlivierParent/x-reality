@@ -41,8 +41,7 @@ const ZERO_VECTOR = new Vector3();
  * Reset position, rotation, and velocity of an object.
  *
  * @param {MutableRefObject<RapierRigidBody>} object
- * @param {Vector3} position
- */
+ * @param {Vector3} position*/
 function resetObject(
   object: MutableRefObject<RapierRigidBody>,
   position: Vector3
@@ -64,9 +63,9 @@ const rotation = new Euler(MathUtils.degToRad(20), 0, 0);
  * Pinball machine.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachine = (props: GroupProps): React.JSX.Element => {
+const RapierPinballMachine = (props: GroupProps): JSX.Element => {
   // Leva Options.
   const LEVA_OPTIONS = {
     [LEVA_OPTION.STORE_SNAPSHOT]: button(() => storeSnapshot()),

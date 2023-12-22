@@ -18,10 +18,10 @@ const LEVA_OPTIONS = {
  *
  * @param {string} name
  * @param {ReactNode} children
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
-  let element: React.JSX.Element;
+function enableGeometry(name: string, children: ReactNode): JSX.Element {
+  let element: JSX.Element;
   switch (name) {
     case LEVA_OPTION.CIRCLE:
       element = <Circle>{children}</Circle>;
@@ -42,9 +42,9 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
 /**
  * 2D Geometry.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry2D = ({ children }: Children): React.JSX.Element => {
+const Geometry2D = ({ children }: Children): JSX.Element => {
   // Leva Controls.
   const { geometry2DName } = useLeva(
     LEVA_OPTIONS,

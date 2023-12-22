@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Tripod.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const TripodPage = (props: GroupProps): React.JSX.Element => {
+const TripodPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <Tripod {...props} />

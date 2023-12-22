@@ -29,11 +29,9 @@ enum COLOR {
  * Pinball machine flipper.
  *
  * @param props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachineFlipper = (
-  props: FlipperProps
-): React.JSX.Element => {
+const RapierPinballMachineFlipper = (props: FlipperProps): JSX.Element => {
   const { orientation, position = new Vector3(0, 0, 0) } = props;
 
   // Keyboard Controls.

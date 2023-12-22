@@ -15,11 +15,11 @@ type PlungerProps = {
  * Pinball machine plunger assembly.
  *
  * @param {BumperProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const RapierPinballMachinePlungerAssembly = (
   props: PlungerProps
-): React.JSX.Element => {
+): JSX.Element => {
   // Matcap Textures.
   const [titaniumMatcapTexture] = useMatcapTexture(
     MATCAP.ID.TITANIUM, //

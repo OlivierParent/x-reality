@@ -10,9 +10,9 @@ const SUZANNES = 100;
  * Suzannes.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierDioramaSuzannes = (props: GroupProps): React.JSX.Element => {
+const RapierDioramaSuzannes = (props: GroupProps): JSX.Element => {
   return (
     <group name="Floor" {...props}>
       {Array(SUZANNES)

@@ -11,9 +11,9 @@ const SPEED = 0.025;
  * Single Logo.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LogoSingle = (props: GroupProps): React.JSX.Element => {
+const LogoSingle = (props: GroupProps): JSX.Element => {
   const { scene }: any = useGLTF(gltfLogoGlb, true);
 
   // References.

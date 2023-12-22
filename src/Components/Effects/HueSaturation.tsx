@@ -9,6 +9,8 @@ import { useLeva } from "Hooks/Leva/Effects/HueSaturation";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/hue-saturation
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/HueSaturationEffect.js~HueSaturationEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsHueSaturation = () => {
   // Leva Controls.

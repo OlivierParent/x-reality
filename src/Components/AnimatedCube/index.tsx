@@ -15,9 +15,9 @@ const LEVA_OPTIONS = {
  * Animated Cube.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const AnimatedCube = (props: GroupProps): React.JSX.Element => {
+const AnimatedCube = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { cube } = useLeva(
     LEVA_OPTIONS,

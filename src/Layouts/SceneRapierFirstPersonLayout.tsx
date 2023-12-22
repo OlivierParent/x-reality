@@ -16,11 +16,11 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a scene with Rapier physics engine for First Person view.
  *
  * @param {LayoutProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const SceneRapierFirstPersonLayout = ({
   children,
-}: LayoutProps): React.JSX.Element => {
+}: LayoutProps): JSX.Element => {
   // Leva Controls.
   const canvasControls = useLevaCanvas();
   const physicsControls = useLevaPhysics();

@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Normals.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const NormalsPage = (props: GroupProps): React.JSX.Element => {
+const NormalsPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <Normals {...props} />

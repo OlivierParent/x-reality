@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Phong";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshPhongMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialPhong = (): React.JSX.Element => {
+const MaterialPhong = (): JSX.Element => {
   // Leva Controls.
   const {
     color,

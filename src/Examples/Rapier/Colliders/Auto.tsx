@@ -18,9 +18,9 @@ const colliders: Array<RigidBodyAutoCollider | undefined> = [
  * Rapier auto-colliders demo.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierCollidersAuto = (props: GroupProps): React.JSX.Element => {
+const RapierCollidersAuto = (props: GroupProps): JSX.Element => {
   return (
     <group name="Rapier Auto-colliders" {...props}>
       {colliders.map(

@@ -12,9 +12,9 @@ const TRIPOD = {
  * Tripod model.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Tripod = (props: GroupProps): React.JSX.Element => {
+const Tripod = (props: GroupProps): JSX.Element => {
   return (
     <group name="Tripod" {...props}>
       <mesh>

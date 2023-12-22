@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/Sepia";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/sepia
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SepiaEffect.js~SepiaEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsSepia = () => {
   // Leva Controls.

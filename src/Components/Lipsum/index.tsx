@@ -13,9 +13,9 @@ const LEVA_OPTIONS = {
  * Lorem ipsum text.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Lipsum = (props: GroupProps): React.JSX.Element => {
+const Lipsum = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { lipsum } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.DEFAULT]);
 

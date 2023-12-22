@@ -8,23 +8,23 @@ import styles from "Components/UserInterface/Navigation.module.css";
 /**
  * Navigation menu.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const UserInterfaceNavigation = (): React.JSX.Element => {
+const UserInterfaceNavigation = (): JSX.Element => {
   return (
     <nav className={styles["nav"]}>
       <ul>
-        {NAVIGATION.ITEMS.map((navigationItem) => (
-          <li key={navigationItem.to}>
+        {NAVIGATION.ITEMS.map(({ label, path: to }) => (
+          <li key={to}>
             <NavLink
-              to={navigationItem.to}
+              to={to}
               className={({ isActive }) =>
                 [styles["nav__item"], isActive ? styles["-active"] : undefined]
                   .join(" ")
                   .trim()
               }
             >
-              {navigationItem.label}
+              {label}
             </NavLink>
           </li>
         ))}

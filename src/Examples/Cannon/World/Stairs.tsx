@@ -8,9 +8,9 @@ import { MathUtils, Mesh } from "three";
  * Stairs.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const CannonWorldStairs = (props: GroupProps): React.JSX.Element => {
+const CannonWorldStairs = (props: GroupProps): JSX.Element => {
   const angleSlope = 35;
   const angle = MathUtils.degToRad(-90 + angleSlope);
   const args: [number, number, number] = [1, 10, 0.2];

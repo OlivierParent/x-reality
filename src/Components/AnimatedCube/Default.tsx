@@ -31,9 +31,9 @@ const scale = new Vector3();
  * Animated Cube.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const AnimatedCubeDefault = (props: GroupProps): React.JSX.Element => {
+const AnimatedCubeDefault = (props: GroupProps): JSX.Element => {
   // References.
   const cubeRef = useRef<Mesh>(null!);
 

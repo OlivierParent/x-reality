@@ -9,6 +9,8 @@ import { useLeva } from "Hooks/Leva/Effects/Glitch";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/glitch
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GlitchEffect.js~GlitchEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsGlitch = () => {
   // Leva Controls.

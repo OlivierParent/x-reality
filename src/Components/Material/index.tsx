@@ -31,9 +31,9 @@ const LEVA_OPTIONS = {
 /**
  * Material.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Material = (): React.JSX.Element => {
+const Material = (): JSX.Element => {
   // Leva Controls.
   const { material } = useLeva(
     LEVA_OPTIONS,

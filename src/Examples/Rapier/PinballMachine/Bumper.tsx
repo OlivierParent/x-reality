@@ -29,9 +29,9 @@ const BUMPER = {
  * Pinball machine bumper.
  *
  * @param {BumperProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachineBumper = (props: BumperProps): React.JSX.Element => {
+const RapierPinballMachineBumper = (props: BumperProps): JSX.Element => {
   const { position = new Vector3(0, 0, 0) } = props;
 
   // References.

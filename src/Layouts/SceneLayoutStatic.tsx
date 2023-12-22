@@ -12,9 +12,9 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a default scene.
  *
  * @param {LayoutProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SceneLayout = ({ children }: LayoutProps): React.JSX.Element => {
+const SceneLayout = ({ children }: LayoutProps): JSX.Element => {
   // Leva Controls.
   const canvasControls = useLevaCanvas();
 

@@ -13,9 +13,9 @@ const LEVA_OPTIONS = {
  * Clock.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Clock = (props: GroupProps): React.JSX.Element => {
+const Clock = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { clock } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.ANALOGUE]);
 

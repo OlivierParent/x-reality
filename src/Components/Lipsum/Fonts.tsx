@@ -11,9 +11,9 @@ const length = Object.keys(FONT_FAMILY).length;
  * Lorem ipsum text.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LipsumFonts = (props: GroupProps): React.JSX.Element => {
+const LipsumFonts = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const {
     color, //

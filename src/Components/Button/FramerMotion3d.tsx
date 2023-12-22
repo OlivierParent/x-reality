@@ -35,9 +35,9 @@ const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
  * @see https://www.framer.com/motion/three-introduction/
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ButtonFrameMotion3d = (props: GroupProps): React.JSX.Element => {
+const ButtonFrameMotion3d = (props: GroupProps): JSX.Element => {
   // States.
   const [color, setColor] = useState(COLOR.BLUE);
   const [isHovered, setIsHovered] = useState(false);

@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Physical";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshPhysicalMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialPhysical = (): React.JSX.Element => {
+const MaterialPhysical = (): JSX.Element => {
   // Leva Controls.
   const {
     clearcoat,

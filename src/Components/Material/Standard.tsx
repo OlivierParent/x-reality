@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Standard";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialStandard = (): React.JSX.Element => {
+const MaterialStandard = (): JSX.Element => {
   // Leva Controls.
   const {
     color,

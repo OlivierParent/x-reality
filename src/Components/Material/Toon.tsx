@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Toon";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshToonMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialToon = (): React.JSX.Element => {
+const MaterialToon = (): JSX.Element => {
   const {
     color,
     emissive,

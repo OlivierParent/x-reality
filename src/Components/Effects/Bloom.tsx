@@ -8,8 +8,10 @@ import { useLeva } from "Hooks/Leva/Effects/Bloom";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/bloom
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/BloomEffect.js~BloomEffect.html
+ *
+ * @returns {JSX.Element}
  */
-const EffectsBloom = () => {
+const EffectsBloom = (): JSX.Element => {
   // Leva Controls.
   const {
     blendFunction, //

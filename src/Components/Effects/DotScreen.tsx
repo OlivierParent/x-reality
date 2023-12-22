@@ -9,6 +9,8 @@ import { useLeva } from "Hooks/Leva/Effects/DotScreen";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/dot-screen
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/DotScreenEffect.js~DotScreenEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsDotScreen = () => {
   // Leva Controls.

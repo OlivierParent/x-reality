@@ -10,9 +10,9 @@ import { SuzanneFrostedGlass } from "Components/Suzanne/FrostedGlass";
  * Composition with a painting and Suzanne.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Composition = (props: GroupProps): React.JSX.Element => {
+const Composition = (props: GroupProps): JSX.Element => {
   return (
     <group //
       name="Composition"

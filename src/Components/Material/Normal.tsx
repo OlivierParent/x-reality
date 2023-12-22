@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Normal";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialNormal = (): React.JSX.Element => {
+const MaterialNormal = (): JSX.Element => {
   // Leva Controls.
   const { dithering, flatShading, opacity, side, transparent, wireframe } =
     useLeva();

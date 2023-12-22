@@ -8,9 +8,9 @@ import uvGrid from "Components/Image/assets/UV_Grid_Sm.jpg";
  * Image.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ImageDefault = (props: GroupProps): React.JSX.Element => {
+const ImageDefault = (props: GroupProps): JSX.Element => {
   const texture = useTexture(uvGrid);
   texture.offset = new Vector2(0, 0);
   texture.repeat = new Vector2(1, 1);

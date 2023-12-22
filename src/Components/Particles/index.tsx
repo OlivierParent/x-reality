@@ -13,9 +13,9 @@ const LEVA_OPTIONS = {
  * Particles.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Particles = (props: GroupProps): React.JSX.Element => {
+const Particles = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { particles } = useLeva(
     LEVA_OPTIONS,

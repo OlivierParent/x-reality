@@ -17,9 +17,9 @@ const keyLightTarget = new Object3D();
 /**
  * Three Point Lighting with volumetric spotlights.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LightingThreePointVolumetric = (): React.JSX.Element => {
+const LightingThreePointVolumetric = (): JSX.Element => {
   // Leva Controls.
   const {
     lightHelper, //

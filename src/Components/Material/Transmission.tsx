@@ -10,9 +10,9 @@ import { useLeva } from "Hooks/Leva/Material/Transmission";
  *
  * @see https://drei.pmnd.rs/?path=/docs/shaders-meshtransmissionmaterial--docs
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialTransmission = (): React.JSX.Element => {
+const MaterialTransmission = (): JSX.Element => {
   const {
     color,
     emissive,

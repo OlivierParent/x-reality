@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/Scanline";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/scanline
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ScanlineEffect.js~ScanlineEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsScanline = () => {
   // Leva Controls.

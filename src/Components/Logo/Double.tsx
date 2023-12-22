@@ -9,9 +9,9 @@ import gltfLogoGlb from "Components/Logo/assets/gltf-logo.glb";
  * Double Logo.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LogoDouble = (props: GroupProps): React.JSX.Element => {
+const LogoDouble = (props: GroupProps): JSX.Element => {
   const { scene }: any = useGLTF(gltfLogoGlb, true);
   const sceneClone = useMemo(() => scene.clone(true) as never, [scene]);
 

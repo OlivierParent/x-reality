@@ -41,9 +41,9 @@ const LEVA_OPTIONS = {
 /**
  * Effects.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Effects = (): React.JSX.Element => {
+const Effects = (): JSX.Element => {
   // Leva Controls.
   const { effect } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.NONE]);
 

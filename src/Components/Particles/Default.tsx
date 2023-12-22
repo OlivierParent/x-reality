@@ -3,9 +3,9 @@ import { useLeva } from "Hooks/Leva/Particles/Points";
 /**
  * Particles.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ParticlesDefault = (): React.JSX.Element => {
+const ParticlesDefault = (): JSX.Element => {
   // Leva Controls.
   const {
     color, //

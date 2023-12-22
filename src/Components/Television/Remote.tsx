@@ -19,11 +19,11 @@ type TelevisionRemoteProps = {
  * Television Remote.
  *
  * @param {GroupProps & TelevisionRemoteProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const TelevisionRemote = (
   props: GroupProps & TelevisionRemoteProps
-): React.JSX.Element => {
+): JSX.Element => {
   const {
     isLoopToggled,
     isMutedToggled,

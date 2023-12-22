@@ -21,11 +21,9 @@ materialRight.color.setHSL(1 / 3, 1, 0.5);
  * Pinball machine cabinet walls.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachineCabinetWalls = (
-  props: GroupProps
-): React.JSX.Element => {
+const RapierPinballMachineCabinetWalls = (props: GroupProps): JSX.Element => {
   return (
     <group name="Cabinet Walls" {...props}>
       <RigidBody //

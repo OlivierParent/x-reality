@@ -8,9 +8,9 @@ import { Suzannes } from "Examples/Rapier/Diorama/Suzannes";
  * Diorama.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierDiorama = (props: GroupProps): React.JSX.Element => {
+const RapierDiorama = (props: GroupProps): JSX.Element => {
   return (
     <group name="World" position={[0, -1.25, 0]} {...props}>
       <Floor />

@@ -10,9 +10,9 @@ import suzanneSubdivisionSmoothShadingGlb from "Components/Suzanne/assets/suzann
  * Suzanne model.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Suzanne = forwardRef((props: GroupProps, ref: any): React.JSX.Element => {
+const Suzanne = forwardRef((props: GroupProps, ref: any): JSX.Element => {
   const { nodes }: any = useGLTF(suzanneSubdivisionSmoothShadingGlb, true);
 
   return (

@@ -16,11 +16,9 @@ enum WALL {
  * Wall.
  *
  * @param {GroupProps & WallProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierDioramaWall = (
-  props: GroupProps & WallProps
-): React.JSX.Element => {
+const RapierDioramaWall = (props: GroupProps & WallProps): JSX.Element => {
   const args: [number, number, number] = [
     WALL.WIDTH,
     WALL.HEIGHT,

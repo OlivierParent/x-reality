@@ -15,9 +15,9 @@ const LEVA_OPTIONS = {
  * Button.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Button = (props: GroupProps): React.JSX.Element => {
+const Button = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { button } = useLeva(
     LEVA_OPTIONS,

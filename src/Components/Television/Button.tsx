@@ -27,7 +27,7 @@ const TelevisionButton = ({
   position = new Vector3(),
   rotation = new Euler(),
   tooltip = "",
-}: TelevisionButtonProps): React.JSX.Element => {
+}: TelevisionButtonProps): JSX.Element => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const pointerOverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {

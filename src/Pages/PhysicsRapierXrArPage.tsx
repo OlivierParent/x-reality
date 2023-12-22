@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneRapierFirstPersonXrArLayout";
  * Page for Rapier with XR: AR.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const PhysicsRapierXrArPage = (props: GroupProps): React.JSX.Element => {
+const PhysicsRapierXrArPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <RapierWorld {...props} />

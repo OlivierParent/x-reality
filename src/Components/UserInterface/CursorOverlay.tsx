@@ -22,9 +22,9 @@ const cursorInactiveHandler = (event: ThreeEvent<MouseEvent>) => {
 /**
  * Cursor overlay for First-Person.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const UserInterfaceCursorOverlay = (): React.JSX.Element => {
+const UserInterfaceCursorOverlay = (): JSX.Element => {
   // States.
   const [isActive, setIsActive] = useState(false);
 

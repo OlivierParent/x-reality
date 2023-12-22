@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Gauge Cluster.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const GaugeClusterPage = (props: GroupProps): React.JSX.Element => {
+const GaugeClusterPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <GaugeCluster {...props} />

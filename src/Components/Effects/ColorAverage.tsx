@@ -8,8 +8,10 @@ import { useLeva } from "Hooks/Leva/Effects/ColorAverage";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/color-average
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ColorAverageEffect.js~ColorAverageEffect.html
+ *
+ * @returns {JSX.Element}
  */
-const EffectsColorAverage = () => {
+const EffectsColorAverage = (): JSX.Element => {
   // Leva Controls.
   const {
     blendFunction, //

@@ -46,9 +46,9 @@ const CLOCKWISE = -1;
  * Gauge.
  *
  * @param {GroupProps & GaugeDefaultProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Gauge = (props: GroupProps & GaugeDefaultProps): React.JSX.Element => {
+const Gauge = (props: GroupProps & GaugeDefaultProps): JSX.Element => {
   const {
     config: GAUGE, //
     percentage,

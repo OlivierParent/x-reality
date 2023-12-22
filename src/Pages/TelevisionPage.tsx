@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Television.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const TelevisionPage = (props: GroupProps): React.JSX.Element => {
+const TelevisionPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <Television {...props} />

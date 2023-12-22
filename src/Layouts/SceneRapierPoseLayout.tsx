@@ -16,11 +16,9 @@ const CAMERA = { fov: 45, position: [7, 7, 7] } as const;
  * Layout for a scene at an angle with Rapier physics engine.
  *
  * @param {LayoutProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SceneRapierPoseLayout = ({
-  children,
-}: LayoutProps): React.JSX.Element => {
+const SceneRapierPoseLayout = ({ children }: LayoutProps): JSX.Element => {
   // Leva Controls.
   const canvasControls = useLevaCanvas();
   const physicsControls = useLevaPhysics();

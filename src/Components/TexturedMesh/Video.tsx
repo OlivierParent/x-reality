@@ -14,9 +14,9 @@ const height = SIZE;
  * Mesh with Video Texture.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const TexturedMeshVideo = (props: GroupProps): React.JSX.Element => {
+const TexturedMeshVideo = (props: GroupProps): JSX.Element => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const videoTexture = useVideoTexture(videoByRickyEsquivel, {

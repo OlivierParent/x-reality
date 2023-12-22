@@ -6,7 +6,6 @@ import { SettingsLevaEffects as Effects } from "Settings/Leva/Effects";
  * @see https://docs.pmnd.rs/react-postprocessing/effects/scanline
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ScanlineEffect.js~ScanlineEffect.html
  */
-
 export namespace SettingsLevaEffectsScanline {
   export const blendFunction = Effects.blendFunction;
 

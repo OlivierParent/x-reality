@@ -10,9 +10,9 @@ import { MATCAP } from "Libs/matcap";
  * Lorem ipsum text.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LipsumDefault = (props: GroupProps): React.JSX.Element => {
+const LipsumDefault = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const {
     size, //

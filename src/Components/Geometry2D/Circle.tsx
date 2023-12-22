@@ -10,9 +10,9 @@ import { Children } from "Types/Children";
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/CircleGeometry
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry2DCircle = ({ children }: Children): React.JSX.Element => {
+const Geometry2DCircle = ({ children }: Children): JSX.Element => {
   // Leva Controls.
   const {
     radius, //

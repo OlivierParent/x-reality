@@ -23,9 +23,9 @@ import { MATCAP } from "Libs/matcap";
 /**
  * Pinball machine plunger.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Plunger = (props: GroupProps): React.JSX.Element => {
+const Plunger = (props: GroupProps): JSX.Element => {
   // Matcap Textures.
   const [titaniumMatcapTexture] = useMatcapTexture(
     MATCAP.ID.TITANIUM, //

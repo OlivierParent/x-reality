@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneRapierDioramaLayout";
  * Page for Rapier Diorama.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const PhysicsRapierDioramaPage = (props: GroupProps): React.JSX.Element => {
+const PhysicsRapierDioramaPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <RapierDiorama {...props} />

@@ -9,9 +9,9 @@ import { useLeva } from "Hooks/Leva/Material/Reflector";
  *
  * @see https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialReflector = (): React.JSX.Element => {
+const MaterialReflector = (): JSX.Element => {
   // Leva Controls.
   const {
     blur,

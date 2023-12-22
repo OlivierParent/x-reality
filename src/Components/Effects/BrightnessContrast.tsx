@@ -11,8 +11,10 @@ import { useLeva } from "Hooks/Leva/Effects/BrightnessContrast";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/brightness-contrast
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/BrightnessContrastEffect.js~BrightnessContrastEffect.html
+ *
+ * @returns {JSX.Element}
  */
-const EffectsBrightnessContrast = () => {
+const EffectsBrightnessContrast = (): JSX.Element => {
   // Leva Controls.
   const {
     blendFunction, //

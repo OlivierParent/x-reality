@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/Grid";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/grid
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/GridEffect.js~GridEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsGrid = () => {
   // Leva Controls.

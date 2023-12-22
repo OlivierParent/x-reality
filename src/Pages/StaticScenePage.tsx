@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayoutStatic";
  * Page for Animated Cube.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const StaticScenePage = (props: GroupProps): React.JSX.Element => {
+const StaticScenePage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <StaticScene />

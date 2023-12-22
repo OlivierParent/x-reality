@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/ToneMapping";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/tone-mapping
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ToneMappingEffect.js~ToneMappingEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsToneMapping = () => {
   // Leva Controls.

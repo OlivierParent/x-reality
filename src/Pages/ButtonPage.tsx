@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Button.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ButtonPage = (props: GroupProps): React.JSX.Element => {
+const ButtonPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <Button {...props} />

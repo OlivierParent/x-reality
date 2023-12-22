@@ -37,9 +37,9 @@ const gsapObject = { color: initialColor };
  * @see https://gsap.com/
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ButtonGreenSock = (props: GroupProps): React.JSX.Element => {
+const ButtonGreenSock = (props: GroupProps): JSX.Element => {
   // References.
   const buttonRef = useRef<Group>(null!);
   const materialRef = useRef<MeshBasicMaterial>(null!);

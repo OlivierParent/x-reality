@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/SMAA";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/smaa
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/SMAAEffect.js~SMAAEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsSMAA = () => {
   // Leva Controls.

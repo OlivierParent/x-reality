@@ -26,9 +26,9 @@ const width = TELEVISION.SIZE * TELEVISION.PANEL.ASPECT_RATIO;
 /**
  * Television.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Television = (props: GroupProps): React.JSX.Element => {
+const Television = (props: GroupProps): JSX.Element => {
   // States.
   const [isLoopToggled, setIsLoopToggled] = useState<boolean>(true);
   const [isMutedToggled, setIsMutedToggled] = useState<boolean>(false);

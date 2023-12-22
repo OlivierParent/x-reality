@@ -34,9 +34,9 @@ const gsapTimeline: any = gsap.timeline();
  * @see https://gsap.com/resources/React/
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const AnimatedCubeGreenSock = (props: GroupProps): React.JSX.Element => {
+const AnimatedCubeGreenSock = (props: GroupProps): JSX.Element => {
   // References.
   const cubeRef = useRef<Mesh>(null!);
   const materialRef = useRef<MeshStandardMaterial>(null!);

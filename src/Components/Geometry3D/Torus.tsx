@@ -10,9 +10,9 @@ import { Children } from "Types/Children";
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/TorusGeometry
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry3DTorus = ({ children }: Children): React.JSX.Element => {
+const Geometry3DTorus = ({ children }: Children): JSX.Element => {
   // Leva Controls.
   const {
     arc, //

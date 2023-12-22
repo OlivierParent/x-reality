@@ -34,10 +34,10 @@ const LEVA_OPTIONS = {
  *
  * @param {string} name
  * @param {ReactNode} children
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
-  let element: React.JSX.Element;
+function enableGeometry(name: string, children: ReactNode): JSX.Element {
+  let element: JSX.Element;
   switch (name) {
     case LEVA_OPTION.BOX:
       element = <Box>{children}</Box>;
@@ -82,9 +82,9 @@ function enableGeometry(name: string, children: ReactNode): React.JSX.Element {
 /**
  * 3D Geometry.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry3D = ({ children }: Children): React.JSX.Element => {
+const Geometry3D = ({ children }: Children): JSX.Element => {
   // Leva Controls.
   const { geometry3DName } = useLeva(
     LEVA_OPTIONS,

@@ -13,9 +13,9 @@ const LEVA_OPTIONS = {
  * Image.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Image = (props: GroupProps): React.JSX.Element => {
+const Image = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { image } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.DEFAULT]);
 

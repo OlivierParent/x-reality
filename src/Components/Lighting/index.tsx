@@ -18,9 +18,9 @@ const LEVA_OPTIONS = {
  * Lighting.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Lighting = (props: GroupProps): React.JSX.Element => {
+const Lighting = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { lighting } = useLeva(
     LEVA_OPTIONS,

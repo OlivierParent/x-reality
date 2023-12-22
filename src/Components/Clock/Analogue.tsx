@@ -34,9 +34,9 @@ const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
 /**
  * Clock Face.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Face = (): React.JSX.Element => {
+const Face = (): JSX.Element => {
   return (
     <group name="Face">
       <group name="Plate">
@@ -148,9 +148,9 @@ const Face = (): React.JSX.Element => {
 /**
  * Clock Hands.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Hands = (): React.JSX.Element => {
+const Hands = (): JSX.Element => {
   // States
   const [angleHandHours, setAngleHandHours] = React.useState<number>(0);
   const [angleHandMinutes, setAngleHandMinutes] = React.useState<number>(0);
@@ -283,9 +283,9 @@ const Hands = (): React.JSX.Element => {
  * Analogue Clock.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ClockAnalogue = (props: GroupProps): React.JSX.Element => {
+const ClockAnalogue = (props: GroupProps): JSX.Element => {
   return (
     <group name="Analogue Clock" {...props}>
       <Face />

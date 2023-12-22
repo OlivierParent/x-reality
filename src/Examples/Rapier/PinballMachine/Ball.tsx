@@ -15,10 +15,10 @@ import { BallProps } from "Types/BallProps";
  *
  * @param {BallProps} props
  * @param {Ref<RapierRigidBody>} ref
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const RapierPinballMachineBall = forwardRef(
-  (props: BallProps, ref?: Ref<RapierRigidBody>): React.JSX.Element => {
+  (props: BallProps, ref?: Ref<RapierRigidBody>): JSX.Element => {
     const { color = 0xffffff, position, radius = 0.125 } = props;
 
     const [titaniumMatcapTexture] = useMatcapTexture(

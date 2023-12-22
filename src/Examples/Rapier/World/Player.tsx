@@ -20,9 +20,9 @@ const velocityVector = ZERO_VECTOR.clone();
  * Player.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierWorldPlayer = (props: GroupProps): React.JSX.Element => {
+const RapierWorldPlayer = (props: GroupProps): JSX.Element => {
   // Keyboard Controls.
   const playerJumpOn = useKeyboardControls(
     (state) => state.playerJump //

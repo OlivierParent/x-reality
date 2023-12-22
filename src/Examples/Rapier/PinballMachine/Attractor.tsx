@@ -19,11 +19,9 @@ const SPHERE = {
  *  Pinball machine attractor.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachineAttractor = (
-  props: GroupProps
-): React.JSX.Element => {
+const RapierPinballMachineAttractor = (props: GroupProps): JSX.Element => {
   return (
     <group name="Attractor" {...props}>
       <Attractor //

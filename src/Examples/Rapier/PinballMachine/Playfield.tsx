@@ -25,9 +25,9 @@ const rotation = new Euler(MathUtils.degToRad(-90), 0, 0);
 /**
  * Pinball machine playfield.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachinePlayfield = (): React.JSX.Element => {
+const RapierPinballMachinePlayfield = (): JSX.Element => {
   return (
     <RigidBody ccd={true} type="fixed">
       <Plane

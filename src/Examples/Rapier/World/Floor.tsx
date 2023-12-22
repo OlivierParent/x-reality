@@ -9,9 +9,9 @@ const PLANE_SIZE = 100;
  * Floor.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierWorldFloor = (props: GroupProps): React.JSX.Element => {
+const RapierWorldFloor = (props: GroupProps): JSX.Element => {
   const args: [number, number] = [PLANE_SIZE, PLANE_SIZE];
   const rotation = new Euler(MathUtils.degToRad(-90), 0, 0);
 

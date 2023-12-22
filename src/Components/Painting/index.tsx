@@ -12,9 +12,9 @@ const PAINTING = {
  * Painting.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Painting = (props: GroupProps): React.JSX.Element => {
+const Painting = (props: GroupProps): JSX.Element => {
   const texture = useTexture(PAINTING.TEXTURE);
   const aspectRatio = texture.image.width / texture.image.height;
 

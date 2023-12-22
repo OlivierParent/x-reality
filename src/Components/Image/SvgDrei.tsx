@@ -29,9 +29,9 @@ const images = [
  * Image.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ImageSvgDrei = (props: GroupProps): React.JSX.Element => {
+const ImageSvgDrei = (props: GroupProps): JSX.Element => {
   return (
     <group name="SVG Image" {...props}>
       {images.map(({ position, src }, index) => (

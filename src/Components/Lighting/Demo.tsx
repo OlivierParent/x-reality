@@ -24,9 +24,9 @@ const target = new Object3D();
 /**
  * Lighting Demo.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LightingDemo = (): React.JSX.Element => {
+const LightingDemo = (): JSX.Element => {
   // Leva Controls.
   const {
     lightHelper,

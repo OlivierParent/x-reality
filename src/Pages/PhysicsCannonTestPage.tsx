@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneCannonPoseLayout";
  * Page for Cannon-es Test.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const PhysicsCannonTestPage = (props: GroupProps): React.JSX.Element => {
+const PhysicsCannonTestPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <CannonTest {...props} />

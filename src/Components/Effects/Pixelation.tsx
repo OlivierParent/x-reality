@@ -7,6 +7,8 @@ import { useLeva } from "Hooks/Leva/Effects/Pixelation";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/pixelation
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/PixelationEffect.js~PixelationEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsPixelation = () => {
   // Leva Controls.

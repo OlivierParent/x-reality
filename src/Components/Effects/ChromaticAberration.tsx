@@ -12,8 +12,10 @@ import { useLeva } from "Hooks/Leva/Effects/ChromaticAberration";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/chromatic-aberration
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/ChromaticAberrationEffect.js~ChromaticAberrationEffect.html
+ *
+ * @returns {JSX.Element}
  */
-const EffectsChromaticAberration = () => {
+const EffectsChromaticAberration = (): JSX.Element => {
   // Leva Controls.
   const {
     blendFunction, //

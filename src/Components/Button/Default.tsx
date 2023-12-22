@@ -31,9 +31,9 @@ const SAFE_OFFSET = 0.001; // Prevent Z Fighting.
  * Button.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const ButtonDefault = (props: GroupProps): React.JSX.Element => {
+const ButtonDefault = (props: GroupProps): JSX.Element => {
   // States.
   const [color, setColor] = useState(COLOR.BLUE);
   const [isHovered, setIsHovered] = useState(false);

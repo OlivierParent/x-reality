@@ -7,9 +7,9 @@ import { Layout } from "Layouts/SceneLayout";
  * Page for Spring-based Animation.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SpringPage = (props: GroupProps): React.JSX.Element => {
+const SpringPage = (props: GroupProps): JSX.Element => {
   return (
     <Layout>
       <SpringAnimation />

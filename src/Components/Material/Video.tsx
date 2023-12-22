@@ -18,7 +18,7 @@ const videoTexture = new VideoTexture(video);
  * A material displaying a video.
  *
  * @param {MaterialVideoProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const MaterialVideo = ({
   loop = true,
@@ -26,7 +26,7 @@ const MaterialVideo = ({
   play = false,
   src,
   volume = 1,
-}: MaterialVideoProps): React.JSX.Element => {
+}: MaterialVideoProps): JSX.Element => {
   useEffect(() => {
     video.loop = loop;
   }, [loop]);

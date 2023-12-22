@@ -15,9 +15,9 @@ import styles from "Styles/labels.module.css";
  * Different Suzanne model exports from Blender.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SuzanneExports = (props: GroupProps, ref: any): React.JSX.Element => {
+const SuzanneExports = (props: GroupProps, ref: any): JSX.Element => {
   const { scene: sceneDefaultFlatShading }: any = useGLTF(
     suzanneDefaultFlatShadingGlb,
     true

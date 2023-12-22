@@ -12,10 +12,10 @@ const LEVA_OPTIONS = {
 /**
  * Logo.
  *
- *  @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @param {GroupProps} props
+ * @returns {JSX.Element}
  */
-const Logo = (props: GroupProps): React.JSX.Element => {
+const Logo = (props: GroupProps): JSX.Element => {
   // Leva Controls.
   const { logo } = useLeva(LEVA_OPTIONS, LEVA_OPTIONS[LEVA_OPTION.DOUBLE]);
 

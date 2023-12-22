@@ -11,9 +11,9 @@ import { MATCAP } from "Libs/matcap";
  *
  * @see https://threejs.org/docs/index.html#api/en/materials/MeshMatcapMaterial
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const MaterialMatcap = (): React.JSX.Element => {
+const MaterialMatcap = (): JSX.Element => {
   // Leva Controls.
   const { color, dithering, flatShading, opacity, side, transparent } =
     useLeva();

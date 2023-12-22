@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/Noise";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/noise
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/NoiseEffect.js~NoiseEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsNoise = () => {
   // Leva Controls.

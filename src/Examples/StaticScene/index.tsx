@@ -3,7 +3,7 @@ import { Box, RoundedBox } from "@react-three/drei";
 /**
  * Static 3D Scene.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
 const StaticScene = () => {
   // Inspiration: https://youtu.be/uAIcKGQyYBg

@@ -54,9 +54,9 @@ const Obstacle = ({ position }: ObstacleProps) => {
  * Obstacles.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierWorldObstacles = (props: GroupProps): React.JSX.Element => {
+const RapierWorldObstacles = (props: GroupProps): JSX.Element => {
   return (
     <group name="Obstacles" {...props}>
       {obstacles.map(({ position }, index) => (

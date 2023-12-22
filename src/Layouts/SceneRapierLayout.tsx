@@ -14,9 +14,9 @@ import { LayoutProps } from "Types/LayoutProps";
  * Layout for a scene with Rapier physics engine.
  *
  * @param {LayoutProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SceneRapierLayout = ({ children }: LayoutProps): React.JSX.Element => {
+const SceneRapierLayout = ({ children }: LayoutProps): JSX.Element => {
   // Leva Controls.
   const canvasControls = useLevaCanvas();
   const physicsControls = useLevaPhysics();

@@ -33,9 +33,9 @@ const initialColor = colors.next().value as string;
  * @see https://www.framer.com/motion/three-introduction/
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const AnimatedCubeFramerMotion3d = (props: GroupProps): React.JSX.Element => {
+const AnimatedCubeFramerMotion3d = (props: GroupProps): JSX.Element => {
   // References.
   const cubeRef = useRef<any>(null!);
   const materialRef = useRef<MeshStandardMaterial>(null!);

@@ -9,9 +9,9 @@ import { Children } from "Types/Children";
  *
  * @see https://threejs.org/docs/index.html#api/en/geometries/TorusKnotGeometry
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Geometry3DTorusKnot = ({ children }: Children): React.JSX.Element => {
+const Geometry3DTorusKnot = ({ children }: Children): JSX.Element => {
   // Leva Controls.
   const {
     p, //

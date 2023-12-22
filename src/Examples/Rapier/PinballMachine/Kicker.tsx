@@ -26,9 +26,9 @@ const KICKER = {
  *
  * @todo convert to kicker
  * @param {KickerProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const RapierPinballMachineKicker = (props: KickerProps): React.JSX.Element => {
+const RapierPinballMachineKicker = (props: KickerProps): JSX.Element => {
   const { position = new Vector3(0, 0, 0) } = props;
 
   // References.

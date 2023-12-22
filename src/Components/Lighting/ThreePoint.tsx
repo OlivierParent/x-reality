@@ -18,9 +18,9 @@ const keyLightTarget = new Object3D();
 /**
  * Three Point Lighting.
  *
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const LightingThreePoint = (): React.JSX.Element => {
+const LightingThreePoint = (): JSX.Element => {
   // Leva Controls.
   const {
     lightHelper, //

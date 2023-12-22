@@ -21,9 +21,9 @@ let opacity: number = SPRING.OPACITY.MINIMUM;
  * Spring-based Animation.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SpringAnimation = (props: GroupProps): React.JSX.Element => {
+const SpringAnimation = (props: GroupProps): JSX.Element => {
   // Matcap Textures.
   const [greenMatcapTexture] = useMatcapTexture(
     MATCAP.ID.GREEN,

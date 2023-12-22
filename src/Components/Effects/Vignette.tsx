@@ -8,6 +8,8 @@ import { useLeva } from "Hooks/Leva/Effects/Vignette";
  *
  * @see https://docs.pmnd.rs/react-postprocessing/effects/vignette
  * @see https://pmndrs.github.io/postprocessing/public/docs/class/src/effects/VignetteEffect.js~VignetteEffect.html
+ *
+ * @returns {JSX.Element}
  */
 const EffectsVignette = () => {
   // Leva Controls.

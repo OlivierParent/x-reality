@@ -11,9 +11,9 @@ audio.volume = 0.02;
  * Global sound.
  *
  * @param {GroupProps} props
- * @returns {React.JSX.Element}
+ * @returns {JSX.Element}
  */
-const SoundGlobal = (props: GroupProps): React.JSX.Element => {
+const SoundGlobal = (props: GroupProps): JSX.Element => {
   // States.
   const [isToggled, setIsToggled] = useState(false);
 
