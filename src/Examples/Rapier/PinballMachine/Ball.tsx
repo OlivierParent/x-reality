@@ -7,6 +7,7 @@ import {
 import { Ref, forwardRef } from "react";
 
 import { INTERACTION } from "Configs/interaction";
+import { BALL } from "Examples/Rapier/PinballMachine/Ball.config";
 import { MATCAP } from "Libs/matcap";
 import { BallProps } from "Types/BallProps";
 
@@ -42,11 +43,11 @@ const RapierPinballMachineBall = forwardRef(
           INTERACTION.SENSOR,
           INTERACTION.WALL,
         ])}
-        friction={0.1}
-        mass={1}
+        friction={BALL.PHYSICS.FRICTION}
+        mass={BALL.PHYSICS.MASS}
         position={position}
         ref={ref}
-        restitution={0}
+        restitution={BALL.PHYSICS.RESTITUTION}
         solverGroups={interactionGroups(INTERACTION.BALL, [
           INTERACTION.ATTRACTOR,
           INTERACTION.BALL,

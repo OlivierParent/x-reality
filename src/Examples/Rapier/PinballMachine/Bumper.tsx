@@ -8,22 +8,17 @@ import { useRef } from "react";
 import { MeshBasicMaterial, Vector3 } from "three";
 
 import { INTERACTION } from "Configs/interaction";
+import { BUMPER } from "Examples/Rapier/PinballMachine/Bumper.config";
 
 type BumperProps = {
   position: Vector3;
 };
 
-const BUMPER = {
-  COLOR: {
-    ACTIVE: "green",
-    INACTIVE: "yellow",
-  },
-  HEIGHT: 0.25,
-  RADIUS: {
-    BOTTOM: 0.1,
-    TOP: 0.2,
-  },
-} as const;
+const positionVector = new Vector3(
+  0, //
+  BUMPER.HEIGHT / 2,
+  0
+);
 
 /**
  * Pinball machine bumper.
@@ -51,14 +46,8 @@ const RapierPinballMachineBumper = (props: BumperProps): JSX.Element => {
     <group name="Bumper" position={position}>
       <RigidBody
         colliders={false}
-        position={
-          new Vector3(
-            0, //
-            BUMPER.HEIGHT / 2,
-            0
-          )
-        }
-        restitution={2}
+        position={positionVector}
+        restitution={BUMPER.PHYSICS.RESTITUTION}
         type="fixed"
       >
         <CylinderCollider

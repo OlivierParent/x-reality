@@ -26,6 +26,11 @@ export const BALL = {
       POSITION.Z - 0.5
     ),
   },
+  PHYSICS: {
+    MASS: 1,
+    FRICTION: 0.1,
+    RESTITUTION: 0,
+  },
   RADIUS: 0.125,
   RIGHT: {
     COLOR: "hsl(240, 100%, 75%)",

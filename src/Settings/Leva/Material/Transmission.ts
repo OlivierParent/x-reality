@@ -2,6 +2,7 @@ import { SettingsLevaMaterialBasic as BasicMaterial } from "Settings/Leva/Materi
 import { SettingsLevaMaterialLambert as LambertMaterial } from "Settings/Leva/Material/Lambert";
 import { SettingsLevaMaterialPhong as PhongMaterial } from "Settings/Leva/Material/Phong";
 import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/Material/Standard";
+import { SettingsLevaMaterialPhysical as PhysicalMaterial } from "Settings/Leva/Material/Physical";
 
 /**
  * Mesh Transmission Material (Drei) settings for Leva.
@@ -11,40 +12,39 @@ import { SettingsLevaMaterialStandard as StandardMaterial } from "Settings/Leva/
 export namespace SettingsLevaMaterialTransmission {
   export const alphaMap = BasicMaterial.alphaMap;
 
+  export const anisotropicBlur = (value: number = 0.1) => ({
+    label: "Anisotropic Blur",
+    hint: "",
+    min: 0,
+    step: 0.1,
+    value,
+  });
+
+  export const anisotropy = (value: number = 0) => ({
+    label: "Anisotropy",
+    hint: "",
+    min: 0,
+    step: 0.01,
+    value,
+  });
+
   export const aoMap = BasicMaterial.aoMap;
 
   export const aoMapIntensity = BasicMaterial.aoMapIntensity;
-
-  export const blur = (value: [number, number] = [0, 0]) => ({
-    label: "Blur",
-    hint: "Blur ground reflections (width, height), 0 skips blur.",
-    joystick: false,
-    step: 1,
-    value,
-  });
 
   export const bumpMap = PhongMaterial.bumpMap;
 
   export const bumpScale = PhongMaterial.bumpScale;
 
+  export const chromaticAberration = (value: number = 0.03) => ({
+    label: "Chromatic Aberration",
+    hint: "Chromatic aberration, default = `0.03`.",
+    min: 0,
+    step: 0.01,
+    value,
+  });
+
   export const color = BasicMaterial.color;
-
-  export const depthScale = (value: number = 0) => ({
-    label: "Depth Factor Scale",
-    hint: "Scale the depth factor. Default is `0` (no depth).",
-    min: 0,
-    step: 0.01,
-    value,
-  });
-
-  export const depthToBlurRatioBias = (value: number = 0.25) => ({
-    label: "Depth to Blur Ratio Bias",
-    hint: "Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. Default is `0.25` and must be between `0` and `1`. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture.",
-    max: 1,
-    min: 0,
-    step: 0.01,
-    value,
-  });
 
   export const displacementBias = PhongMaterial.displacementBias;
 
@@ -52,10 +52,18 @@ export namespace SettingsLevaMaterialTransmission {
 
   export const displacementScale = PhongMaterial.displacementScale;
 
-  export const distortion = (value: number = 1) => ({
+  export const distortion = (value: number = 0) => ({
     label: "Distortion",
-    hint: "Amount of distortion based on the distortionMap texture.",
+    hint: "Distortion, default: `0`.",
     min: 0,
+    step: 0.01,
+    value,
+  });
+
+  export const distortionScale = (value: number = 0.5) => ({
+    label: "Distortion Scale",
+    hint: "Distortion scale, default = `0.5`.",
+    min: 0.0,
     step: 0.01,
     value,
   });
@@ -78,7 +86,7 @@ export namespace SettingsLevaMaterialTransmission {
 
   export const maxDepthThreshold = (value: number = 0) => ({
     label: "Max Depth Threshold",
-    hint: "Upper edge for the depthTexture interpolation. Default = 0.",
+    hint: "Upper edge for the depthTexture interpolation. Default = `0`.",
     min: 0,
     step: 0.01,
     value,
@@ -90,66 +98,17 @@ export namespace SettingsLevaMaterialTransmission {
 
   export const metalnessMap = StandardMaterial.metalnessMap;
 
-  export const minDepthThreshold = (value: number = 0) => ({
-    label: "Min Depth Threshold",
-    hint: "Lower edge for the depthTexture interpolation. Default = 0.",
-    min: 0,
-    step: 0.01,
-    value,
-  });
-
-  export const mirror = (value: number = 0.75) => ({
-    label: "Mirror",
-    hint: "Mirror environment: 0 = texture colors, 1 = pick up environment colors.",
-    max: 1,
-    min: 0,
-    step: 0.01,
-    value,
-  });
-
-  export const mixBlur = (value: number = 1.0) => ({
-    label: "Mix Blur",
-    hint: "How much blur mixes with surface roughness. Default = 1.",
-    min: 0,
-    step: 0.01,
-    value,
-  });
-  export const mixContrast = (value: number = 1.0) => ({
-    label: "Mix Contrast",
-    hint: "Contrast of the reflections.",
-    min: 0,
-    step: 0.01,
-    value,
-  });
-
-  export const mixStrength = (value: number = 0.5) => ({
-    label: "Mix Strength",
-    hint: "Strength of the reflections.",
-    min: 0,
-    step: 0.01,
-    value,
-  });
-
   export const normalMap = PhongMaterial.normalMap;
 
   export const normalMapType = PhongMaterial.normalMapType;
 
   export const normalScale = PhongMaterial.normalScale;
 
-  export const reflectorOffset = (value: number = 0) => ({
-    label: "Reflector Offset",
-    hint: "Offsets the virtual camera that projects the reflection. Useful when the reflective surface is some distance from the object's origin. Default = 0.",
-    min: 0,
-    step: 0.01,
-    value,
-  });
-
   export const refractionRatio = BasicMaterial.refractionRatio;
 
   export const resolution = (value: number = 0) => ({
     label: "Resolution",
-    hint: "Off-buffer resolution: lower = faster, higher = better quality, slower.",
-    max: 8192,
+    hint: "Resolution of the local buffer, default = undefined (fullscreen).",
     min: 0,
     step: 256,
     value,
@@ -158,6 +117,26 @@ export namespace SettingsLevaMaterialTransmission {
   export const roughness = StandardMaterial.roughness;
 
   export const roughnessMap = StandardMaterial.roughnessMap;
+
+  export const samples = (value: number = 10) => ({
+    label: "Samples",
+    hint: "",
+    min: 0,
+    step: 1,
+    value,
+  });
+
+  export const temporalDistortion = (value: number = 0.0) => ({
+    label: "Temporal Distortion",
+    hint: "Temporal distortion (speed of movement), default = `0.0`.",
+    min: 0.0,
+    step: 0.01,
+    value,
+  });
+
+  export const thickness = PhysicalMaterial.thickness;
+
+  export const transmission = PhysicalMaterial.transmission;
 
   export const wireframe = BasicMaterial.wireframe;
 }

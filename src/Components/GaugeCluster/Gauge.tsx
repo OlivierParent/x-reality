@@ -8,8 +8,9 @@ import {
   Torus,
   useMatcapTexture,
 } from "@react-three/drei";
-import { GroupProps } from "@react-three/fiber";
-import { BackSide, MathUtils } from "three";
+import { GroupProps, useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { BackSide, Euler, Group, MathUtils } from "three";
 
 import { FONT_FAMILY } from "Libs/font";
 import { MATCAP } from "Libs/matcap";
@@ -42,6 +43,9 @@ type GaugeDefaultProps = {
 
 const CLOCKWISE = -1;
 
+// const needleRotationEuler = new Euler();
+// const needleRotationQuaternion = new Quaternion();
+
 /**
  * Gauge.
  *
@@ -54,6 +58,9 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): JSX.Element => {
     percentage,
     size: SIZE,
   } = props;
+
+  // References.
+  const needleRef = useRef<Group>(null!);
 
   // Matcap Textures.
   const [buffedSilverMatcapTexture] = useMatcapTexture(
@@ -84,6 +91,15 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): JSX.Element => {
   const ValueStep = GAUGE.VALUE.MAXIMUM / MarkSteps;
 
   const MARKS = Array(MarkSteps + 1).fill(null);
+
+  useFrame(() => {
+    const oldAngle = needleRef.current.rotation.z;
+    const newAngle = MathUtils.degToRad(
+      (percentage / 100) * GAUGE.ANGLE.RANGE * CLOCKWISE
+    );
+    const angle = MathUtils.lerp(oldAngle, newAngle, 0.1);
+    needleRef.current.rotation.z = angle;
+  }); //, [GAUGE.ANGLE.RANGE, percentage]);
 
   return (
     <group name="Gauge" {...props}>
@@ -189,7 +205,7 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): JSX.Element => {
               <group
                 key={`label-${markIndex}`}
                 name="Label"
-                rotation={[0, 0, AngleStep * markIndex * CLOCKWISE]}
+                rotation={[0, 0, markIndex * AngleStep * CLOCKWISE]}
               >
                 {markIndex % GAUGE.MARK.SUBDIVISION === 0 && (
                   <Text
@@ -206,22 +222,19 @@ const Gauge = (props: GroupProps & GaugeDefaultProps): JSX.Element => {
             );
           })}
         </group>
-        <group name="Needle" position={[0, 0, SIZE * 0.05]}>
+        <group
+          name="Needle"
+          position={[0, 0, SIZE * 0.05]}
+          rotation={new Euler(0, 0, -MathUtils.degToRad(90))}
+        >
           <Cylinder
             args={[SIZE * 0.1, SIZE * 0.05, SIZE * 0.1, 36]}
             castShadow={true}
-            rotation={[-MathUtils.degToRad(90), 0, 0]}
+            rotation={new Euler(-MathUtils.degToRad(90), 0, 0)}
           >
             <meshMatcapMaterial matcap={buffedSilverMatcapTexture} />
           </Cylinder>
-          <group
-            rotation={[
-              0,
-              0,
-              MathUtils.degToRad(90 + (GAUGE.ANGLE.RANGE * percentage) / 100) *
-                CLOCKWISE,
-            ]}
-          >
+          <group ref={needleRef}>
             <Cone args={[SIZE * 0.03, SIZE, 4]} position={[0, SIZE * 0.3, 0]}>
               <meshStandardMaterial
                 color="orange"

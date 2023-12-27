@@ -8,18 +8,11 @@ import { useRef } from "react";
 import { MeshBasicMaterial, Vector3 } from "three";
 
 import { INTERACTION } from "Configs/interaction";
+import { KICKER } from "Examples/Rapier/PinballMachine/Kicker.config";
 
 type KickerProps = {
   position: Vector3;
 };
-
-const KICKER = {
-  HEIGHT: 0.25,
-  RADIUS: {
-    BOTTOM: 0.1,
-    TOP: 0.2,
-  },
-} as const;
 
 /**
  * Pinball machine kicker.

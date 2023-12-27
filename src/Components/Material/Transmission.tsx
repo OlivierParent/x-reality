@@ -14,24 +14,46 @@ import { useLeva } from "Hooks/Leva/Material/Transmission";
  */
 const MaterialTransmission = (): JSX.Element => {
   const {
+    anisotropicBlur,
+    anisotropy,
+    chromaticAberration,
     color,
+    distortion,
+    distortionScale,
+    dithering,
     emissive,
     emissiveIntensity,
+    flatShading,
+    metalness,
     opacity,
+    resolution,
+    roughness,
+    samples,
     side,
+    temporalDistortion,
     transparent,
     wireframe,
   } = useLeva();
 
   return (
     <MeshTransmissionMaterial
+      anisotropicBlur={anisotropicBlur}
+      anisotropy={anisotropy}
+      chromaticAberration={chromaticAberration}
       color={color}
-      distortionScale={0.1}
+      distortion={distortion}
+      distortionScale={distortionScale}
+      dithering={dithering}
       emissive={emissive}
       emissiveIntensity={emissiveIntensity}
+      flatShading={flatShading}
+      metalness={metalness}
       opacity={opacity}
+      resolution={resolution}
+      roughness={roughness}
+      samples={samples}
       side={side as Side}
-      temporalDistortion={0.1}
+      temporalDistortion={temporalDistortion}
       transparent={transparent}
       wireframe={wireframe}
     />

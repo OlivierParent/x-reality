@@ -79,54 +79,58 @@ const SpringAnimation = (props: GroupProps): JSX.Element => {
 
   return (
     <group name="Spring" {...props}>
-      <mesh
-        name="Torus"
-        onClick={clickHandler}
-        onPointerOut={pointerOutHandler}
-        onPointerOver={pointerOverHandler}
-        position={ZERO_VECTOR}
-      >
-        <torusGeometry
-          args={[
-            SPRING.TORUS.RADIUS,
-            SPRING.TORUS.TUBE,
-            SPRING.TORUS.SEGMENTS.RADIAL,
-            SPRING.TORUS.SEGMENTS.TUBULAR,
-            SPRING.TORUS.ARC,
-          ]}
-        />
-        <MeshTransmissionMaterial
-          distortionScale={0.5}
-          emissive="green"
-          emissiveIntensity={0.25}
-          temporalDistortion={0.1}
-          anisotropicBlur={0.5}
-          wireframe={false}
-        />
-      </mesh>
-      <motion.mesh
+      <motion.group //
         animate={{ ...position }}
         initial={{ ...position }}
-        name="Ring"
       >
-        <ringGeometry
-          args={[
-            SPRING.RING.RADIUS.INNER,
-            SPRING.RING.RADIUS.OUTER,
-            SPRING.RING.THETA.SEGMENTS,
-            SPRING.RING.PHI.SEGMENTS,
-            SPRING.RING.THETA.START,
-            SPRING.RING.THETA.LENGTH * angleNormalised,
-          ]}
-        />
-        <motion.meshMatcapMaterial
-          animate={{ opacity }}
-          initial={{ opacity: SPRING.OPACITY.MINIMUM }}
-          matcap={greenMatcapTexture}
-          side={DoubleSide}
-          transparent={true}
-        />
-      </motion.mesh>
+        <mesh
+          name="Torus"
+          onClick={clickHandler}
+          onPointerOut={pointerOutHandler}
+          onPointerOver={pointerOverHandler}
+          position={ZERO_VECTOR}
+        >
+          <torusGeometry
+            args={[
+              SPRING.TORUS.RADIUS,
+              SPRING.TORUS.TUBE,
+              SPRING.TORUS.SEGMENTS.RADIAL,
+              SPRING.TORUS.SEGMENTS.TUBULAR,
+              SPRING.TORUS.ARC,
+            ]}
+          />
+          <MeshTransmissionMaterial
+            anisotropicBlur={0.5}
+            distortion={0.5}
+            distortionScale={0.5}
+            emissive="green"
+            emissiveIntensity={0.25}
+            temporalDistortion={0.1}
+            wireframe={false}
+          />
+        </mesh>
+        <mesh //
+          name="Ring"
+        >
+          <ringGeometry
+            args={[
+              SPRING.RING.RADIUS.INNER,
+              SPRING.RING.RADIUS.OUTER,
+              SPRING.RING.THETA.SEGMENTS,
+              SPRING.RING.PHI.SEGMENTS,
+              SPRING.RING.THETA.START,
+              SPRING.RING.THETA.LENGTH * angleNormalised,
+            ]}
+          />
+          <motion.meshMatcapMaterial
+            animate={{ opacity }}
+            initial={{ opacity: SPRING.OPACITY.MINIMUM }}
+            matcap={greenMatcapTexture}
+            side={DoubleSide}
+            transparent={true}
+          />
+        </mesh>
+      </motion.group>
     </group>
   );
 };

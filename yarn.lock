@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@adobe/css-tools@^4.3.1":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.3.1.tgz#abfccb8ca78075a2b6187345c26243c1a0842f28"
-  integrity sha512-/62yikz7NLScCGAAST5SHdnjaDJQBDq0M2muyRTpf2VQhw6StBg2ALiu73zSJQ4fMVLA+0uBhBHAle7Wg+2kSg==
+"@adobe/css-tools@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.3.2.tgz#a6abc715fb6884851fca9dad37fc34739a04fd11"
+  integrity sha512-DA5a1C0gD/pLOvhv33YMrbf2FK3oUzwNl9oOJqE4XVjuEtt6XIakRcsd7eLiOSPkp1kTRQGICTA8cKra/vFbjw==
 
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
@@ -1979,10 +1979,10 @@
     cannon-es "^0.20.0"
     cannon-es-debugger "^1.0.0"
 
-"@react-three/drei@^9.92.5":
-  version "9.92.5"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.92.5.tgz#4677667af82e60f0792633eb3460596f2868aab6"
-  integrity sha512-uH1wMCVO5N0iOyf1J1XjaoHHWALKuF89Nj+6fyW/LMtl8RrtmCGbo5kKJiXAKNZvXtjvuMmhfkZyNFWUT3C4Fw==
+"@react-three/drei@^9.92.7":
+  version "9.92.7"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.92.7.tgz#3bf2f6851a928d1e64b078440ad1a06dc1183d7a"
+  integrity sha512-97M/1lc0swq4WEDk4H0p4pePyjbuzBq+qXj768nVEghalfUXqwXIcSg2KClFATP25xnqdpAU9MOTujFLS2/USw==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@mediapipe/tasks-vision" "0.10.8"
@@ -2083,10 +2083,10 @@
     three-stdlib "^2.21.1"
     zustand "^3.7.1"
 
-"@remix-run/router@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.14.0.tgz#9bc39a5a3a71b81bdb310eba6def5bc3966695b7"
-  integrity sha512-WOHih+ClN7N8oHk9N4JUiMxQJmRVaOxcg8w7F/oHUXzJt920ekASLI/7cYX8XkntDWRhLZtsk6LbGrkgOAvi5A==
+"@remix-run/router@1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.14.1.tgz#6d2dd03d52e604279c38911afc1079d58c50a755"
+  integrity sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
@@ -2286,12 +2286,12 @@
     lz-string "^1.5.0"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^6.1.5":
-  version "6.1.5"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-6.1.5.tgz#0a635d0ad4a1a880089d967299d94e9cfc81fbe1"
-  integrity sha512-3y04JLW+EceVPy2Em3VwNr95dOKqA8DhR0RJHhHKDZNYXcVXnEK7WIrpj4eYU8SVt/qYZ2aRWt/WgQ+grNES8g==
+"@testing-library/jest-dom@^6.1.6":
+  version "6.1.6"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-6.1.6.tgz#d9a3ce61cd74ea792622d3da78a830f6786e8d93"
+  integrity sha512-YwuiOdYEcxhfC2u5iNKlvg2Q5MgbutovP6drq7J1HrCbvR+G58BbtoCoq+L/kNlrNFsu2Kt3jaFAviLVxYHJZg==
   dependencies:
-    "@adobe/css-tools" "^4.3.1"
+    "@adobe/css-tools" "^4.3.2"
     "@babel/runtime" "^7.9.2"
     aria-query "^5.0.0"
     chalk "^3.0.0"
@@ -2695,10 +2695,10 @@
   resolved "https://registry.yarnpkg.com/@types/stats.js/-/stats.js-0.17.2.tgz#97b6fa9bbb534e8e65c693cf0e90588756783574"
   integrity sha512-j1oI+BOPiAAAKFysNNutE9aAIjvHqqILubCs2EeHKc19pi4uybaGAgBfLXsCgJYcyKWkiilEvl8CkFF/SL+baA==
 
-"@types/three@^0.159.0":
-  version "0.159.0"
-  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.159.0.tgz#e1c9d2a84543c2febee5244cc5cf7d657d13aa45"
-  integrity sha512-2gybdh7HtX+rGUgslzK7QEJfzD2I0qrbUGzKk+dK0FDx49UHkNX0rqZVRzIgeFjBd1HzzhNNgwNoMacm3Wyc7w==
+"@types/three@^0.160.0":
+  version "0.160.0"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.160.0.tgz#7915a97e0a14ccaa9ccbb9f190c5730b04a23075"
+  integrity sha512-jWlbUBovicUKaOYxzgkLlhkiEQJkhCVvg4W2IYD2trqD2om3VK4DGLpHH5zQHNr7RweZK/5re/4IVhbhvxbV9w==
   dependencies:
     "@types/stats.js" "*"
     "@types/webxr" "*"
@@ -8673,20 +8673,20 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^6.21.0:
-  version "6.21.0"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.21.0.tgz#aa4c6bc046a8e8723095bc09b3c0ab2254532712"
-  integrity sha512-1dUdVj3cwc1npzJaf23gulB562ESNvxf7E4x8upNJycqyUm5BRRZ6dd3LrlzhtLaMrwOCO8R0zoiYxdaJx4LlQ==
+react-router-dom@^6.21.1:
+  version "6.21.1"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.21.1.tgz#58b459d2fe1841388c95bb068f85128c45e27349"
+  integrity sha512-QCNrtjtDPwHDO+AO21MJd7yIcr41UetYt5jzaB9Y1UYaPTCnVuJq6S748g1dE11OQlCFIQg+RtAA1SEZIyiBeA==
   dependencies:
-    "@remix-run/router" "1.14.0"
-    react-router "6.21.0"
+    "@remix-run/router" "1.14.1"
+    react-router "6.21.1"
 
-react-router@6.21.0:
-  version "6.21.0"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.21.0.tgz#6fe3e59877aca3dccceec1801d26991ddf42d12b"
-  integrity sha512-hGZ0HXbwz3zw52pLZV3j3+ec+m/PQ9cTpBvqjFQmy2XVUWGn5MD+31oXHb6dVTxYzmAeaiUBYjkoNz66n3RGCg==
+react-router@6.21.1:
+  version "6.21.1"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.21.1.tgz#8db7ee8d7cfc36513c9a66b44e0897208c33be34"
+  integrity sha512-W0l13YlMTm1YrpVIOpjCADJqEUpz1vm+CMo47RuFX4Ftegwm6KOYsL5G3eiE52jnJpKvzm6uB/vTKTPKM8dmkA==
   dependencies:
-    "@remix-run/router" "1.14.0"
+    "@remix-run/router" "1.14.1"
 
 react-scripts@^5.0.1:
   version "5.0.1"
@@ -9815,7 +9815,7 @@ three-stdlib@2.23.9:
     potpack "^1.0.1"
     zstddec "^0.0.2"
 
-three-stdlib@^2.21.1, three-stdlib@^2.28.7:
+three-stdlib@^2.21.1:
   version "2.28.7"
   resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.28.7.tgz#677ad2ce4d57375f7582e5fd62eadfd07ef6059a"
   integrity sha512-E7NuztilCswBKnEoyqydvA7N4dy0cf/gLA0bKrrg6+Q6j4WtusGa/+t9oK2HVq47S1AHRH2CvFHpdIGNjPKo/A==
@@ -9839,10 +9839,22 @@ three-stdlib@^2.23.4, three-stdlib@^2.28.0:
     fflate "^0.6.9"
     potpack "^1.0.1"
 
-three@^0.159.0:
-  version "0.159.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.159.0.tgz#6576b1210805b14f0765bac41fd0e4ec18e43b2e"
-  integrity sha512-eCmhlLGbBgucuo4VEA9IO3Qpc7dh8Bd4VKzr7WfW4+8hMcIfoAVi1ev0pJYN9PTTsCslbcKgBwr2wNZ1EvLInA==
+three-stdlib@^2.28.9:
+  version "2.28.9"
+  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.28.9.tgz#55a593da63f16c55a5033d0c1e9c2682448eca36"
+  integrity sha512-rZr9r4wwigQ3VjvvXRpwri1zswv4an/WpW2zPKmylfG2p2Du6AAsmjGbwICxWjPCg1jR0sJN8p8s8msFBg0RaQ==
+  dependencies:
+    "@types/draco3d" "^1.4.0"
+    "@types/offscreencanvas" "^2019.6.4"
+    "@types/webxr" "^0.5.2"
+    draco3d "^1.4.1"
+    fflate "^0.6.9"
+    potpack "^1.0.1"
+
+three@^0.160.0:
+  version "0.160.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.160.0.tgz#cd1e4dbd01aee0719280a9086d75545db52b7a8f"
+  integrity sha512-DLU8lc0zNIPkM7rH5/e1Ks1Z8tWCGRq6g8mPowdDJpw1CFBJMU7UoJjC6PefXW7z//SSl0b2+GCw14LB+uDhng==
 
 throat@^6.0.1:
   version "6.0.2"

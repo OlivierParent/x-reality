@@ -262,12 +262,12 @@ export namespace NAVIGATION {
       path: PATH.STATIC_SCENE,
     },
     {
-      element: <SuzanneExportsPage />,
+      element: <SuzannePage />,
       label: "Suzanne",
       path: PATH.SUZANNE,
     },
     {
-      element: <SuzannePage />,
+      element: <SuzanneExportsPage />,
       label: "Suzanne Exports",
       path: PATH.SUZANNE_EXPORTS,
     },

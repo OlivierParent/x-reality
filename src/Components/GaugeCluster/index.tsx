@@ -2,6 +2,7 @@ import { Text } from "@react-three/drei";
 import { GroupProps, useFrame } from "@react-three/fiber";
 
 import { Gauge } from "Components/GaugeCluster/Gauge";
+import { GAUGE_CLUSTER } from "Components/GaugeCluster/GaugeCluster.config";
 import { GAUGE as GAUGE_LEFT } from "Components/GaugeCluster/GaugeLeft.config";
 import { GAUGE as GAUGE_RIGHT } from "Components/GaugeCluster/GaugeRight.config";
 import { useState } from "react";
@@ -9,19 +10,16 @@ import { useState } from "react";
 type Gear = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 type AccelerationDirection = 1 | -1;
 
+const ACCELERATION = {
+  ACCELERATE: 1,
+  DECELERATE: -1,
+  SPEED: {
+    ACCELERATION: 2,
+    DECELERATION: 1,
+  },
+} as const;
+
 const X_OFFSET = 1.1;
-const GEAR_RATIO = [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9];
-const POWER_LOSS_RATIO = 0.85;
-const ACCELERATION_RATIO = 0.3;
-const RPM_INITIAL = Math.round((35 / GAUGE_LEFT.VALUE.MAXIMUM) * 100);
-const RPM_SHIFTED_DOWN = Math.round((35 / GAUGE_LEFT.VALUE.MAXIMUM) * 100);
-const RPM_SHIFTED_UP = Math.round((45 / GAUGE_LEFT.VALUE.MAXIMUM) * 100);
-const RPM_SHIFT_DOWN = Math.round((25 / GAUGE_LEFT.VALUE.MAXIMUM) * 100);
-const RPM_SHIFT_UP = Math.round((55 / GAUGE_LEFT.VALUE.MAXIMUM) * 100);
-const SPEED_BOTTOM = Math.round((18 / GAUGE_RIGHT.VALUE.MAXIMUM) * 100);
-const SPEED_TOP = Math.round(
-  (GAUGE_RIGHT.VALUE.DANGER / GAUGE_RIGHT.VALUE.MAXIMUM) * 100
-);
 
 /**
  * Gauge Cluster.
@@ -31,36 +29,38 @@ const SPEED_TOP = Math.round(
  */
 const GaugeCluster = (props: GroupProps): JSX.Element => {
   const [accelerationDirection, setAccelerationDirection] =
-    useState<AccelerationDirection>(1);
+    useState<AccelerationDirection>(ACCELERATION.ACCELERATE);
   const [gear, setGear] = useState<Gear>(1);
-  const [rpm, setRpm] = useState(RPM_INITIAL);
+  const [rpm, setRpm] = useState(GAUGE_CLUSTER.RPM.INITIAL);
   const [speed, setSpeed] = useState(0);
 
   useFrame(() => {
-    setRpm((rpm) => {
-      if (rpm < RPM_SHIFT_DOWN) {
-        rpm = RPM_SHIFTED_DOWN;
+    setRpm((rpm: number) => {
+      if (rpm < GAUGE_CLUSTER.RPM.SHIFT.DOWN) {
+        rpm = GAUGE_CLUSTER.RPM.SHIFTED.DOWN;
         setGear((gear) => (--gear < 1 ? 1 : gear) as Gear);
-      } else if (RPM_SHIFT_UP < rpm) {
-        rpm = RPM_SHIFTED_UP;
+      } else if (GAUGE_CLUSTER.RPM.SHIFT.UP < rpm) {
+        rpm = GAUGE_CLUSTER.RPM.SHIFTED.UP;
         setGear((gear) => (6 < ++gear ? 6 : gear) as Gear);
       } else {
         rpm =
           rpm +
           accelerationDirection *
-            ACCELERATION_RATIO *
-            (accelerationDirection === 1 ? 1 : 2) *
-            POWER_LOSS_RATIO ** gear;
+            GAUGE_CLUSTER.ACCELERATION_RATIO *
+            (accelerationDirection === ACCELERATION.DECELERATE
+              ? ACCELERATION.SPEED.DECELERATION
+              : ACCELERATION.SPEED.ACCELERATION) *
+            GAUGE_CLUSTER.POWER_LOSS_RATIO ** gear;
       }
 
       return rpm;
     });
     setSpeed(() => {
-      const speed = GEAR_RATIO[gear] * rpm;
-      if (SPEED_TOP < speed) {
-        setAccelerationDirection(-1);
-      } else if (speed < SPEED_BOTTOM) {
-        setAccelerationDirection(1);
+      const speed = GAUGE_CLUSTER.GEAR_RATIO[gear] * rpm;
+      if (GAUGE_CLUSTER.SPEED.TOP < speed) {
+        setAccelerationDirection(ACCELERATION.DECELERATE);
+      } else if (speed < GAUGE_CLUSTER.SPEED.IDLE) {
+        setAccelerationDirection(ACCELERATION.ACCELERATE);
       }
 
       return speed;
