@@ -1,7 +1,15 @@
+import { RoundedBox } from "@react-three/drei";
 import { GroupProps } from "@react-three/fiber";
 
-import { TELEVISION } from "Components/Television/Television.config";
 import { Button } from "Components/Television/Button";
+import { TELEVISION } from "Components/Television/Television.config";
+
+import pauseBootstrapIconsSvg from "bootstrap-icons/icons/pause.svg";
+import playBootstrapIconsSvg from "bootstrap-icons/icons/play.svg";
+import repeatBootstrapIconsSvg from "bootstrap-icons/icons/repeat.svg";
+import volumeDownBootstrapIconsSvg from "bootstrap-icons/icons/volume-down.svg";
+import volumeMuteBootstrapIconsSvg from "bootstrap-icons/icons/volume-mute.svg";
+import volumeUpBootstrapIconsSvg from "bootstrap-icons/icons/volume-up.svg";
 
 type TelevisionRemoteProps = {
   isLoopToggled: boolean;
@@ -14,6 +22,12 @@ type TelevisionRemoteProps = {
   volumeDownClickHandler: Function;
   volumeUpClickHandler: Function;
 };
+
+const radius = (TELEVISION.SIZE * TELEVISION.BUTTON.SIZE) / 2;
+const depth = TELEVISION.DEPTH / 4;
+const height = radius * 12;
+const width = radius * 2;
+const yOffset = TELEVISION.BUTTON.SIZE * 2 + 0.05;
 
 /**
  * Television Remote.
@@ -39,45 +53,67 @@ const TelevisionRemote = (
   } = props;
 
   return (
-    <group name="Television Remote" position={position} rotation={rotation}>
+    <group
+      name="Television Remote" //
+      position={position}
+      rotation={rotation}
+    >
+      <RoundedBox
+        args={[
+          width + 2 * TELEVISION.EDGE.SIZE,
+          height + 2 * TELEVISION.EDGE.SIZE,
+          depth,
+        ]}
+        castShadow={true}
+        radius={TELEVISION.EDGE.RADIUS / 4}
+        position={[0, 0, -depth]}
+        receiveShadow={true}
+      >
+        <meshStandardMaterial color={0x333333} />
+      </RoundedBox>
       <Button
         clickHandler={mutedClickHandler}
-        color={isMutedToggled ? "#ffff00" : "#999900"}
-        colorHover="#ff00ff"
+        color={isMutedToggled ? "#666600" : "#444444"}
+        colorHover={isMutedToggled ? "#ff0000" : "#00ff00"}
+        icon={volumeMuteBootstrapIconsSvg}
         name="Mute Button"
-        position={[0, TELEVISION.BUTTON.SIZE * 2 * 1, 0]}
+        position={[0, 2 * yOffset, 0]}
         tooltip={`Set muted to ${isMutedToggled ? "off" : "on"}.`}
       />
       <Button
         clickHandler={playClickHandler}
-        color={isPlayToggled ? "#ff0000" : "#990000"}
-        colorHover="#ff00ff"
+        color={isPlayToggled ? "#660000" : "#006600"}
+        colorHover={isPlayToggled ? "#ff0000" : "#00ff00"}
+        icon={isPlayToggled ? pauseBootstrapIconsSvg : playBootstrapIconsSvg}
         name="Play Button"
-        position={[0, TELEVISION.BUTTON.SIZE * 2 * 0, 0]}
+        position={[0, 1 * yOffset, 0]}
         tooltip={`${isPlayToggled ? "Pause" : "Play"} video.`}
       />
       <Button
         clickHandler={loopClickHandler}
-        color={isLoopToggled ? "#0000ff" : "#000099"}
-        colorHover="#ff00ff"
+        color={isLoopToggled ? "#666600" : "#444444"}
+        colorHover="#0000ff"
+        icon={repeatBootstrapIconsSvg}
         name="Loop Button"
-        position={[0, -TELEVISION.BUTTON.SIZE * 2 * 1, 0]}
+        position={[0, 0, 0]}
         tooltip={`Set loop to ${isLoopToggled ? "on" : "off"}.`}
       />
       <Button
         clickHandler={volumeUpClickHandler}
-        color={isLoopToggled ? "#00ff00" : "#009900"}
-        colorHover="#ffff00"
+        color="#444444"
+        colorHover="#0000ff"
+        icon={volumeUpBootstrapIconsSvg}
         name="Volume Up Button"
-        position={[0, -TELEVISION.BUTTON.SIZE * 2 * 2, 0]}
+        position={[0, -1 * yOffset, 0]}
         tooltip={`Turn volume up (${volume}%).`}
       />
       <Button
         clickHandler={volumeDownClickHandler}
-        color={isLoopToggled ? "#ff0000" : "#990000"}
-        colorHover="#ffff00"
+        color="#444444"
+        colorHover="#0000ff"
+        icon={volumeDownBootstrapIconsSvg}
         name="Volume Down Button"
-        position={[0, -TELEVISION.BUTTON.SIZE * 2 * 3, 0]}
+        position={[0, -2 * yOffset, 0]}
         tooltip={`Turn volume down (${volume}%).`}
       />
     </group>

@@ -1,15 +1,14 @@
-import { Plane, RoundedBox, Svg, Text } from "@react-three/drei";
+import { Plane, RoundedBox, Text } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { useCallback, useState } from "react";
+import { MathUtils } from "three";
 
 import { Material as MaterialVideo } from "Components/Material/Video";
+import { Remote } from "Components/Television/Remote";
 import { TELEVISION } from "Components/Television/Television.config";
 import { VideoItem } from "Types/VideoItem";
 
 import videoByDanaNettles from "Components/Television/assets/Video_by_Dana_Nettles.mp4";
-import bootstrapIconsVolumeDownSvg from "bootstrap-icons/icons/volume-down.svg";
-import { MathUtils } from "three/src/math/MathUtils";
-import { Remote } from "./Remote";
 
 const SAFE_OFFSET = 0.01; // Safe offset to avoid z-fighting.
 const VIDEO_ITEMS: VideoItem[] = [
@@ -128,9 +127,6 @@ const Television = (props: GroupProps): JSX.Element => {
       >
         {`${VIDEO_ITEMS[0].title} \u2014 ${VIDEO_ITEMS[0].url}`}
       </Text>
-      <Svg src={bootstrapIconsVolumeDownSvg}>
-        <meshBasicMaterial color={0x666666} />
-      </Svg>
     </group>
   );
 };

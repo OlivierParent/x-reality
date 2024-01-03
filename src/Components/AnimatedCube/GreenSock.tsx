@@ -26,7 +26,7 @@ const SCALE = {
 const colors = colorsGenerator();
 const initialColor = colors.next().value as string;
 const gsapObject = { color: initialColor };
-const gsapTimeline: any = gsap.timeline();
+const gsapTimeline: gsap.core.Timeline = gsap.timeline();
 
 /**
  * Animated Cube with GreenSock GSAP.

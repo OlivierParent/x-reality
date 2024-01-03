@@ -1,8 +1,8 @@
-import { Circle, Html, useCursor } from "@react-three/drei";
+import { Circle, Html, useCursor, Svg } from "@react-three/drei";
 import { GroupProps, ThreeEvent } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import { useCallback, useState } from "react";
-import { Euler, Vector3 } from "three";
+import { Vector3 } from "three";
 
 import { TELEVISION } from "Components/Television/Television.config";
 import {
@@ -14,8 +14,12 @@ type TelevisionButtonProps = {
   clickHandler: any;
   color: string;
   colorHover?: string;
+  colorIcon?: string;
+  icon?: string;
   tooltip?: string;
 } & GroupProps;
+
+const SAFE_OFFSET = 0.02; // Safe offset to avoid z-fighting.
 
 const radius = (TELEVISION.SIZE * TELEVISION.BUTTON.SIZE) / 2;
 const segments = 32;
@@ -24,9 +28,10 @@ const TelevisionButton = ({
   clickHandler,
   color,
   colorHover = "#ff00ff",
+  colorIcon = "#ffffff",
+  icon,
   position = new Vector3(),
-  rotation = new Euler(),
-  tooltip = "",
+  tooltip,
 }: TelevisionButtonProps): JSX.Element => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -45,7 +50,10 @@ const TelevisionButton = ({
   useCursor(isHovered);
 
   return (
-    <group name="Television Button" position={position} rotation={rotation}>
+    <group
+      name="Television Button" //
+      position={position}
+    >
       <Circle
         args={[radius, segments]}
         name="Loop Button"
@@ -69,11 +77,22 @@ const TelevisionButton = ({
           transparent={true}
         />
       </Circle>
-      {tooltip !== "" && isHovered && (
+      {icon && (
+        <Svg
+          fillMaterial={{ color: colorIcon }}
+          strokeMaterial={{ color: colorIcon }}
+          name="Icon"
+          position={[-radius * 0.4, 0.045, SAFE_OFFSET]}
+          scale={0.005}
+          src={icon}
+        />
+      )}
+      {tooltip && isHovered && (
         <Html
+          visible={false}
           name="Tooltip"
           position={[
-            TELEVISION.BUTTON.SIZE * 1.7, //
+            TELEVISION.BUTTON.SIZE * 1.7,
             TELEVISION.BUTTON.SIZE * 0.95,
             0,
           ]}

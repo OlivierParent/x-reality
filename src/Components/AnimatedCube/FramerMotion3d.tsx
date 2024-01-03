@@ -1,8 +1,13 @@
 import { useCursor } from "@react-three/drei";
-import { GroupProps, ThreeEvent, useFrame } from "@react-three/fiber";
+import {
+  GroupProps,
+  MeshProps,
+  ThreeEvent,
+  useFrame,
+} from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MeshStandardMaterial, Vector3 } from "three";
+import { Mesh, MeshStandardMaterial, Vector3 } from "three";
 
 import { colorsGenerator } from "Utils/color";
 
@@ -37,7 +42,7 @@ const initialColor = colors.next().value as string;
  */
 const AnimatedCubeFramerMotion3d = (props: GroupProps): JSX.Element => {
   // References.
-  const cubeRef = useRef<any>(null!);
+  const cubeRef = useRef<Mesh & MeshProps>(null!);
   const materialRef = useRef<MeshStandardMaterial>(null!);
 
   // States.
