@@ -1,5 +1,7 @@
 import { KeyboardControlsEntry } from "@react-three/drei";
 
+import { KeyboardKey } from "Types/KeyboardKey";
+
 export namespace KEYBINDINGS {
   enum CONTROLS {
     playerJump = "playerJump",
@@ -14,49 +16,49 @@ export namespace KEYBINDINGS {
     pinballShoot = "pinballShoot",
   }
 
-  enum KEY {
-    A = "KeyA",
-    D = "KeyD",
-    DOWN = "ArrowDown",
-    E = "KeyE",
-    F = "KeyF",
-    J = "KeyJ",
-    LEFT = "ArrowLeft",
-    Q = "KeyQ",
-    ENTER = "Enter",
-    RIGHT = "ArrowRight",
-    S = "KeyS",
-    SHIFT = "Shift",
-    SPACE = "Space",
-    UP = "ArrowUp",
-    W = "KeyW",
-    Z = "KeyZ",
-  }
+  const KEYBOARD: Record<string, KeyboardKey> = {
+    A: "KeyA",
+    D: "KeyD",
+    DOWN: "ArrowDown",
+    E: "KeyE",
+    ENTER: "Enter",
+    F: "KeyF",
+    J: "KeyJ",
+    LEFT: "ArrowLeft",
+    Q: "KeyQ",
+    RIGHT: "ArrowRight",
+    S: "KeyS",
+    SHIFT: "Shift",
+    SPACE: "Space",
+    UP: "ArrowUp",
+    W: "KeyW",
+    Z: "KeyZ",
+  };
 
   const ESDF: Array<KeyboardControlsEntry> = [
-    { name: CONTROLS.playerMoveBackward, keys: [KEY.DOWN, KEY.D] },
-    { name: CONTROLS.playerMoveForward, keys: [KEY.UP, KEY.E] },
-    { name: CONTROLS.playerMoveLeft, keys: [KEY.LEFT, KEY.S] },
-    { name: CONTROLS.playerMoveRight, keys: [KEY.RIGHT, KEY.F] },
+    { name: CONTROLS.playerMoveBackward, keys: [KEYBOARD.DOWN, KEYBOARD.D] },
+    { name: CONTROLS.playerMoveForward, keys: [KEYBOARD.UP, KEYBOARD.E] },
+    { name: CONTROLS.playerMoveLeft, keys: [KEYBOARD.LEFT, KEYBOARD.S] },
+    { name: CONTROLS.playerMoveRight, keys: [KEYBOARD.RIGHT, KEYBOARD.F] },
   ];
 
   const OTHER: Array<KeyboardControlsEntry> = [
-    { name: CONTROLS.playerJump, keys: [KEY.SPACE] },
-    { name: CONTROLS.playerRun, keys: [KEY.SHIFT] },
+    { name: CONTROLS.playerJump, keys: [KEYBOARD.SPACE] },
+    { name: CONTROLS.playerRun, keys: [KEYBOARD.SHIFT] },
   ];
 
   const WASD: Array<KeyboardControlsEntry> = [
-    { name: CONTROLS.playerMoveBackward, keys: [KEY.DOWN, KEY.S] },
-    { name: CONTROLS.playerMoveForward, keys: [KEY.UP, KEY.W] },
-    { name: CONTROLS.playerMoveLeft, keys: [KEY.LEFT, KEY.A] },
-    { name: CONTROLS.playerMoveRight, keys: [KEY.RIGHT, KEY.D] },
+    { name: CONTROLS.playerMoveBackward, keys: [KEYBOARD.DOWN, KEYBOARD.S] },
+    { name: CONTROLS.playerMoveForward, keys: [KEYBOARD.UP, KEYBOARD.W] },
+    { name: CONTROLS.playerMoveLeft, keys: [KEYBOARD.LEFT, KEYBOARD.A] },
+    { name: CONTROLS.playerMoveRight, keys: [KEYBOARD.RIGHT, KEYBOARD.D] },
   ];
 
   const ZQSD: Array<KeyboardControlsEntry> = [
-    { name: CONTROLS.playerMoveBackward, keys: [KEY.DOWN, KEY.S] },
-    { name: CONTROLS.playerMoveForward, keys: [KEY.UP, KEY.Z] },
-    { name: CONTROLS.playerMoveLeft, keys: [KEY.LEFT, KEY.Q] },
-    { name: CONTROLS.playerMoveRight, keys: [KEY.RIGHT, KEY.D] },
+    { name: CONTROLS.playerMoveBackward, keys: [KEYBOARD.DOWN, KEYBOARD.S] },
+    { name: CONTROLS.playerMoveForward, keys: [KEYBOARD.UP, KEYBOARD.Z] },
+    { name: CONTROLS.playerMoveLeft, keys: [KEYBOARD.LEFT, KEYBOARD.Q] },
+    { name: CONTROLS.playerMoveRight, keys: [KEYBOARD.RIGHT, KEYBOARD.D] },
   ];
 
   /**
@@ -90,9 +92,9 @@ export namespace KEYBINDINGS {
    * Pinball Machine keybindings configuration.
    */
   export const CONFIG_PINBALL_MACHINE: Array<KeyboardControlsEntry> = [
-    { name: CONTROLS.pinballFlipperBoth, keys: [KEY.SPACE] },
-    { name: CONTROLS.pinballFlipperLeft, keys: [KEY.F] },
-    { name: CONTROLS.pinballFlipperRight, keys: [KEY.J] },
-    { name: CONTROLS.pinballShoot, keys: [KEY.ENTER] },
+    { name: CONTROLS.pinballFlipperBoth, keys: [KEYBOARD.SPACE] },
+    { name: CONTROLS.pinballFlipperLeft, keys: [KEYBOARD.F] },
+    { name: CONTROLS.pinballFlipperRight, keys: [KEYBOARD.J] },
+    { name: CONTROLS.pinballShoot, keys: [KEYBOARD.ENTER] },
   ];
 }

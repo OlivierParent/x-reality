@@ -1,38 +1,30 @@
-import { useGLTF } from "@react-three/drei";
-import { GroupProps, useFrame } from "@react-three/fiber";
-import { useEffect, useMemo, useRef } from "react";
-import { AnimationMixer, Mesh } from "three";
+import { GroupProps } from "@react-three/fiber";
 
-import animationGlb from "Components/Animation/assets/animation.glb";
+import { Animation as AnimationDefault } from "Components/Animation/Default";
+import { Animation as AnimationSuzanne } from "Components/Animation/Suzanne";
+import { LEVA_OPTION, useLeva } from "Hooks/Leva/Animation";
+
+const LEVA_OPTIONS = {
+  [LEVA_OPTION.DEFAULT]: <AnimationDefault />,
+  [LEVA_OPTION.SUZANNE]: <AnimationSuzanne />,
+} as const;
 
 /**
- * Animation.
+ * Animated Cube.
  *
  * @param {GroupProps} props
  * @returns {JSX.Element}
  */
 const Animation = (props: GroupProps): JSX.Element => {
-  const { animations, scene }: any = useGLTF(animationGlb, true);
-  const animationClip = animations[0];
-  const animationMixer = useMemo(
-    () => new AnimationMixer(animationClip),
-    [animationClip]
+  // Leva Controls.
+  const { animation } = useLeva(
+    LEVA_OPTIONS,
+    LEVA_OPTIONS[LEVA_OPTION.DEFAULT]
   );
-
-  // References.
-  const animationRef = useRef<Mesh>(null!);
-
-  useEffect(() => {
-    animationMixer.clipAction(animationClip, animationRef.current).play();
-  }, [animationClip, animationMixer]);
-
-  useFrame((state, delta) => {
-    animationMixer.update(delta);
-  });
 
   return (
     <group name="Animation" {...props}>
-      <primitive object={scene} ref={animationRef} />;
+      {animation}
     </group>
   );
 };

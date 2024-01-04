@@ -1,7 +1,7 @@
 import { Frameloop } from "Types/Frameloop";
 
 type Frameloops = {
-  ALWAYS: Frameloop; //
+  ALWAYS: Frameloop;
   DEMAND: Frameloop;
   NEVER: Frameloop;
 };

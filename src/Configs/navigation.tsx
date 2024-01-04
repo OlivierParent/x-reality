@@ -286,5 +286,5 @@ export namespace NAVIGATION {
       label: "Tripod",
       path: PATH.TRIPOD,
     },
-  ];
+  ] as const;
 }
