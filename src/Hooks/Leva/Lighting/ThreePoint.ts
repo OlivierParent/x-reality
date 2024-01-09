@@ -20,6 +20,7 @@ function useLeva() {
           Lighting: folder(
             {
               show: Lighting.helperShow(),
+              size: Lighting.helperSize(),
             },
             SettingsLeva.folder()
           ),

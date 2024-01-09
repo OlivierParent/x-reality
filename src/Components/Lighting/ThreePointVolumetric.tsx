@@ -1,4 +1,4 @@
-import { SpotLight, useHelper } from "@react-three/drei";
+import { Circle, SpotLight, useHelper } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import {
   ColorRepresentation,
@@ -9,6 +9,7 @@ import {
 } from "three";
 
 import { fromLevaPosition, useLeva } from "Hooks/Leva/Lighting/ThreePoint";
+import { SettingsLevaPosition } from "Settings/Leva/Position";
 
 const backLightTarget = new Object3D();
 const fillLightTarget = new Object3D();
@@ -115,6 +116,34 @@ const LightingThreePointVolumetric = (): JSX.Element => {
         ref={keyLightRef}
         target={keyLightTarget}
       />
+      {lightHelper.show && (
+        <group name="Targets">
+          <Circle
+            args={[lightHelper.size, 8]}
+            name="Back Light Target"
+            position={SettingsLevaPosition.toArray(backLight.target)}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <meshBasicMaterial color={backLight.color} wireframe={true} />
+          </Circle>
+          <Circle
+            args={[lightHelper.size, 8]}
+            name="Fill Light Target"
+            position={SettingsLevaPosition.toArray(fillLight.target)}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <meshBasicMaterial color={fillLight.color} wireframe={true} />
+          </Circle>
+          <Circle
+            args={[lightHelper.size, 8]}
+            name="Key Light Target"
+            position={SettingsLevaPosition.toArray(keyLight.target)}
+            rotation={[-Math.PI / 2, 0, 0]}
+          >
+            <meshBasicMaterial color={keyLight.color} wireframe={true} />
+          </Circle>
+        </group>
+      )}
     </group>
   );
 };

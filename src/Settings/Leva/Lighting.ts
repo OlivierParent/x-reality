@@ -62,6 +62,10 @@ export namespace SettingsLevaLighting {
   }
 
   export function target(x: number = 0, y: number = 0, z: number = 0) {
-    return { label: "Target", value: { x, y, z } };
+    return {
+      label: "Target", //
+      step: 0.1,
+      value: { x, y, z },
+    };
   }
 }

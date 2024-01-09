@@ -1,4 +1,4 @@
-import { useHelper } from "@react-three/drei";
+import { Circle, useHelper } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import {
@@ -16,6 +16,7 @@ import {
 } from "three";
 
 import { fromLevaPosition, useLeva } from "Hooks/Leva/Lighting/Demo";
+import { SettingsLevaPosition } from "Settings/Leva/Position";
 
 const INTENSITY_MAX = 20;
 
@@ -123,6 +124,16 @@ const LightingDemo = (): JSX.Element => {
         ref={spotLightRef}
         target={target}
       />
+      {lightHelper.show && (
+        <Circle
+          args={[lightHelper.size, 8]}
+          name="Spotlight Target"
+          position={SettingsLevaPosition.toArray(spotLight.target)}
+          rotation={[-Math.PI / 2, 0, 0]}
+        >
+          <meshBasicMaterial color={spotLight.color} wireframe={true} />
+        </Circle>
+      )}
     </group>
   );
 };
