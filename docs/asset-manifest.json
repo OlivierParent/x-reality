@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/x-reality/static/css/main.5f04135f.css",
-    "main.js": "/x-reality/static/js/main.ff888092.js",
+    "main.js": "/x-reality/static/js/main.1197ddb7.js",
     "static/js/1488.e5e1e658.chunk.js": "/x-reality/static/js/1488.e5e1e658.chunk.js",
-    "static/js/8533.c7587e5b.chunk.js": "/x-reality/static/js/8533.c7587e5b.chunk.js",
+    "static/js/4766.f451c5a4.chunk.js": "/x-reality/static/js/4766.f451c5a4.chunk.js",
     "static/js/61.432b326f.chunk.js": "/x-reality/static/js/61.432b326f.chunk.js",
     "static/js/1182.37b7e689.chunk.js": "/x-reality/static/js/1182.37b7e689.chunk.js",
     "static/js/4612.bc901b89.chunk.js": "/x-reality/static/js/4612.bc901b89.chunk.js",
@@ -71,6 +71,7 @@
     "static/media/UV_Grid_Sm.jpg": "/x-reality/static/media/UV_Grid_Sm.8ab40f718b980383b313.jpg",
     "static/media/gltf-logo.glb": "/x-reality/static/media/gltf-logo.d3501fc256ec9ddbd19c.glb",
     "static/media/suzanne_subdivision_smooth_shading.fbx": "/x-reality/static/media/suzanne_subdivision_smooth_shading.427c65aeb8114375ef74.fbx",
+    "static/media/animation2.glb": "/x-reality/static/media/animation2.5dc67eca61a8ba9b2faa.glb",
     "static/media/suzanne_subdivision_flat_shading_compressed.glb": "/x-reality/static/media/suzanne_subdivision_flat_shading_compressed.a0cc2832db7d8f7580e8.glb",
     "static/media/suzanne_subdivision_autosmooth_shading_compressed.glb": "/x-reality/static/media/suzanne_subdivision_autosmooth_shading_compressed.6897d3879d483bd1e6dd.glb",
     "static/media/suzanne_subdivision_smooth_shading_compressed.glb": "/x-reality/static/media/suzanne_subdivision_smooth_shading_compressed.d13fc80263eda278d80e.glb",
@@ -92,6 +93,6 @@
   },
   "entrypoints": [
     "static/css/main.5f04135f.css",
-    "static/js/main.ff888092.js"
+    "static/js/main.1197ddb7.js"
   ]
 }
