@@ -27,7 +27,6 @@ const Animation = (props: GroupProps): JSX.Element => {
   const animationRef = useRef<Mesh>(null!);
 
   useLayoutEffect(() => {
-    //sceneSuzanne.children[0].name = "Suzanne"; // The animation is linked to the object with name "Cube", so we replace the original name "Suzanne" with "Cube".
     scene.children[0] = sceneSuzanne.children[0];
   }, [scene.children, sceneSuzanne.children]);
 
