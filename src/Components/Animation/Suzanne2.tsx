@@ -7,7 +7,7 @@ import animationGlb from "Components/Animation/assets/animation2.glb";
 import suzanneGlb from "Components/Suzanne/assets/suzanne_default_smooth_shading_compressed.glb";
 
 /**
- * Animation of a Cube replaced with Suzanne.
+ * Animation of a Suzanne replaced with another Suzanne.
  *
  * @param {GroupProps} props
  * @returns {JSX.Element}
@@ -20,8 +20,6 @@ const Animation = (props: GroupProps): JSX.Element => {
     () => new AnimationMixer(animationClip),
     [animationClip]
   );
-
-  console.log("scene", scene.children[0]);
 
   // References.
   const animationRef = useRef<Mesh>(null!);

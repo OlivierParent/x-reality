@@ -4,7 +4,7 @@ import { StaticScene } from "Examples/StaticScene";
 import { Layout } from "Layouts/SceneLayoutStatic";
 
 /**
- * Page for Animated Cube.
+ * Page for a static scene.
  *
  * @param {GroupProps} props
  * @returns {JSX.Element}

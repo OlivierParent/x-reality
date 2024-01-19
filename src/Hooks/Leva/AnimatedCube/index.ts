@@ -5,6 +5,7 @@ import { SettingsLeva } from "Settings/Leva";
 
 enum LEVA_OPTION {
   DEFAULT = "\u2014Default\u2014",
+  DEFAULT_REPLACED = "Default with object replaced",
   FRAMER_MOTION_3D = "Framer Motion 3D",
   GREENSOCK_GSAP = "GreenSock GSAP",
 }

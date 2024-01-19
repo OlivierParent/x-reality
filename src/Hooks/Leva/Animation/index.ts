@@ -5,6 +5,7 @@ import { SettingsLeva } from "Settings/Leva";
 
 enum LEVA_OPTION {
   DEFAULT = "\u2014Default\u2014",
+  SCROLL = "Scroll",
   SUZANNE = "Suzanne",
   SUZANNE_TWO = "Suzanne 2",
 }

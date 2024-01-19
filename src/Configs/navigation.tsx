@@ -73,6 +73,9 @@ const PhysicsRapierXrArPage = lazy(
 const PhysicsRapierXrVrPage = lazy(
   () => import("Pages/PhysicsRapierXrVrPage") //
 );
+const SinglePageApplicationPage = lazy(
+  () => import("Pages/SinglePageApplicationPage") //
+);
 const SpringAnimationPage = lazy(
   () => import("Pages/SpringAnimationPage") //
 );
@@ -121,6 +124,7 @@ export namespace NAVIGATION {
     PHYSICS_RAPIER_WORLD = "rapier/world",
     PHYSICS_RAPIER_XR_AR = "rapier/xr-ar",
     PHYSICS_RAPIER_XR_VR = "rapier/xr-vr",
+    SINGLE_PAGE_APPLICATION = "single-page",
     SPRING_ANIMATION = "spring-animation",
     STATIC_SCENE = "static-scene",
     SUZANNE = "suzanne/material",
@@ -250,6 +254,11 @@ export namespace NAVIGATION {
       element: <PhysicsRapierXrVrPage />,
       label: "Physics-Rapier XR (VR)",
       path: PATH.PHYSICS_RAPIER_XR_VR,
+    },
+    {
+      element: <SinglePageApplicationPage />,
+      label: "Single Page Application",
+      path: PATH.SINGLE_PAGE_APPLICATION,
     },
     {
       element: <SpringAnimationPage />,

@@ -1,4 +1,4 @@
-import { KeyboardControls, Loader } from "@react-three/drei";
+import { KeyboardControls, Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Leva } from "leva";
@@ -32,6 +32,13 @@ const SceneRapierPinballLayout = ({ children }: LayoutProps): JSX.Element => {
         orthographic={false}
         shadows={canvasControls.shadows}
       >
+        {false && (
+          <OrbitControls
+            enableDamping={true}
+            enablePan={true}
+            enableZoom={true}
+          />
+        )}
         <Suspense>
           <Helpers />
           <Lighting />

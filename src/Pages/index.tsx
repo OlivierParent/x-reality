@@ -20,7 +20,7 @@ const Pages = (props: RoutesProps): JSX.Element => {
         <Route element={<Navigate to={rootPath} />} path={allPath} />
         <Route element={<Navigate to={homePath} />} path={rootPath} />
         {NAVIGATION.ITEMS.map(({ element, path }) => (
-          <Route element={element} path={path} />
+          <Route element={element} key={path} path={path} />
         ))}
       </Routes>
     </Suspense>
